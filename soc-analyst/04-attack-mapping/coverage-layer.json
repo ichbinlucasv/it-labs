@@ -1,0 +1,119 @@
+{
+  "name": "it-labs — synthetic scenario coverage",
+  "versions": {
+    "layer": "4.5",
+    "navigator": "5.1.0"
+  },
+  "domain": "enterprise-attack",
+  "description": "Techniques seen in the synthetic lab scenarios. Green (1) = detection exists in this repo, red (0) = gap.",
+  "gradient": {
+    "colors": [
+      "#ff6666",
+      "#66cc66"
+    ],
+    "minValue": 0,
+    "maxValue": 1
+  },
+  "legendItems": [
+    {
+      "label": "Detected by my rules/tools",
+      "color": "#66cc66"
+    },
+    {
+      "label": "Gap",
+      "color": "#ff6666"
+    }
+  ],
+  "techniques": [
+    {
+      "techniqueID": "T1003.008",
+      "score": 1,
+      "comment": "#15 cat /etc/shadow (denied)",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1027",
+      "score": 1,
+      "comment": "#3 PowerShell with -enc and hidden window",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1033",
+      "score": 0,
+      "comment": "#8 whoami /all",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1053.003",
+      "score": 1,
+      "comment": "#14 crontab /tmp/.c",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1059.001",
+      "score": 1,
+      "comment": "#3 PowerShell with -enc and hidden window",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1059.004",
+      "score": 1,
+      "comment": "#13 bash /tmp/.cache-upd.sh",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1069.002",
+      "score": 1,
+      "comment": "#9 net group \"Domain Admins\" /domain",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1071.001",
+      "score": 0,
+      "comment": "#4 PowerShell resolves & contacts external host over 443; #7 Regular outbound connections every ~60 s",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1078",
+      "score": 1,
+      "comment": "#11 SSH failures then success for deploy from same IP",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1105",
+      "score": 1,
+      "comment": "#5 Executable written to %APPDATA%; #12 curl -o /tmp/.cache-upd.sh http://…",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1110.001",
+      "score": 1,
+      "comment": "#10 12 failed logons from one external IP in < 3 min; #11 SSH failures then success for deploy from same IP",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1204.002",
+      "score": 1,
+      "comment": "#2 Word spawns PowerShell",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1547.001",
+      "score": 1,
+      "comment": "#6 Run key → %APPDATA%\\SyncHelper\\synchelper.exe",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1564.001",
+      "score": 0,
+      "comment": "#16 Hidden file name .cache-upd.sh",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1566.001",
+      "score": 0,
+      "comment": "#1 User opens macro document from Downloads",
+      "enabled": true
+    }
+  ]
+}

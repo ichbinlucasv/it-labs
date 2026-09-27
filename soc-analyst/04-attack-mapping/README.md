@@ -1,6 +1,6 @@
 # Lab 04 — MITRE ATT&CK mapping
 
-**Status:** In progress — the mapping of the synthetic scenarios is written, technique IDs were checked against the ATT&CK data bundled with pySigma, and the linked Sigma rules are validated; the public-dataset techniques are unconfirmed candidates and no Navigator layer exists yet.
+**Status:** Done — mapping of the synthetic scenarios checked against the official ATT&CK Enterprise 19.2 STIX data, and exported to a Navigator layer ([`coverage-layer.json`](coverage-layer.json), built by [`make_layer.py`](make_layer.py)); the public-dataset candidates stay unconfirmed until the [incident write-ups](../03-incident-writeups/) are done.
 
 ## Goal
 
@@ -27,7 +27,16 @@ D4 — threat hunting.)
 2. Find the most specific technique/sub-technique; record the tactic.
 3. Record the data source and event that shows it.
 4. Link the detection (Sigma rule / Wazuh rule) or mark as **gap**.
-5. Export the table to an ATT&CK Navigator layer (optional).
+5. Export the table to an ATT&CK Navigator layer:
+
+   ```bash
+   # optional validation source (50 MB, not committed)
+   curl -LO https://raw.githubusercontent.com/mitre-attack/attack-stix-data/master/enterprise-attack/enterprise-attack.json
+   python3 make_layer.py --stix enterprise-attack.json
+   ```
+
+   Then in ATT&CK Navigator: *Open Existing Layer → Upload from local* →
+   `coverage-layer.json`.
 
 ### Mapping table — synthetic scenarios
 
@@ -75,9 +84,32 @@ network-based detection** → next step is Zeek or Suricata in the lab.
 
 ## Evidence
 
-- ATT&CK Navigator layer JSON exported to this folder (optional) and a
-  screenshot of the heat-map.
+- [`coverage-layer.json`](coverage-layer.json): Navigator layer, 15 techniques,
+  score 1 (green) = detection exists in this repo, 0 (red) = gap; each
+  technique's comment lists the table rows it comes from.
+- Output of `python3 make_layer.py --stix enterprise-attack.json`:
+
+```text
+checked 15 technique IDs against ATT&CK Enterprise 19.2: all valid
+wrote coverage-layer.json: 15 techniques, 11 with a detection, 4 gaps
+```
+
+  The 4 gaps: T1566.001 (no mail logs in the lab), T1071.001 (C2 over HTTPS —
+  row 4 and the 60 s beacon in row 7), T1033 (`whoami`), T1564.001 (hidden
+  file name). The 13 candidate IDs for the public-dataset write-ups also
+  exist and are not deprecated in 19.2, but the mapping itself is unconfirmed.
+- Not done: Navigator heat-map screenshot (the layer file is the source; the
+  screenshot only needs the upload step above).
 
 ## What I learned
 
-_To be completed by Lucas._
+- One behaviour often maps to more than one technique (encoded PowerShell =
+  T1059.001 + T1027), and one technique can be both detected and missed
+  depending on where it happens (T1105 on Linux has a rule, on Windows not).
+- Technique IDs and tactic names change between ATT&CK versions (Defense
+  Evasion was split); checking against the official STIX data of a stated
+  version avoids citing something that no longer exists.
+- Counting per technique hides detail: the layer says T1071.001 is a gap, but
+  the table shows it covers two different behaviours (first contact and beaconing).
+- My clearest gap is network-based detection (C2 over HTTPS, beaconing),
+  which host logs and Sigma rules on process events do not cover well.
