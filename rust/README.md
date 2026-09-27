@@ -1,5 +1,7 @@
 # Rust security tools (cargo workspace)
 
+**Status:** Done — two crates with 11 passing unit tests; clippy and rustfmt clean.
+
 ## Goal
 
 Learn Rust by building two small, safe, well-tested defensive tools:
@@ -86,7 +88,7 @@ $ cargo clippy --all-targets -- -D warnings   -> no warnings
 
 ## Evidence
 
-- `cargo test` / `cargo clippy` output (above; CI workflow runs them too).
+- `cargo test` / `cargo clippy` output (above; the CI workflow would also run them once enabled — it is currently disabled).
 - `fim check` output after modifying files in a lab VM's `/etc`, compared with
   the Wazuh FIM alert for the same change.
 

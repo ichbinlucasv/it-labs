@@ -1,5 +1,7 @@
 # Lab 01 — Subnetting practice
 
+**Status:** Done — exercises and answer key written; every answer was computed and checked with Python `ipaddress`.
+
 ## Goal
 
 Be fast and accurate at IPv4 subnetting: finding network/broadcast addresses,

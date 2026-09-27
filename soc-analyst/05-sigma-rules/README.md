@@ -1,5 +1,7 @@
 # Lab 05 — Sigma detection rules
 
+**Status:** Done — `sigma check` reports 0 errors/issues and every rule fires on the synthetic samples via `validate_rules.py`; not yet deployed on real SIEM telemetry.
+
 ## Goal
 
 Write vendor-neutral detection rules in **Sigma**, validate them with the

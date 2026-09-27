@@ -1,4 +1,7 @@
 # Forgejo Actions workflow (GitHub Actions-compatible syntax).
+# DISABLED: this file is in .forgejo/workflows-disabled/ so Forgejo ignores it.
+# To enable: register a self-hosted runner labelled "docker", then
+#   git mv .forgejo/workflows-disabled/ci.yml .forgejo/workflows/ci.yml
 # On Codeberg, hosted Actions runners are limited: register your own
 # Forgejo runner (label "docker") or change `runs-on` to a label you have
 # access to. The same file also works under .github/workflows/ on GitHub

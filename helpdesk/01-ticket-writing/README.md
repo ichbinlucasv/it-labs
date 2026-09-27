@@ -1,5 +1,7 @@
 # Lab 01 — Writing useful tickets
 
+**Status:** Planned — the template and fictional good/bad ticket examples are written; the exercises have not been practised in an ITSM tool (e.g. GLPI) yet.
+
 ## Goal
 
 Practise writing tickets that another technician can pick up without asking
@@ -9,9 +11,9 @@ audits and incident reviews (Security+ D4 — incident/change documentation).
 
 ## Setup
 
-- Any ITSM tool or plain Markdown. I practised with the free self-hosted
-  [GLPI](https://glpi-project.org/) (widely used in France) and with Markdown
-  templates in this folder.
+- Any ITSM tool or plain Markdown. Planned tool: the free self-hosted
+  [GLPI](https://glpi-project.org/) (widely used in France); the templates in
+  this folder are plain Markdown.
 - Fictional organisation: *Exemple SARL*, 40 users, Windows 11 laptops,
   Microsoft 365, one Linux file server.
 

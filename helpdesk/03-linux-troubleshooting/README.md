@@ -1,5 +1,7 @@
 # Lab 03 — Linux troubleshooting runbook
 
+**Status:** Planned — written runbook; the break/fix scenarios have not been run on a Linux VM yet.
+
 ## Goal
 
 A practical runbook for common Linux server/desktop problems on Debian/Ubuntu,

@@ -1,5 +1,7 @@
 # Lab 03 — Incident write-ups on public datasets
 
+**Status:** Planned — investigation templates only; none of the public datasets has been downloaded or analysed yet, so every finding is TBD.
+
 ## Goal
 
 Practise the full analyst loop on **real, public** training datasets: scope

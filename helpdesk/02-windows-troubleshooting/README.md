@@ -1,9 +1,11 @@
 # Lab 02 — Windows troubleshooting runbook
 
+**Status:** Planned — written runbook; the scenarios have not been reproduced on a Windows VM yet.
+
 ## Goal
 
 Build a repeatable, step-by-step runbook for the Windows incidents I would
-handle most often at L1/L2, with the commands I actually use and how to read
+handle most often at L1/L2, with the commands to use and how to read
 their output.
 
 ## Setup

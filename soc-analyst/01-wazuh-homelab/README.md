@@ -1,5 +1,7 @@
 # Lab 01 — Wazuh home lab (SIEM / XDR)
 
+**Status:** Planned — written deployment and triage procedure; no Wazuh server has been deployed yet.
+
 ## Goal
 
 Deploy a small, self-hosted SIEM with Wazuh, enrol a Windows and a Linux

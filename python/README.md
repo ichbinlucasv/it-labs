@@ -1,5 +1,7 @@
 # Python security tools (`seclab`)
 
+**Status:** Done — three tools with 35 passing pytest tests.
+
 ## Goal
 
 Automate three small but real analyst chores with clean, tested Python using
@@ -97,8 +99,8 @@ filtering, hash chunking (> 1 MiB), known-bad list parsing, and CLI exit codes.
 
 ## Evidence
 
-- `pytest` output (above; also run in CI if enabled).
-- Screenshot of `authlog` on my own lab VM's `auth.log` after the Wazuh
+- `pytest` output (above; CI is currently disabled until a runner exists).
+- (Planned) Screenshot of `authlog` on a lab VM's `auth.log` after the Wazuh
   brute-force test ([soc-analyst lab 01](../soc-analyst/01-wazuh-homelab/)).
 
 ## What I learned

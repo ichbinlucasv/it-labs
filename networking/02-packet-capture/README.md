@@ -1,5 +1,7 @@
 # Lab 02 — Packet capture analysis with tcpdump, tshark & Wireshark
 
+**Status:** In progress — the capture script ran on this machine in an isolated network namespace and the tshark commands produced the documented output; analysis of the public sample captures, the Wireshark GUI work and the mini-report are not done yet.
+
 ## Goal
 
 Capture traffic safely, then answer typical SOC/helpdesk questions from a
@@ -66,7 +68,7 @@ tshark -r dns.cap -Y 'dns.flags.response == 0' -T fields -e ip.src -e dns.qry.na
 tshark -r capture.pcap -Y 'tls.handshake.type == 1' -T fields -e ip.dst -e tls.handshake.extensions_server_name
 ```
 
-### 4. Wireshark display filters I practised
+### 4. Wireshark display filters to practise
 
 | Question | Filter |
 |----------|--------|
@@ -82,7 +84,7 @@ tshark -r capture.pcap -Y 'tls.handshake.type == 1' -T fields -e ip.dst -e tls.h
 Also: *Follow → TCP Stream*, *File → Export Objects → HTTP*, *Statistics →
 Endpoints / Protocol Hierarchy*.
 
-### 5. Reference output from my own capture
+### 5. Reference output from the locally generated capture (ran on this machine)
 
 Running the commands above against a capture made with the script
 (4 requests; the server's directory has no `admin`, `robots.txt` or

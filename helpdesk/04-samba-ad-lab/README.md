@@ -1,5 +1,7 @@
 # Lab 04 — Active Directory user management with Samba AD DC
 
+**Status:** Planned — written procedure; no Samba AD DC has been provisioned yet and the commands have not been run.
+
 ## Goal
 
 Run a small Active Directory domain at home without a Windows Server licence,
@@ -26,7 +28,7 @@ D1/D3 (IAM, least privilege) and D4 (account lifecycle).
 > *AD DS* role there gives the "real" ADUC/GPMC experience that most French
 > SMEs use. Samba AD is lighter (runs in 1 GB RAM) and speaks the same
 > protocols (LDAP, Kerberos, DNS, SMB), so the RSAT tools on Windows 11 can
-> manage it too. I document Samba here; the concepts transfer 1:1.
+> manage it too. This lab documents Samba; the concepts transfer 1:1.
 
 ## Steps
 

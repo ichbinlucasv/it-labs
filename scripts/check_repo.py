@@ -2,6 +2,9 @@
 """Repository hygiene checks (standard library only).
 
 - every lab README contains the sections Goal, Setup, Steps, Evidence, What I learned
+- every lab README has a "**Status:** Done|In progress|Planned" line near the top,
+  and it matches the Status column of the skills matrix in the root README
+- every lab README appears in the skills matrix (and vice versa)
 - flashcards CSV parses, has front/back/domain and domains 1-5
 - Sigma rule files are at least valid YAML if PyYAML is installed
 - no obvious secrets / private keys committed
@@ -18,6 +21,9 @@ SECTIONS = ["## Goal", "## Setup", "## Steps", "## Evidence", "## What I learned
 # Index pages that only list labs (no lab content of their own)
 INDEX_PAGES = {"README.md", "helpdesk/README.md", "networking/README.md", "soc-analyst/README.md",
                "soc-analyst/02-sysmon-auditd-logs/samples/README.md"}
+STATUSES = ("Done", "In progress", "Planned")
+STATUS_RE = re.compile(r"^\*\*Status:\*\* (Done|In progress|Planned)\b", re.M)
+MATRIX_ROW_RE = re.compile(r"^\| \[[^\]]+\]\(([^)]+)\) \| (Done|In progress|Planned) \|", re.M)
 SKIP_PARTS = {".git", "target", ".venv", "venv", "__pycache__", ".pytest_cache", "node_modules"}
 
 
@@ -45,6 +51,53 @@ def check_readmes() -> list[str]:
             errors.append(f"{rel}: missing sections {missing}")
         elif "_To be completed by Lucas._" not in text.split("## What I learned", 1)[1]:
             errors.append(f"{rel}: 'What I learned' placeholder missing")
+    return errors
+
+
+def lab_readmes() -> list[Path]:
+    return [r for r in sorted(ROOT.rglob("README.md"))
+            if r.relative_to(ROOT).as_posix() not in INDEX_PAGES and not _skipped(r)]
+
+
+def readme_status(readme: Path) -> str | None:
+    """Status from a '**Status:** X' line within the first 10 lines."""
+    head = "\n".join(readme.read_text(encoding="utf-8").splitlines()[:10])
+    m = STATUS_RE.search(head)
+    return m.group(1) if m else None
+
+
+def matrix_statuses() -> dict[str, str]:
+    """{lab dir relative path: status} parsed from the root README skills matrix."""
+    text = (ROOT / "README.md").read_text(encoding="utf-8")
+    section = text.split("## Skills matrix", 1)[-1].split("\n## ", 1)[0]
+    return {link.rstrip("/"): status for link, status in MATRIX_ROW_RE.findall(section)}
+
+
+def check_statuses() -> list[str]:
+    errors = []
+    matrix = matrix_statuses()
+    if not matrix:
+        return ["README.md: could not find a skills matrix with a Status column"]
+    seen = set()
+    for readme in lab_readmes():
+        rel = readme.relative_to(ROOT).as_posix()
+        lab = readme.parent.relative_to(ROOT).as_posix()
+        status = readme_status(readme)
+        if status is None:
+            errors.append(f"{rel}: missing '**Status:** Done|In progress|Planned' line near the top")
+            continue
+        if lab not in matrix:
+            errors.append(f"{rel}: lab not listed in the README skills matrix")
+        elif matrix[lab] != status:
+            errors.append(f"{rel}: status '{status}' but skills matrix says '{matrix[lab]}'")
+        seen.add(lab)
+    text = (ROOT / "README.md").read_text(encoding="utf-8")
+    m = re.search(r"Current count: (\d+) Done, (\d+) In progress, (\d+) Planned", text)
+    counts = [sum(1 for v in matrix.values() if v == st) for st in STATUSES]
+    if m and [int(x) for x in m.groups()] != counts:
+        errors.append(f"README.md: 'Current count' says {m.groups()} but matrix has {tuple(counts)}")
+    for lab in sorted(set(matrix) - seen):
+        errors.append(f"README.md skills matrix: '{lab}' has no lab README with a status")
     return errors
 
 
@@ -93,9 +146,15 @@ def check_secrets() -> list[str]:
 
 
 def main() -> int:
-    errors = check_readmes() + check_flashcards() + check_yaml() + check_secrets()
+    errors = check_readmes() + check_statuses() + check_flashcards() + check_yaml() + check_secrets()
     for e in errors:
         print("FAIL", e)
+    counts = {st: 0 for st in STATUSES}
+    for r in lab_readmes():
+        st = readme_status(r)
+        if st:
+            counts[st] += 1
+    print("lab status: " + ", ".join(f"{n} {st}" for st, n in counts.items()))
     print(f"check_repo: {'OK' if not errors else f'{len(errors)} problem(s)'}")
     return 1 if errors else 0
 

@@ -1,14 +1,24 @@
-# IT & Security Home-Lab Portfolio — Lucas
+# IT & Security Lab Portfolio — Lucas
 
-Hands-on labs documenting my path into IT support and security operations.
+A structured lab plan I'm working through on my path into IT support and
+security operations; each lab is marked **Status: Done / In progress / Planned**.
 I am looking for a first role in France as **helpdesk / IT support technician**
 or **junior SOC analyst** (alternance or POEI welcome), while preparing
 **CompTIA Security+ (SY0-701)** and working through **HTB Academy** modules.
 
 Languages: Portuguese (native), French (C1), English (C1).
 
-> Everything here was built in my own lab. All hostnames, users, companies and
-> IP addresses are fictional (`example.com`, RFC 5737 ranges `192.0.2.0/24`,
+### Lab status
+
+| Status | Meaning |
+|--------|---------|
+| **Done** | The code or config runs and its checks pass in this repo |
+| **In progress** | Partly verified — for example syntax checked or run on synthetic data, but not tested end to end in a real environment |
+| **Planned** | A written procedure that hasn't been run in a real environment yet |
+
+Current count: 4 Done, 5 In progress, 7 Planned (see the skills matrix below).
+
+> All hostnames, users, companies and IP addresses are fictional (`example.com`, RFC 5737 ranges `192.0.2.0/24`,
 > `198.51.100.0/24`, `203.0.113.0/24`, and RFC 1918 ranges for the lab LAN).
 > No real personal data, no credentials, and no offensive tooling aimed at
 > third parties.
@@ -17,7 +27,12 @@ Languages: Portuguese (native), French (C1), English (C1).
 
 ## Résumé en français
 
-Ce dépôt rassemble mes travaux pratiques en informatique et cybersécurité :
+Ce dépôt est un plan de labs structuré que je suis en train de réaliser, en
+informatique et cybersécurité ; chaque lab porte un statut **Done** (terminé :
+le code ou la configuration s'exécute et ses vérifications passent dans ce
+dépôt), **In progress** (en cours : vérifié en partie, par exemple syntaxe
+validée mais pas testé de bout en bout) ou **Planned** (prévu : procédure
+rédigée, pas encore exécutée dans un environnement réel). Thèmes :
 support utilisateur (rédaction de tickets, dépannage Windows/Linux, Active
 Directory avec Samba, notions Microsoft 365), réseau (sous-réseaux, analyse de
 captures Wireshark/tcpdump, pare-feu nftables), analyse SOC (Wazuh, Sysmon,
@@ -26,8 +41,8 @@ de jeux de données publics), ainsi que de petits outils en Python et en Rust
 avec tests automatisés. Je prépare la certification CompTIA Security+ SY0-701
 et je recherche un premier poste en **support informatique / technicien
 helpdesk** ou **analyste SOC junior**, idéalement en **alternance** ou via une
-**POEI**. Chaque lab suit la même structure : objectif, mise en place, étapes,
-preuves, et ce que j'ai appris.
+**POEI**. Chaque lab suit la même structure : statut, objectif, mise en place,
+étapes, preuves, et ce que j'ai appris.
 
 ---
 
@@ -42,10 +57,10 @@ preuves, et ce que j'ai appris.
 | [`rust/`](rust/) | Cargo workspace: `log-analyzer` and `fim` (file-integrity monitor) crates with unit tests |
 | [`security-plus/`](security-plus/) | SY0-701 study notes per domain + flashcards CSV |
 | [`scripts/check_repo.py`](scripts/check_repo.py) | Repo hygiene check: lab README sections, flashcards CSV, Sigma YAML, secret patterns |
-| [`.forgejo/workflows/`](.forgejo/workflows/) | Optional CI (Forgejo/Codeberg Actions; GitHub-compatible syntax) — needs a runner, see comments in `ci.yml` |
+| [`.forgejo/workflows-disabled/`](.forgejo/workflows-disabled/) | CI workflow, **disabled** until a runner exists (see [CI](#ci)) |
 
-Every lab README follows the same layout: **Goal · Setup · Steps · Evidence ·
-What I learned**.
+Every lab README starts with a **Status** line and follows the same layout:
+**Goal · Setup · Steps · Evidence · What I learned**.
 
 ---
 
@@ -57,24 +72,24 @@ Mitigations · **D3** Security Architecture · **D4** Security Operations ·
 
 `●` = primary focus, `○` = secondary.
 
-| Lab | D1 | D2 | D3 | D4 | D5 | Practical skills |
-|-----|:--:|:--:|:--:|:--:|:--:|------------------|
-| [helpdesk/01 Ticket writing](helpdesk/01-ticket-writing/) | ○ | | | ● | ○ | ITSM, clear communication, escalation |
-| [helpdesk/02 Windows troubleshooting](helpdesk/02-windows-troubleshooting/) | | ○ | ○ | ● | | Event Viewer, PowerShell, networking, SFC/DISM |
-| [helpdesk/03 Linux troubleshooting](helpdesk/03-linux-troubleshooting/) | | ○ | ○ | ● | | systemd, journalctl, disk/DNS/permissions |
-| [helpdesk/04 Samba AD DC](helpdesk/04-samba-ad-lab/) | ● | | ● | ● | | Identity, groups, GPO concepts, least privilege |
-| [helpdesk/05 M365 basics](helpdesk/05-m365-basics/) | ● | ○ | ● | ● | ○ | Entra ID, licences, MFA, Conditional Access concepts |
-| [networking/01 Subnetting](networking/01-subnetting/) | | | ● | | | CIDR, VLSM, addressing plans |
-| [networking/02 Packet capture](networking/02-packet-capture/) | | ● | ○ | ● | | Wireshark filters, tcpdump, protocol analysis |
-| [networking/03 nftables firewall](networking/03-nftables-firewall/) | ○ | ● | ● | ○ | | Default-deny, stateful filtering, logging |
-| [soc-analyst/01 Wazuh home lab](soc-analyst/01-wazuh-homelab/) | | ○ | ○ | ● | | SIEM/XDR deployment, agents, alert triage |
-| [soc-analyst/02 Sysmon + auditd](soc-analyst/02-sysmon-auditd-logs/) | | ● | | ● | | Endpoint telemetry, log correlation |
-| [soc-analyst/03 Incident write-ups](soc-analyst/03-incident-writeups/) | | ● | | ● | ○ | IR lifecycle, reporting, evidence handling |
-| [soc-analyst/04 ATT&CK mapping](soc-analyst/04-attack-mapping/) | | ● | | ● | | Threat-informed detection coverage |
-| [soc-analyst/05 Sigma rules](soc-analyst/05-sigma-rules/) | | ● | | ● | | Detection engineering, pySigma/sigma-cli |
-| [python/ seclab tools](python/) | ○ | ● | | ● | | Regex, parsing, hashing, automated testing |
-| [rust/ log-analyzer + fim](rust/) | ○ | ○ | ○ | ● | | Integrity monitoring, systems programming |
-| [security-plus/ notes & flashcards](security-plus/) | ● | ● | ● | ● | ● | Exam preparation across all domains |
+| Lab | Status | D1 | D2 | D3 | D4 | D5 | Practical skills |
+|-----|--------|:--:|:--:|:--:|:--:|:--:|------------------|
+| [helpdesk/01 Ticket writing](helpdesk/01-ticket-writing/) | Planned | ○ | | | ● | ○ | ITSM, clear communication, escalation |
+| [helpdesk/02 Windows troubleshooting](helpdesk/02-windows-troubleshooting/) | Planned | | ○ | ○ | ● | | Event Viewer, PowerShell, networking, SFC/DISM |
+| [helpdesk/03 Linux troubleshooting](helpdesk/03-linux-troubleshooting/) | Planned | | ○ | ○ | ● | | systemd, journalctl, disk/DNS/permissions |
+| [helpdesk/04 Samba AD DC](helpdesk/04-samba-ad-lab/) | Planned | ● | | ● | ● | | Identity, groups, GPO concepts, least privilege |
+| [helpdesk/05 M365 basics](helpdesk/05-m365-basics/) | Planned | ● | ○ | ● | ● | ○ | Entra ID, licences, MFA, Conditional Access concepts |
+| [networking/01 Subnetting](networking/01-subnetting/) | Done | | | ● | | | CIDR, VLSM, addressing plans |
+| [networking/02 Packet capture](networking/02-packet-capture/) | In progress | | ● | ○ | ● | | Wireshark filters, tcpdump, protocol analysis |
+| [networking/03 nftables firewall](networking/03-nftables-firewall/) | In progress | ○ | ● | ● | ○ | | Default-deny, stateful filtering, logging |
+| [soc-analyst/01 Wazuh home lab](soc-analyst/01-wazuh-homelab/) | Planned | | ○ | ○ | ● | | SIEM/XDR deployment, agents, alert triage |
+| [soc-analyst/02 Sysmon + auditd](soc-analyst/02-sysmon-auditd-logs/) | In progress | | ● | | ● | | Endpoint telemetry, log correlation |
+| [soc-analyst/03 Incident write-ups](soc-analyst/03-incident-writeups/) | Planned | | ● | | ● | ○ | IR lifecycle, reporting, evidence handling |
+| [soc-analyst/04 ATT&CK mapping](soc-analyst/04-attack-mapping/) | In progress | | ● | | ● | | Threat-informed detection coverage |
+| [soc-analyst/05 Sigma rules](soc-analyst/05-sigma-rules/) | Done | | ● | | ● | | Detection engineering, pySigma/sigma-cli |
+| [python/ seclab tools](python/) | Done | ○ | ● | | ● | | Regex, parsing, hashing, automated testing |
+| [rust/ log-analyzer + fim](rust/) | Done | ○ | ○ | ○ | ● | | Integrity monitoring, systems programming |
+| [security-plus/ notes & flashcards](security-plus/) | In progress | ● | ● | ● | ● | ● | Exam preparation across all domains |
 
 ---
 
@@ -114,6 +129,20 @@ python3 scripts/check_repo.py
 Things that need a real lab (Windows VMs, Wazuh server, Samba DC, M365
 tenant) are documented as procedures, and their **Evidence** sections list
 the screenshots/outputs still to capture.
+
+## CI
+
+The workflow lives in `.forgejo/workflows-disabled/ci.yml`, so Forgejo does
+**not** pick it up (Codeberg's hosted runners are limited and the job would
+sit queued forever). It needs a **self-hosted Forgejo runner labelled
+`docker`**. To enable it:
+
+1. Register a [Forgejo runner](https://forgejo.org/docs/latest/admin/actions/)
+   with the label `docker` for this repository (Codeberg: repo *Settings →
+   Actions → Runners*) and enable Actions for the repo.
+2. `git mv .forgejo/workflows-disabled/ci.yml .forgejo/workflows/ci.yml`, then commit and push.
+
+On GitHub, copy the file to `.github/workflows/` and set `runs-on: ubuntu-latest`.
 
 ## Current learning
 

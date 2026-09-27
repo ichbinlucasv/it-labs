@@ -1,5 +1,7 @@
 # Lab 03 — Host firewall with nftables
 
+**Status:** In progress — the ruleset passes `nft -c -f` and loaded in an isolated network namespace; traffic filtering between two VMs has not been tested.
+
 ## Goal
 
 Write a default-deny host firewall for a Linux server with nftables:

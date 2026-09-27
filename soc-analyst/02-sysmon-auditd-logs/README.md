@@ -1,5 +1,7 @@
 # Lab 02 — Sysmon + auditd log analysis
 
+**Status:** In progress — the `jq` and `ausearch`/`aureport` commands ran against the synthetic samples in this repo; not yet reproduced on real Sysmon/auditd telemetry, and the timeline/IOC answers are not written up.
+
 ## Goal
 
 Learn to reconstruct what happened on an endpoint from raw telemetry:
@@ -15,7 +17,7 @@ data sources and investigation.)
 - Tools: `jq`, Python 3, and the audit userspace tools (`sudo apt install jq auditd`).
   `ausearch`/`aureport` can read a log file with `-if` without running the
   audit daemon.
-- To produce real telemetry in my own lab:
+- To produce real telemetry in a lab (not done yet):
   - **Sysmon** (Microsoft Sysinternals):
     <https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon> —
     `sysmon64.exe -accepteula -i sysmonconfig.xml`

@@ -1,5 +1,7 @@
 # Lab 05 — Microsoft 365 administration basics
 
+**Status:** Planned — concept notes only; not practised in a Microsoft 365 tenant.
+
 ## Goal
 
 Understand the Microsoft 365 / Entra ID concepts that come up in helpdesk

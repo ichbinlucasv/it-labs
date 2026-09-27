@@ -1,8 +1,10 @@
 # Lab 04 — MITRE ATT&CK mapping
 
+**Status:** In progress — the mapping of the synthetic scenarios is written, technique IDs were checked against the ATT&CK data bundled with pySigma, and the linked Sigma rules are validated; the public-dataset techniques are unconfirmed candidates and no Navigator layer exists yet.
+
 ## Goal
 
-Map the behaviours in my lab scenarios to MITRE ATT&CK techniques, link each
+Map the behaviours in the synthetic lab scenarios to MITRE ATT&CK techniques, link each
 one to the data source that shows it and the detection I wrote (or still need),
 and see where my coverage has gaps. (Security+ D2 — threat actors & TTPs;
 D4 — threat hunting.)
