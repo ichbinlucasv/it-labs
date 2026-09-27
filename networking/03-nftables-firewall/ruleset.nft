@@ -1,0 +1,78 @@
+#!/usr/sbin/nft -f
+# -----------------------------------------------------------------------------
+# Host firewall for a lab Linux server (Debian 12 / nftables 1.x)
+# Author: Lucas — home-lab use. Licence: MIT.
+#
+# Policy: default-deny inbound, allow established traffic, SSH only from the
+# admin subnet (rate-limited), HTTP/HTTPS from anywhere, ICMP/ICMPv6 essentials,
+# log and drop everything else. Outbound is allowed but logged for a small set
+# of suspicious destinations (documentation range used as an example).
+#
+# Validate WITHOUT applying:   sudo nft -c -f ruleset.nft
+# Apply (console access!):     sudo nft -f ruleset.nft
+# -----------------------------------------------------------------------------
+
+# WARNING: removes ALL existing rules (including Docker/libvirt ones) on apply.
+flush ruleset
+
+define ADMIN_NET_V4 = 10.20.30.0/24
+define SSH_PORT     = 22
+
+table inet lab_filter {
+
+    # Addresses we never want to talk to (example IoCs from a TI feed —
+    # RFC 5737 documentation addresses used here as placeholders).
+    set blocklist_v4 {
+        type ipv4_addr
+        flags interval
+        elements = { 198.51.100.66, 203.0.113.0/28 }
+    }
+
+    set web_ports {
+        type inet_service
+        elements = { 80, 443 }
+    }
+
+    chain input {
+        type filter hook input priority filter; policy drop;
+
+        # 1. Loopback and established/related traffic
+        iif "lo" accept
+        ct state established,related accept
+        ct state invalid counter drop
+
+        # 2. Known-bad sources
+        ip saddr @blocklist_v4 counter log prefix "nft-in-blocklist: " level warn drop
+
+        # 3. ICMP essentials (ping rate-limited; ICMPv6 needed for IPv6 to work)
+        ip protocol icmp icmp type { echo-request } limit rate 5/second accept
+        ip protocol icmp icmp type { destination-unreachable, time-exceeded } accept
+        ip6 nexthdr icmpv6 icmpv6 type {
+            destination-unreachable, packet-too-big, time-exceeded,
+            parameter-problem, echo-request,
+            nd-router-advert, nd-neighbor-solicit, nd-neighbor-advert
+        } accept
+
+        # 4. SSH from the admin subnet only, new connections rate-limited
+        tcp dport $SSH_PORT ip saddr $ADMIN_NET_V4 ct state new \
+            limit rate 10/minute burst 5 packets accept
+        tcp dport $SSH_PORT counter log prefix "nft-in-ssh-denied: " level info drop
+
+        # 5. Public web service
+        tcp dport @web_ports ct state new accept
+
+        # 6. Everything else: log (rate-limited to avoid log flooding) and drop
+        limit rate 10/minute log prefix "nft-in-drop: " level info
+        counter drop
+    }
+
+    chain forward {
+        type filter hook forward priority filter; policy drop;
+        # This host is not a router.
+    }
+
+    chain output {
+        type filter hook output priority filter; policy accept;
+        ip daddr @blocklist_v4 counter log prefix "nft-out-blocklist: " level warn drop
+    }
+}
