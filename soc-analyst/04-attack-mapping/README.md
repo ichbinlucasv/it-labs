@@ -1,6 +1,6 @@
 # Lab 04 — MITRE ATT&CK mapping
 
-**Status:** Done — mapping of the synthetic scenarios checked against the official ATT&CK Enterprise 19.2 STIX data, and exported to a Navigator layer ([`coverage-layer.json`](coverage-layer.json), built by [`make_layer.py`](make_layer.py)); the public-dataset candidates stay unconfirmed until the [incident write-ups](../03-incident-writeups/) are done.
+**Status:** Done — mapping of the synthetic scenarios checked against the official ATT&CK Enterprise 19.2 STIX data, and exported to a Navigator layer ([`coverage-layer.json`](coverage-layer.json), built by [`make_layer.py`](make_layer.py)); IR-03 is confirmed; the IR-01/IR-02 candidates stay unconfirmed until those [incident write-ups](../03-incident-writeups/) are done.
 
 ## Goal
 
@@ -65,7 +65,7 @@ D4 — threat hunting.)
 |----------|---------------------|
 | IR-01 malware-traffic pcap | T1189, T1566, T1204, T1105, T1071.001 |
 | IR-02 BOTS v1 | T1595, T1110, T1190, T1505.003, T1491.002, T1091, T1204.002, T1486 |
-| IR-03 EVTX password spray | T1110.003 |
+| IR-03 EVTX password spray | **T1110.003 confirmed** in the [completed write-up](../03-incident-writeups/IR-03-evtx-password-spray.md); T1078.002 possible next step, not in the data; detected by [`win_kerberos_password_spray_correlation`](../05-sigma-rules/rules/win_kerberos_password_spray_correlation.yml) |
 
 ### Coverage summary
 
