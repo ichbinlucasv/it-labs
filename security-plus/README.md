@@ -1,6 +1,6 @@
 # CompTIA Security+ (SY0-701) study notes & flashcards
 
-**Status:** In progress — notes and a 99-card flashcards CSV (parses cleanly) are written; exam preparation is ongoing and the exam has not been taken.
+**Status:** In progress — notes and a 99-card flashcards CSV (parses cleanly) are written; exam preparation is ongoing and the exam has not been taken (this lab is only "Done" once I pass SY0-701).
 
 ## Goal
 

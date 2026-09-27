@@ -1,6 +1,6 @@
 # Lab 01 — Wazuh home lab (SIEM / XDR)
 
-**Status:** Planned — written deployment and triage procedure; no Wazuh server has been deployed yet.
+**Status:** Planned — written deployment and triage procedure; no Wazuh server has been deployed yet. Not run on my current lab machine: the all-in-one server needs about 8 GB RAM for itself plus a Windows agent VM, more than that shared machine can spare; planned on a dedicated VM.
 
 ## Goal
 

@@ -1,6 +1,6 @@
 # Lab 02 — Windows troubleshooting runbook
 
-**Status:** Planned — written runbook; the scenarios have not been reproduced on a Windows VM yet.
+**Status:** Planned — written runbook; the scenarios have not been reproduced on a Windows VM yet. Not runnable on my current Linux-only lab machine (no Windows VM or hypervisor available there); next step is a Windows 11 evaluation VM.
 
 ## Goal
 
