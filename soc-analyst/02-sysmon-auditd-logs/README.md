@@ -1,6 +1,6 @@
 # Lab 02 — Sysmon + auditd log analysis
 
-**Status:** In progress — the `jq` and `ausearch`/`aureport` commands ran against the synthetic samples in this repo; not yet reproduced on real Sysmon/auditd telemetry, and the timeline/IOC answers are not written up.
+**Status:** Done — all Part A/B/C commands ran against the synthetic samples and my answers, UTC timeline and IOC list are in [`my-timeline.md`](my-timeline.md); reproducing the scenario on real Sysmon/auditd telemetry is a separate next step (needs a Windows VM and a kernel where auditd can run).
 
 ## Goal
 
@@ -124,12 +124,24 @@ cat samples/*.jsonl samples/auditd.synthetic.log | python -m seclab.ioc --defang
 
 ## Evidence
 
-- Output of the `jq` process tree and decoded command.
-- `aureport -au` and `ausearch -k exec_tmp -i` output.
-- My timeline table and IOC list (added as `my-timeline.md`).
-- Screenshot of the same events in Wazuh if the samples were re-created in the
-  lab ([lab 01](../01-wazuh-homelab/)).
+- [`my-timeline.md`](my-timeline.md): `jq` process tree and decoded command,
+  network/registry events, 4625 analysis, `aureport -au` and
+  `ausearch --session 7` output, answers to every question, the combined
+  UTC timeline and the IOC list.
+- Not done: the same events in Wazuh ([lab 01](../01-wazuh-homelab/)) and
+  real auditd rules — on my lab machine `auditctl -s` fails with
+  "Operation not permitted" (no audit capability in that container), so
+  `ausearch`/`aureport -if` on a file was the only option.
 
 ## What I learned
 
-_To be completed by Lucas._
+- Parent → child process relationships (Word → PowerShell) are often more
+  telling than any single event.
+- Perfectly regular connections (every 60 s) are a strong beaconing signal.
+- `auid` keeps the original login identity across `sudo`/`su`, which is what
+  attribution needs.
+- 4625 SubStatus codes tell valid from invalid user names — useful for
+  understanding what an attacker learned.
+- Time zones matter: `aureport` prints local time unless `TZ=UTC` is set.
+- An IOC extractor finds strings; deciding which ones are malicious (and
+  leaving out internal hosts and legitimate binaries) is the analyst's job.
