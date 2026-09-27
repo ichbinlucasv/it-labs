@@ -1,0 +1,40 @@
+### 1. Without firewall
+    10.20.30.5 -> 10.20.30.10:22    OPEN
+    10.20.30.5 -> 10.20.30.10:443   OPEN
+    192.0.2.10 -> 10.20.30.10:22    OPEN
+    192.0.2.10 -> 10.20.30.10:80    OPEN
+    192.0.2.10 -> 10.20.30.10:443   OPEN
+    192.0.2.10 -> 10.20.30.10:3306  REFUSED (Connection refused)
+ 198.51.100.66 -> 10.20.30.10:443   OPEN
+    192.0.2.10 -> 10.20.30.10 ICMP  echo reply
+
+### 2. nft -c -f ruleset.nft
+syntax OK
+
+### 3. With firewall
+    10.20.30.5 -> 10.20.30.10:22    OPEN
+    10.20.30.5 -> 10.20.30.10:443   OPEN
+    192.0.2.10 -> 10.20.30.10:22    BLOCKED (no reply)
+    192.0.2.10 -> 10.20.30.10:80    OPEN
+    192.0.2.10 -> 10.20.30.10:443   OPEN
+    192.0.2.10 -> 10.20.30.10:3306  BLOCKED (no reply)
+ 198.51.100.66 -> 10.20.30.10:443   BLOCKED (no reply)
+    192.0.2.10 -> 10.20.30.10 ICMP  echo reply
+
+### 4. 20 SSH connections in a row from the admin subnet (limit 10/minute burst 5)
+     12     10.20.30.5 -> 10.20.30.10:22    BLOCKED (no reply)
+      8     10.20.30.5 -> 10.20.30.10:22    OPEN
+
+### 5. Runtime blocklist: add 192.0.2.10, test 443, remove, test again
+    192.0.2.10 -> 10.20.30.10:443   BLOCKED (no reply)
+    192.0.2.10 -> 10.20.30.10:443   OPEN
+
+### 6. Egress to a blocklisted address from the server
+  198.51.100.1 -> 198.51.100.66:443   BLOCKED (no reply)
+
+### 7. Rules whose counters moved
+ip saddr @blocklist_v4 counter packets 4 bytes 240 log prefix "nft-in-blocklist: " drop
+tcp dport 22 ip saddr 10.20.30.0/24 counter packets 24 bytes 1440 drop
+tcp dport 22 counter packets 2 bytes 120 log prefix "nft-in-ssh-denied: " level info drop
+counter packets 2 bytes 120 drop
+ip daddr @blocklist_v4 counter packets 2 bytes 120 log prefix "nft-out-blocklist: " drop

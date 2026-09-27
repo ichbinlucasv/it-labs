@@ -56,6 +56,12 @@ table inet lab_filter {
         # 4. SSH from the admin subnet only, new connections rate-limited
         tcp dport $SSH_PORT ip saddr $ADMIN_NET_V4 ct state new \
             limit rate 10/minute burst 5 packets accept
+        # Admin subnet over the rate limit: separate prefix, so it is not
+        # confused with SSH attempts from outside the admin subnet.
+        # (log line itself rate-limited; the drop rule below always applies)
+        tcp dport $SSH_PORT ip saddr $ADMIN_NET_V4 \
+            limit rate 10/minute log prefix "nft-in-ssh-ratelimit: " level info
+        tcp dport $SSH_PORT ip saddr $ADMIN_NET_V4 counter drop
         tcp dport $SSH_PORT counter log prefix "nft-in-ssh-denied: " level info drop
 
         # 5. Public web service

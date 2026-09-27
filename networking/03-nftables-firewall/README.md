@@ -1,6 +1,6 @@
 # Lab 03 — Host firewall with nftables
 
-**Status:** In progress — the ruleset passes `nft -c -f` and loaded in an isolated network namespace; traffic filtering between two VMs has not been tested.
+**Status:** Done — syntax checked, then traffic-tested with three network namespaces standing in for the server, an admin client and an outside client ([`netns-test.sh`](netns-test.sh), output in [`evidence/`](evidence/)); not yet persisted on a real VM with `nftables.service`.
 
 ## Goal
 
@@ -64,10 +64,64 @@ public web ports, essential ICMP/ICMPv6, a blocklist set, and logging.
 
 ### Validation performed
 
-- `sudo nft -c -f ruleset.nft` → exit code 0 (nftables v1.1.3).
-- Loaded in an isolated network namespace and listed back with `nft list
-  ruleset` successfully. Traffic behaviour (steps 5–6) remains to be tested
-  on a real two-VM lab.
+I did not have two VMs, so I used network namespaces: each namespace has its
+own interfaces, routes and nftables ruleset, which is enough to test what a
+firewall lets through. [`netns-test.sh`](netns-test.sh) builds this, runs
+the tests without and with the ruleset, and cleans up:
+
+```text
+admin   10.20.30.5      --veth--  fw  10.20.30.10  (server under test, fake services on 22/80/443)
+outside 192.0.2.10      --veth--  fw  192.0.2.1 / 198.51.100.1
+        198.51.100.66   (in the blocklist)
+```
+
+```bash
+sudo sysctl -w net.netfilter.nf_log_all_netns=1   # allow log lines from non-host namespaces
+sudo ./netns-test.sh
+sudo dmesg | grep nft-                              # log prefixes
+sudo sysctl -w net.netfilter.nf_log_all_netns=0
+```
+
+Results ([full output](evidence/netns-test.txt), nftables v1.1.3):
+
+| Test | Without ruleset | With ruleset | Matches prediction? |
+|------|-----------------|--------------|---------------------|
+| SSH from admin `10.20.30.5` | open | open | yes |
+| SSH from `192.0.2.10` | open | **blocked**, logged `nft-in-ssh-denied` | yes |
+| HTTP/HTTPS from `192.0.2.10` | open | open | yes |
+| TCP 3306 from `192.0.2.10` | refused (no service) | **blocked** silently, logged `nft-in-drop` | yes |
+| Anything from `198.51.100.66` | open | **blocked**, logged `nft-in-blocklist` | yes |
+| Ping from `192.0.2.10` | reply | reply (rate-limited accept) | yes |
+| 20 SSH connections in a row from admin | — | 8 open, 12 blocked | yes (burst 5 + refill) |
+| Add `192.0.2.10` to the blocklist at runtime | — | 443 blocked; open again after removing it | yes |
+| Server → `198.51.100.66:443` | — | blocked by the output chain | yes |
+
+Note the difference between **refused** (RST: the port is closed but the
+host answers) and **blocked** (no answer at all: the firewall drops). A
+scanner sees the first as "closed" and the second as "filtered".
+
+**Problem I found and fixed.** In the first run, the 12 rate-limited SSH
+attempts from the *admin* subnet fell through to the generic rule and were
+logged as `nft-in-ssh-denied` — the same prefix as an outsider trying SSH.
+During an investigation that would look like an attack from inside the admin
+network. I added two rules so admin connections over the limit get their own
+prefix `nft-in-ssh-ratelimit` (log line rate-limited, drop always applied).
+Second run, kernel log summary ([evidence](evidence/kernel-log-summary.txt), MACs redacted):
+
+```text
+      8 nft-in-ssh-ratelimit: IN=veth-adm ... SRC=10.20.30.5 DST=10.20.30.10 PROTO=TCP DPT=22
+      2 nft-out-blocklist: IN= OUT=veth-out SRC=198.51.100.1 DST=198.51.100.66 PROTO=TCP DPT=443
+      2 nft-in-ssh-denied: IN=veth-out ... SRC=192.0.2.10 DST=10.20.30.10 PROTO=TCP DPT=22
+      2 nft-in-drop: IN=veth-out ... SRC=192.0.2.10 DST=10.20.30.10 PROTO=TCP DPT=3306
+      2 nft-in-blocklist: IN=veth-out ... SRC=198.51.100.66 DST=10.20.30.10 PROTO=TCP DPT=443
+```
+
+(Each blocked connection appears twice because the client retransmits its
+SYN after 1 s. The drop counter showed 24 packets for the 12 attempts, but
+only 8 log lines — the log statement's own rate limit worked.)
+
+Not done here: step 4 (persisting with `nftables.service` on a VM) and a
+real SSH daemon behind the rules; the fake services only accept and close.
 
 ### Design notes
 
@@ -81,10 +135,19 @@ public web ports, essential ICMP/ICMPv6, a blocklist set, and logging.
 
 ## Evidence
 
-- Output of `nft -c -f ruleset.nft`.
-- `nft list ruleset` after applying, with counters incremented after tests.
-- `journalctl -k` lines showing `nft-in-ssh-denied:` from a non-admin host.
+- [`evidence/netns-test.txt`](evidence/netns-test.txt): `nft -c -f` result, test
+  matrix without/with the ruleset, rate-limit and runtime-blocklist tests, and
+  the rules whose counters increased.
+- [`evidence/kernel-log-summary.txt`](evidence/kernel-log-summary.txt): `dmesg`
+  lines with the `nft-*` prefixes, counted (MAC addresses redacted).
 
 ## What I learned
 
-_To be completed by Lucas._
+- Predict first, then test: writing the expected result for each case before
+  running the script made the one surprise (the misleading log prefix) obvious.
+- Order matters in a chain: a packet that does not match a `limit ... accept`
+  rule simply continues to the next rule — here it landed in the "denied" rule.
+- "Refused" and "blocked" are different answers and tell an analyst different things.
+- Logging needs its own rate limit, otherwise an attacker can fill the disk.
+- Network namespaces are a cheap way to test a ruleset without risking
+  lock-out on a remote server; `nft -c` only proves syntax, not behaviour.

@@ -1,0 +1,6 @@
+      8 nft-in-ssh-ratelimit: IN=veth-adm OUT= MAC=<redacted> SRC=10.20.30.5 DST=10.20.30.10 PROTO=TCP DPT=22
+      2 nft-out-blocklist: IN= OUT=veth-out SRC=198.51.100.1 DST=198.51.100.66 PROTO=TCP DPT=443
+      2 nft-in-ssh-denied: IN=veth-out OUT= MAC=<redacted> SRC=192.0.2.10 DST=10.20.30.10 PROTO=TCP DPT=22
+      2 nft-in-drop: IN=veth-out OUT= MAC=<redacted> SRC=192.0.2.10 DST=10.20.30.10 PROTO=TCP DPT=3306
+      2 nft-in-blocklist: IN=veth-out OUT= MAC=<redacted> SRC=198.51.100.66 DST=10.20.30.10 PROTO=TCP DPT=443
+      2 nft-in-blocklist: IN=veth-out OUT= MAC=<redacted> SRC=192.0.2.10 DST=10.20.30.10 PROTO=TCP DPT=443
