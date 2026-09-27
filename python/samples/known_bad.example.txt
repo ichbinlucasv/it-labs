@@ -1,0 +1,7 @@
+# Example known-bad list for the hashcheck lab — ALL ENTRIES ARE FICTIONAL.
+# Format: <md5|sha1|sha256>[,label]  or  <hash> <label>
+# The first entry is the SHA256 of samples/fake_dropper.txt (a harmless text file)
+# so the tool has something to find.
+826c2bf2d92839f1e99f19ef3b9c3004035b7911af47eb2134f030665948e49c,LAB-TEST fake dropper (harmless text file)
+0000000000000000000000000000000000000000000000000000000000000003,synthetic synchelper.exe from soc-analyst lab 02
+d41d8cd98f00b204e9800998ecf8427e  empty-file-md5 (demo: every empty file matches)

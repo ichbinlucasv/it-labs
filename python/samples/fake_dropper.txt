@@ -1,0 +1,2 @@
+This is a harmless text file used to demonstrate hash matching in the lab.
+It is NOT malware.

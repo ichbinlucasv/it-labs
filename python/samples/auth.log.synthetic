@@ -1,0 +1,15 @@
+2026-09-14T21:39:41.102311+00:00 web01 sshd[1801]: Invalid user admin from 203.0.113.45 port 50112
+2026-09-14T21:39:43.560120+00:00 web01 sshd[1801]: Failed password for invalid user admin from 203.0.113.45 port 50112 ssh2
+2026-09-14T21:39:47.004217+00:00 web01 sshd[1803]: Failed password for root from 203.0.113.45 port 50118 ssh2
+2026-09-14T21:39:49.771002+00:00 web01 sshd[1803]: message repeated 2 times: [ Failed password for root from 203.0.113.45 port 50118 ssh2]
+2026-09-14T21:39:52.310554+00:00 web01 sshd[1807]: Invalid user oracle from 203.0.113.45 port 50124
+2026-09-14T21:39:54.018831+00:00 web01 sshd[1807]: Failed password for invalid user oracle from 203.0.113.45 port 50124 ssh2
+2026-09-14T21:39:58.442190+00:00 web01 sshd[1812]: Failed password for deploy from 203.0.113.45 port 50130 ssh2
+2026-09-14T21:40:00.905117+00:00 web01 sshd[1830]: Failed password for deploy from 203.0.113.45 port 50136 ssh2
+2026-09-14T21:40:03.118760+00:00 web01 sshd[1830]: Failed password for deploy from 203.0.113.45 port 50136 ssh2
+2026-09-14T21:40:09.650033+00:00 web01 sshd[1831]: Accepted password for deploy from 203.0.113.45 port 50142 ssh2
+2026-09-14T21:40:09.661500+00:00 web01 sshd[1831]: pam_unix(sshd:session): session opened for user deploy(uid=1002) by deploy(uid=0)
+2026-09-14T22:02:17.201945+00:00 web01 sshd[1990]: Failed password for alice from 10.20.30.5 port 41022 ssh2
+2026-09-14T22:02:21.883120+00:00 web01 sshd[1992]: Accepted publickey for alice from 10.20.30.5 port 41024 ssh2: ED25519 SHA256:AAAAsyntheticFingerprintOnlyForLab00000000000
+2026-09-14T22:30:05.004001+00:00 web01 sshd[2101]: Failed password for invalid user test from 198.51.100.23 port 60200 ssh2
+2026-09-14T22:30:07.114203+00:00 web01 CRON[2110]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
