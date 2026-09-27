@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+
+# Rust
+target/
+**/*.rs.bk
+
+# Lab artefacts (keep real captures / exports out of git)
+*.pcap
+*.pcapng
+*.evtx
+!**/samples/*.synthetic.*
+captures/
+exports/
+*.local.*
+
+# Secrets – never commit
+.env
+*.key
+*.pem
+secrets*
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
