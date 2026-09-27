@@ -1,0 +1,12 @@
+[package]
+name = "log-analyzer"
+description = "Summarise web server access logs (combined log format) and flag suspicious requests"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+
+[dependencies]
+
+[lints]
+workspace = true

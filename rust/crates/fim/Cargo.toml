@@ -1,0 +1,13 @@
+[package]
+name = "fim"
+description = "Minimal file-integrity monitor: create a SHA-256 baseline of a directory and detect added, removed and modified files"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+
+[dependencies]
+sha2 = "0.10"
+
+[lints]
+workspace = true
