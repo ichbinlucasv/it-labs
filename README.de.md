@@ -1,0 +1,150 @@
+# IT- & Security-Lab-Portfolio — Lucas
+
+[English](README.md) · [Français](README.md#résumé-en-français) · **Deutsch**
+
+> Deutsche Fassung der englischen [README.md](README.md). Bei Abweichungen
+> gilt die englische Version. Die Lab-Beschreibungen mit eigener deutscher
+> Fassung sind in der Tabelle unten mit „DE“ verlinkt; alle anderen gibt es
+> nur auf Englisch.
+
+Ein strukturierter Lab-Plan, den ich auf meinem Weg in den IT-Support und in
+Security Operations durcharbeite; jedes Lab hat den Status **Done / In
+progress / Planned**. Ich suche in Frankreich eine erste Stelle als
+**Helpdesk- / IT-Support-Techniker** oder **Junior SOC Analyst** (Alternance
+oder POEI willkommen) und bereite mich parallel auf **CompTIA Security+
+(SY0-701)** vor und arbeite Module der **HTB Academy** durch.
+
+Sprachen: Portugiesisch (Muttersprache), Französisch (C1), Englisch (C1).
+
+### Lab-Status
+
+| Status | Bedeutung |
+|--------|-----------|
+| **Done** | Code oder Konfiguration läuft und die Prüfungen in diesem Repo sind erfolgreich |
+| **In progress** | Teilweise verifiziert — z. B. Syntax geprüft oder mit synthetischen Daten ausgeführt, aber nicht vollständig in einer realen Umgebung getestet |
+| **Planned** | Schriftliche Anleitung, die noch nicht in einer realen Umgebung ausgeführt wurde |
+
+Aktueller Stand: 10 Done, 3 In progress, 3 Planned (siehe Skills-Matrix unten).
+
+> Alle Hostnamen, Benutzer, Firmen und IP-Adressen sind fiktiv (`example.com`,
+> RFC-5737-Bereiche `192.0.2.0/24`, `198.51.100.0/24`, `203.0.113.0/24` und
+> RFC-1918-Bereiche für das Lab-LAN). Ausnahme: öffentliche Trainingsdatensätze
+> (z. B. Wireshark-Beispielmitschnitte, EVTX-ATTACK-SAMPLES) werden mit ihren
+> Originalwerten und Quellenangabe zitiert. Keine echten personenbezogenen
+> Daten, keine Zugangsdaten und keine offensiven Werkzeuge gegen Dritte.
+
+---
+
+## Repository-Übersicht
+
+| Pfad | Inhalt |
+|------|--------|
+| [`helpdesk/`](helpdesk/) | Ticket-Dokumentation, Runbooks zur Fehleranalyse unter Windows & Linux, Benutzerverwaltung mit Samba AD DC, Grundlagen Microsoft 365 |
+| [`networking/`](networking/) | Subnetting-Übungen mit Lösungen, Analyse von Netzwerkmitschnitten (Wireshark/tcpdump), Host-Firewall mit nftables |
+| [`soc-analyst/`](soc-analyst/) | Wazuh-Homelab, Analyse von Sysmon- und auditd-Logs (synthetische Beispiele), Incident-Berichte auf öffentlichen Datensätzen, ATT&CK-Mapping, Sigma-Regeln |
+| [`python/`](python/) | Paket `seclab`: Auswertung von SSH-`auth.log`, IOC-Extraktor (defang/refang), Hash-Prüfer — nur Standardbibliothek, pytest-Suite |
+| [`rust/`](rust/) | Cargo-Workspace: Crates `log-analyzer` und `fim` (File-Integrity-Monitoring) mit Unit-Tests |
+| [`security-plus/`](security-plus/) | Lernnotizen SY0-701 pro Domäne + Karteikarten (CSV) |
+| [`scripts/check_repo.py`](scripts/check_repo.py) | Hygiene-Prüfung des Repos: Abschnitte der Lab-READMEs, Karteikarten-CSV, Sigma-YAML, Muster für Secrets |
+| [`.forgejo/workflows-disabled/`](.forgejo/workflows-disabled/) | CI-Workflow, **deaktiviert**, bis ein Runner existiert (siehe [CI](#ci)) |
+
+Jede Lab-README beginnt mit einer **Status**-Zeile und folgt demselben
+Aufbau: **Goal · Setup · Steps · Evidence · What I learned** (in den
+deutschen Fassungen: Ziel · Aufbau · Schritte · Nachweise · Was ich gelernt habe).
+
+---
+
+## Skills-Matrix — Labs × Security+-SY0-701-Domänen
+
+Domänen: **D1** General Security Concepts · **D2** Threats, Vulnerabilities &
+Mitigations · **D3** Security Architecture · **D4** Security Operations ·
+**D5** Security Program Management & Oversight.
+
+`●` = Schwerpunkt, `○` = Nebenaspekt.
+
+| Lab | Status | D1 | D2 | D3 | D4 | D5 | Praktische Fähigkeiten |
+|-----|--------|:--:|:--:|:--:|:--:|:--:|------------------------|
+| [helpdesk/01 Tickets schreiben](helpdesk/01-ticket-writing/) ([DE](helpdesk/01-ticket-writing/README.de.md)) | Done | ○ | | | ● | ○ | ITSM, klare Kommunikation, Eskalation |
+| [helpdesk/02 Fehleranalyse Windows](helpdesk/02-windows-troubleshooting/) | Planned | | ○ | ○ | ● | | Ereignisanzeige, PowerShell, Netzwerk, SFC/DISM |
+| [helpdesk/03 Fehleranalyse Linux](helpdesk/03-linux-troubleshooting/) ([DE](helpdesk/03-linux-troubleshooting/README.de.md)) | Done | | ○ | ○ | ● | | systemd, journalctl, Speicherplatz/DNS/Berechtigungen |
+| [helpdesk/04 Samba AD DC](helpdesk/04-samba-ad-lab/) ([DE](helpdesk/04-samba-ad-lab/README.de.md)) | In progress | ● | | ● | ● | | Identitäten, Gruppen, GPO-Konzepte, Least Privilege |
+| [helpdesk/05 M365-Grundlagen](helpdesk/05-m365-basics/) | Planned | ● | ○ | ● | ● | ○ | Entra ID, Lizenzen, MFA, Conditional-Access-Konzepte |
+| [networking/01 Subnetting](networking/01-subnetting/) | Done | | | ● | | | CIDR, VLSM, Adresspläne |
+| [networking/02 Netzwerkmitschnitte](networking/02-packet-capture/) ([DE](networking/02-packet-capture/README.de.md)) | Done | | ● | ○ | ● | | Wireshark-Filter, tcpdump, Protokollanalyse |
+| [networking/03 nftables-Firewall](networking/03-nftables-firewall/) ([DE](networking/03-nftables-firewall/README.de.md)) | Done | ○ | ● | ● | ○ | | Default-Deny, zustandsbehaftete Filterung, Logging |
+| [soc-analyst/01 Wazuh-Homelab](soc-analyst/01-wazuh-homelab/) | Planned | | ○ | ○ | ● | | SIEM/XDR-Aufbau, Agents, Alarm-Triage |
+| [soc-analyst/02 Sysmon + auditd](soc-analyst/02-sysmon-auditd-logs/) ([DE](soc-analyst/02-sysmon-auditd-logs/README.de.md)) | Done | | ● | | ● | | Endpoint-Telemetrie, Log-Korrelation |
+| [soc-analyst/03 Incident-Berichte](soc-analyst/03-incident-writeups/) ([DE](soc-analyst/03-incident-writeups/README.de.md)) | In progress | | ● | | ● | ○ | IR-Lebenszyklus, Berichtswesen, Umgang mit Beweismitteln |
+| [soc-analyst/04 ATT&CK-Mapping](soc-analyst/04-attack-mapping/) ([DE](soc-analyst/04-attack-mapping/README.de.md)) | Done | | ● | | ● | | Bedrohungsorientierte Abdeckung von Detections |
+| [soc-analyst/05 Sigma-Regeln](soc-analyst/05-sigma-rules/) | Done | | ● | | ● | | Detection Engineering, pySigma/sigma-cli |
+| [python/ seclab-Tools](python/) | Done | ○ | ● | | ● | | Regex, Parsing, Hashing, automatisierte Tests |
+| [rust/ log-analyzer + fim](rust/) | Done | ○ | ○ | ○ | ● | | Integritätsüberwachung, Systemprogrammierung |
+| [security-plus/ Notizen & Karteikarten](security-plus/) | In progress | ● | ● | ● | ● | ● | Prüfungsvorbereitung über alle Domänen |
+
+---
+
+## Schnellstart
+
+```bash
+# Python tools + tests
+(cd python && python3 -m venv .venv && . .venv/bin/activate \
+  && pip install -e '.[test]' && pytest)
+
+# Rust workspace
+(cd rust && cargo test && cargo clippy --all-targets -- -D warnings)
+
+# Sigma rules: lint + replay on the synthetic samples
+python3 -m venv .venv-sigma && . .venv-sigma/bin/activate
+pip install sigma-cli pyyaml && sigma plugin install sqlite
+sigma check soc-analyst/05-sigma-rules/rules/
+python soc-analyst/05-sigma-rules/validate_rules.py
+
+# Repo hygiene
+python3 scripts/check_repo.py
+```
+
+## Was verifiziert wurde
+
+| Punkt | Wie |
+|-------|-----|
+| Python-Tools | `pytest` — 35 Tests erfolgreich |
+| Rust-Crates | `cargo test` (11 Unit-Tests), `cargo clippy --all-targets -- -D warnings` ohne Befund, `cargo fmt --check` ohne Befund |
+| Sigma-Regeln | gültiges YAML; `sigma check` 0 Fehler (sigma-cli 3.1.0); die 8 ursprünglichen Regeln schlagen über das SQLite-Backend auf den synthetischen Beispielen an; die Kerberos-Spraying-Regel schlägt auf einem öffentlichen EVTX-Beispiel an |
+| Fehleranalyse Linux | 7 Break/Fix-Szenarien in einem Debian-13-systemd-Container (`systemd-nspawn`) durchgeführt; Terminalausgaben in `helpdesk/03-linux-troubleshooting/evidence/` (OOM-Kill dort nicht reproduzierbar) |
+| Samba AD DC | in einem Debian-13-Container provisioniert; DNS-SRV, Kerberos, OUs/Gruppen/Benutzer, Sperrrichtlinie und Helpdesk-Delegation getestet; Domänenbeitritt eines Windows-Clients noch offen |
+| nftables-Regelwerk | `nft -c -f` OK; Datenverkehr mit drei Network Namespaces getestet (Admin / extern / gesperrter Client), Zähler und Kernel-Log geprüft |
+| Netzwerkmitschnitte | eigener Mitschnitt in einem Network Namespace erzeugt und mit tshark analysiert; öffentliches Wireshark-Beispiel `dns.cap` mit Kurzbericht analysiert |
+| Sysmon-/auditd-Beispiele | alle Fragen beantwortet, UTC-Zeitleiste und IOC-Liste erstellt; `ausearch`/`aureport` auf dem synthetischen auditd-Log |
+| Incident-Bericht IR-03 | öffentliches Kerberos-Password-Spray-EVTX mit python-evtx eingelesen und vollständig analysiert |
+| ATT&CK-Mapping | 15 Technik-IDs gegen das STIX-Bundle ATT&CK Enterprise 19.2 geprüft; Navigator-Layer erzeugt |
+| Subnetting-Lösungen | mit Python `ipaddress` berechnet |
+| Karteikarten | 99 Karten, mit Python `csv` eingelesen |
+
+Was eine echte Lab-Umgebung braucht (Windows-VMs, Wazuh-Server,
+M365-Tenant, die Windows-Seite des AD-Labs, eine isolierte VM für
+Malware-Mitschnitte, eine Splunk-Instanz), ist als Anleitung dokumentiert;
+die **Evidence**-Abschnitte nennen, was noch zu erfassen ist.
+
+## CI
+
+Der Workflow liegt in `.forgejo/workflows-disabled/ci.yml`, damit Forgejo ihn
+**nicht** ausführt (die gehosteten Runner von Codeberg sind begrenzt, der Job
+würde endlos in der Warteschlange stehen). Er braucht einen
+**selbst gehosteten Forgejo-Runner mit dem Label `docker`**. Aktivieren:
+
+1. Einen [Forgejo-Runner](https://forgejo.org/docs/latest/admin/actions/) mit
+   dem Label `docker` für dieses Repository registrieren (Codeberg: Repo
+   *Settings → Actions → Runners*) und Actions für das Repo aktivieren.
+2. `git mv .forgejo/workflows-disabled/ci.yml .forgejo/workflows/ci.yml`, dann committen und pushen.
+
+Auf GitHub die Datei nach `.github/workflows/` kopieren und `runs-on: ubuntu-latest` setzen.
+
+## Aktuelles Lernen
+
+- CompTIA Security+ SY0-701 — in Vorbereitung
+- HTB Academy — Module SOC Analyst / Grundlagen in Bearbeitung
+
+## Lizenz
+
+Code: [MIT](LICENSE). Dokumentation (Markdown, Notizen, Karteikarten):
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Siehe [LICENSE](LICENSE).

@@ -1,5 +1,7 @@
 # IT & Security Lab Portfolio — Lucas
 
+**English** · [Français](#résumé-en-français) · [Deutsch](README.de.md)
+
 A structured lab plan I'm working through on my path into IT support and
 security operations; each lab is marked **Status: Done / In progress / Planned**.
 I am looking for a first role in France as **helpdesk / IT support technician**
@@ -20,6 +22,8 @@ Current count: 10 Done, 3 In progress, 3 Planned (see the skills matrix below).
 
 > All hostnames, users, companies and IP addresses are fictional (`example.com`, RFC 5737 ranges `192.0.2.0/24`,
 > `198.51.100.0/24`, `203.0.113.0/24`, and RFC 1918 ranges for the lab LAN).
+> Exception: public training datasets (Wireshark sample captures,
+> EVTX-ATTACK-SAMPLES) are quoted with their original values and cited.
 > No real personal data, no credentials, and no offensive tooling aimed at
 > third parties.
 
