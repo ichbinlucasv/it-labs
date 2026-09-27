@@ -1,0 +1,100 @@
+front,back,domain
+What are the three parts of the CIA triad?,"Confidentiality, Integrity, Availability",1
+Which control type discourages an attacker without physically stopping them?,"Deterrent (e.g. warning banner, visible camera)",1
+A control used because the ideal control is not possible is called…,Compensating control,1
+Name the four control categories.,"Technical, managerial, operational, physical",1
+"What does non-repudiation guarantee, and which technology provides it?",The sender cannot deny sending/signing; provided by digital signatures,1
+AAA stands for…,"Authentication, Authorisation, Accounting",1
+"In Zero Trust, which component makes the access decision?",The policy engine (control plane); the policy enforcement point enforces it (data plane),1
+What is a honeytoken?,Fake data or a fake credential that should never be used; any use triggers an alert,1
+What is a gap analysis?,Comparing the current security state with a desired state or framework to find what is missing,1
+Which document in change management describes how to undo a failed change?,The backout (rollback) plan,1
+Symmetric vs asymmetric encryption: which is faster and why is asymmetric still used?,Symmetric is faster; asymmetric solves key exchange and enables digital signatures,1
+"To send Alice a confidential message, which key do you encrypt with?",Alice's public key (only her private key can decrypt),1
+"To sign a document, which key does the signer use?",The signer's private key; others verify with the signer's public key,1
+Why add a salt to password hashes?,A unique random salt per password defeats precomputed rainbow tables and hides identical passwords,1
+Name three key-stretching algorithms.,"PBKDF2, bcrypt, Argon2 (also scrypt)",1
+OCSP vs CRL?,CRL is a downloaded list of revoked certificates; OCSP queries a certificate's status in real time (OCSP stapling lets the server provide it),1
+TPM vs HSM?,TPM: chip on the motherboard protecting keys for that device; HSM: dedicated appliance/card managing keys for many systems,1
+What is tokenisation?,Replacing sensitive data with a non-sensitive token; the mapping is kept in a secure vault,1
+What is steganography?,"Hiding data inside other data, e.g. a message inside an image",1
+Which hashing algorithm should replace MD5 and SHA-1 for integrity checks?,SHA-256 (SHA-2 family) or SHA-3,1
+Which threat actor typically has the most resources and runs APTs?,Nation-state actors,2
+What is shadow IT?,IT systems or services used without the IT/security department's approval,2
+Password spraying vs brute force?,Spraying: a few common passwords against many accounts; brute force: many passwords against one account,2
+What is credential stuffing?,"Trying username/password pairs leaked from other breaches, relying on password reuse",2
+Phishing via SMS and via voice are called…,Smishing (SMS) and vishing (voice),2
+What is whaling?,Spear phishing aimed at senior executives,2
+What is a watering-hole attack?,Compromising a website the target group regularly visits,2
+What is typosquatting?,Registering look-alike domains (e.g. examp1e.com) to catch typing mistakes or fool users,2
+What is business email compromise (BEC)?,Using a compromised or spoofed business mailbox to trick staff into payments or data disclosure,2
+Define a zero-day vulnerability.,A vulnerability unknown to the vendor or with no patch available yet,2
+What is a race condition / TOCTOU?,A flaw where the state changes between the time of check and the time of use,2
+SQL injection is prevented mainly by…,Parameterised queries / prepared statements plus input validation,2
+What is XSS?,Cross-site scripting: injecting script into a web page that runs in other users' browsers,2
+What is SSRF?,Server-side request forgery: making the server send requests to internal or unintended destinations,2
+What is directory traversal? Give an example pattern.,Accessing files outside the web root using sequences like ../../etc/passwd (often URL-encoded %2e%2e%2f),2
+What is a VM escape?,Breaking out of a virtual machine to reach the hypervisor or other VMs,2
+Name two mobile-specific risks.,Side loading apps and jailbreaking/rooting,2
+Worm vs virus?,A worm self-propagates over networks; a virus needs a host file and user action,2
+What is a logic bomb?,"Malicious code that triggers on a condition (date, event), often planted by an insider",2
+What does 'impossible travel' indicate?,Logins from locations too far apart for the time between them — likely compromised credentials,2
+What is an on-path (man-in-the-middle) attack?,An attacker intercepts and possibly alters traffic between two parties,2
+What is an evil twin?,A rogue Wi-Fi access point impersonating a legitimate SSID,2
+What is a DNS amplification attack?,A reflected DDoS using small spoofed DNS queries that produce large responses to the victim,2
+List four hardening steps for a new server.,"Remove unneeded software/services, change default credentials, patch, enable host firewall (also: EDR, logging, least privilege)",2
+Why is application allow-listing strong?,"Only approved executables can run, so unknown malware is blocked by default",2
+"In the cloud shared responsibility model, what does the customer always own?","Their data, identities/accounts and access configuration",3
+IaaS vs PaaS vs SaaS — who manages the OS?,IaaS: customer; PaaS and SaaS: provider,3
+What is a screened subnet (DMZ)?,A network segment between the Internet and the internal LAN hosting public-facing services,3
+Fail-open vs fail-closed?,Fail-open keeps traffic flowing on failure (availability); fail-closed blocks it (security),3
+IDS vs IPS?,IDS detects and alerts (often passive/tap); IPS sits inline and can block,3
+What does a WAF protect?,"Web applications, by filtering HTTP(S) requests (SQLi, XSS…)",3
+What is a jump server?,A hardened host used as the only entry point to administer a secure zone,3
+What is SASE?,"Secure Access Service Edge: networking (SD-WAN) and security (SWG, CASB, ZTNA, FWaaS) delivered from the cloud",3
+Why segment IoT and ICS devices?,They are hard to patch and often insecure; segmentation limits the blast radius,3
+Name the three data states.,"At rest, in transit, in use",3
+What is data sovereignty?,Data is subject to the laws of the country where it is stored,3
+Hot vs warm vs cold site?,"Hot: ready to run immediately; warm: hardware ready, needs data/config; cold: space and power only",3
+RTO vs RPO?,RTO: maximum time to restore service; RPO: maximum acceptable data loss measured in time,3
+MTBF vs MTTR?,MTBF: average time between failures (reliability); MTTR: average time to repair,3
+UPS vs generator?,UPS bridges short outages and gives time to shut down or switch; a generator supplies power for long outages,3
+What is the 3-2-1 backup rule?,"3 copies of data, on 2 different media, 1 offsite (ideally one offline/immutable)",3
+How many usable hosts in a /26?,62 (64 addresses minus network and broadcast),3
+What does a SIEM do?,"Collects, normalises and correlates logs from many sources to generate alerts and support investigations",4
+What is alert tuning?,Adjusting rules/thresholds and adding justified exceptions to reduce false positives without missing true positives,4
+False positive vs false negative?,False positive: alert on benign activity; false negative: malicious activity with no alert (more dangerous),4
+What are CVE and CVSS?,CVE: unique identifier of a known vulnerability; CVSS: 0–10 severity score,4
+What should happen after patching a vulnerability?,"Validation: rescan/verify the fix, then report",4
+"SPF, DKIM, DMARC — one line each.",SPF: which servers may send for a domain; DKIM: cryptographic signature of the message; DMARC: policy + reporting when SPF/DKIM fail,4
+What does FIM detect?,Unauthorised changes to files (hash/attribute changes) on monitored paths,4
+What does DLP do?,"Detects and prevents sensitive data leaving via email, web, USB or cloud",4
+EDR vs XDR?,"EDR: endpoint detection and response; XDR extends detection/response across endpoints, network, email, cloud",4
+RBAC vs ABAC?,"RBAC: access by job role; ABAC: access by attributes (user, resource, environment such as time or location)",4
+MAC vs DAC?,MAC: labels/clearances set by the system/admin; DAC: the owner decides who gets access,4
+Name the MFA factor categories.,"Something you know, have, are; plus somewhere you are (location)",4
+SAML vs OAuth vs OpenID Connect?,SAML: XML-based SSO federation; OAuth 2.0: delegated authorisation; OIDC: authentication layer on top of OAuth 2.0,4
+What is just-in-time (JIT) access in PAM?,"Privileges granted only when needed and for a limited time, then removed automatically",4
+List the incident response phases (CompTIA order).,"Preparation, detection, analysis, containment, eradication, recovery, lessons learned",4
+What is chain of custody?,"A documented record of who handled evidence, when and why, proving it was not altered",4
+Order of volatility: what should be captured first?,CPU registers/cache and RAM before disk; remote logs and backups last,4
+What is a legal hold?,An instruction to preserve relevant data because of litigation or an investigation,4
+What is a tabletop exercise?,A discussion-based walkthrough of an incident scenario with the response team,4
+"Replace these insecure protocols: Telnet, FTP, HTTP, SNMPv2.","SSH, SFTP/FTPS, HTTPS, SNMPv3",4
+What does Sysmon Event ID 1 record?,"Process creation (image, command line, parent, hashes, user)",4
+"Windows event IDs 4624, 4625 and 4740?","4624 successful logon, 4625 failed logon, 4740 account locked out",4
+Policy vs standard vs procedure vs guideline?,Policy: high-level mandatory intent; standard: specific mandatory requirement; procedure: step-by-step how-to; guideline: recommendation,5
+Data controller vs data processor (GDPR)?,Controller decides why and how personal data is processed; processor processes it on the controller's behalf,5
+Formula for ALE?,ALE = SLE × ARO (SLE = asset value × exposure factor),5
+"An asset is worth €50,000, exposure factor 20 %, expected twice a year. ALE?","SLE = €10,000; ALE = €10,000 × 2 = €20,000 per year",5
+Four risk treatment strategies?,"Accept, avoid, mitigate, transfer (e.g. insurance)",5
+Risk appetite vs risk tolerance?,Appetite: how much risk the organisation is willing to pursue overall; tolerance: acceptable deviation around specific objectives,5
+SLA vs MOU vs NDA?,"SLA: measurable service levels; MOU: statement of intent, usually not binding; NDA: confidentiality obligation",5
+What is a right-to-audit clause?,A contract term allowing the customer to audit the vendor's security controls,5
+Known vs partially known vs unknown environment pen test?,"White box (full info), grey box (some info), black box (no prior info)",5
+"Red, blue and purple teams?","Red attacks, blue defends, purple combines both to improve detection together",5
+What is the 'right to be forgotten'?,A GDPR right for individuals to have their personal data erased under certain conditions,5
+Which French bodies handle data protection and national cybersecurity?,CNIL (data protection) and ANSSI (national cybersecurity agency),5
+Why run phishing simulation campaigns?,To measure and improve user awareness and the reporting of suspicious emails,5
+What is due diligence in vendor selection?,"Investigating a vendor's security, finances and practices before signing",5
+Who is accountable for a data set: owner or custodian?,The data owner is accountable; the custodian handles day-to-day protection,5
