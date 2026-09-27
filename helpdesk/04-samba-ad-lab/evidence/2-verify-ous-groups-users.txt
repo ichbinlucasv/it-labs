@@ -1,0 +1,70 @@
+$ host -t SRV _ldap._tcp.corp.example.com.
+_ldap._tcp.corp.example.com has SRV record 0 100 389 dc01.corp.example.com.
+
+$ host -t SRV _kerberos._udp.corp.example.com.
+_kerberos._udp.corp.example.com has SRV record 0 100 88 dc01.corp.example.com.
+
+$ host -t A dc01.corp.example.com.
+dc01.corp.example.com has address 10.20.30.10
+
+$ kinit administrator < /root/.adminpass >/dev/null && klist
+Ticket cache: FILE:/tmp/krb5cc_0
+Default principal: administrator@CORP.EXAMPLE.COM
+
+Valid starting     Expires            Service principal
+09/27/26 16:47:58  09/28/26 02:47:58  krbtgt/CORP.EXAMPLE.COM@CORP.EXAMPLE.COM
+	renew until 09/28/26 16:47:58
+
+$ smbclient -L localhost -N 2>&1
+Anonymous login successful
+
+	Sharename       Type      Comment
+	---------       ----      -------
+	sysvol          Disk      
+	netlogon        Disk      
+	IPC$            IPC       IPC Service (Samba 4.22.11-Debian-4.22.11+dfsg-0+deb13u1)
+SMB1 disabled -- no workgroup available
+
+$ samba-tool domain level show
+Domain and forest function level for domain 'DC=corp,DC=example,DC=com'
+
+Forest function level: (Windows) 2008 R2
+Domain function level: (Windows) 2008 R2
+Lowest function level of a DC: (Windows) 2008 R2
+
+$ samba-tool ou create "OU=Staff,DC=corp,DC=example,DC=com" && samba-tool ou create "OU=Sales,OU=Staff,DC=corp,DC=example,DC=com" && samba-tool ou create "OU=Accounting,OU=Staff,DC=corp,DC=example,DC=com" && samba-tool ou create "OU=Disabled,DC=corp,DC=example,DC=com"
+Added ou "OU=Staff,DC=corp,DC=example,DC=com"
+Added ou "OU=Sales,OU=Staff,DC=corp,DC=example,DC=com"
+Added ou "OU=Accounting,OU=Staff,DC=corp,DC=example,DC=com"
+Added ou "OU=Disabled,DC=corp,DC=example,DC=com"
+
+$ samba-tool group add GG_Sales && samba-tool group add GG_Accounting && samba-tool group add GG_Helpdesk
+Added group GG_Sales
+Added group GG_Accounting
+Added group GG_Helpdesk
+
+$ samba-tool user create j.dupont --random-password --given-name=Julien --surname=Dupont --userou="OU=Sales,OU=Staff" --mail-address=j.dupont@example.com
+User 'j.dupont' added successfully
+
+$ samba-tool user create c.martin --random-password --given-name=Claire --surname=Martin --userou="OU=Accounting,OU=Staff" --mail-address=c.martin@example.com
+User 'c.martin' added successfully
+
+$ samba-tool group addmembers GG_Sales j.dupont && samba-tool group addmembers GG_Accounting c.martin
+Added members to group GG_Sales
+Added members to group GG_Accounting
+
+$ samba-tool group listmembers GG_Sales; samba-tool group listmembers GG_Accounting
+j.dupont
+c.martin
+
+$ samba-tool ou list
+OU=Sales,OU=Staff
+OU=Accounting,OU=Staff
+OU=Staff
+OU=Disabled
+OU=Domain Controllers
+
+$ samba-tool ou listobjects "OU=Staff,DC=corp,DC=example,DC=com" --full-dn 2>&1 || samba-tool user list
+OU=Sales,OU=Staff,DC=corp,DC=example,DC=com
+OU=Accounting,OU=Staff,DC=corp,DC=example,DC=com
+

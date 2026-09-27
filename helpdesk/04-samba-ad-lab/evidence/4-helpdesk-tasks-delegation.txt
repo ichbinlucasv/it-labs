@@ -1,0 +1,85 @@
+### Password reset with forced change (random password, given to the user out of band)
+$ samba-tool user setpassword j.dupont --random-password --must-change-at-next-login
+Changed password OK
+
+$ samba-tool user show j.dupont --attributes=pwdLastSet
+dn: CN=Julien Dupont,OU=Sales,OU=Staff,DC=corp,DC=example,DC=com
+pwdLastSet: 0
+
+
+$ smbclient //localhost/netlogon -U "CORP\\j.dupont%$(cat /root/.jdpass)" -c ls 2>&1 | tail -1
+session setup failed: NT_STATUS_LOGON_FAILURE
+
+### Leaver: disable and move c.martin
+$ samba-tool user disable c.martin
+
+$ samba-tool user move c.martin "OU=Disabled,DC=corp,DC=example,DC=com"
+Moved user "c.martin" into "OU=Disabled,DC=corp,DC=example,DC=com"
+
+$ samba-tool user show c.martin --attributes=distinguishedName,userAccountControl
+dn: CN=Claire Martin,OU=Disabled,DC=corp,DC=example,DC=com
+userAccountControl: 514
+distinguishedName: CN=Claire Martin,OU=Disabled,DC=corp,DC=example,DC=com
+
+
+### Temporary account expiring in 30 days
+$ samba-tool user create ext.bernard --random-password --given-name=Sophie --surname=Bernard --userou="OU=Staff"
+User 'ext.bernard' added successfully
+
+$ samba-tool user setexpiry ext.bernard --days=30
+Expiry for user 'ext.bernard' set to 30 days.
+
+$ samba-tool user show ext.bernard --attributes=accountExpires
+dn: CN=Sophie Bernard,OU=Staff,DC=corp,DC=example,DC=com
+accountExpires: 134375861030000000
+
+
+### Delegation: GG_Helpdesk may reset passwords in OU=Staff (no Domain Admin)
+$ samba-tool dsacl set --objectdn="OU=Staff,DC=corp,DC=example,DC=com" --sddl="(OA;CI;CR;00299570-246d-11d0-a768-00aa006e0529;bf967aba-0de6-11d0-a285-00aa003049e2;S-1-5-21-<domain>-1105)" --action=allow 2>&1 | tail -2
+new descriptor for OU=Staff,DC=corp,DC=example,DC=com:
+<full security descriptor omitted - 40+ ACEs; the added ACE is the first one>
+
+$ samba-tool dsacl get --objectdn="OU=Staff,DC=corp,DC=example,DC=com" | tr "(" "\n" | grep 00299570
+OA;CI;CR;00299570-246d-11d0-a768-00aa006e0529;bf967aba-0de6-11d0-a285-00aa003049e2;S-1-5-21-<domain>-1105)
+
+$ samba-tool group listmembers "Domain Admins"
+Administrator
+
+$ samba-tool user list | sort
+Administrator
+Guest
+c.martin
+ext.bernard
+j.dupont
+krbtgt
+
+
+### Test of the delegation as h.tech (member of GG_Helpdesk)
+(created h.tech in GG_Helpdesk, password from a file)
+$ kinit h.tech < /root/.htpass >/dev/null && klist | grep Default
+Default principal: h.tech@CORP.EXAMPLE.COM
+
+$ samba-tool user setpassword j.dupont --random-password --must-change-at-next-login -H ldap://dc01.corp.example.com --use-kerberos=required 2>&1 | tail -1
+ERROR: Failed to set password for user 'j.dupont': (50, 'LDAP error 50 LDAP_INSUFFICIENT_ACCESS_RIGHTS -  <00002098: Object CN=Julien Dupont,OU=Sales,OU=Staff,DC=corp,DC=example,DC=com has no write property access\n> <>')
+
+$ samba-tool user setpassword Administrator --random-password -H ldap://dc01.corp.example.com --use-kerberos=required 2>&1 | tail -1
+ERROR: Failed to set password for user 'Administrator': (50, 'LDAP error 50 LDAP_INSUFFICIENT_ACCESS_RIGHTS -  <error in module acl: insufficient access rights during LDB_MODIFY (50)> <>')
+
+
+### Fix: extra property rights, then test again
+$ samba-tool user setpassword j.dupont --random-password -H ldap://dc01.corp.example.com --use-kerberos=required 2>&1 | tail -1
+Changed password OK
+
+### Add: write pwdLastSet (force change at next logon) and lockoutTime (unlock) on user objects
+$ samba-tool dsacl set --objectdn="OU=Staff,DC=corp,DC=example,DC=com" --sddl="(OA;CIIO;WP;bf967a0a-0de6-11d0-a285-00aa003049e2;bf967aba-0de6-11d0-a285-00aa003049e2;S-1-5-21-<domain>-1105)" --action=allow >/dev/null && echo pwdLastSet ACE added
+pwdLastSet ACE added
+
+$ samba-tool dsacl set --objectdn="OU=Staff,DC=corp,DC=example,DC=com" --sddl="(OA;CIIO;WP;28630ebf-41d5-11d1-a9c1-0000f80367c1;bf967aba-0de6-11d0-a285-00aa003049e2;S-1-5-21-<domain>-1105)" --action=allow >/dev/null && echo lockoutTime ACE added
+lockoutTime ACE added
+
+$ samba-tool user setpassword j.dupont --random-password --must-change-at-next-login -H ldap://dc01.corp.example.com --use-kerberos=required 2>&1 | tail -1
+Changed password OK
+
+$ samba-tool user setpassword Administrator --random-password -H ldap://dc01.corp.example.com --use-kerberos=required 2>&1 | tail -1 | cut -c1-110
+ERROR: Failed to set password for user 'Administrator': (50, 'LDAP error 50 LDAP_INSUFFICIENT_ACCESS_RIGHTS - 
+

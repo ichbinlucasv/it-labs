@@ -1,0 +1,27 @@
+### 1. Provisioning (samba-tool domain provision) - last lines of output
+$ samba-tool domain provision --use-rfc2307 --realm=CORP.EXAMPLE.COM --domain=CORP --server-role=dc --dns-backend=SAMBA_INTERNAL --host-ip=10.20.30.10 --adminpass="$(cat /root/.adminpass)" 2>&1 | grep -vE "^(INFO|WARNING).*(Setting up|Adding|Modifying|Fixing|Repacking|Setting ACL|Applying)" | tail -25
+Applied Forest Update 133: f754861c-3692-4a7b-b2c2-d0fa28ed0b0b
+Applied Forest Update 134: d32f499f-3026-4af0-a5bd-13fe5a331bd2
+Applied Forest Update 135: 38618886-98ee-4e42-8cf1-d9a2cd9edf8b
+[... more schema update lines omitted ...]
+Applied Domain Update 88: 434bb40d-dbc9-4fe7-81d4-d57229f7b080
+Applied Domain Update 89: a0c238ba-9e30-4ee6-80a6-43f731e9a5cd
+
+### Resulting /etc/samba/smb.conf (dns forwarder edited afterwards: provisioning had copied the
+### container's upstream resolver; I set it to the lab gateway 10.20.30.1 as in the procedure)
+# Global parameters
+[global]
+	dns forwarder = 10.20.30.1
+	netbios name = DC01
+	realm = CORP.EXAMPLE.COM
+	server role = active directory domain controller
+	workgroup = CORP
+	idmap_ldb:use rfc2307 = yes
+
+[sysvol]
+	path = /var/lib/samba/sysvol
+	read only = No
+
+[netlogon]
+	path = /var/lib/samba/sysvol/corp.example.com/scripts
+	read only = No

@@ -1,6 +1,6 @@
 # Lab 04 — Active Directory user management with Samba AD DC
 
-**Status:** Planned — written procedure; no Samba AD DC has been provisioned yet and the commands have not been run.
+**Status:** In progress — the Samba AD DC side (steps 1–6 and 8) ran for real in a Debian 13 container and the output is in [`evidence/`](evidence/); step 7 (joining a Windows 11 client, RSAT/ADUC, GPO) is not runnable on my Linux-only lab machine and still needs a Windows VM.
 
 ## Goal
 
@@ -145,13 +145,68 @@ give admins a stricter policy than normal users.
   instead of giving helpdesk Domain Admin.
 - Review `Domain Admins` membership regularly.
 
+## What I actually ran
+
+Environment: a Debian 13 root filesystem (debootstrap) booted with
+`systemd-nspawn --boot --private-network` as `dc01`, Samba 4.22.11 from
+Debian. The container has only loopback plus a veth interface I created
+inside it with `10.20.30.10/24`, so the lab DNS/Kerberos never touches a
+real network. Same approach as [lab 03](../03-linux-troubleshooting/lab-container.md),
+with `samba samba-ad-dc winbind krb5-user smbclient ldb-tools` installed.
+Passwords (Administrator, test users) were generated randomly into
+root-only files inside the container and passed with `$(cat file)`; none
+appears in the evidence.
+
+| Step | Result | Evidence |
+|------|--------|----------|
+| 1–2 Provision | `samba-tool domain provision` OK; `samba-ad-dc` service active | [1-provision.txt](evidence/1-provision.txt) |
+| 3 Verify | SRV records `_ldap._tcp` → `dc01:389`, `_kerberos._udp` → `dc01:88`; `kinit administrator` got a TGT; `sysvol`/`netlogon` shares listed; function level 2008 R2 | [2-verify-ous-groups-users.txt](evidence/2-verify-ous-groups-users.txt) |
+| 4 OUs, groups, users | `OU=Staff` with `Sales`/`Accounting`, `OU=Disabled`; `GG_Sales`, `GG_Accounting`, `GG_Helpdesk`; users `j.dupont`, `c.martin` | same file |
+| 6 Password & lockout policy | defaults were min length 7, **lockout threshold 0 (no lockout)**; set to 12 / complexity / 5 attempts / 15 min. A 7-character password was then rejected (`the password is too short ... 12 characters`) | [3-password-policy-lockout.txt](evidence/3-password-policy-lockout.txt) |
+| 6 Lockout test | 5 × `NT_STATUS_LOGON_FAILURE` then `NT_STATUS_ACCOUNT_LOCKED_OUT`, even with the right password; `badPwdCount: 5`, `lockoutTime` set; `samba-tool user unlock` → both back to 0 and logon works | same file |
+| 5 Helpdesk tasks | reset with `--must-change-at-next-login` (`pwdLastSet: 0`); leaver `c.martin` disabled (`userAccountControl: 514`) and moved to `OU=Disabled`; contractor `ext.bernard` with 30-day expiry | [4-helpdesk-tasks-delegation.txt](evidence/4-helpdesk-tasks-delegation.txt) |
+| 8 Delegation | `GG_Helpdesk` gets the *Reset Password* extended right on `OU=Staff` (no Domain Admin) — tested with a member account, see below | same file |
+| 7 Windows client | **not done** — needs a Windows 11 VM | — |
+
+**Delegation test — a real problem and its fix.** With only the *Reset
+Password* right, the helpdesk account `h.tech` could reset `j.dupont`'s
+password, but the normal helpdesk command failed:
+
+```text
+$ samba-tool user setpassword j.dupont --random-password --must-change-at-next-login -H ldap://dc01... (as h.tech)
+ERROR: ... LDAP_INSUFFICIENT_ACCESS_RIGHTS - <00002098: Object CN=Julien Dupont,OU=Sales,OU=Staff,... has no write property access>
+```
+
+"Must change at next logon" writes the `pwdLastSet` attribute, which is a
+separate permission; unlocking writes `lockoutTime`. I added two
+write-property ACEs for those attributes on user objects under `OU=Staff`,
+and then the reset with forced change worked, while resetting
+`Administrator` (outside `OU=Staff`) was still refused with
+`LDAP_INSUFFICIENT_ACCESS_RIGHTS` — exactly the least-privilege result I wanted.
+(On Windows, the "Delegation of Control" task "Reset user passwords and force
+password change at next logon" grants the reset right plus read/write on
+`pwdLastSet`; unlocking needs `lockoutTime` in addition.)
+
 ## Evidence
 
-- `host -t SRV` and `klist` output after provisioning.
-- ADUC screenshot from `ws01` showing the OU structure.
-- `samba-tool domain passwordsettings show` after hardening.
-- Screenshot of a locked account (`badPwdCount`) and the unlock.
+- [`evidence/`](evidence/): provisioning, `host -t SRV` and `klist` output,
+  OU/group/user creation, password settings before/after, the lockout and
+  unlock sequence, leaver/contractor tasks, and the delegation test.
+  Domain SIDs are shortened to `S-1-5-21-<domain>-RID`.
+- Still to capture (needs Windows): ADUC screenshot of the OU structure from
+  `ws01`, `whoami /groups` and `gpresult /r` for `CORP\j.dupont`, a screen-lock GPO.
 
 ## What I learned
 
-_To be completed by Lucas._
+- A fresh Samba domain has **no account lockout** (threshold 0) — the default
+  has to be changed deliberately, just like on Windows.
+- Once locked, even the correct password is refused (`ACCOUNT_LOCKED_OUT`),
+  which is why users call the helpdesk "although I typed it right".
+- Delegating "reset password" is not enough for the usual helpdesk action:
+  forcing a change at next logon and unlocking are separate attribute
+  permissions. Testing the delegation with a real non-admin account showed
+  it; reading the documentation alone would not have.
+- Passing passwords on the command line leaks them to `ps` and shell
+  history; samba-tool even warns about it. Reading them from a protected
+  file (or a prompt) is better.
+- AD depends on DNS: the first checks after provisioning are the SRV records.

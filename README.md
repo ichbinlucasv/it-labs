@@ -16,7 +16,7 @@ Languages: Portuguese (native), French (C1), English (C1).
 | **In progress** | Partly verified — for example syntax checked or run on synthetic data, but not tested end to end in a real environment |
 | **Planned** | A written procedure that hasn't been run in a real environment yet |
 
-Current count: 9 Done, 2 In progress, 5 Planned (see the skills matrix below).
+Current count: 9 Done, 3 In progress, 4 Planned (see the skills matrix below).
 
 > All hostnames, users, companies and IP addresses are fictional (`example.com`, RFC 5737 ranges `192.0.2.0/24`,
 > `198.51.100.0/24`, `203.0.113.0/24`, and RFC 1918 ranges for the lab LAN).
@@ -77,7 +77,7 @@ Mitigations · **D3** Security Architecture · **D4** Security Operations ·
 | [helpdesk/01 Ticket writing](helpdesk/01-ticket-writing/) | Done | ○ | | | ● | ○ | ITSM, clear communication, escalation |
 | [helpdesk/02 Windows troubleshooting](helpdesk/02-windows-troubleshooting/) | Planned | | ○ | ○ | ● | | Event Viewer, PowerShell, networking, SFC/DISM |
 | [helpdesk/03 Linux troubleshooting](helpdesk/03-linux-troubleshooting/) | Done | | ○ | ○ | ● | | systemd, journalctl, disk/DNS/permissions |
-| [helpdesk/04 Samba AD DC](helpdesk/04-samba-ad-lab/) | Planned | ● | | ● | ● | | Identity, groups, GPO concepts, least privilege |
+| [helpdesk/04 Samba AD DC](helpdesk/04-samba-ad-lab/) | In progress | ● | | ● | ● | | Identity, groups, GPO concepts, least privilege |
 | [helpdesk/05 M365 basics](helpdesk/05-m365-basics/) | Planned | ● | ○ | ● | ● | ○ | Entra ID, licences, MFA, Conditional Access concepts |
 | [networking/01 Subnetting](networking/01-subnetting/) | Done | | | ● | | | CIDR, VLSM, addressing plans |
 | [networking/02 Packet capture](networking/02-packet-capture/) | Done | | ● | ○ | ● | | Wireshark filters, tcpdump, protocol analysis |
