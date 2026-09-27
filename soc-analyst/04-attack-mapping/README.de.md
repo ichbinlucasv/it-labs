@@ -1,35 +1,37 @@
-# Lab 04 — MITRE ATT&CK mapping
+# Lab 04 — MITRE-ATT&CK-Mapping
 
-**English** · [Deutsch](README.de.md)
+[English](README.md) · **Deutsch**
 
-**Status:** Done — mapping of the synthetic scenarios checked against the official ATT&CK Enterprise 19.2 STIX data, and exported to a Navigator layer ([`coverage-layer.json`](coverage-layer.json), built by [`make_layer.py`](make_layer.py)); IR-03 is confirmed; the IR-01/IR-02 candidates stay unconfirmed until those [incident write-ups](../03-incident-writeups/) are done.
+**Status:** Done — Mapping der synthetischen Szenarien gegen die offiziellen STIX-Daten von ATT&CK Enterprise 19.2 geprüft und als Navigator-Layer exportiert ([`coverage-layer.json`](coverage-layer.json), erzeugt mit [`make_layer.py`](make_layer.py)); IR-03 ist bestätigt; die Kandidaten für IR-01/IR-02 bleiben unbestätigt, bis diese [Incident-Berichte](../03-incident-writeups/README.de.md) fertig sind.
 
-## Goal
+## Ziel
 
-Map the behaviours in the synthetic lab scenarios to MITRE ATT&CK techniques, link each
-one to the data source that shows it and the detection I wrote (or still need),
-and see where my coverage has gaps. (Security+ D2 — threat actors & TTPs;
-D4 — threat hunting.)
+Die Verhaltensweisen aus den synthetischen Lab-Szenarien auf MITRE-ATT&CK-
+Techniken abbilden, jede mit der Datenquelle verknüpfen, in der sie sichtbar
+ist, und mit der Detection, die ich geschrieben habe (oder die noch fehlt),
+und so die Lücken in meiner Abdeckung erkennen. (Security+ D2 —
+Bedrohungsakteure & TTPs; D4 — Threat Hunting.)
 
-## Setup
+## Aufbau
 
 - MITRE ATT&CK Enterprise: <https://attack.mitre.org/>
-- ATT&CK Navigator (for a coverage heat-map): <https://mitre-attack.github.io/attack-navigator/>
-- **Version note:** mapping checked against ATT&CK Enterprise **v19**
-  (attack.mitre.org, 2026-09-27). In recent versions the old *Defense
-  Evasion* tactic has been split into **Stealth (TA0005)** and **Defense
-  Impairment (TA0112)**; older material (and older Security+ books) still say
-  "Defense Evasion". All technique IDs below were checked against the ATT&CK
-  data bundled with pySigma (v19.2).
+- ATT&CK Navigator (für eine Heatmap der Abdeckung): <https://mitre-attack.github.io/attack-navigator/>
+- **Versionshinweis:** Mapping gegen ATT&CK Enterprise **v19** geprüft
+  (attack.mitre.org, 2026-09-27). In neueren Versionen ist die frühere Taktik
+  *Defense Evasion* in **Stealth (TA0005)** und **Defense Impairment
+  (TA0112)** aufgeteilt; ältere Unterlagen (und ältere Security+-Bücher)
+  sprechen noch von „Defense Evasion“. Alle Technik-IDs wurden zusätzlich
+  gegen das offizielle STIX-Bundle 19.2 geprüft (siehe Nachweise).
 
-## Steps
+## Schritte
 
-1. List each observable behaviour from the synthetic scenarios
-   ([lab 02](../02-sysmon-auditd-logs/)) and the planned incident write-ups.
-2. Find the most specific technique/sub-technique; record the tactic.
-3. Record the data source and event that shows it.
-4. Link the detection (Sigma rule / Wazuh rule) or mark as **gap**.
-5. Export the table to an ATT&CK Navigator layer:
+1. Jede beobachtbare Verhaltensweise aus den synthetischen Szenarien
+   ([Lab 02](../02-sysmon-auditd-logs/README.de.md)) und den geplanten
+   Incident-Berichten auflisten.
+2. Die spezifischste Technik/Sub-Technik finden; die Taktik notieren.
+3. Datenquelle und Ereignis notieren, in denen sie sichtbar ist.
+4. Die Detection verlinken (Sigma-/Wazuh-Regel) oder als **Lücke (Gap)** markieren.
+5. Die Tabelle als ATT&CK-Navigator-Layer exportieren:
 
    ```bash
    # optional validation source (50 MB, not committed)
@@ -37,8 +39,11 @@ D4 — threat hunting.)
    python3 make_layer.py --stix enterprise-attack.json
    ```
 
-   Then in ATT&CK Navigator: *Open Existing Layer → Upload from local* →
+   Danach im ATT&CK Navigator: *Open Existing Layer → Upload from local* →
    `coverage-layer.json`.
+
+Die Tabellen unten bleiben auf Englisch, weil Taktiken und Techniken in
+ATT&CK nur englische Namen haben.
 
 ### Mapping table — synthetic scenarios
 
@@ -81,37 +86,40 @@ D4 — threat hunting.)
 | Command and Control | 4 | 1 | 3 |
 | Stealth | 2 | 1 | 1 |
 
-(Row 3 and row 11 count towards two tactics each.) Biggest gap: **C2 /
-network-based detection** → next step is Zeek or Suricata in the lab.
+(Zeile 3 und Zeile 11 zählen jeweils für zwei Taktiken.) Größte Lücke:
+**C2 / netzwerkbasierte Detection** → nächster Schritt ist Zeek oder Suricata im Lab.
 
-## Evidence
 
-- [`coverage-layer.json`](coverage-layer.json): Navigator layer, 15 techniques,
-  score 1 (green) = detection exists in this repo, 0 (red) = gap; each
-  technique's comment lists the table rows it comes from.
-- Output of `python3 make_layer.py --stix enterprise-attack.json`:
+## Nachweise
+
+- [`coverage-layer.json`](coverage-layer.json): Navigator-Layer mit 15
+  Techniken, Score 1 (grün) = Detection in diesem Repo vorhanden, 0 (rot) =
+  Lücke; der Kommentar jeder Technik nennt die Tabellenzeilen, aus denen sie stammt.
+- Ausgabe von `python3 make_layer.py --stix enterprise-attack.json`:
 
 ```text
 checked 15 technique IDs against ATT&CK Enterprise 19.2: all valid
 wrote coverage-layer.json: 15 techniques, 11 with a detection, 4 gaps
 ```
 
-  The 4 gaps: T1566.001 (no mail logs in the lab), T1071.001 (C2 over HTTPS —
-  row 4 and the 60 s beacon in row 7), T1033 (`whoami`), T1564.001 (hidden
-  file name). The 13 candidate IDs for the public-dataset write-ups also
-  exist and are not deprecated in 19.2, but the mapping itself is unconfirmed.
-- Not done: Navigator heat-map screenshot (the layer file is the source; the
-  screenshot only needs the upload step above).
+  Die 4 Lücken: T1566.001 (keine Mail-Logs im Lab), T1071.001 (C2 über HTTPS
+  — Zeile 4 und das 60-s-Beaconing in Zeile 7), T1033 (`whoami`), T1564.001
+  (versteckter Dateiname). Die 13 Kandidaten-IDs für die Berichte auf
+  öffentlichen Datensätzen existieren ebenfalls und sind in 19.2 nicht
+  veraltet, das Mapping selbst ist aber (außer IR-03) unbestätigt.
+- Nicht erledigt: Screenshot der Navigator-Heatmap (die Layer-Datei ist die
+  Quelle; für den Screenshot fehlt nur der Upload-Schritt oben).
 
-## What I learned
+## Was ich gelernt habe
 
-- One behaviour often maps to more than one technique (encoded PowerShell =
-  T1059.001 + T1027), and one technique can be both detected and missed
-  depending on where it happens (T1105 on Linux has a rule, on Windows not).
-- Technique IDs and tactic names change between ATT&CK versions (Defense
-  Evasion was split); checking against the official STIX data of a stated
-  version avoids citing something that no longer exists.
-- Counting per technique hides detail: the layer says T1071.001 is a gap, but
-  the table shows it covers two different behaviours (first contact and beaconing).
-- My clearest gap is network-based detection (C2 over HTTPS, beaconing),
-  which host logs and Sigma rules on process events do not cover well.
+- Eine Verhaltensweise passt oft zu mehr als einer Technik (kodiertes
+  PowerShell = T1059.001 + T1027), und dieselbe Technik kann je nach Ort
+  erkannt oder übersehen werden (T1105 hat unter Linux eine Regel, unter Windows nicht).
+- Technik-IDs und Taktiknamen ändern sich zwischen ATT&CK-Versionen (Defense
+  Evasion wurde aufgeteilt); die Prüfung gegen die offiziellen STIX-Daten
+  einer genannten Version verhindert, dass man etwas zitiert, das es nicht mehr gibt.
+- Zählen pro Technik verdeckt Details: Laut Layer ist T1071.001 eine Lücke,
+  aber die Tabelle zeigt, dass zwei verschiedene Verhaltensweisen dahinterstecken
+  (erster Kontakt und Beaconing).
+- Meine deutlichste Lücke ist netzwerkbasierte Detection (C2 über HTTPS,
+  Beaconing), die Host-Logs und Sigma-Regeln auf Prozessereignissen kaum abdecken.

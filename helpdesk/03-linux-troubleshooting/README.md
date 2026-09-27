@@ -1,5 +1,7 @@
 # Lab 03 — Linux troubleshooting runbook
 
+**English** · [Deutsch](README.de.md)
+
 **Status:** Done — I broke and fixed scenarios 1–5 and 7 in a Debian 13 systemd container and saved the terminal output in [`evidence/`](evidence/); scenario 6 only partly (the OOM kill could not be reproduced here, see below).
 
 ## Goal

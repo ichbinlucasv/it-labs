@@ -1,5 +1,7 @@
 # Lab 03 — Host firewall with nftables
 
+**English** · [Deutsch](README.de.md)
+
 **Status:** Done — syntax checked, then traffic-tested with three network namespaces standing in for the server, an admin client and an outside client ([`netns-test.sh`](netns-test.sh), output in [`evidence/`](evidence/)); not yet persisted on a real VM with `nftables.service`.
 
 ## Goal

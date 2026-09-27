@@ -1,5 +1,7 @@
 # Lab 04 — Active Directory user management with Samba AD DC
 
+**English** · [Deutsch](README.de.md)
+
 **Status:** In progress — the Samba AD DC side (steps 1–6 and 8) ran for real in a Debian 13 container and the output is in [`evidence/`](evidence/); step 7 (joining a Windows 11 client, RSAT/ADUC, GPO) is not runnable on my Linux-only lab machine and still needs a Windows VM.
 
 ## Goal
