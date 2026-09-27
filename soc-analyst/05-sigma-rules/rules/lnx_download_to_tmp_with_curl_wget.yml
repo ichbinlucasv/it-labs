@@ -1,0 +1,32 @@
+title: File Download Into Temporary Directory With curl or wget
+id: 41a2a381-57f0-467a-8186-b16077b12a17
+status: experimental
+description: |
+    Detects curl or wget writing a downloaded file into a temporary directory, a
+    common ingress tool transfer pattern on compromised Linux servers.
+references:
+    - https://attack.mitre.org/techniques/T1105/
+author: Lucas
+date: 2026-09-27
+tags:
+    - attack.command-and-control
+    - attack.t1105
+logsource:
+    category: process_creation
+    product: linux
+detection:
+    selection_tool:
+        Image|endswith:
+            - '/curl'
+            - '/wget'
+    selection_output:
+        CommandLine|contains:
+            - ' /tmp/'
+            - ' /var/tmp/'
+            - ' /dev/shm/'
+            - '-O/tmp/'
+            - '-o/tmp/'
+    condition: all of selection_*
+falsepositives:
+    - Admin scripts that download packages or installers to /tmp
+level: medium

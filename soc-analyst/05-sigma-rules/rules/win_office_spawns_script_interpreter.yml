@@ -1,0 +1,40 @@
+title: Office Application Spawning a Script Interpreter
+id: 8ce2222f-c153-4663-ac79-7634a436011b
+status: experimental
+description: |
+    Detects a Microsoft Office application (Word, Excel, PowerPoint, Outlook) starting
+    a command or script interpreter. Typical of macro-enabled phishing documents.
+    Written for Lucas's home lab; tested against the synthetic Sysmon sample.
+references:
+    - https://attack.mitre.org/techniques/T1566/001/
+    - https://attack.mitre.org/techniques/T1204/002/
+author: Lucas
+date: 2026-09-27
+tags:
+    - attack.initial-access
+    - attack.t1566.001
+    - attack.execution
+    - attack.t1204.002
+    - attack.t1059.001
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_parent:
+        ParentImage|endswith:
+            - '\WINWORD.EXE'
+            - '\EXCEL.EXE'
+            - '\POWERPNT.EXE'
+            - '\OUTLOOK.EXE'
+    selection_child:
+        Image|endswith:
+            - '\powershell.exe'
+            - '\pwsh.exe'
+            - '\cmd.exe'
+            - '\wscript.exe'
+            - '\cscript.exe'
+            - '\mshta.exe'
+    condition: all of selection_*
+falsepositives:
+    - Legitimate add-ins or document automation that call scripts (baseline first)
+level: high

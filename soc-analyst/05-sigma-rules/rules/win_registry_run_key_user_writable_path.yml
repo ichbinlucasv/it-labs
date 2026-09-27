@@ -1,0 +1,31 @@
+title: Run Key Persistence Pointing to a User-Writable Folder
+id: 72f58078-d1fc-459a-af18-40d9ad51df02
+status: experimental
+description: |
+    Detects a value written under a Run/RunOnce registry key whose data points to an
+    executable in a user-writable location (AppData, Temp, Public, ProgramData).
+references:
+    - https://attack.mitre.org/techniques/T1547/001/
+author: Lucas
+date: 2026-09-27
+tags:
+    - attack.persistence
+    - attack.t1547.001
+logsource:
+    category: registry_set
+    product: windows
+detection:
+    selection_key:
+        TargetObject|contains:
+            - '\Software\Microsoft\Windows\CurrentVersion\Run\'
+            - '\Software\Microsoft\Windows\CurrentVersion\RunOnce\'
+    selection_path:
+        Details|contains:
+            - '\AppData\'
+            - '\Temp\'
+            - '\Users\Public\'
+            - '\ProgramData\'
+    condition: all of selection_*
+falsepositives:
+    - Per-user installers (Teams, Zoom, OneDrive, Spotify) - build an allow-list
+level: medium

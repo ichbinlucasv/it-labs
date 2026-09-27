@@ -1,0 +1,25 @@
+title: Access to /etc/shadow Recorded by auditd
+id: 66744ab7-d389-4d6b-9ad9-5f8f5f011a88
+status: experimental
+description: |
+    Detects auditd PATH records for /etc/shadow. Requires an audit watch such as
+    "-w /etc/shadow -p r -k shadow_read". Correlate with the SYSCALL record (same
+    event serial) to see which process and user attempted the access.
+references:
+    - https://attack.mitre.org/techniques/T1003/008/
+author: Lucas
+date: 2026-09-27
+tags:
+    - attack.credential-access
+    - attack.t1003.008
+logsource:
+    product: linux
+    service: auditd
+detection:
+    selection:
+        type: 'PATH'
+        name: '/etc/shadow'
+    condition: selection
+falsepositives:
+    - Legitimate password changes (passwd, chpasswd), PAM, backup software
+level: medium

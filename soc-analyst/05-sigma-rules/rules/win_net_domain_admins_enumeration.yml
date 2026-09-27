@@ -1,0 +1,34 @@
+title: Enumeration of Privileged Domain Groups With net.exe
+id: a0ebe60e-f3b5-47a7-8aad-967cd52f5f04
+status: experimental
+description: |
+    Detects net.exe / net1.exe used to list members of highly privileged Active
+    Directory groups, a common discovery step after initial access.
+references:
+    - https://attack.mitre.org/techniques/T1069/002/
+author: Lucas
+date: 2026-09-27
+tags:
+    - attack.discovery
+    - attack.t1069.002
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_img:
+        Image|endswith:
+            - '\net.exe'
+            - '\net1.exe'
+    selection_cmd:
+        CommandLine|contains|all:
+            - ' group'
+            - '/domain'
+    selection_groups:
+        CommandLine|contains:
+            - 'Domain Admins'
+            - 'Enterprise Admins'
+            - 'Administrators'
+    condition: all of selection_*
+falsepositives:
+    - Administrators and helpdesk staff checking group membership
+level: low

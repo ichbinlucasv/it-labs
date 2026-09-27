@@ -1,0 +1,46 @@
+title: Failed Windows Logon
+id: 54b3edc9-1aa0-4b72-9bda-b685c7351e4a
+name: lucas_failed_windows_logon
+status: experimental
+description: Base rule - a failed logon (4625) on a Windows host. Used by the correlation below.
+author: Lucas
+date: 2026-09-27
+tags:
+    - attack.credential-access
+    - attack.t1110
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID: 4625
+    condition: selection
+falsepositives:
+    - Users mistyping their password
+level: informational
+---
+title: Many Failed Logons From One Source (Brute Force / Password Guessing)
+id: 5d0f7c1e-3a8b-4c2e-9f61-2b7d4e8a9c10
+status: experimental
+description: |
+    Correlation rule - 10 or more failed logons (4625) from the same source IP address
+    within 5 minutes. Tune the threshold to your environment.
+references:
+    - https://attack.mitre.org/techniques/T1110/001/
+author: Lucas
+date: 2026-09-27
+tags:
+    - attack.credential-access
+    - attack.t1110.001
+correlation:
+    type: event_count
+    rules:
+        - lucas_failed_windows_logon
+    group-by:
+        - IpAddress
+    timespan: 5m
+    condition:
+        gte: 10
+falsepositives:
+    - Misconfigured service or mapped drive using an old password (usually a single account)
+level: medium

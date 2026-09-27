@@ -1,0 +1,38 @@
+title: Linux Execution From Temporary Directory
+id: 96bfb3cc-7657-4c26-b733-a46606315873
+status: experimental
+description: |
+    Detects a binary executed directly from /tmp, /var/tmp or /dev/shm, or a shell
+    interpreter running a script stored there. Attackers often stage tools in
+    world-writable temporary directories.
+references:
+    - https://attack.mitre.org/techniques/T1059/004/
+author: Lucas
+date: 2026-09-27
+tags:
+    - attack.execution
+    - attack.t1059.004
+logsource:
+    category: process_creation
+    product: linux
+detection:
+    selection_image:
+        Image|startswith:
+            - '/tmp/'
+            - '/var/tmp/'
+            - '/dev/shm/'
+    selection_interpreter:
+        Image|endswith:
+            - '/bash'
+            - '/sh'
+            - '/dash'
+            - '/python3'
+    selection_script_in_tmp:
+        CommandLine|contains:
+            - ' /tmp/'
+            - ' /var/tmp/'
+            - ' /dev/shm/'
+    condition: selection_image or (selection_interpreter and selection_script_in_tmp)
+falsepositives:
+    - Installers and build tools that unpack and run helpers from /tmp
+level: medium

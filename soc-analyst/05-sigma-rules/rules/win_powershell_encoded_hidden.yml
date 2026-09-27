@@ -1,0 +1,43 @@
+title: PowerShell Started With Encoded Command and Hidden Window
+id: ad861a60-ca4e-4fd6-bd41-c93a615a293a
+status: experimental
+description: |
+    Detects powershell.exe / pwsh.exe launched with an encoded command together with a
+    hidden window style, a combination often used to hide the real command from users
+    and casual log review.
+references:
+    - https://attack.mitre.org/techniques/T1059/001/
+    - https://attack.mitre.org/techniques/T1027/
+author: Lucas
+date: 2026-09-27
+tags:
+    - attack.execution
+    - attack.t1059.001
+    - attack.stealth
+    - attack.t1027
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_img:
+        - Image|endswith:
+              - '\powershell.exe'
+              - '\pwsh.exe'
+        - OriginalFileName:
+              - 'PowerShell.EXE'
+              - 'pwsh.dll'
+    selection_enc:
+        CommandLine|contains:
+            - ' -enc '
+            - ' -EncodedCommand '
+            - ' -e '
+            - ' -ec '
+    selection_hidden:
+        CommandLine|contains:
+            - ' -W Hidden '
+            - ' -WindowStyle Hidden '
+            - ' -w hidden '
+    condition: all of selection_*
+falsepositives:
+    - Some management/deployment tools (SCCM, RMM agents) use encoded commands
+level: medium
