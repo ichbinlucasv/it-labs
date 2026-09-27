@@ -1,0 +1,36 @@
+$ df -h /srv/data
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           100M     0  100M   0% /srv/data
+
+$ echo test > /srv/data/new-file.txt
+bash: line 1: echo: write error: No space left on device
+
+$ df -h /srv/data
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           100M  100M     0 100% /srv/data
+
+$ du -xh /srv/data --max-depth=1 | sort -h | tail -3
+100M	/srv/data
+
+$ ls -lh /srv/data
+total 100M
+-rw-r--r-- 1 root root 100M Sep 27 16:43 app.log
+-rw-r--r-- 1 root root    0 Sep 27 16:43 new-file.txt
+
+### Mistake: deleting the file while the process still has it open
+$ rm /srv/data/app.log && df -h /srv/data
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           100M  100M     0 100% /srv/data
+
+$ lsof -nP +L1 2>/dev/null | grep -E "COMMAND|srv/data"
+COMMAND PID USER FD   TYPE DEVICE  SIZE/OFF NLINK NODE NAME
+sh      171 root 3w   REG   0,62 104857600     0    2 /srv/data/app.log (deleted)
+sleep   278 root 3w   REG   0,62 104857600     0    2 /srv/data/app.log (deleted)
+
+$ systemctl stop chatty-app && df -h /srv/data
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           100M     0  100M   0% /srv/data
+
+$ journalctl --disk-usage
+Archived and active journals take up 8M in the file system.
+

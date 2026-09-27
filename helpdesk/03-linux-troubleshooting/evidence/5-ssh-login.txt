@@ -1,0 +1,39 @@
+$ systemctl is-active ssh
+active
+
+$ su - alice -c "ssh -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR alice@127.0.0.1 true && echo LOGIN_OK"
+LOGIN_OK
+
+### Break it: authorized_keys writable by group (a common copy/paste mistake)
+$ su - alice -c "ssh -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR alice@127.0.0.1 true && echo LOGIN_OK"
+LOGIN_OK
+
+$ journalctl -u ssh -n 20 --no-pager -o cat | grep -iE "bad ownership|modes|refused" | tail -2
+
+$ ls -ld /home/alice/.ssh; ls -l /home/alice/.ssh/authorized_keys
+drwx------ 2 alice alice 4096 Sep 27 16:43 /home/alice/.ssh
+-rw-rw-r-- 1 alice alice 92 Sep 27 16:43 /home/alice/.ssh/authorized_keys
+
+$ sshd -t && echo "sshd config OK"
+sshd config OK
+
+$ su - alice -c "ssh -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR alice@127.0.0.1 true && echo LOGIN_OK"
+LOGIN_OK
+
+### Break it (2nd try): home directory made world-writable
+$ su - alice -c "ssh -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR alice@127.0.0.1 true && echo LOGIN_OK"
+alice@127.0.0.1: Permission denied (publickey,password).
+
+$ journalctl -u ssh -n 30 --no-pager -o cat | grep -iE "bad ownership|modes" | tail -1
+Authentication refused: bad ownership or modes for directory /home/alice
+
+$ namei -l /home/alice/.ssh/authorized_keys
+f: /home/alice/.ssh/authorized_keys
+drwxr-xr-x root  root  /
+drwxr-xr-x root  root  home
+drwxrwxrwx alice alice alice
+drwx------ alice alice .ssh
+-rw------- alice alice authorized_keys
+
+$ su - alice -c "ssh -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR alice@127.0.0.1 true && echo LOGIN_OK"
+LOGIN_OK

@@ -1,0 +1,52 @@
+$ su - alice -c "cat /srv/share/finance/report.txt"
+cat: /srv/share/finance/report.txt: Permission denied
+
+$ ls -l /srv/share/finance/report.txt
+-rw-r----- 1 root finance 23 Sep 27 16:43 /srv/share/finance/report.txt
+
+$ namei -l /srv/share/finance/report.txt
+f: /srv/share/finance/report.txt
+drwxr-xr-x root root    /
+drwxr-xr-x root root    srv
+drwxr-xr-x root root    share
+drwxr-x--- root finance finance
+-rw-r----- root finance report.txt
+
+$ id alice; id bob
+uid=1000(alice) gid=1000(alice) groups=1000(alice)
+uid=1001(bob) gid=1001(bob) groups=1001(bob),1002(finance)
+
+$ getfacl -p /srv/share/finance
+# file: /srv/share/finance
+# owner: root
+# group: finance
+user::rwx
+group::r-x
+other::---
+
+
+### Fix: alice joins finance (least privilege, no chmod 777)
+$ usermod -aG finance alice && id alice
+uid=1000(alice) gid=1000(alice) groups=1000(alice),1002(finance)
+
+$ su - alice -c "cat /srv/share/finance/report.txt"
+Q3 figures (fictional)
+
+$ su - alice -c "echo edit >> /srv/share/finance/report.txt"
+-bash: line 1: /srv/share/finance/report.txt: Permission denied
+
+### Alternative for a single user without a group change: read-only ACL
+$ setfacl -m u:alice:rx /srv/share/finance && setfacl -m u:alice:r /srv/share/finance/report.txt && getfacl -p /srv/share/finance/report.txt
+# file: /srv/share/finance/report.txt
+# owner: root
+# group: finance
+user::rw-
+user:alice:r--
+group::r--
+mask::r--
+other::---
+
+
+$ su - alice -c "cat /srv/share/finance/report.txt"
+Q3 figures (fictional)
+

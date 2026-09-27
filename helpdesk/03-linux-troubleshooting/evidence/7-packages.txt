@@ -1,0 +1,35 @@
+$ dpkg -i /root/pkg/lab-tool_1.0_all.deb
+Selecting previously unselected package lab-tool.
+(Reading database ... 19820 files and directories currently installed.)
+Preparing to unpack /root/pkg/lab-tool_1.0_all.deb ...
+Unpacking lab-tool (1.0) ...
+dpkg: dependency problems prevent configuration of lab-tool:
+ lab-tool depends on lab-missing-lib (>= 2.0); however:
+  Package lab-missing-lib is not installed.
+
+dpkg: error processing package lab-tool (--install):
+ dependency problems - leaving unconfigured
+Errors were encountered while processing:
+ lab-tool
+
+$ dpkg -l lab-tool | tail -1
+iU  lab-tool       1.0          all          test package with an unsatisfiable dependency
+
+$ apt-get install -y cowsay 2>&1 | tail -4
+ lab-tool : Depends: lab-missing-lib (>= 2.0) but it is not installable
+E: Unmet dependencies. Try 'apt --fix-broken install' with no packages (or specify a solution).
+E: The following information from --solver 3.0 may provide additional context:
+   Unmet dependencies. Try 'apt --fix-broken install' with no packages (or specify a solution).
+
+$ apt-get --fix-broken install -y 2>&1 | grep -E "REMOVED|Removing|lab-tool" 
+The following packages will be REMOVED:
+  lab-tool
+Removing lab-tool (1.0) ...
+dpkg: warning: while removing lab-tool, directory '/usr/local' not empty so not removed
+
+$ dpkg -l lab-tool 2>&1 | tail -1
+dpkg-query: no packages found matching lab-tool
+
+$ dpkg --audit; echo exit=$?
+exit=0
+

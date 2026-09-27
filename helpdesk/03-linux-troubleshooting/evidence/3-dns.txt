@@ -1,0 +1,27 @@
+$ ip -br addr; ip route
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+
+$ getent hosts intranet.lab.example; echo exit=$?
+exit=2
+
+$ cat /etc/resolv.conf
+nameserver 192.0.2.53
+
+$ dig +time=2 +tries=1 intranet.lab.example
+;; UDP setup with 192.0.2.53#53(192.0.2.53) for intranet.lab.example failed: network unreachable.
+;; no servers could be reached
+
+$ dig @127.0.0.1 intranet.lab.example +short
+10.20.30.20
+
+$ getent hosts intranet.lab.example
+10.20.30.20     intranet.lab.example
+
+$ dig intranet.lab.example +noall +answer +stats | grep -E "IN|SERVER|Query time"
+intranet.lab.example.	0	IN	A	10.20.30.20
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#53(127.0.0.1) (UDP)
+
+$ dig nosuchhost.intranet.lab.example +noall +comments | grep status
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 45708
+

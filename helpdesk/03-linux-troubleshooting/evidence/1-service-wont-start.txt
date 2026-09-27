@@ -1,0 +1,72 @@
+$ systemctl restart nginx
+Job for nginx.service failed because the control process exited with error code.
+See "systemctl status nginx.service" and "journalctl -xeu nginx.service" for details.
+
+$ systemctl status nginx --no-pager | head -12
+× nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; preset: enabled)
+     Active: failed (Result: exit-code) since Sun 2026-09-27 16:43:01 CEST; 10ms ago
+   Duration: 1min 18.822s
+ Invocation: <omitted>
+       Docs: man:nginx(8)
+    Process: 98 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=1/FAILURE)
+        CPU: 9ms
+
+Sep 27 16:43:01 lab1 systemd[1]: Starting nginx.service - A high performance web server and a reverse proxy server...
+Sep 27 16:43:01 lab1 nginx[98]: 2026/09/27 16:43:01 [emerg] 98#98: invalid parameter "listen" in /etc/nginx/sites-enabled/default:23
+Sep 27 16:43:01 lab1 nginx[98]: nginx: configuration file /etc/nginx/nginx.conf test failed
+
+$ journalctl -u nginx -n 8 --no-pager
+Sep 27 16:43:01 lab1 systemd[1]: nginx.service: Deactivated successfully.
+Sep 27 16:43:01 lab1 systemd[1]: Stopped nginx.service - A high performance web server and a reverse proxy server.
+Sep 27 16:43:01 lab1 systemd[1]: Starting nginx.service - A high performance web server and a reverse proxy server...
+Sep 27 16:43:01 lab1 nginx[98]: 2026/09/27 16:43:01 [emerg] 98#98: invalid parameter "listen" in /etc/nginx/sites-enabled/default:23
+Sep 27 16:43:01 lab1 nginx[98]: nginx: configuration file /etc/nginx/nginx.conf test failed
+Sep 27 16:43:01 lab1 systemd[1]: nginx.service: Control process exited, code=exited, status=1/FAILURE
+Sep 27 16:43:01 lab1 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Sep 27 16:43:01 lab1 systemd[1]: Failed to start nginx.service - A high performance web server and a reverse proxy server.
+
+$ nginx -t
+2026/09/27 16:43:01 [emerg] 104#104: invalid parameter "listen" in /etc/nginx/sites-enabled/default:23
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+$ sed -n 22,23p /etc/nginx/sites-enabled/default
+	listen 80 default_server
+	listen [::]:80 default_server;
+
+$ nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+
+$ systemctl restart nginx && systemctl is-active nginx
+active
+
+$ ss -tlnp | grep ":80 "
+LISTEN 0      511          0.0.0.0:80        0.0.0.0:*    users:(("nginx",pid=122,fd=5),("nginx",pid=121,fd=5),("nginx",pid=120,fd=5),("nginx",pid=118,fd=5),("nginx",pid=117,fd=5),("nginx",pid=116,fd=5),("nginx",pid=115,fd=5),("nginx",pid=114,fd=5),("nginx",pid=113,fd=5))
+LISTEN 0      511             [::]:80           [::]:*    users:(("nginx",pid=122,fd=6),("nginx",pid=121,fd=6),("nginx",pid=120,fd=6),("nginx",pid=118,fd=6),("nginx",pid=117,fd=6),("nginx",pid=116,fd=6),("nginx",pid=115,fd=6),("nginx",pid=114,fd=6),("nginx",pid=113,fd=6))
+
+$ curl -sI http://127.0.0.1/ 2>/dev/null | head -1 || python3 -c "import urllib.request as u;print(u.urlopen(\"http://127.0.0.1/\").status)"
+
+$ python3 -c "import urllib.request as u;print(u.urlopen(\"http://127.0.0.1/\").status)"
+200
+
+### Variant: port already in use
+$ systemctl start nginx
+Job for nginx.service failed because the control process exited with error code.
+See "systemctl status nginx.service" and "journalctl -xeu nginx.service" for details.
+
+$ journalctl -u nginx -n 4 --no-pager -o cat
+nginx: [emerg] still could not bind()
+nginx.service: Control process exited, code=exited, status=1/FAILURE
+nginx.service: Failed with result 'exit-code'.
+Failed to start nginx.service - A high performance web server and a reverse proxy server.
+
+$ ss -tlnp | grep ":80 "
+LISTEN 0      5            0.0.0.0:80        0.0.0.0:*    users:(("python3",pid=135,fd=3))
+
+$ systemctl stop rogue-web && systemctl start nginx && systemctl is-active nginx
+active
+
+### Full bind error from the journal (grep "Address already")
+nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)

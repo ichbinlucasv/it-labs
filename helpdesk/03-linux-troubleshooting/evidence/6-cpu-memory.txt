@@ -1,0 +1,43 @@
+$ top -b -n1 -o %CPU | sed -n "7,10p"
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+    490 root      20   0    3008   1892   1776 R 100.0   0.0   0:03.17 yes
+      1 root      20   0   23080  13880  10736 S   0.0   0.1   0:00.20 systemd
+     17 root      20   0   42776  15824  14648 S   0.0   0.1   0:00.05 systemd+
+
+$ ps -eo pid,ppid,user,%cpu,%mem,etime,cmd --sort=-%cpu | head -4
+    PID    PPID USER     %CPU %MEM     ELAPSED CMD
+    490     488 root     99.6  0.0       00:03 yes
+      1       0 root      0.1  0.0       02:09 /usr/lib/systemd/systemd
+     17       1 root      0.0  0.0       02:09 /usr/lib/systemd/systemd-journald
+
+$ systemctl status runaway-job --no-pager | head -4
+● runaway-job.service - [systemd-run] /usr/bin/sh -c "yes > /dev/null"
+     Loaded: loaded (/run/systemd/transient/runaway-job.service; transient)
+  Transient: yes
+     Active: active (running) since Sun 2026-09-27 16:43:48 CEST; 3s ago
+
+$ systemctl stop runaway-job; ps -eo pid,%cpu,cmd --sort=-%cpu | head -2
+    PID %CPU CMD
+      1  0.1 /usr/lib/systemd/systemd
+
+### Memory: a job limited to 64 MB that tries to allocate 500 MB
+$ systemd-run --unit=mem-hog -p MemoryMax=64M -p MemorySwapMax=0 python3 -c "x = bytearray(500*1024*1024); print(len(x))"; sleep 3; systemctl status mem-hog --no-pager | sed -n 1,4p
+Running as unit: mem-hog.service; invocation ID: <omitted>
+Unit mem-hog.service could not be found.
+
+$ journalctl -u mem-hog --no-pager -o cat | tail -4
+Started mem-hog.service - [systemd-run] /usr/bin/python3 -c "x = bytearray(500*1024*1024); print(len(x))".
+524288000
+mem-hog.service: Deactivated successfully.
+
+$ systemd-run --unit=mem-hog2 -p MemoryMax=64M -p MemorySwapMax=0 python3 -c "x = b\"a\" * (500*1024*1024); print(len(x))"; sleep 4; systemctl status mem-hog2 --no-pager | sed -n 1,5p
+Running as unit: mem-hog2.service; invocation ID: <omitted>
+Unit mem-hog2.service could not be found.
+
+$ journalctl -u mem-hog2 --no-pager -o cat | tail -5
+Started mem-hog2.service - [systemd-run] /usr/bin/python3 -c "x = b\"a\" * (500*1024*1024); print(len(x))".
+524288000
+mem-hog2.service: Deactivated successfully.
+
+$ cat /sys/fs/cgroup/cgroup.controllers
+
