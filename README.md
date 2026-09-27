@@ -119,16 +119,21 @@ python3 scripts/check_repo.py
 |------|-----|
 | Python tools | `pytest` — 35 tests pass |
 | Rust crates | `cargo test` (11 unit tests) and `cargo clippy --all-targets -- -D warnings` clean, `cargo fmt --check` clean |
-| Sigma rules | valid YAML; `sigma check` 0 errors/issues (sigma-cli 3.1.0); each rule fires on the synthetic samples via the SQLite backend |
-| nftables ruleset | `nft -c -f` OK; loaded in an isolated network namespace |
-| Packet-capture script | generated a capture in a network namespace; tshark commands in the lab produce the documented output |
-| auditd sample | parsed by `ausearch`/`aureport` |
+| Sigma rules | valid YAML; `sigma check` 0 errors/issues (sigma-cli 3.1.0); the 8 original rules fire on the synthetic samples via the SQLite backend; the Kerberos spraying rule fires on a public EVTX sample |
+| Linux troubleshooting | 7 break/fix scenarios run in a Debian 13 systemd container (`systemd-nspawn`); terminal output in `helpdesk/03-linux-troubleshooting/evidence/` (OOM kill not reproducible there) |
+| Samba AD DC | provisioned in a Debian 13 container; DNS SRV, Kerberos, OUs/groups/users, lockout policy and helpdesk delegation tested; Windows client join not done |
+| nftables ruleset | `nft -c -f` OK; traffic-tested with three network namespaces (admin / outside / blocklisted client), counters and kernel log checked |
+| Packet capture | own capture generated in a network namespace and analysed with tshark; public Wireshark `dns.cap` sample analysed with a mini-report |
+| Sysmon / auditd samples | every question answered, UTC timeline and IOC list written; `ausearch`/`aureport` on the synthetic auditd log |
+| Incident write-up IR-03 | public Kerberos password-spray EVTX parsed with python-evtx and analysed end to end |
+| ATT&CK mapping | 15 technique IDs checked against the ATT&CK Enterprise 19.2 STIX bundle; Navigator layer generated |
 | Subnetting answers | computed with Python `ipaddress` |
 | Flashcards | 99 cards, parsed with Python `csv` |
 
-Things that need a real lab (Windows VMs, Wazuh server, Samba DC, M365
-tenant) are documented as procedures, and their **Evidence** sections list
-the screenshots/outputs still to capture.
+Things that need a real lab (Windows VMs, Wazuh server, M365 tenant, the
+Windows side of the AD lab, an isolated VM for malware pcaps, a Splunk
+instance) are documented as procedures, and their **Evidence** sections list
+what is still to capture.
 
 ## CI
 
