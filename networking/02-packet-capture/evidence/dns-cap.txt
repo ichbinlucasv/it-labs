@@ -1,0 +1,109 @@
+$ sha256sum dns.cap
+041eeb6f98bb398f1ee8b09651b5b5a84f6a62639f95bf226f9e7b77355d9f28  dns.cap
+$ capinfos -c -u -a -e dns.cap
+File name:           dns.cap
+Number of packets:   38
+Capture duration:    278.879313 seconds
+Earliest packet time: 2005-03-30 08:47:46.496046
+Latest packet time:   2005-03-30 08:52:25.375359
+$ TZ=UTC tshark -r dns.cap -q -z endpoints,ip
+================================================================================
+IPv4 Endpoints
+Filter:<No Filter>
+                       |  Packets  | |  Bytes  | | Tx Packets | | Tx Bytes | | Rx Packets | | Rx Bytes |
+192.168.170.8                 28          2640         14            1041          14            1599   
+192.168.170.20                28          2640         14            1599          14            1041   
+192.168.170.56                10          1066          5             533           5             533   
+217.13.4.24                   10          1066          5             533           5             533   
+================================================================================
+$ tshark -r dns.cap -Y 'dns.flags.response == 0' -T fields -e frame.number -e ip.src -e ip.dst -e dns.qry.type -e dns.qry.name
+1	192.168.170.8	192.168.170.20	16	google.com
+3	192.168.170.8	192.168.170.20	15	google.com
+5	192.168.170.8	192.168.170.20	29	google.com
+7	192.168.170.8	192.168.170.20	12	104.9.192.66.in-addr.arpa
+9	192.168.170.8	192.168.170.20	1	www.netbsd.org
+11	192.168.170.8	192.168.170.20	28	www.netbsd.org
+13	192.168.170.8	192.168.170.20	28	www.netbsd.org
+15	192.168.170.8	192.168.170.20	28	www.google.com
+17	192.168.170.8	192.168.170.20	28	www.l.google.com
+19	192.168.170.8	192.168.170.20	28	www.example.com
+21	192.168.170.8	192.168.170.20	28	www.example.notginh
+23	192.168.170.8	192.168.170.20	255	www.isc.org
+25	192.168.170.8	192.168.170.20	12	1.0.0.127.in-addr.arpa
+27	192.168.170.8	192.168.170.20	2	isc.org
+28	192.168.170.56	217.13.4.24	33	_ldap._tcp.Default-First-Site-Name._sites.dc._msdcs.utelsystems.local
+31	192.168.170.56	217.13.4.24	33	_ldap._tcp.dc._msdcs.utelsystems.local
+33	192.168.170.56	217.13.4.24	33	_ldap._tcp.05b5292b-34b8-4fb7-85a3-8beef5fd2069.domains._msdcs.utelsystems.local
+35	192.168.170.56	217.13.4.24	1	GRIMM.utelsystems.local
+37	192.168.170.56	217.13.4.24	1	GRIMM.utelsystems.local
+$ tshark -r dns.cap -Y 'dns.flags.response == 1' -T fields -e frame.number -e dns.flags.rcode -e dns.qry.name -e dns.a -e dns.count.answers
+2	0	google.com		1
+4	0	google.com	216.239.37.26,64.233.167.25,66.102.9.25,216.239.57.25,216.239.37.25,216.239.57.26	6
+6	0	google.com		0
+8	0	104.9.192.66.in-addr.arpa		1
+10	0	www.netbsd.org	204.152.190.12	1
+12	0	www.netbsd.org		1
+14	0	www.netbsd.org		1
+16	0	www.google.com		1
+18	0	www.l.google.com		0
+20	0	www.example.com		0
+22	3	www.example.notginh		0
+24	0	www.isc.org	204.152.184.88	2
+26	0	1.0.0.127.in-addr.arpa		1
+29	0	isc.org		4
+30	3	_ldap._tcp.Default-First-Site-Name._sites.dc._msdcs.utelsystems.local		0
+32	3	_ldap._tcp.dc._msdcs.utelsystems.local		0
+34	3	_ldap._tcp.05b5292b-34b8-4fb7-85a3-8beef5fd2069.domains._msdcs.utelsystems.local		0
+36	3	GRIMM.utelsystems.local		0
+38	3	GRIMM.utelsystems.local		0
+$ tshark -r dns.cap -Y 'dns.flags.rcode != 0' -T fields -e frame.time -e ip.dst -e dns.qry.name
+Mar 30, 2005 08:51:47.032976000 UTC	192.168.170.8	www.example.notginh
+Mar 30, 2005 08:52:17.775741000 UTC	192.168.170.56	_ldap._tcp.Default-First-Site-Name._sites.dc._msdcs.utelsystems.local
+Mar 30, 2005 08:52:17.793697000 UTC	192.168.170.56	_ldap._tcp.dc._msdcs.utelsystems.local
+Mar 30, 2005 08:52:17.813924000 UTC	192.168.170.56	_ldap._tcp.05b5292b-34b8-4fb7-85a3-8beef5fd2069.domains._msdcs.utelsystems.local
+Mar 30, 2005 08:52:17.932629000 UTC	192.168.170.56	GRIMM.utelsystems.local
+Mar 30, 2005 08:52:25.375359000 UTC	192.168.170.56	GRIMM.utelsystems.local
+$ tshark -r dns.cap -Y 'dns.qry.type == 16' -T fields -e frame.number -e frame.len -e dns.qry.name -e dns.txt
+1	70	google.com	
+2	98	google.com	v=spf1 ptr ?all
+$ tshark -r dns.cap -q -z dns,tree | sed -n '1,40p'
+
+==============================================================================================================================================
+DNS:
+Packet Type                    Count         Average       Min Val       Max Val       Rate (ms)     Percent       Burst Rate    Burst Start  
+----------------------------------------------------------------------------------------------------------------------------------------------
+Total Packets                  38                                                      0.0001        100%          0.1100        271.237      
+Response                       38                                                      0.0001        100%          0.1100        271.237      
+ Response                      19                                                      0.0001        50.00%        0.0600        271.237      
+ Query                         19                                                      0.0001        50.00%        0.0500        271.241      
+Query Type                     38                                                      0.0001        100%          0.1100        271.237      
+ AAAA                          12                                                      0.0000        31.58%        0.0200        169.027      
+ SRV                           6                                                       0.0000        15.79%        0.0600        271.260      
+ A                             6                                                       0.0000        15.79%        0.0200        92.190       
+ PTR                           4                                                       0.0000        10.53%        0.0200        20.825       
+ TXT                           2                                                       0.0000        5.26%         0.0200        0.000        
+ NS                            2                                                       0.0000        5.26%         0.0200        271.244      
+ MX                            2                                                       0.0000        5.26%         0.0100        4.005        
+ LOC                           2                                                       0.0000        5.26%         0.0100        12.817       
+ ANY                           2                                                       0.0000        5.26%         0.0200        271.165      
+Answer Type                    25                                                      0.0001        100%          0.1200        4.837        
+ A                             8                                                       0.0000        32.00%        0.0600        4.837        
+ MX                            6                                                       0.0000        24.00%        0.0600        4.837        
+ NS                            4                                                       0.0000        16.00%        0.0400        271.262      
+ AAAA                          3                                                       0.0000        12.00%        0.0100        109.203      
+ PTR                           2                                                       0.0000        8.00%         0.0100        20.825       
+ TXT                           1                                                       0.0000        4.00%         0.0100        0.000        
+ CNAME                         1                                                       0.0000        4.00%         0.0100        178.256      
+Query Name                     0                                                       0.0000        100%          -             -            
+Class                          38                                                      0.0001        100%          0.1100        271.237      
+ IN                            38                                                      0.0001        100.00%       0.1100        271.237      
+rcode                          38                                                      0.0001        100%          0.1100        271.237      
+ No error                      32                                                      0.0001        84.21%        0.0800        271.237      
+ No such name                  6                                                       0.0000        15.79%        0.0300        271.280      
+opcodes                        38                                                      0.0001        100%          0.1100        271.237      
+ Standard query                38                                                      0.0001        100.00%       0.1100        271.237      
+Payload size                   38            55.53         25            256           0.0001        100%          0.1100        271.237      
+Query Stats                    0                                                       0.0000        100%          -             -            
+ Qname Len                     19            22.84         7             80            0.0001                      0.0500        271.241      
+ Label Stats                   0                                                       0.0000                      -             -            
+  3rd Level                    9                                                       0.0000                      0.0100        92.190       

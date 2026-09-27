@@ -1,0 +1,82 @@
+$ capinfos lab-http.pcap
+File name:           lab-http.pcap
+File type:           Wireshark/tcpdump/... - pcap
+File encapsulation:  Ethernet
+File timestamp precision:  microseconds (6)
+Packet size limit:   file hdr: 262144 bytes
+Number of packets:   48
+File size:           6326 bytes
+Data size:           5534 bytes
+Capture duration:    0.034321 seconds
+Earliest packet time: 2026-09-27 14:35:44.904138
+Latest packet time:   2026-09-27 14:35:44.938459
+Data byte rate:      161 kBps
+Data bit rate:       1289 kbps
+Average packet size: 115.29 bytes
+Average packet rate: 1398 packets/s
+SHA256:              7372ae0e18e51f9808e9e8e9206bc752a0108fa25bf679e70fb84d72c264d4d2
+Strict time order:   True
+Number of interfaces in file: 1
+$ tshark -r lab-http.pcap -q -z io,phs
+
+===================================================================
+Protocol Hierarchy Statistics
+Filter: 
+
+eth                                      frames:48 bytes:5534
+  ip                                     frames:48 bytes:5534
+    tcp                                  frames:48 bytes:5534
+      http                               frames:8 bytes:2120
+        data-text-lines                  frames:4 bytes:1507
+          tcp.segments                   frames:4 bytes:1507
+===================================================================
+$ tshark -r lab-http.pcap -q -z conv,tcp
+================================================================================
+TCP Conversations
+Filter:<No Filter>
+                                                           |       <-      | |       ->      | |     Total     |    Relative    |   Duration   |
+                                                           | Frames  Bytes | | Frames  Bytes | | Frames  Bytes |      Start     |              |
+127.0.0.1:50956            <-> 127.0.0.1:8080                   6 797 bytes       6 485 bytes      12 1282 bytes     0.000000000         0.0016
+127.0.0.1:50962            <-> 127.0.0.1:8080                   6 924 bytes       6 490 bytes      12 1414 bytes     0.012417000         0.0026
+127.0.0.1:50970            <-> 127.0.0.1:8080                   6 924 bytes       6 495 bytes      12 1419 bytes     0.023438000         0.0007
+127.0.0.1:50972            <-> 127.0.0.1:8080                   6 924 bytes       6 495 bytes      12 1419 bytes     0.033460000         0.0009
+================================================================================
+$ tshark -r lab-http.pcap -q -z endpoints,ip
+================================================================================
+IPv4 Endpoints
+Filter:<No Filter>
+                       |  Packets  | |  Bytes  | | Tx Packets | | Tx Bytes | | Rx Packets | | Rx Bytes |
+127.0.0.1                     96         11068         48            5534          48            5534   
+================================================================================
+$ tshark -r lab-http.pcap -Y http.request -T fields -e frame.time_relative -e http.request.method -e http.host -e http.request.uri -e http.user_agent
+0.000061000	GET	127.0.0.1:8080	/	lab-client/1.0
+0.012466000	GET	127.0.0.1:8080	/admin	lab-client/1.0
+0.023482000	GET	127.0.0.1:8080	/robots.txt	lab-client/1.0
+0.033514000	GET	127.0.0.1:8080	/index.html	lab-client/1.0
+$ tshark -r lab-http.pcap -Y 'http.response.code >= 400' -T fields -e ip.src -e http.response.code -e http.request.uri
+127.0.0.1	404	/admin
+127.0.0.1	404	/robots.txt
+127.0.0.1	404	/index.html
+$ tshark -r lab-http.pcap -Y 'tcp.flags.syn==1 && tcp.flags.ack==0' | wc -l
+4
+$ tshark -r lab-http.pcap -z follow,tcp,ascii,1 -q | sed -n '1,20p'
+
+===================================================================
+Follow: tcp,ascii
+Filter: tcp.stream eq 1
+Node 0: 127.0.0.1:50962
+Node 1: 127.0.0.1:8080
+86
+GET /admin HTTP/1.1
+Host: 127.0.0.1:8080
+User-Agent: lab-client/1.0
+Accept: */*
+
+
+	185
+HTTP/1.0 404 File not found
+Server: SimpleHTTP/0.6 Python/3.13.5
+Date: Sun, 27 Sep 2026 14:35:44 GMT
+Connection: close
+Content-Type: text/html;charset=utf-8
+Content-Length: 335

@@ -16,7 +16,7 @@ Languages: Portuguese (native), French (C1), English (C1).
 | **In progress** | Partly verified — for example syntax checked or run on synthetic data, but not tested end to end in a real environment |
 | **Planned** | A written procedure that hasn't been run in a real environment yet |
 
-Current count: 6 Done, 4 In progress, 6 Planned (see the skills matrix below).
+Current count: 7 Done, 3 In progress, 6 Planned (see the skills matrix below).
 
 > All hostnames, users, companies and IP addresses are fictional (`example.com`, RFC 5737 ranges `192.0.2.0/24`,
 > `198.51.100.0/24`, `203.0.113.0/24`, and RFC 1918 ranges for the lab LAN).
@@ -80,7 +80,7 @@ Mitigations · **D3** Security Architecture · **D4** Security Operations ·
 | [helpdesk/04 Samba AD DC](helpdesk/04-samba-ad-lab/) | Planned | ● | | ● | ● | | Identity, groups, GPO concepts, least privilege |
 | [helpdesk/05 M365 basics](helpdesk/05-m365-basics/) | Planned | ● | ○ | ● | ● | ○ | Entra ID, licences, MFA, Conditional Access concepts |
 | [networking/01 Subnetting](networking/01-subnetting/) | Done | | | ● | | | CIDR, VLSM, addressing plans |
-| [networking/02 Packet capture](networking/02-packet-capture/) | In progress | | ● | ○ | ● | | Wireshark filters, tcpdump, protocol analysis |
+| [networking/02 Packet capture](networking/02-packet-capture/) | Done | | ● | ○ | ● | | Wireshark filters, tcpdump, protocol analysis |
 | [networking/03 nftables firewall](networking/03-nftables-firewall/) | Done | ○ | ● | ● | ○ | | Default-deny, stateful filtering, logging |
 | [soc-analyst/01 Wazuh home lab](soc-analyst/01-wazuh-homelab/) | Planned | | ○ | ○ | ● | | SIEM/XDR deployment, agents, alert triage |
 | [soc-analyst/02 Sysmon + auditd](soc-analyst/02-sysmon-auditd-logs/) | In progress | | ● | | ● | | Endpoint telemetry, log correlation |
