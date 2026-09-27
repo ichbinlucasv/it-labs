@@ -16,7 +16,7 @@ Languages: Portuguese (native), French (C1), English (C1).
 | **In progress** | Partly verified — for example syntax checked or run on synthetic data, but not tested end to end in a real environment |
 | **Planned** | A written procedure that hasn't been run in a real environment yet |
 
-Current count: 10 Done, 2 In progress, 4 Planned (see the skills matrix below).
+Current count: 10 Done, 3 In progress, 3 Planned (see the skills matrix below).
 
 > All hostnames, users, companies and IP addresses are fictional (`example.com`, RFC 5737 ranges `192.0.2.0/24`,
 > `198.51.100.0/24`, `203.0.113.0/24`, and RFC 1918 ranges for the lab LAN).
@@ -84,7 +84,7 @@ Mitigations · **D3** Security Architecture · **D4** Security Operations ·
 | [networking/03 nftables firewall](networking/03-nftables-firewall/) | Done | ○ | ● | ● | ○ | | Default-deny, stateful filtering, logging |
 | [soc-analyst/01 Wazuh home lab](soc-analyst/01-wazuh-homelab/) | Planned | | ○ | ○ | ● | | SIEM/XDR deployment, agents, alert triage |
 | [soc-analyst/02 Sysmon + auditd](soc-analyst/02-sysmon-auditd-logs/) | Done | | ● | | ● | | Endpoint telemetry, log correlation |
-| [soc-analyst/03 Incident write-ups](soc-analyst/03-incident-writeups/) | Planned | | ● | | ● | ○ | IR lifecycle, reporting, evidence handling |
+| [soc-analyst/03 Incident write-ups](soc-analyst/03-incident-writeups/) | In progress | | ● | | ● | ○ | IR lifecycle, reporting, evidence handling |
 | [soc-analyst/04 ATT&CK mapping](soc-analyst/04-attack-mapping/) | Done | | ● | | ● | | Threat-informed detection coverage |
 | [soc-analyst/05 Sigma rules](soc-analyst/05-sigma-rules/) | Done | | ● | | ● | | Detection engineering, pySigma/sigma-cli |
 | [python/ seclab tools](python/) | Done | ○ | ● | | ● | | Regex, parsing, hashing, automated testing |

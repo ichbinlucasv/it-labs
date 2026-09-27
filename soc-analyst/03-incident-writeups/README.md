@@ -1,6 +1,6 @@
 # Lab 03 — Incident write-ups on public datasets
 
-**Status:** Planned — investigation templates only; none of the public datasets has been downloaded or analysed yet, so every finding is TBD.
+**Status:** In progress — [IR-03](IR-03-evtx-password-spray.md) (Kerberos password spraying, public EVTX sample) is analysed and complete; IR-01 (malware-traffic pcap, needs an isolated analysis VM) and IR-02 (Splunk BOTS v1, needs a Splunk instance) are still investigation plans.
 
 ## Goal
 
@@ -26,11 +26,15 @@ JSON exports of simulated ATT&CK techniques, easy to load into Wazuh/ELK/Splunk.
 - Record the SHA256 of every file analysed (chain of custody habit).
 - Each write-up follows [`TEMPLATE.md`](TEMPLATE.md).
 
-> **Honesty note:** these write-ups are *investigation plans and report
-> skeletons*. The analysis steps are based on how these datasets are
-> structured, but **no findings are filled in** — they are left as `TBD` until
-> I have actually analysed the data. No answers from other people's
-> write-ups are copied here.
+> **Honesty note:** IR-01 and IR-02 are still *investigation plans and
+> report skeletons*: their findings stay `TBD` until I have analysed the data.
+> IR-03 contains my own analysis of the public sample. No answers from other
+> people's write-ups are copied here.
+>
+> Why IR-01/IR-02 are not done yet: the malware-traffic pcaps contain real
+> malicious traffic and my rule is to open them only in a dedicated, isolated
+> analysis VM, which my current lab machine is not; BOTS v1 needs a Splunk
+> instance with the ~6 GB dataset loaded.
 
 ## Steps
 
@@ -44,9 +48,19 @@ JSON exports of simulated ATT&CK techniques, easy to load into Wazuh/ELK/Splunk.
 
 ## Evidence
 
-- Completed write-ups with query outputs and screenshots (`evidence/IR-0x/`).
-- File hashes of the datasets analysed.
+- [IR-03](IR-03-evtx-password-spray.md) with [`evidence/IR-03/analysis.txt`](evidence/IR-03/analysis.txt)
+  (SHA256 of the EVTX, event table, Sigma replay).
+- IR-01, IR-02: not started (see honesty note).
 
 ## What I learned
 
-_To be completed by Lucas._
+- Small datasets can still tell a complete story: 12 events were enough to
+  see enumeration, spraying and one successful guess.
+- Kerberos status codes leak information: `0x6` vs `0x18` tells an attacker
+  which accounts exist.
+- My detection alerted on the failures, but the most important event was the
+  success right after — a detection plan needs the "what happened next" rule too.
+- Data normalisation matters: the same host appeared as `172.16.66.1` and
+  `::ffff:172.16.66.1`.
+- Not every suspicious event belongs to the attacker (the 1102 log clear);
+  saying "noted, not attributed" is better than over-claiming.

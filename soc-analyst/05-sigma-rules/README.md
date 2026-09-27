@@ -30,6 +30,7 @@ sigma plugin install splunk      # optional, to see Splunk SPL output
 | [`win_registry_run_key_user_writable_path.yml`](rules/win_registry_run_key_user_writable_path.yml) | Run/RunOnce value pointing to AppData/Temp/Public/ProgramData | T1547.001 | medium |
 | [`win_net_domain_admins_enumeration.yml`](rules/win_net_domain_admins_enumeration.yml) | `net group "Domain Admins" /domain` | T1069.002 | low |
 | [`win_bruteforce_failed_logons_correlation.yml`](rules/win_bruteforce_failed_logons_correlation.yml) | **Correlation rule** (Sigma v2): ≥10 × 4625 from one IP in 5 min | T1110.001 | medium |
+| [`win_kerberos_password_spray_correlation.yml`](rules/win_kerberos_password_spray_correlation.yml) | **Correlation rule** (`value_count`): Kerberos 4771 `0x18` / 4768 `0x6` for ≥5 **distinct** users from one IP in 5 min | T1110.003 | high |
 | [`lnx_execution_from_tmp.yml`](rules/lnx_execution_from_tmp.yml) | Binary or script run from /tmp, /var/tmp, /dev/shm | T1059.004 | medium |
 | [`lnx_download_to_tmp_with_curl_wget.yml`](rules/lnx_download_to_tmp_with_curl_wget.yml) | curl/wget writing into temp dirs | T1105 | medium |
 | [`lnx_auditd_shadow_file_access.yml`](rules/lnx_auditd_shadow_file_access.yml) | auditd PATH record for /etc/shadow | T1003.008 | medium |
@@ -78,6 +79,7 @@ $ python validate_rules.py
 [HIT ] lnx_download_to_tmp_with_curl_wget.yml: 1 result row(s) (events or correlation alerts) in linux samples
 [HIT ] lnx_execution_from_tmp.yml: 1 result row(s) (events or correlation alerts) in linux samples
 [HIT ] win_bruteforce_failed_logons_correlation.yml: 3 result row(s) (events or correlation alerts) in windows samples
+[none] win_kerberos_password_spray_correlation.yml: 0 result row(s) (events or correlation alerts) in windows samples
 [HIT ] win_net_domain_admins_enumeration.yml: 1 result row(s) (events or correlation alerts) in windows samples
 [HIT ] win_office_spawns_script_interpreter.yml: 1 result row(s) (events or correlation alerts) in windows samples
 [HIT ] win_powershell_encoded_hidden.yml: 1 result row(s) (events or correlation alerts) in windows samples
@@ -87,6 +89,12 @@ $ python validate_rules.py
 The correlation rule produces 3 alerts, all for `203.0.113.45` (the 10th,
 11th and 12th failure inside the 5-minute window); the internal host with 2
 typos does not trigger. The benign Chrome events do not match any rule.
+
+The Kerberos spraying rule (added later) has no matching events in the
+synthetic samples (they contain no 4768/4771), so `[none]` is expected. I
+tested it on the public `kerberos_pwd_spray_4771.evtx` sample instead: 3
+alerts for `172.16.66.1` with 5, 7 and 9 distinct user names — see
+[IR-03](../03-incident-writeups/IR-03-evtx-password-spray.md).
 
 > One early lesson: `sigma check` rejected the tag `attack.defense-evasion`
 > because current ATT&CK splits that tactic into **Stealth** and

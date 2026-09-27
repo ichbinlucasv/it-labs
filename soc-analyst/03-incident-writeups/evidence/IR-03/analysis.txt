@@ -1,0 +1,43 @@
+$ sha256sum kerberos_pwd_spray_4771.evtx
+4a0a1c7132e216dbc704c806e9429df9ae3ac00485d5238e50c776e3099ae11d  kerberos_pwd_spray_4771.evtx
+
+$ python3 evtx_to_jsonl.py kerberos_pwd_spray_4771.evtx > spray.jsonl; wc -l spray.jsonl
+12
+
+$ jq -r '.EventID' spray.jsonl | sort | uniq -c
+      1 1102
+      9 4768
+      2 4771
+
+$ jq -r '[.TimeCreated[11:23], .EventID, .TargetUserName // "-", .Status // "-", .IpAddress // "-", .IpPort // "-", .PreAuthType // "-", .TicketEncryptionType // "-"] | @tsv' spray.jsonl
+time(UTC)	ID	user	status	source	port	preauth	enctype
+20:29:27.321	1102	-	-	-	-	-	-
+20:29:36.414	4768	HD01	0x00000006	172.16.66.1	55961	-	0xffffffff
+20:29:36.414	4768	admin	0x00000006	172.16.66.1	55958	-	0xffffffff
+20:29:36.414	4768	svc-02	0x00000006	172.16.66.1	55963	-	0xffffffff
+20:29:36.414	4768	HD02	0x00000006	172.16.66.1	55962	-	0xffffffff
+20:29:36.414	4768	svc-01	0x00000006	172.16.66.1	55960	-	0xffffffff
+20:29:36.415	4768	bob	0x00000006	172.16.66.1	55957	-	0xffffffff
+20:29:36.415	4768	admin02	0x00000006	172.16.66.1	55966	-	0xffffffff
+20:29:36.425	4771	Administrator	0x00000018	172.16.66.1	55967	2	-
+20:29:36.425	4771	backdoor	0x00000018	172.16.66.1	55968	2	-
+20:29:36.434	4768	normal	0x00000000	172.16.66.1	55969	2	0x00000012
+20:29:36.437	4768	normal	0x00000000	::ffff:172.16.66.1	52559	2	0x00000012
+
+# 1102 record, fields read from its XML (UserData/LogFileCleared) with python-evtx:
+SubjectUserName: a-jbrown   SubjectDomainName: 3B   TimeCreated: 2020-07-22 20:29:27.321 UTC
+
+$ jq -r 'select(.Status=="0x00000006") | .TargetUserName' spray.jsonl | wc -l   # unknown users
+7
+$ jq -r 'select(.EventID==4771) | .TargetUserName' spray.jsonl                   # existing users, wrong password
+Administrator
+backdoor
+$ jq -r 'select(.EventID==4768 and .Status=="0x00000000") | .TargetUserName' spray.jsonl | sort | uniq -c   # TGT issued
+      2 normal
+
+### Sigma replay: win_kerberos_password_spray_correlation.yml -> sigma convert -t sqlite, run on spray.jsonl loaded into SQLite
+(alert_id, group_keys, occurrence_time, window_start, window_end, metric, value, event_count, event_ids)
+('sigma_alert_29934e2c5b4f7cf2:1', '{"IpAddress":"172.16.66.1"}', 1595449776.414, 1595449476.414, 1595449776.414, 'value_count', 5, 5, '["0:2","0:3","0:4","0:5","0:6"]')
+('sigma_alert_29934e2c5b4f7cf2:2', '{"IpAddress":"172.16.66.1"}', 1595449776.415, 1595449476.415, 1595449776.415, 'value_count', 7, 7, '["0:2","0:3","0:4","0:5","0:6","0:7","0:8"]')
+('sigma_alert_29934e2c5b4f7cf2:3', '{"IpAddress":"172.16.66.1"}', 1595449776.425, 1595449476.425, 1595449776.425, 'value_count', 9, 9, '["0:10","0:2","0:3","0:4","0:5","0:6","0:7","0:8","0:9"]')
+(1595449776 = 2020-07-22 20:29:36 UTC)
