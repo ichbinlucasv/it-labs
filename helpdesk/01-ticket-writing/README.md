@@ -1,6 +1,6 @@
 # Lab 01 — Writing useful tickets
 
-**Status:** Planned — the template and fictional good/bad ticket examples are written; the exercises have not been practised in an ITSM tool (e.g. GLPI) yet.
+**Status:** Done — rewrites, priority exercise, escalation and closure notes written in [`my-rewrites.md`](my-rewrites.md), including tickets built from my own Linux lab evidence; done in Markdown, not yet in an ITSM tool such as GLPI.
 
 ## Goal
 
@@ -35,9 +35,22 @@ audits and incident reviews (Security+ D4 — incident/change documentation).
 
 ## Evidence
 
-- Screenshot of a ticket created in GLPI (or other tool) using the template.
-- My own rewrites of the bad tickets (add as `my-rewrites.md`).
+- [`my-rewrites.md`](my-rewrites.md): my rewrites of the three bad tickets
+  (compared with the reference versions), the priority table, three
+  tickets written from real troubleshooting output of
+  [lab 03](../03-linux-troubleshooting/), an L1 → L2 escalation and a closure note.
+- Not done: screenshot of a ticket in GLPI — the template works in any tool,
+  but I have not installed GLPI yet.
 
 ## What I learned
 
-_To be completed by Lucas._
+- A ticket that only records the action ("reset done") is useless later; a
+  useful one records the evidence and the root cause, so the next person does not start over.
+- "What changed?" (new dock, recent config change) is the question that most
+  often leads to the cause.
+- Writing tickets from my own lab output was much easier than inventing them:
+  exact commands and error messages make the ticket actionable.
+- The priority matrix gives a default; security impact can justify raising
+  it, and the reason belongs in the ticket.
+- An escalation note should say what I did, what I think, and what I need —
+  not just "doesn't work, please check".
