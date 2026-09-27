@@ -26,7 +26,7 @@ What is credential stuffing?,"Trying username/password pairs leaked from other b
 Phishing via SMS and via voice are called…,Smishing (SMS) and vishing (voice),2
 What is whaling?,Spear phishing aimed at senior executives,2
 What is a watering-hole attack?,Compromising a website the target group regularly visits,2
-What is typosquatting?,Registering look-alike domains (e.g. examp1e.com) to catch typing mistakes or fool users,2
+What is typosquatting?,Registering look-alike domains (e.g. 'rnicrosoft' or 'examp1e' instead of the real name) to catch typing mistakes or fool users,2
 What is business email compromise (BEC)?,Using a compromised or spoofed business mailbox to trick staff into payments or data disclosure,2
 Define a zero-day vulnerability.,A vulnerability unknown to the vendor or with no patch available yet,2
 What is a race condition / TOCTOU?,A flaw where the state changes between the time of check and the time of use,2

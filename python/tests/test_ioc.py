@@ -104,4 +104,4 @@ def test_filters_usernames_and_windows_paths():
 
 
 def test_country_code_tlds_accepted():
-    assert ioc.extract("see evil-site.fr and x.co.uk").domains == ["evil-site.fr", "x.co.uk"]
+    assert ioc.extract("see phish-lab.xx and cdn.lab.zz").domains == ["phish-lab.xx", "cdn.lab.zz"]

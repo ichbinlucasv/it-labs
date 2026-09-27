@@ -41,7 +41,8 @@ preuves, et ce que j'ai appris.
 | [`python/`](python/) | `seclab` package: SSH auth.log summariser, IOC extractor (defang/refang), hash checker — stdlib only, pytest suite |
 | [`rust/`](rust/) | Cargo workspace: `log-analyzer` and `fim` (file-integrity monitor) crates with unit tests |
 | [`security-plus/`](security-plus/) | SY0-701 study notes per domain + flashcards CSV |
-| [`.forgejo/workflows/`](.forgejo/workflows/) | Optional CI (Forgejo/Codeberg Actions; GitHub-compatible syntax) |
+| [`scripts/check_repo.py`](scripts/check_repo.py) | Repo hygiene check: lab README sections, flashcards CSV, Sigma YAML, secret patterns |
+| [`.forgejo/workflows/`](.forgejo/workflows/) | Optional CI (Forgejo/Codeberg Actions; GitHub-compatible syntax) — needs a runner, see comments in `ci.yml` |
 
 Every lab README follows the same layout: **Goal · Setup · Steps · Evidence ·
 What I learned**.
@@ -81,15 +82,38 @@ Mitigations · **D3** Security Architecture · **D4** Security Operations ·
 
 ```bash
 # Python tools + tests
-cd python && python3 -m venv .venv && . .venv/bin/activate
-pip install -e '.[test]' && pytest
+(cd python && python3 -m venv .venv && . .venv/bin/activate \
+  && pip install -e '.[test]' && pytest)
 
 # Rust workspace
-cd rust && cargo test && cargo clippy --all-targets -- -D warnings
+(cd rust && cargo test && cargo clippy --all-targets -- -D warnings)
 
-# Sigma rules
-pip install sigma-cli && sigma check soc-analyst/05-sigma-rules/rules/
+# Sigma rules: lint + replay on the synthetic samples
+python3 -m venv .venv-sigma && . .venv-sigma/bin/activate
+pip install sigma-cli pyyaml && sigma plugin install sqlite
+sigma check soc-analyst/05-sigma-rules/rules/
+python soc-analyst/05-sigma-rules/validate_rules.py
+
+# Repo hygiene
+python3 scripts/check_repo.py
 ```
+
+## What has been verified
+
+| Item | How |
+|------|-----|
+| Python tools | `pytest` — 35 tests pass |
+| Rust crates | `cargo test` (11 unit tests) and `cargo clippy --all-targets -- -D warnings` clean, `cargo fmt --check` clean |
+| Sigma rules | valid YAML; `sigma check` 0 errors/issues (sigma-cli 3.1.0); each rule fires on the synthetic samples via the SQLite backend |
+| nftables ruleset | `nft -c -f` OK; loaded in an isolated network namespace |
+| Packet-capture script | generated a capture in a network namespace; tshark commands in the lab produce the documented output |
+| auditd sample | parsed by `ausearch`/`aureport` |
+| Subnetting answers | computed with Python `ipaddress` |
+| Flashcards | 99 cards, parsed with Python `csv` |
+
+Things that need a real lab (Windows VMs, Wazuh server, Samba DC, M365
+tenant) are documented as procedures, and their **Evidence** sections list
+the screenshots/outputs still to capture.
 
 ## Current learning
 

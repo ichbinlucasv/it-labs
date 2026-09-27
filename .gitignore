@@ -33,3 +33,4 @@ secrets*
 *.swp
 .DS_Store
 Thumbs.db
+.venv-sigma/

@@ -1,0 +1,52 @@
+# Forgejo Actions workflow (GitHub Actions-compatible syntax).
+# On Codeberg, hosted Actions runners are limited: register your own
+# Forgejo runner (label "docker") or change `runs-on` to a label you have
+# access to. The same file also works under .github/workflows/ on GitHub
+# if `runs-on` is changed to `ubuntu-latest`.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  python:
+    runs-on: docker
+    container:
+      image: python:3.12-slim
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install and test seclab
+        working-directory: python
+        run: |
+          pip install --no-cache-dir -e '.[test]'
+          pytest
+
+  rust:
+    runs-on: docker
+    container:
+      image: rust:1
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test, lint and format-check the workspace
+        working-directory: rust
+        run: |
+          rustup component add clippy rustfmt
+          cargo test --all
+          cargo clippy --all-targets -- -D warnings
+          cargo fmt --all -- --check
+
+  content:
+    runs-on: docker
+    container:
+      image: python:3.12-slim
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Sigma rules, YAML and flashcards CSV
+        run: |
+          pip install --no-cache-dir sigma-cli pyyaml
+          sigma check soc-analyst/05-sigma-rules/rules/
+          sigma plugin install sqlite
+          python soc-analyst/05-sigma-rules/validate_rules.py
+          python scripts/check_repo.py
