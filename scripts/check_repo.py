@@ -2,6 +2,7 @@
 """Repository hygiene checks (standard library only).
 
 - every lab README contains the sections Goal, Setup, Steps, Evidence, What I learned
+  (What I learned may be the placeholder "_To be completed by Lucas._" but not empty)
 - every lab README has a "**Status:** Done|In progress|Planned" line near the top,
   and it matches the Status column of the skills matrix in the root README
 - every lab README appears in the skills matrix (and vice versa)
@@ -49,8 +50,8 @@ def check_readmes() -> list[str]:
         missing = [s for s in SECTIONS if s not in text]
         if missing:
             errors.append(f"{rel}: missing sections {missing}")
-        elif "_To be completed by Lucas._" not in text.split("## What I learned", 1)[1]:
-            errors.append(f"{rel}: 'What I learned' placeholder missing")
+        elif not text.split("## What I learned", 1)[1].strip():
+            errors.append(f"{rel}: 'What I learned' is empty (write it or keep the placeholder)")
     return errors
 
 
