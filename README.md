@@ -59,6 +59,7 @@ Il n'y a pas encore de projet C ici.
 | [`python/`](python/) | `seclab` package: SSH auth.log summariser, IOC extractor (defang/refang), hash checker — stdlib only, pytest suite |
 | [`rust/`](rust/) | Cargo workspace: `log-analyzer` and `fim` (file-integrity monitor) crates with unit tests |
 | [`security-plus/`](security-plus/) | SY0-701 study notes per domain + flashcards CSV |
+| [`templates/`](templates/) | Blank forms I copy on a work day: helpdesk, SOC, and one language at a time |
 | [`scripts/check_repo.py`](scripts/check_repo.py) | Repo hygiene check: lab README sections, flashcards CSV, Sigma YAML, secret patterns |
 | [`.forgejo/workflows-disabled/`](.forgejo/workflows-disabled/) | CI workflow, **disabled** until a runner exists (see [CI](#ci)) |
 

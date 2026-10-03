@@ -21,7 +21,8 @@ ROOT = Path(__file__).resolve().parents[1]
 SECTIONS = ["## Goal", "## Setup", "## Steps", "## Evidence", "## What I learned"]
 # Index pages that only list labs (no lab content of their own)
 INDEX_PAGES = {"README.md", "helpdesk/README.md", "networking/README.md", "soc-analyst/README.md",
-               "soc-analyst/02-sysmon-auditd-logs/samples/README.md"}
+               "soc-analyst/02-sysmon-auditd-logs/samples/README.md",
+               "templates/README.md"}
 STATUSES = ("Done", "In progress", "Planned")
 STATUS_RE = re.compile(r"^\*\*Status:\*\* (Done|In progress|Planned)\b", re.M)
 MATRIX_ROW_RE = re.compile(r"^\| \[[^\]]+\]\(([^)]+)\) \| (Done|In progress|Planned) \|", re.M)

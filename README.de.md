@@ -51,6 +51,7 @@ Aktueller Stand: 10 Done, 4 In progress, 3 Planned (siehe Skills-Matrix unten).
 | [`python/`](python/) | Paket `seclab`: Auswertung von SSH-`auth.log`, IOC-Extraktor (defang/refang), Hash-Prüfer — nur Standardbibliothek, pytest-Suite |
 | [`rust/`](rust/) | Cargo-Workspace: Crates `log-analyzer` und `fim` (File-Integrity-Monitoring) mit Unit-Tests |
 | [`security-plus/`](security-plus/) | Lernnotizen SY0-701 pro Domäne + Karteikarten (CSV) |
+| [`templates/`](templates/) | Leere Formulare für den Arbeitstag: Helpdesk, SOC, und eine Sprache pro Block |
 | [`scripts/check_repo.py`](scripts/check_repo.py) | Hygiene-Prüfung des Repos: Abschnitte der Lab-READMEs, Karteikarten-CSV, Sigma-YAML, Muster für Secrets |
 | [`.forgejo/workflows-disabled/`](.forgejo/workflows-disabled/) | CI-Workflow, **deaktiviert**, bis ein Runner existiert (siehe [CI](#ci)) |
 
