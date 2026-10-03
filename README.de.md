@@ -23,6 +23,13 @@ und Rust. C steht auf der Lernliste. Ein C-Projekt liegt hier noch nicht.
 Portugiesisch ist meine Muttersprache. Französisch und Englisch sind C1.
 Security+ SY0-701 und HTB Academy laufen nebenher.
 
+Rechner, Sprachen und die KI-Werkzeuge stehen in
+[Wie ich arbeite](how-i-work.de.md). Kurz: täglich CachyOS (Arch),
+Windows nur als virtuelle Maschinen, Grok für einen zweiten Durchgang,
+und ein lokales Qwen-Modell über Ollama, geteilt von Hermes, OpenClaw
+und Odysseus. Ein Lab ist **Done**, wenn ich die Prüfung selbst laufen
+lasse.
+
 ### Lab-Status
 
 | Status | Bedeutung |
@@ -46,6 +53,7 @@ Aktueller Stand: 10 Done, 4 In progress, 3 Planned (siehe Skills-Matrix unten).
 
 | Pfad | Inhalt |
 |------|--------|
+| [how-i-work.de.md](how-i-work.de.md) | Alltagsrechner (CachyOS), Sprachen, und wie ich Grok plus ein lokales Qwen-Modell benutze |
 | [`helpdesk/`](helpdesk/) | Tickets, Fehleranalyse unter Linux und Windows, ein Samba-AD-Lab, und eine Windows-Server-Domäne, die auf meinem PC läuft (`lab.local`) |
 | [`networking/`](networking/) | Subnetting-Übungen mit Lösungen, Analyse von Netzwerkmitschnitten (Wireshark/tcpdump), Host-Firewall mit nftables |
 | [`soc-analyst/`](soc-analyst/) | Wazuh-Homelab, Analyse von Sysmon- und auditd-Logs (synthetische Beispiele), Incident-Berichte auf öffentlichen Datensätzen, ATT&CK-Mapping, Sigma-Regeln |

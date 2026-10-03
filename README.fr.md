@@ -23,6 +23,13 @@ a pas encore de projet C dans ce dépôt.
 Le portugais est ma langue maternelle. Le français et l'anglais sont tous
 les deux C1. Security+ SY0-701 et HTB Academy sont en cours.
 
+La machine, les langages et les outils d'IA sont dans
+[Comment je travaille](how-i-work.fr.md). Version courte : CachyOS (Arch)
+tous les jours, Windows seulement en machines virtuelles, Grok pour une
+relecture, et un modèle Qwen local via Ollama, partagé par Hermes,
+OpenClaw et Odysseus. Un lab est **Done** quand j'ai lancé la
+vérification moi-même.
+
 ### Statut des labs
 
 | Statut | Sens |
@@ -46,6 +53,7 @@ Décompte actuel : 10 Done, 4 In progress, 3 Planned (voir la matrice de compét
 
 | Chemin | Contenu |
 |--------|---------|
+| [how-i-work.fr.md](how-i-work.fr.md) | Machine du quotidien (CachyOS), langages, et comment j'utilise Grok plus un modèle Qwen local |
 | [`helpdesk/`](helpdesk/) | Tickets, dépannage Linux et Windows, un lab Samba AD, et un domaine Windows Server que j'ai vraiment promu (`lab.local`) |
 | [`networking/`](networking/) | Exercices de subnetting + corrigé, analyse de captures (Wireshark/tcpdump), pare-feu hôte nftables |
 | [`soc-analyst/`](soc-analyst/) | Homelab Wazuh, analyse de journaux Sysmon + auditd (exemples synthétiques), modèles de rapports d'incident sur des jeux publics, correspondance ATT&CK, règles Sigma |

@@ -1,0 +1,105 @@
+# Wie ich arbeite
+
+[English](how-i-work.md) · [Français](how-i-work.fr.md) · **Deutsch**
+
+Diese Seite ist für jemanden, der das Repo öffnet und sehen will, was
+ich wirklich benutze. Die Labs sind der Nachweis. Diese Seite ist der
+Rahmen.
+
+## Alltagsrechner
+
+Ich benutze CachyOS jeden Tag. CachyOS ist Arch Linux, mit eigenem
+Kernel und eigenen Paketquellen. Ich habe es installiert, ich
+aktualisiere es, und ich repariere es selbst. Die Shell ist zsh.
+Pakete kommen von pacman und vom AUR-Helfer paru. Die Platte ist LUKS,
+das Dateisystem ist btrfs, und Snapper-Snapshots sind der Weg zurück
+nach einem schlechten Update.
+
+Das Windows-Lab läuft auf demselben Rechner. libvirt stellt einen
+Windows Server 2025 Evaluation Domain Controller bereit (`dc01`,
+Domäne `lab.local`) und einen Windows 11 Evaluation Client
+(`win11-soc`). Beschreibung:
+[helpdesk/06-windows-domain](helpdesk/06-windows-domain/).
+
+Ein zweites Identitäts-Lab ist Samba AD in einem Debian-Container
+(`corp.example.com`). Dieses Lab steht für sich. Die Windows-Gäste
+sind dort nicht eingebunden. Beschreibung:
+[helpdesk/04-samba-ad-lab](helpdesk/04-samba-ad-lab/).
+
+Auf dem Host benutze ich ausserdem git, neovim, rustup, Python,
+Wireshark und Podman ohne Root. Der Befehl `docker` auf diesem Rechner
+ist Podman. Lab-Passwörter bleiben in einem Passwortmanager
+(KeePassXC) und in lokalen Setup-Notizen. Sie liegen nicht in diesem
+Repo.
+
+## Sprachen
+
+| Sprache | Wie ich sie benutze |
+|---------|---------------------|
+| bash | Jeden Tag auf CachyOS, und im Linux-Fehleranalyse-Lab |
+| PowerShell | Im Windows-Domänen-Lab, und in den Übungen |
+| Python | Die `seclab`-Werkzeuge in diesem Repo, mit pytest |
+| Rust | `log-analyzer` und `fim` hier. Zwei weitere öffentliche Repos: [Frihart](https://codeberg.org/ichbinlucasv/Frihart) und [HashChat](https://codeberg.org/ichbinlucasv/HashChat) |
+| C | Lernen, und kurze Übungen zum Übersetzen und Lesen. Noch kein C-Projekt in diesem Repo |
+| C++ | Dieselbe Stufe wie C: Übungen, kein Programm, das ich ausliefere |
+| C# | Eine Sprachübung in [templates/](templates/). Keine C#-Anwendung hier |
+| Java | Eine Sprachübung |
+| Kotlin | Eine Sprachübung |
+| Haskell | Eine Sprachübung. Eine ältere HashChat-Notiz nannte Haskell. Der Code, den ich jetzt schreibe, ist Rust |
+
+Die leeren Formulare in [templates/](templates/) sind der Wochenrhythmus:
+ein Helpdesk- oder SOC-Blatt, und eine Sprache. Ich kopiere ein Formular
+und fülle es, während ich arbeite. Eine geratene Antwort gehört nicht
+nach git.
+
+## KI
+
+Ich benutze KI, und das soll auf der Seite stehen.
+
+**Grok** (xAI) ist der Assistent für Planung, für einen zweiten
+Durchgang beim Schreiben, und für die schwereren Builds. Ich arbeite
+damit im Terminal.
+
+Auf demselben Rechner läuft ein lokales Modell, damit Lernen keine
+Cloud-Schlüssel braucht. **Ollama** stellt **Qwen** (`qwen3-coder:30b`)
+auf meiner AMD Radeon RX 7900 XTX bereit. Eine Kopie dieses Modells
+füllt die 24-GB-GPU, deshalb teilen sich die lokalen Programme dasselbe
+Modell:
+
+- **Hermes** ist der lokale Coding-Assistent. Ich frage nach einer
+  Funktion, dann kompiliere ich das Ergebnis oder ich starte es.
+- **OpenClaw** ist eine lokale Agenten-App auf demselben Modell, für
+  kleinere Aufgaben.
+- **Odysseus** ist ein lokaler Browser-Arbeitsplatz (Chat und Notizen)
+  auf demselben Modell. Ich benutze ihn als Lerntutor: ein Thema pro
+  Antwort, defensiv, auf virtuellen Maschinen auf diesem Rechner.
+
+Ein Lab wird **Done**, wenn ich die Prüfung selbst laufen lasse und die
+Ausgabe behalte. Ein Entwurf mit Grok oder Qwen bleibt **Planned** oder
+**In progress**, bis dieser Lauf existiert. Die Nachweisdateien sind
+Befehlsausgaben.
+
+Das Modell bleibt bei defensivem Lernen und bei Code. In diesem Repo
+steht keine Anleitung für einen Angriff.
+
+## Womit anfangen
+
+Für eine Helpdesk-Stelle oder eine Junior-SOC-Stelle zuerst hier:
+
+1. [Windows-Domäne](helpdesk/06-windows-domain/) — ein echtes AD-DS-Lab, noch **In progress**. Die Seite nennt, was noch offen ist (ein aufgeschriebener Domänenbeitritt, und eine Helpdesk-Sitzung mit dem Helpdesk-Konto).
+2. [Fehleranalyse Linux](helpdesk/03-linux-troubleshooting/) — **Done**, mit Terminalausgabe in `evidence/`.
+3. [Incident-Berichte](soc-analyst/03-incident-writeups/) und [Sigma-Regeln](soc-analyst/05-sigma-rules/) — wie ich ein Log lese, und wie ich eine Erkennung schreibe.
+4. [Python](python/) und [Rust](rust/) — kleine Werkzeuge mit Tests.
+5. [Vorlagen](templates/) — die Formulare für einen Übungstag.
+
+## Was ich noch lerne
+
+Security+ SY0-701 ist nicht bestanden. HTB Academy läuft. Deutsch ist
+in Arbeit. Portugiesisch ist meine Muttersprache. Französisch und
+Englisch sind C1. Zuerst schaue ich in Frankreich, Helpdesk oder
+Junior-SOC (Alternance oder POEI). Deutschland ist die andere
+Möglichkeit, und dort kann ich auf Englisch arbeiten.
+
+Öffentliche Profile:
+[codeberg.org/ichbinlucasv](https://codeberg.org/ichbinlucasv) und
+[github.com/ichbinlucasv](https://github.com/ichbinlucasv).
