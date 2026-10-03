@@ -67,9 +67,9 @@ Das hier sind die, die ich in der Schicht will.
 | [weekly.md](career/weekly.md) | Freitag |
 | [story.md](career/story.md) | Eine echte Geschichte für ein Vorstellungsgespräch. Erst nachdem ich die Arbeit gemacht habe. |
 | [practice-note.de.md](career/practice-note.de.md) | Eine Übung auf TryHackMe, HTB, Boot.dev, Kali oder BlackArch. Nur die Notiz der Verteidigung. |
-| [helpdesk-session.de.md](career/helpdesk-session.de.md) | Eine echte Sitzung auf win11-soc mit dem Helpdesk-Konto. Leer, bis ich sie laufen lasse. |
-| [domain-join.de.md](career/domain-join.de.md) | Schriftlicher Nachweis, dass der Windows-11-Gast lab.local beigetreten ist. Leer, bis ich ihn laufen lasse. |
-| [lab-ticket.de.md](career/lab-ticket.de.md) | Ein echtes Ticket aus diesem Lab. Leer, bis die Arbeit passiert ist. |
+| [helpdesk-session.de.md](career/helpdesk-session.de.md) | Nächste Helpdesk-Sitzung. Der Reset vom 4. Okt. 2026 ist [session-2026-10-04](../helpdesk/06-windows-domain/evidence/session-2026-10-04.de.md). |
+| [domain-join.de.md](career/domain-join.de.md) | Nächste Beitrittsprüfung. Die Prüfung vom 4. Okt. 2026 ist [domain-2026-10-04](../helpdesk/06-windows-domain/evidence/domain-2026-10-04.de.md). |
+| [lab-ticket.de.md](career/lab-ticket.de.md) | Nächstes Ticket. Die leere Workstation-GPO ist [HD-2026-10-04](../helpdesk/06-windows-domain/evidence/HD-2026-10-04.de.md). |
 | [application.de.md](career/application.de.md) | Der kurze Text für eine Alternance oder ein POEI. Ich schicke ihn selbst. |
 
 ## Regeln, die ich immer wieder breche

@@ -2,7 +2,7 @@
 
 [English](README.md) · [Français](README.fr.md) · **Deutsch**
 
-**Status:** In progress — der Domänencontroller ist echt. Eine Helpdesk-Sitzung auf dem Windows-11-Client ist noch nicht aufgeschrieben.
+**Status:** In progress — `win11-soc` ist in `lab.local` (geprüft am 4. Okt. 2026). Ein Helpdesk-Passwortreset ist aufgeschrieben. Eine Entsperrung ist noch offen, weil die Sperrschwelle 0 ist.
 
 ## Ziel
 
@@ -33,8 +33,10 @@ Passwörter kommen nicht ins Git.
 
 ADUC (`dsa.msc`) und GPMC liegen auf dem DC. Defender lief. Sysmon,
 Wireshark, Hayabusa und der Rest der SOC-Werkzeugliste waren **nicht** auf
-dem DC, als ich nachgesehen habe. Die gehören auf `win11-soc`, und diesen
-Gast habe ich seit dem Aufbau nicht wieder geprüft.
+dem DC, als ich nachgesehen habe. Die gehören auf `win11-soc`. Die Prüfung
+vom 4. Okt. 2026 an diesem Gast hat Domäne, DNS, RSAT, gpresult und einen
+Helpdesk-Reset abgedeckt. Die SOC-Werkzeuge habe ich dabei nicht
+inventarisiert.
 
 ## Schritte
 
@@ -47,21 +49,46 @@ Was schon erledigt ist:
 4. Inventar über den Gast-Agenten am 7. September 2026. NTDS, DNS, ADWS und
    Netlogon liefen. Ausgabe: [`evidence/dc01-2026-09-07.txt`](evidence/dc01-2026-09-07.txt).
 
-Was ich noch machen muss, und hier aufschreibe, wenn ich es mache:
+Geprüft am 4. Okt. 2026, beide Gäste an. Ausgabe:
+[`evidence/win11-2026-10-04.txt`](evidence/win11-2026-10-04.txt).
 
-1. Beide Gäste einschalten. Prüfen, ob `win11-soc` in der Domäne ist. Wenn
-   nicht, aufnehmen und das hier hinschreiben.
-2. Vom Windows-11-Client aus, mit dem Helpdesk-Konto, ein Staff-Passwort
-   zurücksetzen und ein Konto entsperren. Nicht mit dem Domänenadmin.
-3. GPMC öffnen und eine GPO nennen, die greift, und eine Stelle, an der ich
-   eine Einstellung erwartet und nicht gefunden habe.
-4. Eine PowerShell-Prüfung aus dem Kopf laufen lassen, dann korrigieren, was
-   ich falsch hatte:
+1. `win11-soc` war schon in `lab.local`. Computerobjekt
+   `CN=WIN11-SOC,OU=Workstations,DC=lab,DC=local`. Ethernet
+   `192.168.122.20`, DNS `192.168.122.10` und dann `192.168.122.1`.
+   Die RSAT-Active-Directory-Werkzeuge sind installiert. Aufnehmen
+   musste ich ihn nicht.
+2. Von diesem Client habe ich `jdoe` mit dem Helpdesk-Credential
+   zurückgesetzt, nicht mit dem Domänenadmin. `jdoe` kann `asmith`
+   nicht zurücksetzen (Zugriff verweigert). Helpdesk kann es.
+   `PasswordLastSet` ging von 5. Sep. 2026 19:26:49 auf 4. Okt. 2026
+   00:56:55, Uhr des Gasts. Danach habe ich das Lab-Passwort zurückgesetzt
+   (00:57:36). Das Passwort steht nicht in git. Der Prozess des
+   Gast-Agents ist `NT AUTHORITY\SYSTEM`. Das war keine
+   Desktop-Anmeldung als Helpdesk.
+3. Die Computerrichtlinie auf `win11-soc` kam von `DC01.lab.local`.
+   Angewendet: Default Domain Policy, Lab-Logon-Banner,
+   Lab-PowerShell-Logging, Lab-Region-Keyboard.
+   `Lab-Workstation-Hardening` ist an `OU=Workstations` verknüpft und
+   aktiv, und der GPO-Bericht hat keine Einstellung (`ExtensionData=0`).
+   Ich hatte eine Härtung erwartet. In dieser GPO ist keine.
+4. Die Domänen-Sperrschwelle ist 0. Ich kann keinen gesperrten
+   Lab-Benutzer zeigen, bis ich eine Schwelle setze. Eine Entsperrung
+   habe ich nicht erfunden.
 
-```powershell
-Get-ADUser jdoe -Properties LockedOut, PasswordLastSet, MemberOf
-Search-ADAccount -LockedOut
-```
+## Ticket aus dieser Prüfung
+
+`Lab-Workstation-Hardening` ist an die Workstation-OU verknüpft und
+sieht aktiv aus. `gpresult /SCOPE COMPUTER /R` auf `WIN11-SOC` wendet
+sie nicht an. `Get-GPOReport` hat keine Extension-Daten.
+`Lab-Logon-Banner` hat welche, und gpresult listet sie. Die leere GPO
+habe ich gelassen. Sie mit einer Vermutung zu füllen würde das Lab
+fertig aussehen lassen.
+
+Ausgefüllt in der Ticketform:
+[`evidence/HD-2026-10-04.de.md`](evidence/HD-2026-10-04.de.md).
+Helpdesk-Reset und Domänenprüfung sind dieselbe Nacht:
+[`evidence/session-2026-10-04.de.md`](evidence/session-2026-10-04.de.md),
+[`evidence/domain-2026-10-04.de.md`](evidence/domain-2026-10-04.de.md).
 
 ## Nachweise
 
@@ -75,16 +102,26 @@ Inventar. Kurzfassung:
 - ADUC und GPMC vorhanden
 - Zeitstempel `SETUP_DONE`: 2026-09-05T19:26:49+02:00
 
-Der Windows-11-Gast existiert in libvirt und war ausgeschaltet, als ich das
-letzte Mal nachgesehen habe. Ich habe kein Inventar davon, also behaupte ich
-nicht, dass er in der Domäne ist.
+[`evidence/win11-2026-10-04.txt`](evidence/win11-2026-10-04.txt) ist die
+Prüfung vom 4. Okt. 2026 von `win11-soc`, den GPO-Links und dem
+Helpdesk-Reset.
 
 ## Was ich gelernt habe
 
-Den DC heraufzustufen ist der leichte Teil. Die nützliche Übung ist die
-langweilige Wiederholung danach: den Benutzer finden, das Passwort
-zurücksetzen, die Gruppe prüfen, als Helpdesk, nicht als Admin. Ich habe
-die Domäne. Diese Wiederholung habe ich noch nicht aufgeschrieben.
+Den DC heraufzustufen ist der leichte Teil. Die nützliche Prüfung ist
+die langweilige: der Client steht in der richtigen OU, DNS zeigt auf
+den DC, Helpdesk kann ein Staff-Passwort zurücksetzen, und ein
+Staff-Benutzer kann niemand anderen zurücksetzen.
+
+Eine verknüpfte GPO ist keine Einstellung. `Lab-Workstation-Hardening`
+ist verknüpft und leer. Ich hätte einer Person gesagt, die Härtung sei
+an. gpresult sagt nein.
+
+Sperrschwelle 0 heisst, ich kann eine Entsperrung noch nicht üben.
+Eine Entsperrung, die ich nicht gemacht habe, schreibe ich nicht auf.
+Eine interaktive Anmeldung als Helpdesk am Desktop ist die nächste
+Sitzung. Der Reset oben hat das Helpdesk-Credential über den Gast-Agent
+benutzt.
 
 Ich habe auch gelernt, zwei Labs auseinanderzuhalten. `lab.local` hier ist
 Windows Server auf `192.168.122.0/24`. Das Samba-Lab ist `corp.example.com`

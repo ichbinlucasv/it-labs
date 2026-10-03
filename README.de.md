@@ -86,7 +86,7 @@ Mitigations · **D3** Security Architecture · **D4** Security Operations ·
 | [helpdesk/03 Fehleranalyse Linux](helpdesk/03-linux-troubleshooting/) ([DE](helpdesk/03-linux-troubleshooting/README.de.md)) | Done | | ○ | ○ | ● | | systemd, journalctl, Speicherplatz/DNS/Berechtigungen |
 | [helpdesk/04 Samba AD DC](helpdesk/04-samba-ad-lab/) ([DE](helpdesk/04-samba-ad-lab/README.de.md)) | In progress | ● | | ● | ● | | Identitäten, Gruppen, GPO-Konzepte, Least Privilege |
 | [helpdesk/05 M365-Grundlagen](helpdesk/05-m365-basics/) | Planned | ● | ○ | ● | ● | ○ | Entra ID, Lizenzen, MFA, Conditional-Access-Konzepte |
-| [helpdesk/06 Windows-Domäne](helpdesk/06-windows-domain/) | In progress | ● | | ● | ● | | Windows Server AD DS, OUs, Helpdesk-Gruppe, RSAT auf dem DC |
+| [helpdesk/06 Windows-Domäne](helpdesk/06-windows-domain/) | In progress | ● | | ● | ● | | AD DS, Client in der Domäne, Helpdesk-Reset, GPO-Prüfung |
 | [networking/01 Subnetting](networking/01-subnetting/) | Done | | | ● | | | CIDR, VLSM, Adresspläne |
 | [networking/02 Netzwerkmitschnitte](networking/02-packet-capture/) ([DE](networking/02-packet-capture/README.de.md)) | Done | | ● | ○ | ● | | Wireshark-Filter, tcpdump, Protokollanalyse |
 | [networking/03 nftables-Firewall](networking/03-nftables-firewall/) ([DE](networking/03-nftables-firewall/README.de.md)) | Done | ○ | ● | ● | ○ | | Default-Deny, zustandsbehaftete Filterung, Logging |
@@ -130,7 +130,7 @@ python3 scripts/check_repo.py
 | Sigma-Regeln | gültiges YAML; `sigma check` 0 Fehler (sigma-cli 3.1.0); die 8 ursprünglichen Regeln schlagen über das SQLite-Backend auf den synthetischen Beispielen an; die Kerberos-Spraying-Regel schlägt auf einem öffentlichen EVTX-Beispiel an |
 | Fehleranalyse Linux | 7 Break/Fix-Szenarien in einem Debian-13-systemd-Container (`systemd-nspawn`) durchgeführt; Terminalausgaben in `helpdesk/03-linux-troubleshooting/evidence/` (OOM-Kill dort nicht reproduzierbar) |
 | Samba AD DC | in einem Debian-13-Container provisioniert; DNS-SRV, Kerberos, OUs/Gruppen/Benutzer, Sperrrichtlinie und Helpdesk-Delegation getestet; Domänenbeitritt eines Windows-Clients noch offen |
-| Windows-Server-Domäne | `dc01` am 5. Sep 2026 zu `lab.local` promotet (Server 2025 Eval, libvirt). Inventory vom 7. Sep: NTDS und DNS laufen, OUs und Helpdesk/SOC/Staff-Konten sind da, ADUC und GPMC auf dem DC. Der Windows-11-Gast existiert. Ein Domain-Join und eine Helpdesk-Sitzung darauf habe ich noch nicht aufgeschrieben |
+| Windows-Server-Domäne | `dc01` am 5. Sep 2026 zu `lab.local` promotet. Am 4. Okt. 2026 war `win11-soc` schon in dieser Domäne (`OU=Workstations`, DNS zum DC). Von diesem Client hat das Helpdesk-Credential `jdoe` zurückgesetzt; `jdoe` konnte niemand anderen zurücksetzen. Ausgabe in `helpdesk/06-windows-domain/evidence/win11-2026-10-04.txt`. Die Sperrschwelle ist 0, also noch keine Entsperrung. `Lab-Workstation-Hardening` ist verknüpft und leer |
 | nftables-Regelwerk | `nft -c -f` OK; Datenverkehr mit drei Network Namespaces getestet (Admin / extern / gesperrter Client), Zähler und Kernel-Log geprüft |
 | Netzwerkmitschnitte | eigener Mitschnitt in einem Network Namespace erzeugt und mit tshark analysiert; öffentliches Wireshark-Beispiel `dns.cap` mit Kurzbericht analysiert |
 | Sysmon-/auditd-Beispiele | alle Fragen beantwortet, UTC-Zeitleiste und IOC-Liste erstellt; `ausearch`/`aureport` auf dem synthetischen auditd-Log |
@@ -139,11 +139,12 @@ python3 scripts/check_repo.py
 | Subnetting-Lösungen | mit Python `ipaddress` berechnet |
 | Karteikarten | 99 Karten, mit Python `csv` eingelesen |
 
-Noch offen: die Windows-Fehleranalyse-Szenarien, ein Windows-Client in der
-Samba-Domäne, Wazuh, ein M365-Tenant, eine isolierte VM für die
-Malware-Mitschnitte, und Splunk. Das steht in den jeweiligen Labs. Die
-Windows-Server-Domäne ist ein eigenes Lab (`helpdesk/06`) und reicht bisher
-nur bis zum Inventory.
+Noch offen: eine interaktive Helpdesk-Anmeldung auf dem Windows-11-Desktop,
+eine echte Entsperrung sobald die Sperrschwelle nicht mehr 0 ist,
+Einstellungen in `Lab-Workstation-Hardening`, die
+Windows-Fehleranalyse-Szenarien, ein Windows-Client in der Samba-Domäne,
+Wazuh, ein M365-Tenant, eine isolierte VM für die Malware-Mitschnitte,
+und Splunk. Das steht auf den jeweiligen Seiten.
 
 ## CI
 
@@ -168,8 +169,9 @@ Auf GitHub die Datei nach `.github/workflows/` kopieren und `runs-on: ubuntu-lat
 
 Ein fertiger SOC-Bericht mit Zeitlinie:
 [IR-03](soc-analyst/03-incident-writeups/IR-03-evtx-password-spray.md).
-Die Helpdesk-Sitzung, der Domänenbeitritt von Windows 11 und ein Ticket
-aus diesem Lab sind noch offen. Formulare:
+Die Prüfung vom 4. Okt. 2026, der Helpdesk-Reset und das Ticket zur
+leeren GPO stehen in [Lab 06](helpdesk/06-windows-domain/).
+Formulare für das nächste Mal:
 [templates/career/](templates/career/).
 
 ## Kontakt

@@ -94,7 +94,7 @@ steht keine Anleitung für einen Angriff.
 
 Für eine Helpdesk-Stelle oder eine Junior-SOC-Stelle zuerst hier:
 
-1. [Windows-Domäne](helpdesk/06-windows-domain/) — ein echtes AD-DS-Lab, noch **In progress**. Die Seite nennt, was noch offen ist (ein aufgeschriebener Domänenbeitritt, und eine Helpdesk-Sitzung mit dem Helpdesk-Konto).
+1. [Windows-Domäne](helpdesk/06-windows-domain/) — ein echtes AD-DS-Lab, noch **In progress**. Am 4. Okt. 2026 war `win11-soc` schon in `lab.local`, ein Helpdesk-Reset ist aufgeschrieben, und die leere Workstation-GPO ist das Ticket. Noch offen: eine interaktive Helpdesk-Anmeldung, und eine Entsperrung (Sperrschwelle 0).
 2. [Fehleranalyse Linux](helpdesk/03-linux-troubleshooting/) — **Done**, mit Terminalausgabe in `evidence/`.
 3. [Incident-Berichte](soc-analyst/03-incident-writeups/) und [Sigma-Regeln](soc-analyst/05-sigma-rules/) — wie ich ein Log lese, und wie ich eine Erkennung schreibe.
 4. [Python](python/) und [Rust](rust/) — kleine Werkzeuge mit Tests.
@@ -118,11 +118,11 @@ Weitere Übungskonten, dieselbe Regel (in Arbeit, hier kein Rang):
 
 Eine SOC-Meldung ist schon bis zum Ende geschrieben, mit UTC-Zeitlinie:
 [IR-03](soc-analyst/03-incident-writeups/IR-03-evtx-password-spray.md).
-Drei Blätter vom Heim-Lab bleiben absichtlich leer. Ich fülle sie erst,
-wenn ich den Befehl selbst laufen lasse: eine Helpdesk-Sitzung mit dem
-Helpdesk-Konto, ein aufgeschriebener Domänenbeitritt des Windows-11-Gasts,
-und ein echtes Ticket aus diesem Lab. Die Formulare liegen in
-[templates/career/](templates/career/).
+Am 4. Okt. 2026 habe ich `win11-soc` in `lab.local` geprüft, ein
+Staff-Passwort mit dem Helpdesk-Credential zurückgesetzt, und die leere
+Workstation-GPO als Ticket aufgeschrieben. Die Ausgabe liegt in
+[Lab 06](helpdesk/06-windows-domain/). Die Formulare in
+[templates/career/](templates/career/) bleiben leer für das nächste Mal.
 
 ## Kontakt
 

@@ -84,7 +84,7 @@ Mitigations · **D3** Security Architecture · **D4** Security Operations ·
 | [helpdesk/03 Linux troubleshooting](helpdesk/03-linux-troubleshooting/) | Done | | ○ | ○ | ● | | systemd, journalctl, disk/DNS/permissions |
 | [helpdesk/04 Samba AD DC](helpdesk/04-samba-ad-lab/) | In progress | ● | | ● | ● | | Identity, groups, GPO concepts, least privilege |
 | [helpdesk/05 M365 basics](helpdesk/05-m365-basics/) | Planned | ● | ○ | ● | ● | ○ | Entra ID, licences, MFA, Conditional Access concepts |
-| [helpdesk/06 Windows domain](helpdesk/06-windows-domain/) | In progress | ● | | ● | ● | | Windows Server AD DS, OUs, helpdesk group, RSAT on the DC |
+| [helpdesk/06 Windows domain](helpdesk/06-windows-domain/) | In progress | ● | | ● | ● | | AD DS, client in the domain, helpdesk reset, GPO check |
 | [networking/01 Subnetting](networking/01-subnetting/) | Done | | | ● | | | CIDR, VLSM, addressing plans |
 | [networking/02 Packet capture](networking/02-packet-capture/) | Done | | ● | ○ | ● | | Wireshark filters, tcpdump, protocol analysis |
 | [networking/03 nftables firewall](networking/03-nftables-firewall/) | Done | ○ | ● | ● | ○ | | Default-deny, stateful filtering, logging |
@@ -128,7 +128,7 @@ python3 scripts/check_repo.py
 | Sigma rules | valid YAML; `sigma check` 0 errors/issues (sigma-cli 3.1.0); the 8 original rules fire on the synthetic samples via the SQLite backend; the Kerberos spraying rule fires on a public EVTX sample |
 | Linux troubleshooting | 7 break/fix scenarios run in a Debian 13 systemd container (`systemd-nspawn`); terminal output in `helpdesk/03-linux-troubleshooting/evidence/` (OOM kill not reproducible there) |
 | Samba AD DC | provisioned in a Debian 13 container; DNS SRV, Kerberos, OUs/groups/users, lockout policy and helpdesk delegation tested; Windows client join not done |
-| Windows Server domain | `dc01` promoted to `lab.local` on 5 Sep 2026 (Server 2025 eval, libvirt). Inventory on 7 Sep: NTDS and DNS running, OUs and helpdesk/SOC/staff accounts present, ADUC and GPMC on the DC. Windows 11 guest exists. I have not written up a domain join or a helpdesk session on it yet |
+| Windows Server domain | `dc01` promoted to `lab.local` on 5 Sep 2026. On 4 Oct 2026 `win11-soc` was already in that domain (`OU=Workstations`, DNS to the DC). From that client the helpdesk credential reset `jdoe`; `jdoe` could not reset someone else. Output in `helpdesk/06-windows-domain/evidence/win11-2026-10-04.txt`. Lockout threshold is 0, so no unlock yet. `Lab-Workstation-Hardening` is linked and empty |
 | nftables ruleset | `nft -c -f` OK; traffic-tested with three network namespaces (admin / outside / blocklisted client), counters and kernel log checked |
 | Packet capture | own capture generated in a network namespace and analysed with tshark; public Wireshark `dns.cap` sample analysed with a mini-report |
 | Sysmon / auditd samples | every question answered, UTC timeline and IOC list written; `ausearch`/`aureport` on the synthetic auditd log |
@@ -137,10 +137,12 @@ python3 scripts/check_repo.py
 | Subnetting answers | computed with Python `ipaddress` |
 | Flashcards | 99 cards, parsed with Python `csv` |
 
-Still open: the Windows troubleshooting scenarios, joining a Windows client
-to the Samba domain, Wazuh, an M365 tenant, an isolated VM for the malware
-pcaps, and a Splunk box. Those pages say so. The Windows Server domain is
-a separate lab (`helpdesk/06`), and it is only as far as the inventory.
+Still open: an interactive helpdesk sign-in on the Windows 11 desktop,
+a real unlock once the lockout threshold is not 0, settings inside
+`Lab-Workstation-Hardening`, the Windows troubleshooting scenarios,
+joining a Windows client to the Samba domain, Wazuh, an M365 tenant,
+an isolated VM for the malware pcaps, and a Splunk box. Those pages
+say so.
 
 ## CI
 
@@ -165,8 +167,8 @@ On GitHub, copy the file to `.github/workflows/` and set `runs-on: ubuntu-latest
 
 One finished SOC write-up with a timeline is
 [IR-03](soc-analyst/03-incident-writeups/IR-03-evtx-password-spray.md).
-The helpdesk session, the Windows 11 domain join, and a ticket from this
-lab are still open. Forms:
+The 4 Oct 2026 domain check, helpdesk reset, and the empty-GPO ticket
+are in [lab 06](helpdesk/06-windows-domain/). Forms for the next run:
 [templates/career/](templates/career/).
 
 ## Contact

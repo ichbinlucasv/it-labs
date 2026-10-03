@@ -3,8 +3,11 @@
 [English](application.md) · **Français** · [Deutsch](application.de.md)
 
 C'est moi qui envoie ce texte. La version française est celle pour la
-France. Je ne l'envoie pas tant que la session helpdesk, la jonction au
-domaine et un ticket du lab n'ont pas une vraie sortie de commande.
+France. Le contrôle du 4 oct. 2026 est dans le lab 06 : `win11-soc`
+était déjà dans `lab.local`, une réinitialisation helpdesk a une
+sortie, et un ticket est rempli. Une session interactive sur le bureau
+et un déverrouillage restent ouverts, parce que le seuil de
+verrouillage est 0.
 
 Objet : Alternance ou POEI — helpdesk / SOC junior — Lucas
 

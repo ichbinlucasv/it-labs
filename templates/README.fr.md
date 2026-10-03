@@ -67,9 +67,9 @@ Ceux-ci, je les veux en poste.
 | [weekly.md](career/weekly.md) | Vendredi |
 | [story.md](career/story.md) | Une vraie histoire pour un entretien. Seulement après avoir fait le travail. |
 | [practice-note.fr.md](career/practice-note.fr.md) | Un exercice TryHackMe, HTB, Boot.dev, Kali ou BlackArch. Note du défenseur seulement. |
-| [helpdesk-session.fr.md](career/helpdesk-session.fr.md) | Une vraie session sur win11-soc avec le compte helpdesk. Vide tant que je ne l'ai pas lancée. |
-| [domain-join.fr.md](career/domain-join.fr.md) | Preuve écrite que l'invité Windows 11 a rejoint lab.local. Vide tant que je ne l'ai pas lancée. |
-| [lab-ticket.fr.md](career/lab-ticket.fr.md) | Un vrai ticket de ce lab. Vide tant que le travail n'a pas eu lieu. |
+| [helpdesk-session.fr.md](career/helpdesk-session.fr.md) | Prochaine session helpdesk. La réinitialisation du 4 oct. 2026 est [session-2026-10-04](../helpdesk/06-windows-domain/evidence/session-2026-10-04.fr.md). |
+| [domain-join.fr.md](career/domain-join.fr.md) | Prochain contrôle de jonction. Le contrôle du 4 oct. 2026 est [domain-2026-10-04](../helpdesk/06-windows-domain/evidence/domain-2026-10-04.fr.md). |
+| [lab-ticket.fr.md](career/lab-ticket.fr.md) | Prochain ticket. La GPO poste vide est [HD-2026-10-04](../helpdesk/06-windows-domain/evidence/HD-2026-10-04.fr.md). |
 | [application.fr.md](career/application.fr.md) | Le court texte pour une alternance ou un POEI. C'est moi qui l'envoie. |
 
 ## Règles que je continue d'enfreindre

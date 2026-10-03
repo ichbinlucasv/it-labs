@@ -3,8 +3,11 @@
 [English](application.md) · [Français](application.fr.md) · **Deutsch**
 
 Diesen Text schicke ich selbst. Für Frankreich nehme ich die
-französische Fassung. Ich schicke ihn erst, wenn die Helpdesk-Sitzung,
-der Domänenbeitritt und ein Lab-Ticket echte Befehlsausgabe haben.
+französische Fassung. Die Prüfung vom 4. Okt. 2026 steht in Lab 06:
+`win11-soc` war schon in `lab.local`, ein Helpdesk-Passwortreset hat
+eine Ausgabe, und ein Ticket ist ausgefüllt. Eine interaktive
+Desktop-Anmeldung und eine Entsperrung sind noch offen, weil die
+Sperrschwelle 0 ist.
 
 Betreff: Alternance oder POEI — Helpdesk / Junior-SOC — Lucas
 

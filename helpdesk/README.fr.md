@@ -12,7 +12,8 @@ courantes sous Windows et Linux, et gérer les identités.
 | [03-linux-troubleshooting](03-linux-troubleshooting/) | Runbook des incidents Linux (Debian/Ubuntu) courants |
 | [04-samba-ad-lab](04-samba-ad-lab/) | Domaine Active Directory avec Samba AD DC : utilisateurs, groupes, OU, stratégie de mots de passe |
 | [05-m365-basics](05-m365-basics/) | Concepts d'admin Microsoft 365 / Entra ID : utilisateurs, licences, MFA, centres d'administration |
-| [06-windows-domain](06-windows-domain/) | Domaine Windows Server 2025 que j'ai promu sur ce PC (`lab.local`) |
+| [06-windows-domain](06-windows-domain/) | Domaine Windows Server 2025 que j'ai promu (`lab.local`). 4 oct. 2026 : client déjà joint, reset helpdesk, un ticket dans `evidence/` |
 
-Personnes, sociétés et tickets sont fictifs (société : *Exemple SARL*,
-domaine `example.com`).
+Les personnes et les sociétés dans le lab d'écriture de tickets sont
+fictives (société : *Exemple SARL*, domaine `example.com`). Le ticket
+du 4 oct. 2026 dans le lab 06 vient de mon propre lab.

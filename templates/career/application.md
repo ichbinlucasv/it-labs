@@ -2,9 +2,11 @@
 
 **English** · [Français](application.fr.md) · [Deutsch](application.de.md)
 
-I send this myself. The French text is the one for France. I do not
-send it until the helpdesk session, the domain join, and one lab
-ticket have real command output.
+I send this myself. The French text is the one for France. The 4 Oct
+2026 check is in lab 06: `win11-soc` was already in `lab.local`, a
+helpdesk password reset has output, and one ticket is filled. An
+interactive desktop sign-in and an unlock are still open, because the
+lockout threshold is 0.
 
 Subject: Alternance or POEI — helpdesk / junior SOC — Lucas
 

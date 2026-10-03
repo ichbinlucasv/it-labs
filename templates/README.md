@@ -63,9 +63,9 @@ These are the ones I want on a shift.
 | [weekly.md](career/weekly.md) | Friday |
 | [story.md](career/story.md) | One real story for an interview. Only after I did the work. |
 | [practice-note.md](career/practice-note.md) | One TryHackMe, HTB, Boot.dev, Kali, or BlackArch exercise. Defender's note only. |
-| [helpdesk-session.md](career/helpdesk-session.md) | One real session on win11-soc as the helpdesk user. Blank until I run it. |
-| [domain-join.md](career/domain-join.md) | Written proof the Windows 11 guest joined lab.local. Blank until I run it. |
-| [lab-ticket.md](career/lab-ticket.md) | One real ticket from this lab. Blank until the work happened. |
+| [helpdesk-session.md](career/helpdesk-session.md) | Next helpdesk session. The 4 Oct 2026 reset is [session-2026-10-04](../helpdesk/06-windows-domain/evidence/session-2026-10-04.md). |
+| [domain-join.md](career/domain-join.md) | Next join check. The 4 Oct 2026 check is [domain-2026-10-04](../helpdesk/06-windows-domain/evidence/domain-2026-10-04.md). |
+| [lab-ticket.md](career/lab-ticket.md) | Next ticket. The empty workstation GPO is [HD-2026-10-04](../helpdesk/06-windows-domain/evidence/HD-2026-10-04.md). |
 | [application.md](career/application.md) | The short text I send for an alternance or POEI. I send it myself. |
 
 ## Rules I keep breaking

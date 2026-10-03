@@ -87,7 +87,7 @@ sécurité · **D5** Gestion du programme de sécurité et supervision.
 | [helpdesk/03 Dépannage Linux](helpdesk/03-linux-troubleshooting/) | Done | | ○ | ○ | ● | | systemd, journalctl, disque/DNS/droits |
 | [helpdesk/04 Samba AD DC](helpdesk/04-samba-ad-lab/) | In progress | ● | | ● | ● | | Identité, groupes, concepts de GPO, moindre privilège |
 | [helpdesk/05 Bases M365](helpdesk/05-m365-basics/) | Planned | ● | ○ | ● | ● | ○ | Entra ID, licences, MFA, concepts de Conditional Access |
-| [helpdesk/06 Domaine Windows](helpdesk/06-windows-domain/) | In progress | ● | | ● | ● | | Windows Server AD DS, OU, groupe helpdesk, RSAT sur le DC |
+| [helpdesk/06 Domaine Windows](helpdesk/06-windows-domain/) | In progress | ● | | ● | ● | | AD DS, client dans le domaine, reset helpdesk, contrôle GPO |
 | [networking/01 Subnetting](networking/01-subnetting/) | Done | | | ● | | | CIDR, VLSM, plans d'adressage |
 | [networking/02 Capture de paquets](networking/02-packet-capture/) | Done | | ● | ○ | ● | | Filtres Wireshark, tcpdump, analyse de protocoles |
 | [networking/03 Pare-feu nftables](networking/03-nftables-firewall/) | Done | ○ | ● | ● | ○ | | Refus par défaut, filtrage à état, journalisation |
@@ -131,7 +131,7 @@ python3 scripts/check_repo.py
 | Règles Sigma | YAML valide ; `sigma check` 0 erreur, 0 problème (sigma-cli 3.1.0) ; les 8 règles d'origine se déclenchent sur les exemples synthétiques via le backend SQLite ; la règle de spraying Kerberos se déclenche sur un exemple EVTX public |
 | Dépannage Linux | 7 scénarios cassé/réparé dans un conteneur systemd Debian 13 (`systemd-nspawn`) ; sortie du terminal dans `helpdesk/03-linux-troubleshooting/evidence/` (kill OOM pas reproductible là) |
 | Samba AD DC | provisionné dans un conteneur Debian 13 ; DNS SRV, Kerberos, OU/groupes/utilisateurs, politique de verrouillage et délégation helpdesk testés ; jointure d'un client Windows pas faite |
-| Domaine Windows Server | `dc01` promu en `lab.local` le 5 sept. 2026 (Server 2025 eval, libvirt). Inventaire du 7 sept. : NTDS et DNS tournent, les OU et les comptes helpdesk/SOC/staff sont là, ADUC et GPMC sur le DC. L'invité Windows 11 existe. Je n'ai pas encore rédigé une jointure de domaine ni une session helpdesk dessus |
+| Domaine Windows Server | `dc01` promu en `lab.local` le 5 sept. 2026. Le 4 oct. 2026 `win11-soc` était déjà dans ce domaine (`OU=Workstations`, DNS vers le DC). Depuis ce client le credential helpdesk a réinitialisé `jdoe` ; `jdoe` ne pouvait pas réinitialiser quelqu'un d'autre. Sortie dans `helpdesk/06-windows-domain/evidence/win11-2026-10-04.txt`. Le seuil de verrouillage est 0, donc pas encore de déverrouillage. `Lab-Workstation-Hardening` est liée et vide |
 | Jeu de règles nftables | `nft -c -f` OK ; trafic testé avec trois network namespaces (admin / extérieur / client en liste de blocage), compteurs et journal noyau vérifiés |
 | Capture de paquets | capture perso générée dans un network namespace et analysée avec tshark ; exemple public Wireshark `dns.cap` analysé avec un mini-rapport |
 | Exemples Sysmon / auditd | toutes les questions ont une réponse, chronologie UTC et liste d'IOC écrites ; `ausearch`/`aureport` sur le journal auditd synthétique |
@@ -140,10 +140,12 @@ python3 scripts/check_repo.py
 | Réponses subnetting | calculées avec Python `ipaddress` |
 | Fiches | 99 fiches, lues avec Python `csv` |
 
-Encore ouvert : les scénarios de dépannage Windows, joindre un client Windows
-au domaine Samba, Wazuh, un tenant M365, une VM isolée pour les pcaps de
-malware, et une machine Splunk. Ces pages le disent. Le domaine Windows
-Server est un lab à part (`helpdesk/06`), et il s'arrête à l'inventaire.
+Encore ouvert : une ouverture de session helpdesk interactive sur le bureau
+Windows 11, un vrai déverrouillage une fois que le seuil de verrouillage
+n'est plus 0, des paramètres dans `Lab-Workstation-Hardening`, les
+scénarios de dépannage Windows, joindre un client Windows au domaine
+Samba, Wazuh, un tenant M365, une VM isolée pour les pcaps de malware,
+et une machine Splunk. Ces pages le disent.
 
 ## CI
 
@@ -168,8 +170,9 @@ Sur GitHub, copier le fichier vers `.github/workflows/` et mettre `runs-on: ubun
 
 Un rapport SOC déjà fini, avec chronologie :
 [IR-03](soc-analyst/03-incident-writeups/IR-03-evtx-password-spray.md).
-La session helpdesk, la jonction de Windows 11 au domaine, et un ticket
-de ce lab sont encore ouverts. Formulaires :
+Le contrôle du 4 oct. 2026, la réinitialisation helpdesk et le ticket
+de la GPO vide sont dans le [lab 06](helpdesk/06-windows-domain/).
+Formulaires pour la prochaine fois :
 [templates/career/](templates/career/).
 
 ## Contact

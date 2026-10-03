@@ -12,7 +12,8 @@ häufige Windows- und Linux-Probleme beheben und Identitäten verwalten.
 | [03-linux-troubleshooting](03-linux-troubleshooting/) | Runbook für häufige Linux-Incidents (Debian/Ubuntu) |
 | [04-samba-ad-lab](04-samba-ad-lab/) | Active-Directory-Domäne mit Samba AD DC: Benutzer, Gruppen, OUs, Passwortrichtlinie |
 | [05-m365-basics](05-m365-basics/) | Admin-Grundlagen Microsoft 365 / Entra ID: Benutzer, Lizenzen, MFA, Admin Center |
-| [06-windows-domain](06-windows-domain/) | Windows-Server-2025-Domäne, die ich auf diesem PC heraufgestuft habe (`lab.local`) |
+| [06-windows-domain](06-windows-domain/) | Windows-Server-2025-Domäne, die ich heraufgestuft habe (`lab.local`). 4. Okt. 2026: Client schon beigetreten, Helpdesk-Reset, ein Ticket in `evidence/` |
 
-Personen, Firmen und Tickets sind fiktiv (Firma: *Exemple SARL*,
-Domäne `example.com`).
+Beispielpersonen und Firmen im Ticket-Lab sind erfunden (Firma:
+*Exemple SARL*, Domäne `example.com`). Das Ticket vom 4. Okt. 2026 in
+Lab 06 kommt aus meinem eigenen Lab.

@@ -84,7 +84,7 @@ exploit procedures in it.
 
 For a helpdesk seat or a junior SOC seat, start here:
 
-1. [Windows domain](helpdesk/06-windows-domain/) — a real AD DS lab, still **In progress**. The page lists what is still open (a written domain join, and a helpdesk session as the helpdesk user).
+1. [Windows domain](helpdesk/06-windows-domain/) — a real AD DS lab, still **In progress**. On 4 Oct 2026 `win11-soc` was already in `lab.local`, a helpdesk reset is written up, and the empty workstation GPO is the ticket. Still open: an interactive helpdesk sign-in, and an unlock (lockout threshold is 0).
 2. [Linux troubleshooting](helpdesk/03-linux-troubleshooting/) — **Done**, with terminal output in `evidence/`.
 3. [Incident write-ups](soc-analyst/03-incident-writeups/) and [Sigma rules](soc-analyst/05-sigma-rules/) — how I read a log, and how I write a detection.
 4. [Python](python/) and [Rust](rust/) — small tools with tests.
@@ -107,11 +107,11 @@ Other practice accounts, same rule (in progress, no rank claimed here):
 
 One SOC alert is already written end to end, with a UTC timeline:
 [IR-03](soc-analyst/03-incident-writeups/IR-03-evtx-password-spray.md).
-Three home-lab sheets are still blank on purpose. I fill them only
-after I run the command: a helpdesk session as the helpdesk user, a
-written domain join of the Windows 11 guest, and one real ticket from
-this lab. The forms are in
-[templates/career/](templates/career/).
+On 4 Oct 2026 I checked `win11-soc` in `lab.local`, reset one staff
+password with the helpdesk credential, and wrote the empty
+workstation GPO as a ticket. Output is in
+[lab 06](helpdesk/06-windows-domain/). The forms in
+[templates/career/](templates/career/) stay blank for the next run.
 
 ## Contact
 

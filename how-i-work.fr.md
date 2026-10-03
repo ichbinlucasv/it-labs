@@ -90,7 +90,7 @@ contient pas de mode d'emploi pour attaquer un système.
 
 Pour un poste helpdesk ou un poste SOC junior, commencer ici :
 
-1. [Domaine Windows](helpdesk/06-windows-domain/) — un vrai lab AD DS, encore **In progress**. La page dit ce qui reste ouvert (une jonction au domaine écrite, et une session helpdesk avec le compte helpdesk).
+1. [Domaine Windows](helpdesk/06-windows-domain/) — un vrai lab AD DS, encore **In progress**. Le 4 oct. 2026 `win11-soc` était déjà dans `lab.local`, une réinitialisation helpdesk est écrite, et la GPO poste vide est le ticket. Encore ouvert : une session interactive en helpdesk, et un déverrouillage (le seuil est 0).
 2. [Dépannage Linux](helpdesk/03-linux-troubleshooting/) — **Done**, avec la sortie du terminal dans `evidence/`.
 3. [Rapports d'incident](soc-analyst/03-incident-writeups/) et [règles Sigma](soc-analyst/05-sigma-rules/) — comment je lis un journal, et comment j'écris une détection.
 4. [Python](python/) et [Rust](rust/) — de petits outils avec des tests.
@@ -114,11 +114,11 @@ Autres comptes de pratique, même règle (en cours, pas de rang affiché ici) :
 
 Une alerte SOC est déjà écrite jusqu'au bout, avec une chronologie UTC :
 [IR-03](soc-analyst/03-incident-writeups/IR-03-evtx-password-spray.md).
-Trois fiches du lab à la maison restent vides exprès. Je les remplis
-seulement après avoir lancé la commande : une session helpdesk avec le
-compte helpdesk, une jonction au domaine écrite pour l'invité Windows 11,
-et un vrai ticket de ce lab. Les formulaires sont dans
-[templates/career/](templates/career/).
+Le 4 oct. 2026 j'ai vérifié `win11-soc` dans `lab.local`, réinitialisé
+un mot de passe staff avec le credential helpdesk, et écrit la GPO
+poste vide comme ticket. La sortie est dans le
+[lab 06](helpdesk/06-windows-domain/). Les formulaires dans
+[templates/career/](templates/career/) restent vides pour la prochaine fois.
 
 ## Contact
 

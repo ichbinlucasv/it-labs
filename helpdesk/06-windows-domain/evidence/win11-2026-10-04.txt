@@ -1,0 +1,79 @@
+# win11-soc and a helpdesk reset, 4 Oct 2026
+# Guest clock. Commands run through the libvirt guest agent.
+# The agent process is NT AUTHORITY\SYSTEM. AD calls that say
+# LAB\helpdesk used that account's credential. No password is in this file.
+# jdoe's password was changed and then put back, so the lab account
+# still matches the local notes. Those notes are not in git.
+
+## win11-soc
+Name=WIN11-SOC
+Domain=lab.local
+PartOfDomain=True
+OS=Microsoft Windows 11 Enterprise Evaluation 10.0.26200
+IPv4=192.168.122.20 if=Ethernet
+DNS=192.168.122.10,192.168.122.1
+moduleAD=True
+rsat=Installed
+Computer DN from gpresult: CN=WIN11-SOC,OU=Workstations,DC=lab,DC=local
+Group Policy applied from: DC01.lab.local
+Last computer policy apply on the guest clock: 04.10.2026 00:56:39
+
+Applied Group Policy Objects (gpresult /SCOPE COMPUTER /R):
+  Default Domain Policy
+  Lab-Logon-Banner
+  Lab-PowerShell-Logging
+  Lab-Region-Keyboard
+
+## dc01, same night
+Name=DC01
+Domain=lab.local
+PartOfDomain=True
+OS=Microsoft Windows Server 2025 Datacenter Evaluation 10.0.26100
+IPv4=192.168.122.10 if=Ethernet
+LOCKOUT_THRESHOLD=0
+LOCKOUT_DURATION=00:10:00
+LOCKOUT_WINDOW=00:10:00
+
+GPO links:
+  DC=lab,DC=local
+    Default Domain Policy
+    Lab-Logon-Banner
+    Lab-PowerShell-Logging
+    Lab-Region-Keyboard
+  OU=Workstations,DC=lab,DC=local
+    Lab-Workstation-Hardening
+    plus the four inherited from the domain
+
+GPO status:
+  Lab-Workstation-Hardening status=AllSettingsEnabled modified=09/05/2026 19:26:48
+  Lab-Logon-Banner status=AllSettingsEnabled modified=09/07/2026 12:41:32
+  Lab-PowerShell-Logging status=AllSettingsEnabled modified=09/05/2026 19:26:48
+  Lab-Region-Keyboard status=AllSettingsEnabled modified=09/07/2026 12:30:58
+
+Get-GPOReport -ReportType Xml:
+  Lab-Workstation-Hardening bytes=7140 ExtensionData=0
+  Lab-Logon-Banner bytes=8006 ExtensionData=1
+
+The hardening GPO is linked to the workstation OU and enabled.
+It has no settings in it. gpresult does not list it as applied.
+The logon banner does have a setting, and gpresult does list it.
+
+## Helpdesk reset of jdoe, from win11-soc
+PROCESS=NT AUTHORITY\SYSTEM
+Caller groups read with the helpdesk credential:
+  Password-Reset, Helpdesk-T1, Account Operators
+
+Same client, jdoe's own credential, Set-ADAccountPassword on asmith:
+  NEGATIVE=UnauthorizedAccessException Access is denied
+
+Same client, helpdesk credential, Set-ADAccountPassword -Reset on jdoe:
+  BEFORE user=jdoe enabled=True locked=False pwset=09/05/2026 19:26:49
+  AFTER  user=jdoe locked=False pwset=10/04/2026 00:56:55
+  RESTORED user=jdoe locked=False pwset=10/04/2026 00:57:36
+
+Search-ADAccount -LockedOut would not show a lab account.
+The domain lockout threshold is 0, so an account does not lock.
+I did not fake an unlock.
+
+Not done this night: an interactive desktop sign-in as helpdesk.
+The reset above is the helpdesk account's rights, from the guest agent.
