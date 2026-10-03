@@ -17,18 +17,21 @@ This repo is the practice, not a finished résumé. **Done** means I ran the
 check and kept the output. It does not mean I am fast, or that I would
 skip the docs on a real ticket.
 
-I use bash every day, PowerShell on the Windows lab, and Python and Rust
-for the small tools below. C is on the study list. There is no C project
-in this repo yet.
+I use bash every day and PowerShell on the Windows lab. Python is the
+small toolkit below. Rust is the language I like building in:
+`log-analyzer` and `fim` here, plus [Frihart](https://codeberg.org/ichbinlucasv/Frihart)
+and [HashChat](https://codeberg.org/ichbinlucasv/HashChat) in their own
+repos. C is on the study list. There is no C project in this repo yet.
 
 Portuguese is my first language. French and English are both C1.
 Security+ SY0-701 and HTB Academy are in progress.
 
 The machine, the languages, and the AI tools are in
 [How I work](how-i-work.md). Short version: CachyOS (Arch) every day,
-Windows only as virtual machines, Grok for a second pass, and a local
-Qwen model through Ollama, shared by Hermes, OpenClaw, and Odysseus.
-A lab is **Done** when I have run the check myself.
+Fedora is the other distro I like, Windows only as virtual machines,
+Grok for a second pass, and a local Qwen model through Ollama, shared
+by Hermes, OpenClaw, and Odysseus. A lab is **Done** when I have run
+the check myself.
 
 ### Lab status
 
@@ -54,7 +57,7 @@ Current count: 10 Done, 4 In progress, 3 Planned (see the skills matrix below).
 
 | Path | What it contains |
 |------|------------------|
-| [how-i-work.md](how-i-work.md) | Daily machine (CachyOS), the languages I use, and how I use Grok plus a local Qwen model |
+| [how-i-work.md](how-i-work.md) | Daily machine (CachyOS / Arch), the Fedora drill, the languages, and Grok plus a local Qwen model |
 | [`helpdesk/`](helpdesk/) | Tickets, Linux and Windows troubleshooting, a Samba AD lab, and a Windows Server domain I actually promoted (`lab.local`) |
 | [`networking/`](networking/) | Subnetting exercises + answer key, packet-capture analysis (Wireshark/tcpdump), nftables host firewall |
 | [`soc-analyst/`](soc-analyst/) | Wazuh home lab, Sysmon + auditd log analysis (synthetic samples), incident write-up templates on public datasets, ATT&CK mapping, Sigma rules |

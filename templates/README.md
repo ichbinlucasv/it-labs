@@ -25,6 +25,17 @@ drop one for six months. It is not a list I finish before breakfast.
 | Sat | Lab, if the guests are on. [Lab 06](../helpdesk/06-windows-domain/) or a Linux break/fix. Or one [practice note](career/practice-note.md) from TryHackMe, HTB, Boot.dev, Kali, or BlackArch. | Only if Friday's language is still fuzzy. |
 | Sun | Off, or [interview story](career/story.md) from a real lab note. | Off. |
 
+## Linux I keep practising
+
+Arch is the daily machine. Fedora is the other distro I like, and the
+one that looks like a lot of company Linux. One sheet can replace the
+language block on a week when I am less sure of the distro than of the language.
+
+| Sheet | When |
+| --- | --- |
+| [arch.md](linux/arch.md) | On CachyOS. Full upgrade, failed units, the error log. |
+| [fedora.md](linux/fedora.md) | `dnf`, SELinux, firewalld. A line counts only after I ran it. |
+
 ## Helpdesk
 
 The long ticket shape already lives in

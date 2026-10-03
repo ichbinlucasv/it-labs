@@ -29,6 +29,17 @@ vor dem Frühstück fertig mache.
 | Sa | Labor, wenn die Gäste an sind. [Lab 06](../helpdesk/06-windows-domain/) oder ein Linux-Break/Fix. | Nur wenn die Sprache von Freitag noch unklar ist. |
 | So | Frei, oder [Geschichte fürs Gespräch](career/story.md) aus einer echten Labornotiz. | Frei. |
 
+## Linux, das ich weiter übe
+
+Arch ist der Alltagsrechner. Fedora ist die andere Distribution, die
+ich mag, und die, die vielem Firmen-Linux ähnlich sieht. Ein Blatt kann den Sprachblock ersetzen, in einer Woche, in der ich bei
+der Distribution unsicherer bin als bei der Sprache.
+
+| Blatt | Wann |
+| --- | --- |
+| [arch.de.md](linux/arch.de.md) | Auf CachyOS. Volles Upgrade, fehlgeschlagene Units, Fehlerlog. |
+| [fedora.de.md](linux/fedora.de.md) | `dnf`, SELinux, firewalld. Eine Zeile zählt erst nach dem Lauf. |
+
 ## Helpdesk
 
 Die lange Form des Tickets steht schon in

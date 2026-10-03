@@ -54,6 +54,16 @@ If awk and the function disagree, the bug is mine. I write which field I
 counted. The combined log puts the status in field 9. If this sample is
 shaped differently, I say which field I actually used.
 
+## Before I say it works
+
+- `cargo test` and `cargo clippy --all-targets -- -D warnings` are the
+  bar in this repo. Green means I ran them, not that I remember them.
+- A function that can fail returns `Result`. I do not hide that with
+  `unwrap`.
+- One compiler error, one change, then I compile again. I read the
+  first error.
+- This workspace forbids `unsafe`. I leave it that way.
+
 ## I still mix up
 
 - `&str` and `String` when I only needed to look

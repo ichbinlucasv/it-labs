@@ -54,6 +54,17 @@ Si awk et la fonction ne sont pas d'accord, le bug est le mien. J'écris
 quel champ j'ai compté. Le combined log met le statut dans le champ 9. Si
 cet échantillon n'a pas cette forme, je dis quel champ j'ai vraiment utilisé.
 
+## Avant de dire que ça marche
+
+- `cargo test` et `cargo clippy --all-targets -- -D warnings` sont la
+  barre dans ce dépôt. Vert veut dire que je les ai lancés, pas que je
+  m'en souviens.
+- Une fonction qui peut échouer renvoie `Result`. Je ne cache pas ça
+  avec `unwrap`.
+- Une erreur du compilateur, un changement, puis je recompile. Je lis
+  la première erreur.
+- Cet espace de travail interdit `unsafe`. Je le laisse comme ça.
+
 ## Je mélange encore
 
 - `&str` et `String` alors que je voulais seulement regarder

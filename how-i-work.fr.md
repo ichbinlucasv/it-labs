@@ -11,6 +11,24 @@ J'utilise CachyOS tous les jours. CachyOS, c'est Arch Linux, avec son
 propre noyau et ses propres dépôts. Je l'ai installé, je le mets à jour,
 et je le répare moi-même. Le disque est chiffré.
 
+Fedora est l'autre distribution que j'aime. Un poste helpdesk tombe
+souvent sur la famille Red Hat, alors je m'entraîne exprès à `dnf`,
+SELinux et firewalld. Il n'y a pas de lab Fedora marqué Done ici.
+Debian, je l'ai déjà fait tourner, dans les conteneurs du lab Samba et
+du dépannage Linux. Les deux fiches :
+[templates/linux/arch.fr.md](templates/linux/arch.fr.md) et
+[templates/linux/fedora.fr.md](templates/linux/fedora.fr.md).
+
+Règles que je suis :
+
+- Arch : un `pacman -Syu` complet. Pas de mise à jour partielle. Après,
+  je cherche les fichiers `.pacnew` et je les lis. Je n'en copie pas un
+  sur le fichier en service sans regarder.
+- Fedora : je lis un refus SELinux avant de couper SELinux. Je liste la
+  zone du pare-feu avant d'ouvrir un port.
+- Les deux : `systemctl --failed` et le journal d'erreurs de ce
+  démarrage, avant de réinstaller un paquet.
+
 Le lab Windows tourne sur le même PC. libvirt héberge un contrôleur de
 domaine Windows Server 2025 évaluation (`dc01`, domaine `lab.local`) et
 un client Windows 11 évaluation (`win11-soc`). Compte rendu :
@@ -38,7 +56,7 @@ Ils ne sont pas dans ce dépôt.
 
 | Langage | Comment je l'utilise |
 |---------|----------------------|
-| bash | Tous les jours sur CachyOS, et dans le lab de dépannage Linux |
+| bash | Tous les jours sur CachyOS (Arch), et dans le lab de dépannage Linux. Fiche Fedora dans [templates/linux/](templates/linux/fedora.fr.md) |
 | PowerShell | Sur le lab de domaine Windows, et dans les exercices |
 | Python | Les outils `seclab` de ce dépôt, avec pytest |
 | Rust | `log-analyzer` et `fim` ici. Deux autres dépôts publics : [Frihart](https://codeberg.org/ichbinlucasv/Frihart) et [HashChat](https://codeberg.org/ichbinlucasv/HashChat) |
@@ -89,7 +107,7 @@ Pour un poste helpdesk ou un poste SOC junior, commencer ici :
 1. [Domaine Windows](helpdesk/06-windows-domain/) — un vrai lab AD DS, encore **In progress**. Le 4 oct. 2026 `win11-soc` était déjà dans `lab.local`, une réinitialisation helpdesk est écrite, et la GPO poste vide est le ticket. Encore ouvert : une session interactive en helpdesk, et un déverrouillage (le seuil est 0).
 2. [Dépannage Linux](helpdesk/03-linux-troubleshooting/) — **Done**, avec la sortie du terminal dans `evidence/`.
 3. [Rapports d'incident](soc-analyst/03-incident-writeups/) et [règles Sigma](soc-analyst/05-sigma-rules/) — comment je lis un journal, et comment j'écris une détection.
-4. [Python](python/) et [Rust](rust/) — de petits outils avec des tests.
+4. [Rust](rust/) — `log-analyzer` et `fim`, avec des tests et clippy propre. Le Rust plus long : [Frihart](https://codeberg.org/ichbinlucasv/Frihart) et [HashChat](https://codeberg.org/ichbinlucasv/HashChat). [Python](python/) est l'autre petite boîte à outils, avec pytest.
 5. [Modèles](templates/) — les fiches que j'utilise pour m'entraîner sur une journée de travail.
 
 ## Ce que j'apprends encore

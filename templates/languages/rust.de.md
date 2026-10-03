@@ -55,6 +55,17 @@ schreibe auf, welches Feld ich gezählt habe. Das Combined Log legt den
 Status in Feld 9. Wenn dieses Beispiel anders aufgebaut ist, sage ich,
 welches Feld ich tatsächlich benutzt habe.
 
+## Bevor ich sage, dass es läuft
+
+- `cargo test` und `cargo clippy --all-targets -- -D warnings` sind die
+  Latte in diesem Repo. Grün heisst, ich habe sie laufen lassen, nicht
+  dass ich sie auswendig kann.
+- Eine Funktion, die fehlschlagen kann, gibt `Result` zurück. Das
+  verstecke ich nicht mit `unwrap`.
+- Ein Compilerfehler, eine Änderung, dann kompiliere ich wieder. Ich
+  lese den ersten Fehler.
+- Dieser Workspace verbietet `unsafe`. Das lasse ich so.
+
 ## Das verwechsle ich noch
 
 - `&str` und `String`, obwohl ich nur schauen wollte

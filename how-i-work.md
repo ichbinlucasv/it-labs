@@ -11,6 +11,23 @@ I use CachyOS every day. CachyOS is Arch Linux, with its own kernel and
 repositories. I installed it, I update it, and I repair it myself. The
 disk is encrypted.
 
+Fedora is the other distro I like. A helpdesk seat often sees the Red
+Hat family, so I practise `dnf`, SELinux, and firewalld on purpose.
+There is no Fedora lab marked Done here. Debian is the one I already
+ran, in the containers for Samba and the Linux break/fix lab. The two
+sheets are [templates/linux/arch.md](templates/linux/arch.md) and
+[templates/linux/fedora.md](templates/linux/fedora.md).
+
+Rules I follow:
+
+- Arch: one full `pacman -Syu`. I do not partial-upgrade. After that I
+  look for `.pacnew` files and I read them. I do not copy one over the
+  live file without looking.
+- Fedora: I read an SELinux denial before I turn SELinux off. I list
+  the firewall zone before I open a port.
+- Both: `systemctl --failed` and the error log for this boot, before I
+  reinstall a package.
+
 The Windows lab runs on that same PC. libvirt hosts a Windows Server
 2025 evaluation domain controller (`dc01`, domain `lab.local`) and a
 Windows 11 evaluation client (`win11-soc`). Write-up:
@@ -36,7 +53,7 @@ passwords stay in a password manager. They are not in this repository.
 
 | Language | How I use it |
 |----------|----------------|
-| bash | Every day on CachyOS, and in the Linux troubleshooting lab |
+| bash | Every day on CachyOS (Arch), and in the Linux troubleshooting lab. Fedora drill in [templates/linux/](templates/linux/fedora.md) |
 | PowerShell | On the Windows domain lab, and in the language drills |
 | Python | The `seclab` tools in this repo, with pytest |
 | Rust | `log-analyzer` and `fim` here. Two other public repos: [Frihart](https://codeberg.org/ichbinlucasv/Frihart) and [HashChat](https://codeberg.org/ichbinlucasv/HashChat) |
@@ -82,7 +99,7 @@ For a helpdesk seat or a junior SOC seat, start here:
 1. [Windows domain](helpdesk/06-windows-domain/) — a real AD DS lab, still **In progress**. On 4 Oct 2026 `win11-soc` was already in `lab.local`, a helpdesk reset is written up, and the empty workstation GPO is the ticket. Still open: an interactive helpdesk sign-in, and an unlock (lockout threshold is 0).
 2. [Linux troubleshooting](helpdesk/03-linux-troubleshooting/) — **Done**, with terminal output in `evidence/`.
 3. [Incident write-ups](soc-analyst/03-incident-writeups/) and [Sigma rules](soc-analyst/05-sigma-rules/) — how I read a log, and how I write a detection.
-4. [Python](python/) and [Rust](rust/) — small tools with tests.
+4. [Rust](rust/) — `log-analyzer` and `fim`, with tests and clippy clean. Longer Rust code: [Frihart](https://codeberg.org/ichbinlucasv/Frihart) and [HashChat](https://codeberg.org/ichbinlucasv/HashChat). [Python](python/) is the other small toolkit, with pytest.
 5. [Templates](templates/) — the forms I use to practise a work day.
 
 ## What I am still learning

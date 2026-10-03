@@ -29,6 +29,18 @@ finir avant le petit-déjeuner.
 | Sam | Labo, si les invités sont allumés. [Lab 06](../helpdesk/06-windows-domain/) ou un break/fix Linux. | Seulement si la langue de vendredi est encore floue. |
 | Dim | Repos, ou [récit d'entretien](career/story.md) à partir d'une vraie note de labo. | Repos. |
 
+## Linux que je continue à pratiquer
+
+Arch est la machine de tous les jours. Fedora est l'autre distribution
+que j'aime, et celle qui ressemble à beaucoup de Linux d'entreprise.
+Une fiche peut remplacer le bloc de langue une semaine où je suis moins
+sûr de la distribution que de la langue.
+
+| Fiche | Quand |
+| --- | --- |
+| [arch.fr.md](linux/arch.fr.md) | Sur CachyOS. Mise à jour complète, unités en échec, journal d'erreurs. |
+| [fedora.fr.md](linux/fedora.fr.md) | `dnf`, SELinux, firewalld. Une ligne compte seulement après l'exécution. |
+
 ## Helpdesk
 
 La forme longue du ticket est déjà dans

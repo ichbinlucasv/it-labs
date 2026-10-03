@@ -13,6 +13,24 @@ Kernel und eigenen Paketquellen. Ich habe es installiert, ich
 aktualisiere es, und ich repariere es selbst. Die Platte ist
 verschlüsselt.
 
+Fedora ist die andere Distribution, die ich mag. Ein Helpdesk-Platz
+sieht oft die Red-Hat-Familie, deshalb übe ich `dnf`, SELinux und
+firewalld mit Absicht. Ein Fedora-Lab mit Status Done gibt es hier
+nicht. Debian habe ich schon laufen lassen, in den Containern für
+Samba und die Linux-Fehleranalyse. Die zwei Blätter:
+[templates/linux/arch.de.md](templates/linux/arch.de.md) und
+[templates/linux/fedora.de.md](templates/linux/fedora.de.md).
+
+Regeln, die ich halte:
+
+- Arch: ein volles `pacman -Syu`. Kein teilweises Upgrade. Danach suche
+  ich `.pacnew`-Dateien und lese sie. Ich kopiere keine blind über die
+  laufende Datei.
+- Fedora: eine SELinux-Ablehnung lese ich, bevor ich SELinux abschalte.
+  Die Firewall-Zone liste ich, bevor ich einen Port öffne.
+- Beide: `systemctl --failed` und das Fehlerlog dieses Starts, bevor
+  ich ein Paket neu installiere.
+
 Das Windows-Lab läuft auf demselben Rechner. libvirt stellt einen
 Windows Server 2025 Evaluation Domain Controller bereit (`dc01`,
 Domäne `lab.local`) und einen Windows 11 Evaluation Client
@@ -41,7 +59,7 @@ liegen nicht in diesem Repo.
 
 | Sprache | Wie ich sie benutze |
 |---------|---------------------|
-| bash | Jeden Tag auf CachyOS, und im Linux-Fehleranalyse-Lab |
+| bash | Jeden Tag auf CachyOS (Arch), und im Linux-Fehleranalyse-Lab. Fedora-Übung in [templates/linux/](templates/linux/fedora.de.md) |
 | PowerShell | Im Windows-Domänen-Lab, und in den Übungen |
 | Python | Die `seclab`-Werkzeuge in diesem Repo, mit pytest |
 | Rust | `log-analyzer` und `fim` hier. Zwei weitere öffentliche Repos: [Frihart](https://codeberg.org/ichbinlucasv/Frihart) und [HashChat](https://codeberg.org/ichbinlucasv/HashChat) |
@@ -92,7 +110,7 @@ Für eine Helpdesk-Stelle oder eine Junior-SOC-Stelle zuerst hier:
 1. [Windows-Domäne](helpdesk/06-windows-domain/) — ein echtes AD-DS-Lab, noch **In progress**. Am 4. Okt. 2026 war `win11-soc` schon in `lab.local`, ein Helpdesk-Reset ist aufgeschrieben, und die leere Workstation-GPO ist das Ticket. Noch offen: eine interaktive Helpdesk-Anmeldung, und eine Entsperrung (Sperrschwelle 0).
 2. [Fehleranalyse Linux](helpdesk/03-linux-troubleshooting/) — **Done**, mit Terminalausgabe in `evidence/`.
 3. [Incident-Berichte](soc-analyst/03-incident-writeups/) und [Sigma-Regeln](soc-analyst/05-sigma-rules/) — wie ich ein Log lese, und wie ich eine Erkennung schreibe.
-4. [Python](python/) und [Rust](rust/) — kleine Werkzeuge mit Tests.
+4. [Rust](rust/) — `log-analyzer` und `fim`, mit Tests und sauberem clippy. Längerer Rust-Code: [Frihart](https://codeberg.org/ichbinlucasv/Frihart) und [HashChat](https://codeberg.org/ichbinlucasv/HashChat). [Python](python/) ist der andere kleine Werkzeugkasten, mit pytest.
 5. [Vorlagen](templates/) — die Formulare für einen Übungstag.
 
 ## Was ich noch lerne
