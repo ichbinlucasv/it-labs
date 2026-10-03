@@ -15,10 +15,10 @@ est Windows Server.
 
 Hôte : mon PC Linux, libvirt, NAT `192.168.122.0/24`.
 
-| Invité | Rôle | RAM | vCPU | Adresse |
-| --- | --- | --- | --- | --- |
-| `dc01` | Windows Server 2025 évaluation, AD DS | 8 GB | 4 | 192.168.122.10 |
-| `win11-soc` | Windows 11 Entreprise évaluation | 32 GB | 8 | 192.168.122.20 |
+| Invité | Rôle | Adresse |
+| --- | --- | --- |
+| `dc01` | Windows Server 2025 évaluation, AD DS | 192.168.122.10 |
+| `win11-soc` | Windows 11 Entreprise évaluation | 192.168.122.20 |
 
 Domaine `lab.local`, NetBIOS `LAB`. Le DNS sur le DC, c'est lui-même, puis
 la passerelle libvirt `192.168.122.1`.

@@ -2,7 +2,7 @@
 
 [English](README.md) · **Français** · [Deutsch](README.de.md)
 
-**Status:** Planned — procédure de déploiement et de triage écrite ; aucun serveur Wazuh n'a encore été déployé. Pas lancé sur ma machine de lab actuelle : le serveur tout-en-un demande environ 8 GB de RAM pour lui-même plus une VM d'agent Windows, plus que ce que cette machine partagée peut donner ; prévu sur une VM dédiée.
+**Status:** Planned — procédure de déploiement et de triage écrite. Aucun serveur Wazuh n'a encore été déployé.
 
 ## Objectif
 

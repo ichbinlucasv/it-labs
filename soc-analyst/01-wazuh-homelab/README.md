@@ -2,7 +2,7 @@
 
 **English** · [Français](README.fr.md) · [Deutsch](README.de.md)
 
-**Status:** Planned — written deployment and triage procedure; no Wazuh server has been deployed yet. Not run on my current lab machine: the all-in-one server needs about 8 GB RAM for itself plus a Windows agent VM, more than that shared machine can spare; planned on a dedicated VM.
+**Status:** Planned — written deployment and triage procedure. No Wazuh server has been deployed yet.
 
 ## Goal
 

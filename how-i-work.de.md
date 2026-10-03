@@ -10,10 +10,8 @@ Rahmen.
 
 Ich benutze CachyOS jeden Tag. CachyOS ist Arch Linux, mit eigenem
 Kernel und eigenen Paketquellen. Ich habe es installiert, ich
-aktualisiere es, und ich repariere es selbst. Die Shell ist zsh.
-Pakete kommen von pacman und vom AUR-Helfer paru. Die Platte ist LUKS,
-das Dateisystem ist btrfs, und Snapper-Snapshots sind der Weg zurück
-nach einem schlechten Update.
+aktualisiere es, und ich repariere es selbst. Die Platte ist
+verschlüsselt.
 
 Das Windows-Lab läuft auf demselben Rechner. libvirt stellt einen
 Windows Server 2025 Evaluation Domain Controller bereit (`dc01`,
@@ -36,9 +34,8 @@ Flags und Angriffsschritte bleiben aus diesem Repo. Die leere Notiz ist
 
 Auf dem Host benutze ich ausserdem git, neovim, rustup, Python,
 Wireshark und Podman ohne Root. Der Befehl `docker` auf diesem Rechner
-ist Podman. Lab-Passwörter bleiben in einem Passwortmanager
-(KeePassXC) und in lokalen Setup-Notizen. Sie liegen nicht in diesem
-Repo.
+ist Podman. Lab-Passwörter bleiben in einem Passwortmanager. Sie
+liegen nicht in diesem Repo.
 
 ## Sprachen
 
@@ -62,17 +59,15 @@ nach git.
 
 ## KI
 
-Ich benutze KI, und das soll auf der Seite stehen.
+Ich benutze KI bei dieser Arbeit, und ich sage es.
 
 **Grok** (xAI) ist der Assistent für Planung, für einen zweiten
 Durchgang beim Schreiben, und für die schwereren Builds. Ich arbeite
 damit im Terminal.
 
 Auf demselben Rechner läuft ein lokales Modell, damit Lernen keine
-Cloud-Schlüssel braucht. **Ollama** stellt **Qwen** (`qwen3-coder:30b`)
-auf meiner AMD Radeon RX 7900 XTX bereit. Eine Kopie dieses Modells
-füllt die 24-GB-GPU, deshalb teilen sich die lokalen Programme dasselbe
-Modell:
+Cloud-Schlüssel braucht. **Ollama** stellt ein **Qwen**-Modell bereit.
+Drei lokale Programme teilen es sich:
 
 - **Hermes** ist der lokale Coding-Assistent. Ich frage nach einer
   Funktion, dann kompiliere ich das Ergebnis oder ich starte es.

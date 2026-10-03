@@ -15,10 +15,10 @@ hier ist Windows Server.
 
 Host: mein Linux-PC, libvirt, NAT `192.168.122.0/24`.
 
-| Gast | Rolle | RAM | vCPU | Adresse |
-| --- | --- | --- | --- | --- |
-| `dc01` | Windows Server 2025 Evaluierung, AD DS | 8 GB | 4 | 192.168.122.10 |
-| `win11-soc` | Windows 11 Enterprise Evaluierung | 32 GB | 8 | 192.168.122.20 |
+| Gast | Rolle | Adresse |
+| --- | --- | --- |
+| `dc01` | Windows Server 2025 Evaluierung, AD DS | 192.168.122.10 |
+| `win11-soc` | Windows 11 Enterprise Evaluierung | 192.168.122.20 |
 
 Domäne `lab.local`, NetBIOS `LAB`. DNS auf dem DC ist er selbst, danach das
 libvirt-Gateway `192.168.122.1`.

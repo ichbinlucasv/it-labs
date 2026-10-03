@@ -9,9 +9,7 @@ actually use. The labs are the proof. This page is the context.
 
 I use CachyOS every day. CachyOS is Arch Linux, with its own kernel and
 repositories. I installed it, I update it, and I repair it myself. The
-shell is zsh. Packages come from pacman and from the AUR helper paru.
-The disk is LUKS, the filesystem is btrfs, and snapper snapshots are how
-I get back from a bad update.
+disk is encrypted.
 
 The Windows lab runs on that same PC. libvirt hosts a Windows Server
 2025 evaluation domain controller (`dc01`, domain `lab.local`) and a
@@ -32,8 +30,7 @@ mattered. Flags and attack steps stay off this repo. The blank note is
 
 On the host I also use git, neovim, rustup, Python, Wireshark, and
 rootless Podman. The `docker` command on this machine is Podman. Lab
-passwords stay in a password manager (KeePassXC) and in local setup
-notes. They are not in this repository.
+passwords stay in a password manager. They are not in this repository.
 
 ## Languages
 
@@ -56,15 +53,13 @@ I work. A filled guess does not belong in git.
 
 ## AI
 
-I use AI, and I want that to be on the page.
+I use AI on this work, and I say so.
 
 **Grok** (xAI) is the assistant I use for planning, for a second pass on
 writing, and for the harder builds. I work with it in the terminal.
 
 On the same PC I run a local model, so study chat does not need a cloud
-key. **Ollama** serves **Qwen** (`qwen3-coder:30b`) on my AMD Radeon
-RX 7900 XTX. One copy of that model fills the 24 GB GPU, so the local
-apps share it:
+key. **Ollama** serves a **Qwen** model. Three local apps share it:
 
 - **Hermes** is the local coding assistant. I ask for one function at a
   time, then I compile or run the result.

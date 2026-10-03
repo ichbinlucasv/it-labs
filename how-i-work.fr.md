@@ -9,10 +9,7 @@ j'utilise vraiment. Les labs sont la preuve. Cette page est le contexte.
 
 J'utilise CachyOS tous les jours. CachyOS, c'est Arch Linux, avec son
 propre noyau et ses propres dépôts. Je l'ai installé, je le mets à jour,
-et je le répare moi-même. Le shell est zsh. Les paquets viennent de
-pacman et de l'aide AUR paru. Le disque est en LUKS, le système de
-fichiers est btrfs, et les instantanés snapper servent à revenir après
-une mauvaise mise à jour.
+et je le répare moi-même. Le disque est chiffré.
 
 Le lab Windows tourne sur le même PC. libvirt héberge un contrôleur de
 domaine Windows Server 2025 évaluation (`dc01`, domaine `lab.local`) et
@@ -34,8 +31,8 @@ hors de ce dépôt. La fiche vide est
 
 Sur l'hôte j'utilise aussi git, neovim, rustup, Python, Wireshark, et
 Podman sans root. La commande `docker` sur cette machine, c'est Podman.
-Les mots de passe du lab restent dans un gestionnaire (KeePassXC) et
-dans des notes locales d'installation. Ils ne sont pas dans ce dépôt.
+Les mots de passe du lab restent dans un gestionnaire de mots de passe.
+Ils ne sont pas dans ce dépôt.
 
 ## Langages
 
@@ -59,16 +56,15 @@ dans git.
 
 ## IA
 
-J'utilise l'IA, et je veux que ce soit écrit ici.
+J'utilise l'IA sur ce travail, et je le dis.
 
 **Grok** (xAI) est l'assistant que j'utilise pour planifier, pour une
 relecture, et pour les constructions plus difficiles. Je travaille avec
 lui dans le terminal.
 
 Sur le même PC je fais tourner un modèle local, pour que le travail
-d'étude n'ait pas besoin d'une clé cloud. **Ollama** sert **Qwen**
-(`qwen3-coder:30b`) sur ma Radeon RX 7900 XTX. Une copie de ce modèle
-remplit le GPU de 24 Go, donc les applications locales le partagent :
+d'étude n'ait pas besoin d'une clé cloud. **Ollama** sert un modèle
+**Qwen**. Trois applications locales le partagent :
 
 - **Hermes** est l'assistant de code local. Je demande une fonction à
   la fois, puis je compile ou je lance le résultat.

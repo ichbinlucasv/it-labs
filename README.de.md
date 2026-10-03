@@ -41,12 +41,14 @@ lasse.
 
 Aktueller Stand: 10 Done, 4 In progress, 3 Planned (siehe Skills-Matrix unten).
 
-> Alle Hostnamen, Benutzer, Firmen und IP-Adressen sind fiktiv (`example.com`,
-> RFC-5737-Bereiche `192.0.2.0/24`, `198.51.100.0/24`, `203.0.113.0/24` und
-> RFC-1918-Bereiche für das Lab-LAN). Ausnahme: öffentliche Trainingsdatensätze
-> (z. B. Wireshark-Beispielmitschnitte, EVTX-ATTACK-SAMPLES) werden mit ihren
-> Originalwerten und Quellenangabe zitiert. Keine echten personenbezogenen
-> Daten, keine Zugangsdaten und keine offensiven Werkzeuge gegen Dritte.
+> Firmennamen, Benutzernamen und Adressen in den Übungen sind Beispiele
+> (`example.com`, RFC 5737 `192.0.2.0/24`, `198.51.100.0/24`, `203.0.113.0/24`).
+> Das Windows-Domänen-Lab ist ein echtes Lab auf diesem PC, im
+> Standard-NAT von libvirt `192.168.122.0/24`. Dieser Bereich ist nicht
+> mein Heimnetz, und er ist im Internet nicht geroutet. Öffentliche
+> Trainingsdaten (Wireshark-Beispiele, EVTX-ATTACK-SAMPLES) stehen mit
+> den Originalwerten und der Quelle. Keine Passwörter, keine öffentliche
+> IP, und keine Angriffsschritte gegen jemand anderen.
 
 ---
 

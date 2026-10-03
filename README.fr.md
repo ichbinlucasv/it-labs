@@ -42,12 +42,15 @@ vérification moi-même.
 
 Décompte actuel : 10 Done, 4 In progress, 3 Planned (voir la matrice de compétences ci-dessous).
 
-> Tous les noms d'hôtes, les utilisateurs, les sociétés et les adresses IP sont fictifs (`example.com`, plages RFC 5737 `192.0.2.0/24`,
-> `198.51.100.0/24`, `203.0.113.0/24`, et plages RFC 1918 pour le LAN du lab).
-> Exception : les jeux de données publics de formation (captures d'exemple Wireshark,
-> EVTX-ATTACK-SAMPLES) sont cités avec leurs valeurs d'origine et leur source.
-> Pas de vraies données personnelles, pas d'identifiants, et pas d'outils
-> offensifs visant des tiers.
+> Les noms de sociétés, d'utilisateurs et les adresses dans les exercices
+> sont des exemples (`example.com`, RFC 5737 `192.0.2.0/24`,
+> `198.51.100.0/24`, `203.0.113.0/24`). Le lab de domaine Windows est un
+> vrai lab sur ce PC, sur le NAT libvirt par défaut `192.168.122.0/24`.
+> Cette plage n'est pas mon LAN personnel, et elle n'est pas routée sur
+> internet. Les jeux de données publics (captures d'exemple Wireshark,
+> EVTX-ATTACK-SAMPLES) sont cités avec leurs valeurs d'origine et leur
+> source. Pas de mots de passe, pas d'IP publique, et pas d'étapes
+> offensives visant quelqu'un d'autre.
 
 ---
 

@@ -40,12 +40,13 @@ A lab is **Done** when I have run the check myself.
 
 Current count: 10 Done, 4 In progress, 3 Planned (see the skills matrix below).
 
-> All hostnames, users, companies and IP addresses are fictional (`example.com`, RFC 5737 ranges `192.0.2.0/24`,
-> `198.51.100.0/24`, `203.0.113.0/24`, and RFC 1918 ranges for the lab LAN).
-> Exception: public training datasets (Wireshark sample captures,
+> Company names, user names, and addresses in the exercises are examples
+> (`example.com`, RFC 5737 `192.0.2.0/24`, `198.51.100.0/24`, `203.0.113.0/24`).
+> The Windows domain lab is a real lab on this PC, on the default libvirt
+> NAT `192.168.122.0/24`. That range is not my home LAN, and it is not
+> routed on the internet. Public training sets (Wireshark samples,
 > EVTX-ATTACK-SAMPLES) are quoted with their original values and cited.
-> No real personal data, no credentials, and no offensive tooling aimed at
-> third parties.
+> No passwords, no public IP, and no offensive steps aimed at anyone else.
 
 ---
 
