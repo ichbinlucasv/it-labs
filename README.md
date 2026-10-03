@@ -158,6 +158,18 @@ On GitHub, copy the file to `.github/workflows/` and set `runs-on: ubuntu-latest
 
 - CompTIA Security+ SY0-701 — in progress
 - HTB Academy — SOC Analyst / fundamentals modules in progress
+- [TryHackMe](https://tryhackme.com/p/ichbinlucasv) — account open, in progress. No rank on this page.
+- [Boot.dev](https://www.boot.dev/u/ichbinlucasv) — account open. The public profile stays hidden until level 10, so no level here.
+
+One finished SOC write-up with a timeline is
+[IR-03](soc-analyst/03-incident-writeups/IR-03-evtx-password-spray.md).
+The helpdesk session, the Windows 11 domain join, and a ticket from this
+lab are still open. Forms:
+[templates/career/](templates/career/).
+
+## Contact
+
+codeberg.ecx3s@passmail.com
 
 ## Licence
 

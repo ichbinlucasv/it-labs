@@ -161,6 +161,18 @@ Sur GitHub, copier le fichier vers `.github/workflows/` et mettre `runs-on: ubun
 
 - CompTIA Security+ SY0-701 — en cours
 - HTB Academy — modules SOC Analyst / fondamentaux en cours
+- [TryHackMe](https://tryhackme.com/p/ichbinlucasv) — compte ouvert, en cours. Pas de rang sur cette page.
+- [Boot.dev](https://www.boot.dev/u/ichbinlucasv) — compte ouvert. Le profil public reste caché avant le niveau 10, donc pas de niveau ici.
+
+Un rapport SOC déjà fini, avec chronologie :
+[IR-03](soc-analyst/03-incident-writeups/IR-03-evtx-password-spray.md).
+La session helpdesk, la jonction de Windows 11 au domaine, et un ticket
+de ce lab sont encore ouverts. Formulaires :
+[templates/career/](templates/career/).
+
+## Contact
+
+codeberg.ecx3s@passmail.com
 
 ## Licence
 

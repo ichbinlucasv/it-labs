@@ -162,6 +162,18 @@ Auf GitHub die Datei nach `.github/workflows/` kopieren und `runs-on: ubuntu-lat
 
 - CompTIA Security+ SY0-701 — in Vorbereitung
 - HTB Academy — Module SOC Analyst / Grundlagen in Bearbeitung
+- [TryHackMe](https://tryhackme.com/p/ichbinlucasv) — Konto offen, in Arbeit. Kein Rang auf dieser Seite.
+- [Boot.dev](https://www.boot.dev/u/ichbinlucasv) — Konto offen. Das öffentliche Profil bleibt bis Level 10 verborgen, deshalb kein Level hier.
+
+Ein fertiger SOC-Bericht mit Zeitlinie:
+[IR-03](soc-analyst/03-incident-writeups/IR-03-evtx-password-spray.md).
+Die Helpdesk-Sitzung, der Domänenbeitritt von Windows 11 und ein Ticket
+aus diesem Lab sind noch offen. Formulare:
+[templates/career/](templates/career/).
+
+## Kontakt
+
+codeberg.ecx3s@passmail.com
 
 ## Lizenz
 

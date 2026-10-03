@@ -26,6 +26,14 @@ Ein zweites Identitäts-Lab ist Samba AD in einem Debian-Container
 sind dort nicht eingebunden. Beschreibung:
 [helpdesk/04-samba-ad-lab](helpdesk/04-samba-ad-lab/).
 
+Ich habe ausserdem Kali- und BlackArch-Gäste auf diesem Rechner. Wenn
+ich Zeit habe, mache ich dort kurze Übungen, und auf den
+Windows-Gästen, und ich werde langsam besser. Was ich davon
+veröffentliche, ist die Seite der Verteidigung: welches Log ich lesen
+würde, welche Prüfung ich starte, welche Kontrolle geholfen hätte.
+Flags und Angriffsschritte bleiben aus diesem Repo. Die leere Notiz ist
+[templates/career/practice-note.de.md](templates/career/practice-note.de.md).
+
 Auf dem Host benutze ich ausserdem git, neovim, rustup, Python,
 Wireshark und Podman ohne Root. Der Befehl `docker` auf diesem Rechner
 ist Podman. Lab-Passwörter bleiben in einem Passwortmanager
@@ -99,6 +107,24 @@ in Arbeit. Portugiesisch ist meine Muttersprache. Französisch und
 Englisch sind C1. Zuerst schaue ich in Frankreich, Helpdesk oder
 Junior-SOC (Alternance oder POEI). Deutschland ist die andere
 Möglichkeit, und dort kann ich auf Englisch arbeiten.
+
+Weitere Übungskonten, dieselbe Regel (in Arbeit, hier kein Rang):
+
+- [TryHackMe](https://tryhackme.com/p/ichbinlucasv)
+- [Boot.dev](https://www.boot.dev/u/ichbinlucasv) — die öffentliche Seite bleibt bis Level 10 verborgen, deshalb steht hier kein Level
+- HTB Academy, oben schon genannt
+
+Eine SOC-Meldung ist schon bis zum Ende geschrieben, mit UTC-Zeitlinie:
+[IR-03](soc-analyst/03-incident-writeups/IR-03-evtx-password-spray.md).
+Drei Blätter vom Heim-Lab bleiben absichtlich leer. Ich fülle sie erst,
+wenn ich den Befehl selbst laufen lasse: eine Helpdesk-Sitzung mit dem
+Helpdesk-Konto, ein aufgeschriebener Domänenbeitritt des Windows-11-Gasts,
+und ein echtes Ticket aus diesem Lab. Die Formulare liegen in
+[templates/career/](templates/career/).
+
+## Kontakt
+
+E-Mail, die ich lese: codeberg.ecx3s@passmail.com
 
 Öffentliche Profile:
 [codeberg.org/ichbinlucasv](https://codeberg.org/ichbinlucasv) und

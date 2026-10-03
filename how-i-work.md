@@ -23,6 +23,13 @@ A second identity lab is Samba AD in a Debian container
 joined to it. Write-up:
 [helpdesk/04-samba-ad-lab](helpdesk/04-samba-ad-lab/).
 
+I also keep Kali and BlackArch guests on this PC. When I have time I do
+short exercises there, and on the Windows guests, and I get a little
+better. What I publish from that practice is the defender's side: the
+log I would read, the check I would run, the control that would have
+mattered. Flags and attack steps stay off this repo. The blank note is
+[templates/career/practice-note.md](templates/career/practice-note.md).
+
 On the host I also use git, neovim, rustup, Python, Wireshark, and
 rootless Podman. The `docker` command on this machine is Podman. Lab
 passwords stay in a password manager (KeePassXC) and in local setup
@@ -90,6 +97,24 @@ in progress. Portuguese is my first language. French and English are
 both C1. I am looking first in France, for helpdesk or a junior SOC role
 (alternance or POEI). Germany is the other option, and I can work there
 in English.
+
+Other practice accounts, same rule (in progress, no rank claimed here):
+
+- [TryHackMe](https://tryhackme.com/p/ichbinlucasv)
+- [Boot.dev](https://www.boot.dev/u/ichbinlucasv) — the public page stays hidden until level 10, so this repo does not state a level
+- HTB Academy, already named above
+
+One SOC alert is already written end to end, with a UTC timeline:
+[IR-03](soc-analyst/03-incident-writeups/IR-03-evtx-password-spray.md).
+Three home-lab sheets are still blank on purpose. I fill them only
+after I run the command: a helpdesk session as the helpdesk user, a
+written domain join of the Windows 11 guest, and one real ticket from
+this lab. The forms are in
+[templates/career/](templates/career/).
+
+## Contact
+
+Email I read: codeberg.ecx3s@passmail.com
 
 Public profiles:
 [codeberg.org/ichbinlucasv](https://codeberg.org/ichbinlucasv) and

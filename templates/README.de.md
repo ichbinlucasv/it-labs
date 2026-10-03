@@ -66,6 +66,11 @@ Das hier sind die, die ich in der Schicht will.
 | [daily.md](career/daily.md) | Jeder Lerntag |
 | [weekly.md](career/weekly.md) | Freitag |
 | [story.md](career/story.md) | Eine echte Geschichte für ein Vorstellungsgespräch. Erst nachdem ich die Arbeit gemacht habe. |
+| [practice-note.de.md](career/practice-note.de.md) | Eine Übung auf TryHackMe, HTB, Boot.dev, Kali oder BlackArch. Nur die Notiz der Verteidigung. |
+| [helpdesk-session.de.md](career/helpdesk-session.de.md) | Eine echte Sitzung auf win11-soc mit dem Helpdesk-Konto. Leer, bis ich sie laufen lasse. |
+| [domain-join.de.md](career/domain-join.de.md) | Schriftlicher Nachweis, dass der Windows-11-Gast lab.local beigetreten ist. Leer, bis ich ihn laufen lasse. |
+| [lab-ticket.de.md](career/lab-ticket.de.md) | Ein echtes Ticket aus diesem Lab. Leer, bis die Arbeit passiert ist. |
+| [application.de.md](career/application.de.md) | Der kurze Text für eine Alternance oder ein POEI. Ich schicke ihn selbst. |
 
 ## Regeln, die ich immer wieder breche
 
@@ -77,3 +82,5 @@ Das hier sind die, die ich in der Schicht will.
   installiert. Sie sagt nicht, dass ich es kann.
 - UTC in SOC-Notizen. Ortszeit geht auf einem Helpdesk-Ticket, wenn ich die
   Zone dazuschreibe.
+- Eine Übungsnotiz hat keine Flags und keine Angriffsschritte. Sie sagt,
+  was ich prüfen würde.

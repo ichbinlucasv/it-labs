@@ -22,7 +22,7 @@ drop one for six months. It is not a list I finish before breakfast.
 | Wed | [Alert triage](soc/alert-triage.md) | [Python](languages/python.md) |
 | Thu | [Timeline](soc/timeline.md) on one old alert | [Rust](languages/rust.md) or [C](languages/c.md), alternate weeks |
 | Fri | [Weekly review](career/weekly.md) | One of [C++](languages/cpp.md), [C#](languages/csharp.md), [Java](languages/java.md), [Kotlin](languages/kotlin.md), [Haskell](languages/haskell.md). Rotate. Do not do all five. |
-| Sat | Lab, if the guests are on. [Lab 06](../helpdesk/06-windows-domain/) or a Linux break/fix. | Only if Friday's language is still fuzzy. |
+| Sat | Lab, if the guests are on. [Lab 06](../helpdesk/06-windows-domain/) or a Linux break/fix. Or one [practice note](career/practice-note.md) from TryHackMe, HTB, Boot.dev, Kali, or BlackArch. | Only if Friday's language is still fuzzy. |
 | Sun | Off, or [interview story](career/story.md) from a real lab note. | Off. |
 
 ## Helpdesk
@@ -62,6 +62,11 @@ These are the ones I want on a shift.
 | [daily.md](career/daily.md) | Every study day |
 | [weekly.md](career/weekly.md) | Friday |
 | [story.md](career/story.md) | One real story for an interview. Only after I did the work. |
+| [practice-note.md](career/practice-note.md) | One TryHackMe, HTB, Boot.dev, Kali, or BlackArch exercise. Defender's note only. |
+| [helpdesk-session.md](career/helpdesk-session.md) | One real session on win11-soc as the helpdesk user. Blank until I run it. |
+| [domain-join.md](career/domain-join.md) | Written proof the Windows 11 guest joined lab.local. Blank until I run it. |
+| [lab-ticket.md](career/lab-ticket.md) | One real ticket from this lab. Blank until the work happened. |
+| [application.md](career/application.md) | The short text I send for an alternance or POEI. I send it myself. |
 
 ## Rules I keep breaking
 
@@ -70,3 +75,4 @@ These are the ones I want on a shift.
 - One change, then check. Then the next change.
 - If I only installed a tool, the note says installed. It does not say I know it.
 - UTC on SOC notes. Local time is fine on a helpdesk ticket if I say the zone.
+- A practice note has no flags and no attack steps. It says what I would check.

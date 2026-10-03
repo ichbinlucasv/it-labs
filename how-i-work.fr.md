@@ -24,6 +24,14 @@ Un second lab d'identité est un AD Samba dans un conteneur Debian
 pas joints. Compte rendu :
 [helpdesk/04-samba-ad-lab](helpdesk/04-samba-ad-lab/).
 
+Je garde aussi des invités Kali et BlackArch sur ce PC. Quand j'ai le
+temps, je fais de courts exercices là, et sur les invités Windows, et
+j'avance un peu. Ce que je publie de cette pratique, c'est le côté
+défense : le journal que je lirais, le contrôle que je lancerais, la
+mesure qui aurait compté. Les flags et les étapes d'attaque restent
+hors de ce dépôt. La fiche vide est
+[templates/career/practice-note.fr.md](templates/career/practice-note.fr.md).
+
 Sur l'hôte j'utilise aussi git, neovim, rustup, Python, Wireshark, et
 Podman sans root. La commande `docker` sur cette machine, c'est Podman.
 Les mots de passe du lab restent dans un gestionnaire (KeePassXC) et
@@ -95,6 +103,24 @@ est en cours. Le portugais est ma langue maternelle. Le français et
 l'anglais sont tous les deux C1. Je cherche d'abord en France, au
 helpdesk ou comme analyste SOC junior (alternance ou POEI). L'Allemagne
 est l'autre option, et je peux y travailler en anglais.
+
+Autres comptes de pratique, même règle (en cours, pas de rang affiché ici) :
+
+- [TryHackMe](https://tryhackme.com/p/ichbinlucasv)
+- [Boot.dev](https://www.boot.dev/u/ichbinlucasv) — la page publique reste cachée avant le niveau 10, donc ce dépôt n'annonce pas de niveau
+- HTB Academy, déjà nommé plus haut
+
+Une alerte SOC est déjà écrite jusqu'au bout, avec une chronologie UTC :
+[IR-03](soc-analyst/03-incident-writeups/IR-03-evtx-password-spray.md).
+Trois fiches du lab à la maison restent vides exprès. Je les remplis
+seulement après avoir lancé la commande : une session helpdesk avec le
+compte helpdesk, une jonction au domaine écrite pour l'invité Windows 11,
+et un vrai ticket de ce lab. Les formulaires sont dans
+[templates/career/](templates/career/).
+
+## Contact
+
+E-mail que je lis : codeberg.ecx3s@passmail.com
 
 Profils publics :
 [codeberg.org/ichbinlucasv](https://codeberg.org/ichbinlucasv) et

@@ -66,6 +66,11 @@ Ceux-ci, je les veux en poste.
 | [daily.md](career/daily.md) | Chaque jour d'étude |
 | [weekly.md](career/weekly.md) | Vendredi |
 | [story.md](career/story.md) | Une vraie histoire pour un entretien. Seulement après avoir fait le travail. |
+| [practice-note.fr.md](career/practice-note.fr.md) | Un exercice TryHackMe, HTB, Boot.dev, Kali ou BlackArch. Note du défenseur seulement. |
+| [helpdesk-session.fr.md](career/helpdesk-session.fr.md) | Une vraie session sur win11-soc avec le compte helpdesk. Vide tant que je ne l'ai pas lancée. |
+| [domain-join.fr.md](career/domain-join.fr.md) | Preuve écrite que l'invité Windows 11 a rejoint lab.local. Vide tant que je ne l'ai pas lancée. |
+| [lab-ticket.fr.md](career/lab-ticket.fr.md) | Un vrai ticket de ce lab. Vide tant que le travail n'a pas eu lieu. |
+| [application.fr.md](career/application.fr.md) | Le court texte pour une alternance ou un POEI. C'est moi qui l'envoie. |
 
 ## Règles que je continue d'enfreindre
 
@@ -77,3 +82,5 @@ Ceux-ci, je les veux en poste.
   pas que je le connais.
 - UTC sur les notes SOC. L'heure locale va sur un ticket helpdesk si je dis
   le fuseau.
+- Une note de pratique n'a pas de flag et pas d'étapes d'attaque. Elle dit
+  ce que je vérifierais.
