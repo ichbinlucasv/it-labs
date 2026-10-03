@@ -22,7 +22,7 @@ Zuerst how-i-work.de.md, dann das Windows-Domänen-Lab, die
 Linux-Fehleranalyse, und ein SOC-Bericht (IR-03). Security+ und
 HTB Academy laufen. Ich behaupte nicht, dass die Prüfung bestanden ist.
 
-E-Mail: codeberg.ecx3s@passmail.com
+E-Mail: ichbinlucas@pm.me
 
 Lucas
 ```

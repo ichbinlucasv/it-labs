@@ -7,10 +7,12 @@ France, au helpdesk ou comme analyste SOC junior (alternance ou POEI).
 Linux est la machine que j'utilise vraiment. Windows est un lab sur le même PC.
 
 Je cherche d'abord en France. L'Allemagne est l'autre option. Je peux y
-travailler en anglais, j'apprends l'allemand, et ma femme est allemande.
-Les pages sont en anglais, en français et en allemand. Je mets l'anglais
-à jour en premier. Si une traduction ne dit pas la même chose, c'est
-l'anglais qui compte.
+travailler en anglais, et j'apprends l'allemand. Une fois au travail, je
+commence un diplôme à distance à l'IU (Internationale Hochschule). Les
+pages sont en anglais, en français et en allemand pour qu'un lecteur
+dans l'un ou l'autre pays puisse les ouvrir. Je mets l'anglais à jour
+en premier. Si une traduction ne dit pas la même chose, c'est l'anglais
+qui compte.
 
 Ce dépôt, c'est la pratique, pas un CV fini. **Done** veut dire que j'ai
 lancé la vérification et gardé la sortie. Ça ne veut pas dire que je suis
@@ -160,7 +162,7 @@ Sur GitHub, copier le fichier vers `.github/workflows/` et mettre `runs-on: ubun
 ## Apprentissage en cours
 
 - CompTIA Security+ SY0-701 — en cours
-- HTB Academy — modules SOC Analyst / fondamentaux en cours
+- [Hack The Box](https://profile.hackthebox.com/profile/019c3e11-0637-723b-b224-545dcf0bbc46) — profil ouvert. L'Academy (SOC Analyst / fondamentaux) est en cours. Pas de rang sur cette page.
 - [TryHackMe](https://tryhackme.com/p/ichbinlucasv) — compte ouvert, en cours. Pas de rang sur cette page.
 - [Boot.dev](https://www.boot.dev/u/ichbinlucasv) — compte ouvert. Le profil public reste caché avant le niveau 10, donc pas de niveau ici.
 
@@ -172,7 +174,12 @@ de ce lab sont encore ouverts. Formulaires :
 
 ## Contact
 
-codeberg.ecx3s@passmail.com
+Ceux-ci sont publics. Les mots de passe du lab et les notes privées restent hors de ce dépôt.
+
+- E-mail : ichbinlucas@pm.me
+- [LinkedIn](https://www.linkedin.com/in/lucas-nunes-soares-63148637b/)
+- [X](https://x.com/ichbinlucasv)
+- [Hack The Box](https://profile.hackthebox.com/profile/019c3e11-0637-723b-b224-545dcf0bbc46)
 
 ## Licence
 

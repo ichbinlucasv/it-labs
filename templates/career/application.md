@@ -21,7 +21,7 @@ Start with how-i-work.md, then the Windows domain lab, the Linux
 troubleshooting notes, and one SOC write-up (IR-03). Security+ and
 HTB Academy are in progress. I am not claiming the exam is passed.
 
-Email: codeberg.ecx3s@passmail.com
+Email: ichbinlucas@pm.me
 
 Lucas
 ```

@@ -102,13 +102,15 @@ Security+ SY0-701 n'est pas obtenu. HTB Academy est en cours. L'allemand
 est en cours. Le portugais est ma langue maternelle. Le français et
 l'anglais sont tous les deux C1. Je cherche d'abord en France, au
 helpdesk ou comme analyste SOC junior (alternance ou POEI). L'Allemagne
-est l'autre option, et je peux y travailler en anglais.
+est l'autre option, et je peux y travailler en anglais. Une fois au
+travail, je commence un diplôme à distance à l'IU (Internationale
+Hochschule).
 
 Autres comptes de pratique, même règle (en cours, pas de rang affiché ici) :
 
+- [Hack The Box](https://profile.hackthebox.com/profile/019c3e11-0637-723b-b224-545dcf0bbc46) — Academy en cours. Pas de rang sur cette page.
 - [TryHackMe](https://tryhackme.com/p/ichbinlucasv)
 - [Boot.dev](https://www.boot.dev/u/ichbinlucasv) — la page publique reste cachée avant le niveau 10, donc ce dépôt n'annonce pas de niveau
-- HTB Academy, déjà nommé plus haut
 
 Une alerte SOC est déjà écrite jusqu'au bout, avec une chronologie UTC :
 [IR-03](soc-analyst/03-incident-writeups/IR-03-evtx-password-spray.md).
@@ -120,7 +122,12 @@ et un vrai ticket de ce lab. Les formulaires sont dans
 
 ## Contact
 
-E-mail que je lis : codeberg.ecx3s@passmail.com
+Seulement ce qui est public. Les mots de passe du lab restent hors de ce dépôt.
+
+- E-mail : ichbinlucas@pm.me
+- [LinkedIn](https://www.linkedin.com/in/lucas-nunes-soares-63148637b/)
+- [X](https://x.com/ichbinlucasv)
+- [Hack The Box](https://profile.hackthebox.com/profile/019c3e11-0637-723b-b224-545dcf0bbc46)
 
 Profils publics :
 [codeberg.org/ichbinlucasv](https://codeberg.org/ichbinlucasv) et

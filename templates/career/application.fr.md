@@ -21,7 +21,7 @@ Commencez par how-i-work.fr.md, puis le lab de domaine Windows, les
 notes de dépannage Linux, et un rapport SOC (IR-03). Security+ et
 HTB Academy sont en cours. Je ne dis pas que l'examen est obtenu.
 
-E-mail : codeberg.ecx3s@passmail.com
+E-mail : ichbinlucas@pm.me
 
 Lucas
 ```

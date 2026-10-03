@@ -106,13 +106,15 @@ Security+ SY0-701 ist nicht bestanden. HTB Academy läuft. Deutsch ist
 in Arbeit. Portugiesisch ist meine Muttersprache. Französisch und
 Englisch sind C1. Zuerst schaue ich in Frankreich, Helpdesk oder
 Junior-SOC (Alternance oder POEI). Deutschland ist die andere
-Möglichkeit, und dort kann ich auf Englisch arbeiten.
+Möglichkeit, und dort kann ich auf Englisch arbeiten. Sobald ich
+arbeite, beginne ich ein Fernstudium an der IU (Internationale
+Hochschule).
 
 Weitere Übungskonten, dieselbe Regel (in Arbeit, hier kein Rang):
 
+- [Hack The Box](https://profile.hackthebox.com/profile/019c3e11-0637-723b-b224-545dcf0bbc46) — Academy in Arbeit. Kein Rang auf dieser Seite.
 - [TryHackMe](https://tryhackme.com/p/ichbinlucasv)
 - [Boot.dev](https://www.boot.dev/u/ichbinlucasv) — die öffentliche Seite bleibt bis Level 10 verborgen, deshalb steht hier kein Level
-- HTB Academy, oben schon genannt
 
 Eine SOC-Meldung ist schon bis zum Ende geschrieben, mit UTC-Zeitlinie:
 [IR-03](soc-analyst/03-incident-writeups/IR-03-evtx-password-spray.md).
@@ -124,7 +126,12 @@ und ein echtes Ticket aus diesem Lab. Die Formulare liegen in
 
 ## Kontakt
 
-E-Mail, die ich lese: codeberg.ecx3s@passmail.com
+Nur das Öffentliche. Lab-Passwörter bleiben aus diesem Repo.
+
+- E-Mail: ichbinlucas@pm.me
+- [LinkedIn](https://www.linkedin.com/in/lucas-nunes-soares-63148637b/)
+- [X](https://x.com/ichbinlucasv)
+- [Hack The Box](https://profile.hackthebox.com/profile/019c3e11-0637-723b-b224-545dcf0bbc46)
 
 Öffentliche Profile:
 [codeberg.org/ichbinlucasv](https://codeberg.org/ichbinlucasv) und

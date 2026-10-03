@@ -8,10 +8,11 @@ Linux ist das System, auf dem ich täglich arbeite. Windows ist ein Lab auf
 demselben Rechner.
 
 Zuerst schaue ich in Frankreich. Deutschland ist die andere Möglichkeit.
-Dort kann ich auf Englisch arbeiten, ich lerne Deutsch, und meine Frau ist
-Deutsche. Deshalb gibt es die Seiten auf Englisch, Französisch und Deutsch.
-Englisch aktualisiere ich zuerst. Wenn eine Übersetzung abweicht, gilt
-die englische Seite.
+Dort kann ich auf Englisch arbeiten, und ich lerne Deutsch. Sobald ich
+arbeite, beginne ich ein Fernstudium an der IU (Internationale
+Hochschule). Die Seiten gibt es auf Englisch, Französisch und Deutsch,
+damit jemand in beiden Ländern sie öffnen kann. Englisch aktualisiere
+ich zuerst. Wenn eine Übersetzung abweicht, gilt die englische Seite.
 
 **Done** heisst: die Prüfung in diesem Repo ist gelaufen und die Ausgabe
 liegt bei. Es heisst nicht, dass ich an einem echten Ticket schon schnell
@@ -161,7 +162,7 @@ Auf GitHub die Datei nach `.github/workflows/` kopieren und `runs-on: ubuntu-lat
 ## Aktuelles Lernen
 
 - CompTIA Security+ SY0-701 — in Vorbereitung
-- HTB Academy — Module SOC Analyst / Grundlagen in Bearbeitung
+- [Hack The Box](https://profile.hackthebox.com/profile/019c3e11-0637-723b-b224-545dcf0bbc46) — Profil offen. Academy (SOC Analyst / Grundlagen) ist in Arbeit. Kein Rang auf dieser Seite.
 - [TryHackMe](https://tryhackme.com/p/ichbinlucasv) — Konto offen, in Arbeit. Kein Rang auf dieser Seite.
 - [Boot.dev](https://www.boot.dev/u/ichbinlucasv) — Konto offen. Das öffentliche Profil bleibt bis Level 10 verborgen, deshalb kein Level hier.
 
@@ -173,7 +174,12 @@ aus diesem Lab sind noch offen. Formulare:
 
 ## Kontakt
 
-codeberg.ecx3s@passmail.com
+Das hier ist öffentlich. Lab-Passwörter und private Notizen bleiben aus diesem Repo.
+
+- E-Mail: ichbinlucas@pm.me
+- [LinkedIn](https://www.linkedin.com/in/lucas-nunes-soares-63148637b/)
+- [X](https://x.com/ichbinlucasv)
+- [Hack The Box](https://profile.hackthebox.com/profile/019c3e11-0637-723b-b224-545dcf0bbc46)
 
 ## Lizenz
 

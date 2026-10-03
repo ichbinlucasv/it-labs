@@ -96,13 +96,14 @@ Security+ SY0-701 is not passed. HTB Academy is in progress. German is
 in progress. Portuguese is my first language. French and English are
 both C1. I am looking first in France, for helpdesk or a junior SOC role
 (alternance or POEI). Germany is the other option, and I can work there
-in English.
+in English. Once I am working, I start a distance degree at IU
+(Internationale Hochschule).
 
 Other practice accounts, same rule (in progress, no rank claimed here):
 
+- [Hack The Box](https://profile.hackthebox.com/profile/019c3e11-0637-723b-b224-545dcf0bbc46) — Academy in progress. No rank on this page.
 - [TryHackMe](https://tryhackme.com/p/ichbinlucasv)
 - [Boot.dev](https://www.boot.dev/u/ichbinlucasv) — the public page stays hidden until level 10, so this repo does not state a level
-- HTB Academy, already named above
 
 One SOC alert is already written end to end, with a UTC timeline:
 [IR-03](soc-analyst/03-incident-writeups/IR-03-evtx-password-spray.md).
@@ -114,7 +115,12 @@ this lab. The forms are in
 
 ## Contact
 
-Email I read: codeberg.ecx3s@passmail.com
+Public only. Lab passwords stay off this repo.
+
+- Email: ichbinlucas@pm.me
+- [LinkedIn](https://www.linkedin.com/in/lucas-nunes-soares-63148637b/)
+- [X](https://x.com/ichbinlucasv)
+- [Hack The Box](https://profile.hackthebox.com/profile/019c3e11-0637-723b-b224-545dcf0bbc46)
 
 Public profiles:
 [codeberg.org/ichbinlucasv](https://codeberg.org/ichbinlucasv) and

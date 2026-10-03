@@ -7,9 +7,11 @@ helpdesk or as a junior SOC analyst (alternance or POEI). Linux is the
 machine I actually live on. Windows is a lab on that same PC.
 
 France is where I am looking first. Germany is the other option. I can
-work there in English, I am learning German, and my wife is German. That
-is why these pages exist in all three languages. I update the English
-page first. If a translation disagrees with it, the English page wins.
+work there in English, and I am learning German. Once I am working, I
+start a distance degree at IU (Internationale Hochschule). The pages
+exist in all three languages so a reader in either country can open
+them. I update the English page first. If a translation disagrees with
+it, the English page wins.
 
 This repo is the practice, not a finished résumé. **Done** means I ran the
 check and kept the output. It does not mean I am fast, or that I would
@@ -157,7 +159,7 @@ On GitHub, copy the file to `.github/workflows/` and set `runs-on: ubuntu-latest
 ## Current learning
 
 - CompTIA Security+ SY0-701 — in progress
-- HTB Academy — SOC Analyst / fundamentals modules in progress
+- [Hack The Box](https://profile.hackthebox.com/profile/019c3e11-0637-723b-b224-545dcf0bbc46) — profile open. Academy (SOC Analyst / fundamentals) is in progress. No rank on this page.
 - [TryHackMe](https://tryhackme.com/p/ichbinlucasv) — account open, in progress. No rank on this page.
 - [Boot.dev](https://www.boot.dev/u/ichbinlucasv) — account open. The public profile stays hidden until level 10, so no level here.
 
@@ -169,7 +171,12 @@ lab are still open. Forms:
 
 ## Contact
 
-codeberg.ecx3s@passmail.com
+These are the public ones. Lab passwords and private notes stay off this repo.
+
+- Email: ichbinlucas@pm.me
+- [LinkedIn](https://www.linkedin.com/in/lucas-nunes-soares-63148637b/)
+- [X](https://x.com/ichbinlucasv)
+- [Hack The Box](https://profile.hackthebox.com/profile/019c3e11-0637-723b-b224-545dcf0bbc46)
 
 ## Licence
 
