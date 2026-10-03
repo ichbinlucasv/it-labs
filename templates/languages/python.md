@@ -42,8 +42,9 @@ if __name__ == "__main__":
     print(failed_users(sample).most_common(5))
 ```
 
-If the sample wording does not match `Failed password`, I fix the condition
-after I have read one real line. I do not guess a regex first.
+This snippet is incomplete on purpose. On the sample, `Failed password for
+invalid user admin` makes `user` equal `invalid`, and the line is skipped.
+`seclab.authlog` keeps that user. I read one real line before I "fix" it.
 
 ## Exercise
 
