@@ -1,5 +1,7 @@
 # Lab 04 — MITRE ATT&CK mapping
 
+**English** · [Français](README.fr.md) · [Deutsch](README.de.md)
+
 **English** · [Deutsch](README.de.md)
 
 **Status:** Done — mapping of the synthetic scenarios checked against the official ATT&CK Enterprise 19.2 STIX data, and exported to a Navigator layer ([`coverage-layer.json`](coverage-layer.json), built by [`make_layer.py`](make_layer.py)); IR-03 is confirmed; the IR-01/IR-02 candidates stay unconfirmed until those [incident write-ups](../03-incident-writeups/) are done.

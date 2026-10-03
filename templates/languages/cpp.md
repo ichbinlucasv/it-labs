@@ -1,5 +1,7 @@
 # C++
 
+**English** · [Français](cpp.fr.md) · [Deutsch](cpp.de.md)
+
 What I need it for: reading modern C++ in tools I did not write, and
 compiling a single file without a weekend of CMake. Same rule as C. This
 is not an exploit notebook.

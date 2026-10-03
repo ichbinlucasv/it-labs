@@ -1,5 +1,7 @@
 # Lab 05 — Microsoft 365 administration basics
 
+**English** · [Français](README.fr.md) · [Deutsch](README.de.md)
+
 **Status:** Planned — concept notes only; not practised in a Microsoft 365 tenant. Needs a Microsoft 365 trial or developer tenant, which I do not have yet; nothing here is simulated.
 
 ## Goal

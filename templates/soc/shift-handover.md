@@ -1,5 +1,7 @@
 # Shift handover
 
+**English** · [Français](shift-handover.fr.md) · [Deutsch](shift-handover.de.md)
+
 ```text
 Date / UTC:
 I am (taking / leaving) the queue.

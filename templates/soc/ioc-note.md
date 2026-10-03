@@ -1,5 +1,7 @@
 # IOC note
 
+**English** · [Français](ioc-note.fr.md) · [Deutsch](ioc-note.de.md)
+
 Defang before this leaves my machine. `example.com` style: `example[.]com`,
 `hxxp://`, `[.]` in IPs if the note will be pasted into chat.
 

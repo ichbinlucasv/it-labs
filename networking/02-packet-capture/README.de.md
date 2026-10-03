@@ -1,6 +1,6 @@
 # Lab 02 — Analyse von Netzwerkmitschnitten mit tcpdump, tshark & Wireshark
 
-[English](README.md) · **Deutsch**
+[English](README.md) · [Français](README.fr.md) · **Deutsch**
 
 **Status:** Done — eigener Mitschnitt erzeugt und analysiert, öffentliches Beispiel `dns.cap` mit Kurzbericht analysiert ([`evidence/`](evidence/)); statt Screenshots aus der Wireshark-Oberfläche habe ich die Textentsprechungen in tshark verwendet (Protokollhierarchie, Follow Stream, Anzeigefilter).
 

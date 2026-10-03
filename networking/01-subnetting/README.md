@@ -1,5 +1,7 @@
 # Lab 01 — Subnetting practice
 
+**English** · [Français](README.fr.md) · [Deutsch](README.de.md)
+
 **Status:** Done — exercises and answer key written; every answer was computed and checked with Python `ipaddress`.
 
 ## Goal

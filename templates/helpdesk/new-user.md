@@ -1,5 +1,7 @@
 # New user
 
+**English** · [Français](new-user.fr.md) · [Deutsch](new-user.de.md)
+
 I do not create the account until I have the fields. "ASAP" is not a department.
 
 ```text

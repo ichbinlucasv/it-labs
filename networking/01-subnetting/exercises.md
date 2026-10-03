@@ -1,5 +1,7 @@
 # Subnetting exercises
 
+**English** · [Français](exercises.fr.md) · [Deutsch](exercises.de.md)
+
 ## Part A — Network facts
 
 For each address, give: network address, subnet mask, broadcast address, first

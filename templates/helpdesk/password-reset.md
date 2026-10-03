@@ -1,5 +1,7 @@
 # Password reset or unlock
 
+**English** · [Français](password-reset.fr.md) · [Deutsch](password-reset.de.md)
+
 ```text
 Ticket:
 Account:

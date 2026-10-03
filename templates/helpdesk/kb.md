@@ -1,5 +1,7 @@
 # Short KB article
 
+**English** · [Français](kb.fr.md) · [Deutsch](kb.de.md)
+
 Write it the second time I fix the same thing. The first time is just the ticket.
 
 ```text

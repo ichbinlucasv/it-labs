@@ -1,5 +1,7 @@
 # Daily sheet
 
+**English** · [Français](daily.fr.md) · [Deutsch](daily.de.md)
+
 ```text
 Date:
 Timer started:

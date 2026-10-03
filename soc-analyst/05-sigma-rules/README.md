@@ -1,5 +1,7 @@
 # Lab 05 — Sigma detection rules
 
+**English** · [Français](README.fr.md) · [Deutsch](README.de.md)
+
 **Status:** Done — `sigma check` reports 0 errors/issues and every rule fires on the synthetic samples via `validate_rules.py`; not yet deployed on real SIEM telemetry.
 
 ## Goal

@@ -1,5 +1,7 @@
 # Helpdesk labs
 
+**English** · [Français](README.fr.md) · [Deutsch](README.de.md)
+
 Level-1/level-2 support skills: documenting work clearly, fixing common
 Windows and Linux problems, and managing identities.
 

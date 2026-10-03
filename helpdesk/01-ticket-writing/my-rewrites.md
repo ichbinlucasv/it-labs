@@ -1,5 +1,7 @@
 # My rewrites, priority exercise and tickets from my own lab work
 
+**English** · [Français](my-rewrites.fr.md) · [Deutsch](my-rewrites.de.md)
+
 Fictional organisation: *Exemple SARL* (40 users, domain `example.com`).
 All people, hosts and ticket numbers are invented. Section 3 is based on the
 break/fix scenarios I actually ran in

@@ -1,6 +1,6 @@
 # Lab 03 — Incident-Berichte auf öffentlichen Datensätzen
 
-[English](README.md) · **Deutsch**
+[English](README.md) · [Français](README.fr.md) · **Deutsch**
 
 **Status:** In progress — [IR-03](IR-03-evtx-password-spray.md) (Kerberos-Password-Spraying, öffentliches EVTX-Beispiel) ist analysiert und abgeschlossen; IR-01 (Malware-Traffic-pcap, braucht eine isolierte Analyse-VM) und IR-02 (Splunk BOTS v1, braucht eine Splunk-Instanz) sind noch Untersuchungspläne.
 

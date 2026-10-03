@@ -1,5 +1,7 @@
 # Lab 06 — Windows Server domain on my PC
 
+**English** · [Français](README.fr.md) · [Deutsch](README.de.md)
+
 **Status:** In progress — the domain controller is real. A helpdesk session on the Windows 11 client is not written up yet.
 
 ## Goal

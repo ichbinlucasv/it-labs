@@ -1,5 +1,7 @@
 # IR-0X — <Title>
 
+**English** · [Français](TEMPLATE.fr.md) · [Deutsch](TEMPLATE.de.md)
+
 | Field | Value |
 |-------|-------|
 | Analyst | Lucas |

@@ -1,5 +1,7 @@
 # Timeline
 
+**English** · [Français](timeline.fr.md) · [Deutsch](timeline.de.md)
+
 Oldest first. UTC. If the source clock was local, I write both and say so.
 
 ```text

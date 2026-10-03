@@ -1,5 +1,7 @@
 # C#
 
+**English** · [Français](csharp.fr.md) · [Deutsch](csharp.de.md)
+
 What I need it for: Windows services, reading a .NET stack trace, small
 console tools on the SOC VM. I am early at this. The drill is "make a
 project, read a file, do not swallow the exception".

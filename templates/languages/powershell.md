@@ -1,5 +1,7 @@
 # PowerShell
 
+**English** · [Français](powershell.fr.md) · [Deutsch](powershell.de.md)
+
 What I use it for: the Windows lab. Users, lockouts, one event, "can this
 PC reach the DC".
 

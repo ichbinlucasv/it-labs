@@ -1,16 +1,17 @@
 # IT- & Security-Lab-Portfolio — Lucas
 
-[English](README.md) · [Français](README.md#résumé-en-français) · **Deutsch**
-
-> Deutsche Fassung der englischen [README.md](README.md). Bei Abweichungen
-> gilt die englische Version. Die Lab-Beschreibungen mit eigener deutscher
-> Fassung sind in der Tabelle unten mit „DE“ verlinkt; alle anderen gibt es
-> nur auf Englisch.
+[English](README.md) · [Français](README.fr.md) · **Deutsch**
 
 Ich bin Lucas. Ich studiere Cybersicherheit und suche in Frankreich eine
 erste Stelle im Helpdesk oder als Junior-SOC-Analyst (Alternance oder POEI).
 Linux ist das System, auf dem ich täglich arbeite. Windows ist ein Lab auf
 demselben Rechner.
+
+Zuerst schaue ich in Frankreich. Deutschland ist die andere Möglichkeit.
+Dort kann ich auf Englisch arbeiten, ich lerne Deutsch, und meine Frau ist
+Deutsche. Deshalb gibt es die Seiten auf Englisch, Französisch und Deutsch.
+Englisch aktualisiere ich zuerst. Wenn eine Übersetzung abweicht, gilt
+die englische Seite.
 
 **Done** heisst: die Prüfung in diesem Repo ist gelaufen und die Ausgabe
 liegt bei. Es heisst nicht, dass ich an einem echten Ticket schon schnell

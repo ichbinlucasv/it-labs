@@ -1,5 +1,7 @@
 # IR-03 — Kerberos password spraying in Windows Security logs
 
+**English** · [Français](IR-03-evtx-password-spray.fr.md) · [Deutsch](IR-03-evtx-password-spray.de.md)
+
 | Field | Value |
 |-------|-------|
 | Analyst | Lucas |

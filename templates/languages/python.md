@@ -1,5 +1,7 @@
 # Python
 
+**English** · [Français](python.fr.md) · [Deutsch](python.de.md)
+
 What I use it for: small log chores. The tools that already have tests are
 in [python/](../../python/). This page is the 25 minutes around them.
 

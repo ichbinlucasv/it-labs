@@ -1,5 +1,7 @@
 # C
 
+**English** · [Français](c.fr.md) · [Deutsch](c.de.md)
+
 There is no C project in this repo yet. This block is so the language does
 not disappear behind Rust.
 

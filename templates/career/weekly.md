@@ -1,5 +1,7 @@
 # Friday review
 
+**English** · [Français](weekly.fr.md) · [Deutsch](weekly.de.md)
+
 ```text
 Week of:
 

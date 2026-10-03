@@ -1,5 +1,7 @@
 # bash
 
+**English** · [Français](bash.fr.md) · [Deutsch](bash.de.md)
+
 What I use it for: the Linux host, every day. Packages, services, disks,
 "why is SSH failing", a quick look at a log.
 

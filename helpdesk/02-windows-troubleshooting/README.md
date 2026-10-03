@@ -1,5 +1,7 @@
 # Lab 02 — Windows troubleshooting runbook
 
+**English** · [Français](README.fr.md) · [Deutsch](README.de.md)
+
 **Status:** Planned — written runbook. The scenarios have not been run yet. I do have a Windows 11 guest and a Server 2025 DC now (see [lab 06](../06-windows-domain/)). Next step is to break one thing on `win11-soc` and write down the fix.
 
 ## Goal

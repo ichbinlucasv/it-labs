@@ -1,6 +1,6 @@
 # Lab 01 — Nützliche Tickets schreiben
 
-[English](README.md) · **Deutsch**
+[English](README.md) · [Français](README.fr.md) · **Deutsch**
 
 **Status:** Done — Überarbeitungen, Priorisierungsübung, Eskalations- und Abschlussnotizen in [`my-rewrites.md`](my-rewrites.md) (Englisch), darunter Tickets auf Basis meiner eigenen Nachweise aus dem Linux-Lab; in Markdown erstellt, noch nicht in einem ITSM-Tool wie GLPI.
 

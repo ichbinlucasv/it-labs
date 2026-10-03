@@ -1,5 +1,7 @@
 # Kotlin
 
+**English** · [Français](kotlin.fr.md) · [Deutsch](kotlin.de.md)
+
 What I need it for later: Android around HashChat, and JVM shops that
 write Kotlin instead of Java. Right now I only need to compile a file
 and read the same stack traces as Java.

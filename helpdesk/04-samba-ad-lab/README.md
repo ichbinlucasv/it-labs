@@ -1,5 +1,7 @@
 # Lab 04 — Active Directory user management with Samba AD DC
 
+**English** · [Français](README.fr.md) · [Deutsch](README.de.md)
+
 **English** · [Deutsch](README.de.md)
 
 **Status:** In progress — the Samba AD DC side (steps 1–6 and 8) ran for real in a Debian 13 container and the output is in [`evidence/`](evidence/). Step 7 is still open: join a Windows 11 client to *this* Samba domain. I have Windows guests now, but they belong to a different domain ([lab 06](../06-windows-domain/), `lab.local` on Windows Server). I have not joined one to Samba.

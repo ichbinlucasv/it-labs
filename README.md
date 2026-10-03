@@ -1,10 +1,15 @@
 # IT labs
 
-**English** · [Français](#résumé-en-français) · [Deutsch](README.de.md)
+**English** · [Français](README.fr.md) · [Deutsch](README.de.md)
 
 I'm Lucas. I study cybersecurity and I want a first job in France, in
 helpdesk or as a junior SOC analyst (alternance or POEI). Linux is the
 machine I actually live on. Windows is a lab on that same PC.
+
+France is where I am looking first. Germany is the other option. I can
+work there in English, I am learning German, and my wife is German. That
+is why these pages exist in all three languages. I update the English
+page first. If a translation disagrees with it, the English page wins.
 
 This repo is the practice, not a finished résumé. **Done** means I ran the
 check and kept the output. It does not mean I am fast, or that I would
@@ -33,19 +38,6 @@ Current count: 10 Done, 4 In progress, 3 Planned (see the skills matrix below).
 > EVTX-ATTACK-SAMPLES) are quoted with their original values and cited.
 > No real personal data, no credentials, and no offensive tooling aimed at
 > third parties.
-
----
-
-## Résumé en français
-
-Je m'appelle Lucas. J'étudie la cybersécurité et je cherche un premier poste
-en France, helpdesk ou analyste SOC junior, en alternance ou via une POEI.
-Linux est mon système au quotidien. Windows, c'est un lab sur le même PC.
-
-**Done** veut dire que j'ai lancé la vérification et gardé le résultat. Ça
-ne veut pas dire que je suis déjà à l'aise sur un vrai ticket. Je prépare
-Security+ SY0-701 et je suis des modules HTB Academy. Le C est au programme.
-Il n'y a pas encore de projet C ici.
 
 ---
 

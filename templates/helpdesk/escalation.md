@@ -1,5 +1,7 @@
 # Escalation
 
+**English** · [Français](escalation.fr.md) · [Deutsch](escalation.de.md)
+
 The next person should not have to read the whole ticket to start.
 
 ```text

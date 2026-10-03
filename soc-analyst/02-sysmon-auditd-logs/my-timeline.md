@@ -1,5 +1,7 @@
 # My answers, timeline and IOC list (synthetic samples)
 
+**English** · [Français](my-timeline.fr.md) · [Deutsch](my-timeline.de.md)
+
 All data comes from the **synthetic** files in [`samples/`](samples/). The
 commands are the ones in the lab README; the outputs quoted below are what I
 got when I ran them (jq 1.7, audit userspace 4.0.2 on Debian 13, `TZ=UTC`).

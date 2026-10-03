@@ -1,5 +1,7 @@
 # Lab 02 — Packet capture analysis with tcpdump, tshark & Wireshark
 
+**English** · [Français](README.fr.md) · [Deutsch](README.de.md)
+
 **English** · [Deutsch](README.de.md)
 
 **Status:** Done — own capture generated and analysed, public sample `dns.cap` analysed with a mini-report ([`evidence/`](evidence/)); I used tshark's text equivalents (protocol hierarchy, follow stream, display filters) instead of Wireshark GUI screenshots.

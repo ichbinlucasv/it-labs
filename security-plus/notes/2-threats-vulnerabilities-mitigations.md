@@ -1,5 +1,7 @@
 # Domain 2 — Threats, Vulnerabilities & Mitigations (≈22 %)
 
+**English** · [Français](2-threats-vulnerabilities-mitigations.fr.md) · [Deutsch](2-threats-vulnerabilities-mitigations.de.md)
+
 ## Threat actors
 
 | Actor | Motivation | Resources |

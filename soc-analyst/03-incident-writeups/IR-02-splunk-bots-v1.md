@@ -1,5 +1,7 @@
 # IR-02 — Splunk Boss of the SOC v1 investigation
 
+**English** · [Français](IR-02-splunk-bots-v1.fr.md) · [Deutsch](IR-02-splunk-bots-v1.de.md)
+
 | Field | Value |
 |-------|-------|
 | Analyst | Lucas |

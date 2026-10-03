@@ -1,5 +1,7 @@
 # Remote session
 
+**English** · [Français](remote-session.fr.md) · [Deutsch](remote-session.de.md)
+
 ```text
 Ticket:
 Tool (Quick Assist, RustDesk, vendor tool, ...):

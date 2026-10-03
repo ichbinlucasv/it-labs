@@ -1,5 +1,7 @@
 # SOC analyst labs
 
+**English** · [Français](README.fr.md) · [Deutsch](README.de.md)
+
 | Lab | Focus |
 |-----|-------|
 | [01-wazuh-homelab](01-wazuh-homelab/) | Deploy Wazuh (SIEM/XDR) with Windows + Linux agents; optional ELK comparison |

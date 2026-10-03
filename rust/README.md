@@ -1,5 +1,7 @@
 # Rust security tools (cargo workspace)
 
+**English** · [Français](README.fr.md) · [Deutsch](README.de.md)
+
 **Status:** Done — two crates with 11 passing unit tests; clippy and rustfmt clean.
 
 ## Goal

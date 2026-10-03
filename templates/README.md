@@ -1,5 +1,7 @@
 # Day-to-day templates
 
+**English** · [Français](README.fr.md) · [Deutsch](README.de.md)
+
 Copy one file, fill the blanks, keep the copy in my notes. The blanks stay
 blank in git.
 
@@ -32,7 +34,7 @@ These are the ones I want on a shift.
 | Form | Use it when |
 | --- | --- |
 | [ticket.md](helpdesk/ticket.md) | Any new request |
-| [ticket-fr.md](helpdesk/ticket-fr.md) | Same thing in French, for a French desk |
+| [ticket.fr.md](helpdesk/ticket.fr.md) | Same ticket in French, for a desk in France |
 | [shift-start.md](helpdesk/shift-start.md) | First 15 minutes |
 | [cant-log-on.md](helpdesk/cant-log-on.md) | "I can't get in" |
 | [password-reset.md](helpdesk/password-reset.md) | Reset or unlock. Check who is asking. |

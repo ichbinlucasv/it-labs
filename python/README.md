@@ -1,5 +1,7 @@
 # Python security tools (`seclab`)
 
+**English** · [Français](README.fr.md) · [Deutsch](README.de.md)
+
 **Status:** Done — three tools with 35 passing pytest tests.
 
 ## Goal

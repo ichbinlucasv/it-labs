@@ -1,5 +1,7 @@
 # Lab 01 — Writing useful tickets
 
+**English** · [Français](README.fr.md) · [Deutsch](README.de.md)
+
 **English** · [Deutsch](README.de.md)
 
 **Status:** Done — rewrites, priority exercise, escalation and closure notes written in [`my-rewrites.md`](my-rewrites.md), including tickets built from my own Linux lab evidence; done in Markdown, not yet in an ITSM tool such as GLPI.

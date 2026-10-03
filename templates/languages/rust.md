@@ -1,5 +1,7 @@
 # Rust
 
+**English** · [Français](rust.fr.md) · [Deutsch](rust.de.md)
+
 What I use it for: the two crates in [rust/](../../rust/), and the longer
 projects outside this repo. Here, the point is to keep the language in my
 hands once a week.

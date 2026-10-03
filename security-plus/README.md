@@ -1,5 +1,7 @@
 # CompTIA Security+ (SY0-701) study notes & flashcards
 
+**English** · [Français](README.fr.md) · [Deutsch](README.de.md)
+
 **Status:** In progress — notes and a 99-card flashcards CSV (parses cleanly) are written; exam preparation is ongoing and the exam has not been taken (this lab is only "Done" once I pass SY0-701).
 
 ## Goal
@@ -7,6 +9,8 @@
 Prepare for **CompTIA Security+ SY0-701** with concise notes written in my
 own words, organised by the five exam domains, plus a flashcard deck I can
 import into Anki. Each note links theory to the hands-on labs in this repo.
+The five notes are also in French and German. The CSV stays one English
+deck so Anki does not split into three files.
 
 ## Setup
 

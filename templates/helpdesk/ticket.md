@@ -1,5 +1,7 @@
 # Ticket
 
+**English** · [Français](ticket.fr.md) · [Deutsch](ticket.de.md)
+
 Shorter than the full template in
 [helpdesk/01](../../helpdesk/01-ticket-writing/template.md). Use that one
 when the ticket will be audited. Use this one while I am practising speed.

@@ -1,5 +1,7 @@
 # One alert
 
+**English** · [Français](alert-triage.fr.md) · [Deutsch](alert-triage.de.md)
+
 One alert per sheet. UTC. I answer from the log before I open a second tool.
 
 ```text

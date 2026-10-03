@@ -1,5 +1,7 @@
 # How I built the lab container
 
+**English** · [Français](lab-container.fr.md) · [Deutsch](lab-container.de.md)
+
 Debian 13 host, as root. The container has `--private-network`: only a
 loopback interface, so services inside cannot be reached from outside and
 cannot reach anything.

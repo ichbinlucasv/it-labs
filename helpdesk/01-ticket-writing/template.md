@@ -1,5 +1,7 @@
 # Ticket template
 
+**English** · [Français](template.fr.md) · [Deutsch](template.de.md)
+
 ```text
 Title:        [Component] Short symptom — who/where affected
 Requester:    Name, team, contact (phone/Teams)

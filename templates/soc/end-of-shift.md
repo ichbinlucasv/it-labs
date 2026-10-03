@@ -1,5 +1,7 @@
 # End of shift
 
+**English** · [Français](end-of-shift.fr.md) · [Deutsch](end-of-shift.de.md)
+
 ```text
 UTC:
 Alerts touched:

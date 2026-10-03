@@ -1,6 +1,6 @@
 # Lab 02 — Analyse von Sysmon- und auditd-Logs
 
-[English](README.md) · **Deutsch**
+[English](README.md) · [Français](README.fr.md) · **Deutsch**
 
 **Status:** Done — alle Befehle aus Teil A/B/C liefen gegen die synthetischen Beispiele, meine Antworten, die UTC-Zeitleiste und die IOC-Liste stehen in [`my-timeline.md`](my-timeline.md) (Englisch). Echtes Sysmon auf dem Windows-Gast kommt später. Den Gast gibt es ([Lab 06](../../helpdesk/06-windows-domain/)). Auf dem DC war Sysmon beim Inventory nicht installiert.
 

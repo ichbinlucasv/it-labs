@@ -1,5 +1,7 @@
 # One interview story
 
+**English** · [Français](story.fr.md) · [Deutsch](story.de.md)
+
 Only fill this from a lab note or a real ticket. If I cannot point at the
 note, the story is not ready.
 

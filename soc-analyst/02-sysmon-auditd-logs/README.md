@@ -1,5 +1,7 @@
 # Lab 02 — Sysmon + auditd log analysis
 
+**English** · [Français](README.fr.md) · [Deutsch](README.de.md)
+
 **English** · [Deutsch](README.de.md)
 
 **Status:** Done — all Part A/B/C commands ran against the synthetic samples and my answers, UTC timeline and IOC list are in [`my-timeline.md`](my-timeline.md). Real Sysmon on the Windows guest is a later step. The guest exists ([lab 06](../../helpdesk/06-windows-domain/)), and Sysmon was not installed on the DC when I inventoried it.

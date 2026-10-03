@@ -1,5 +1,7 @@
 # Detection idea
 
+**English** · [Français](detection-idea.fr.md) · [Deutsch](detection-idea.de.md)
+
 This is a wish for an alert, written after I understood one log line.
 It is not a rule I deploy on a network I do not own.
 

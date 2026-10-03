@@ -1,5 +1,7 @@
 # Domain 3 — Security Architecture (≈18 %)
 
+**English** · [Français](3-security-architecture.fr.md) · [Deutsch](3-security-architecture.de.md)
+
 ## Architecture models
 
 | Model | Security considerations |

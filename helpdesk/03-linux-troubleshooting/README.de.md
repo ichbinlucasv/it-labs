@@ -1,6 +1,6 @@
 # Lab 03 — Runbook Fehleranalyse Linux
 
-[English](README.md) · **Deutsch**
+[English](README.md) · [Français](README.fr.md) · **Deutsch**
 
 **Status:** Done — Szenarien 1–5 und 7 habe ich in einem Debian-13-systemd-Container absichtlich kaputt gemacht und repariert, die Terminalausgaben liegen in [`evidence/`](evidence/); Szenario 6 nur teilweise (der OOM-Kill war hier nicht reproduzierbar, siehe unten).
 

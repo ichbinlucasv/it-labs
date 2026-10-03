@@ -1,5 +1,7 @@
 # Networking labs
 
+**English** · [Français](README.fr.md) · [Deutsch](README.de.md)
+
 | Lab | Focus |
 |-----|-------|
 | [01-subnetting](01-subnetting/) | IPv4 CIDR, VLSM, summarisation — exercises + answer key |

@@ -1,5 +1,7 @@
 # Domain 1 — General Security Concepts (≈12 %)
 
+**English** · [Français](1-general-security-concepts.fr.md) · [Deutsch](1-general-security-concepts.de.md)
+
 ## Security control categories & types
 
 | Category | Examples |

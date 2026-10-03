@@ -1,5 +1,7 @@
 # Domain 4 — Security Operations (≈28 %, the biggest domain)
 
+**English** · [Français](4-security-operations.fr.md) · [Deutsch](4-security-operations.de.md)
+
 ## Secure baselines & hardening
 
 Establish → deploy → maintain baselines (CIS Benchmarks). Harden mobile

@@ -1,5 +1,7 @@
 # Answer key
 
+**English** · [Français](answer-key.fr.md) · [Deutsch](answer-key.de.md)
+
 Computed and verified with Python's `ipaddress` module.
 
 ## Part A

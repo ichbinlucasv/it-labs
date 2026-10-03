@@ -1,5 +1,7 @@
 # Java
 
+**English** · [Français](java.fr.md) · [Deutsch](java.de.md)
+
 What I need it for: reading a Java stack trace from the bottom, and small
 file tools. A lot of enterprise kit on a helpdesk throws Java at you.
 I do not need Spring this month.

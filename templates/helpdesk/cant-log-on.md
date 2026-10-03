@@ -1,5 +1,7 @@
 # Can't log on
 
+**English** · [Français](cant-log-on.fr.md) · [Deutsch](cant-log-on.de.md)
+
 One account. I write the answers before I reset anything.
 
 ```text

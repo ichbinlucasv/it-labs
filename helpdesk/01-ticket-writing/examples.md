@@ -1,5 +1,7 @@
 # Good vs bad tickets (fictional)
 
+**English** · [Français](examples.fr.md) · [Deutsch](examples.de.md)
+
 All names, hosts and addresses are invented.
 
 ---

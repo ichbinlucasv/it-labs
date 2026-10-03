@@ -1,5 +1,7 @@
 # Haskell
 
+**English** · [Français](haskell.fr.md) · [Deutsch](haskell.de.md)
+
 What I need it for: reading types, and not forgetting the language after
 HashChat moved its desktop to Rust. A helpdesk or SOC job will rarely ask
 for Haskell. I keep a short block so a later project is not a cold start.

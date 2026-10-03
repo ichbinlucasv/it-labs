@@ -1,6 +1,6 @@
 # Lab 03 — Host-Firewall mit nftables
 
-[English](README.md) · **Deutsch**
+[English](README.md) · [Français](README.fr.md) · **Deutsch**
 
 **Status:** Done — Syntax geprüft, danach Datenverkehr mit drei Network Namespaces getestet, die den Server, einen Admin-Client und einen externen Client darstellen ([`netns-test.sh`](netns-test.sh), Ausgabe in [`evidence/`](evidence/)); noch nicht dauerhaft mit `nftables.service` auf einer echten VM eingerichtet.
 

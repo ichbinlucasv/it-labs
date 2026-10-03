@@ -1,5 +1,7 @@
 # Domain 5 — Security Program Management & Oversight (≈20 %)
 
+**English** · [Français](5-security-program-management.fr.md) · [Deutsch](5-security-program-management.de.md)
+
 ## Governance
 
 - **Policies** (high-level, mandatory): AUP, information security, business

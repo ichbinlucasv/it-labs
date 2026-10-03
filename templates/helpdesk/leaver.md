@@ -1,5 +1,7 @@
 # Leaver
 
+**English** · [Français](leaver.fr.md) · [Deutsch](leaver.de.md)
+
 Same day if I can. Access first, nice-to-have later.
 
 ```text
