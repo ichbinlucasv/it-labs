@@ -1,14 +1,21 @@
-# IT & Security Lab Portfolio — Lucas
+# IT labs
 
 **English** · [Français](#résumé-en-français) · [Deutsch](README.de.md)
 
-A structured lab plan I'm working through on my path into IT support and
-security operations; each lab is marked **Status: Done / In progress / Planned**.
-I am looking for a first role in France as **helpdesk / IT support technician**
-or **junior SOC analyst** (alternance or POEI welcome), while preparing
-**CompTIA Security+ (SY0-701)** and working through **HTB Academy** modules.
+I'm Lucas. I study cybersecurity and I want a first job in France, in
+helpdesk or as a junior SOC analyst (alternance or POEI). Linux is the
+machine I actually live on. Windows is a lab on that same PC.
 
-Languages: Portuguese (native), French (C1), English (C1).
+This repo is the practice, not a finished résumé. **Done** means I ran the
+check and kept the output. It does not mean I am fast, or that I would
+skip the docs on a real ticket.
+
+I use bash every day, PowerShell on the Windows lab, and Python and Rust
+for the small tools below. C is on the study list. There is no C project
+in this repo yet.
+
+Portuguese is my first language. French and English are both C1.
+Security+ SY0-701 and HTB Academy are in progress.
 
 ### Lab status
 
@@ -18,7 +25,7 @@ Languages: Portuguese (native), French (C1), English (C1).
 | **In progress** | Partly verified — for example syntax checked or run on synthetic data, but not tested end to end in a real environment |
 | **Planned** | A written procedure that hasn't been run in a real environment yet |
 
-Current count: 10 Done, 3 In progress, 3 Planned (see the skills matrix below).
+Current count: 10 Done, 4 In progress, 3 Planned (see the skills matrix below).
 
 > All hostnames, users, companies and IP addresses are fictional (`example.com`, RFC 5737 ranges `192.0.2.0/24`,
 > `198.51.100.0/24`, `203.0.113.0/24`, and RFC 1918 ranges for the lab LAN).
@@ -31,22 +38,14 @@ Current count: 10 Done, 3 In progress, 3 Planned (see the skills matrix below).
 
 ## Résumé en français
 
-Ce dépôt est un plan de labs structuré que je suis en train de réaliser, en
-informatique et cybersécurité ; chaque lab porte un statut **Done** (terminé :
-le code ou la configuration s'exécute et ses vérifications passent dans ce
-dépôt), **In progress** (en cours : vérifié en partie, par exemple syntaxe
-validée mais pas testé de bout en bout) ou **Planned** (prévu : procédure
-rédigée, pas encore exécutée dans un environnement réel). Thèmes :
-support utilisateur (rédaction de tickets, dépannage Windows/Linux, Active
-Directory avec Samba, notions Microsoft 365), réseau (sous-réseaux, analyse de
-captures Wireshark/tcpdump, pare-feu nftables), analyse SOC (Wazuh, Sysmon,
-auditd, règles Sigma, cartographie MITRE ATT&CK, rapports d'incident à partir
-de jeux de données publics), ainsi que de petits outils en Python et en Rust
-avec tests automatisés. Je prépare la certification CompTIA Security+ SY0-701
-et je recherche un premier poste en **support informatique / technicien
-helpdesk** ou **analyste SOC junior**, idéalement en **alternance** ou via une
-**POEI**. Chaque lab suit la même structure : statut, objectif, mise en place,
-étapes, preuves, et ce que j'ai appris.
+Je m'appelle Lucas. J'étudie la cybersécurité et je cherche un premier poste
+en France, helpdesk ou analyste SOC junior, en alternance ou via une POEI.
+Linux est mon système au quotidien. Windows, c'est un lab sur le même PC.
+
+**Done** veut dire que j'ai lancé la vérification et gardé le résultat. Ça
+ne veut pas dire que je suis déjà à l'aise sur un vrai ticket. Je prépare
+Security+ SY0-701 et je suis des modules HTB Academy. Le C est au programme.
+Il n'y a pas encore de projet C ici.
 
 ---
 
@@ -54,7 +53,7 @@ helpdesk** ou **analyste SOC junior**, idéalement en **alternance** ou via une
 
 | Path | What it contains |
 |------|------------------|
-| [`helpdesk/`](helpdesk/) | Ticket writing, Windows & Linux troubleshooting runbooks, Samba AD DC user-management lab, Microsoft 365 admin basics |
+| [`helpdesk/`](helpdesk/) | Tickets, Linux and Windows troubleshooting, a Samba AD lab, and a Windows Server domain I actually promoted (`lab.local`) |
 | [`networking/`](networking/) | Subnetting exercises + answer key, packet-capture analysis (Wireshark/tcpdump), nftables host firewall |
 | [`soc-analyst/`](soc-analyst/) | Wazuh home lab, Sysmon + auditd log analysis (synthetic samples), incident write-up templates on public datasets, ATT&CK mapping, Sigma rules |
 | [`python/`](python/) | `seclab` package: SSH auth.log summariser, IOC extractor (defang/refang), hash checker — stdlib only, pytest suite |
@@ -83,6 +82,7 @@ Mitigations · **D3** Security Architecture · **D4** Security Operations ·
 | [helpdesk/03 Linux troubleshooting](helpdesk/03-linux-troubleshooting/) | Done | | ○ | ○ | ● | | systemd, journalctl, disk/DNS/permissions |
 | [helpdesk/04 Samba AD DC](helpdesk/04-samba-ad-lab/) | In progress | ● | | ● | ● | | Identity, groups, GPO concepts, least privilege |
 | [helpdesk/05 M365 basics](helpdesk/05-m365-basics/) | Planned | ● | ○ | ● | ● | ○ | Entra ID, licences, MFA, Conditional Access concepts |
+| [helpdesk/06 Windows domain](helpdesk/06-windows-domain/) | In progress | ● | | ● | ● | | Windows Server AD DS, OUs, helpdesk group, RSAT on the DC |
 | [networking/01 Subnetting](networking/01-subnetting/) | Done | | | ● | | | CIDR, VLSM, addressing plans |
 | [networking/02 Packet capture](networking/02-packet-capture/) | Done | | ● | ○ | ● | | Wireshark filters, tcpdump, protocol analysis |
 | [networking/03 nftables firewall](networking/03-nftables-firewall/) | Done | ○ | ● | ● | ○ | | Default-deny, stateful filtering, logging |
@@ -117,7 +117,7 @@ python soc-analyst/05-sigma-rules/validate_rules.py
 python3 scripts/check_repo.py
 ```
 
-## What has been verified
+## What I have actually run
 
 | Item | How |
 |------|-----|
@@ -126,6 +126,7 @@ python3 scripts/check_repo.py
 | Sigma rules | valid YAML; `sigma check` 0 errors/issues (sigma-cli 3.1.0); the 8 original rules fire on the synthetic samples via the SQLite backend; the Kerberos spraying rule fires on a public EVTX sample |
 | Linux troubleshooting | 7 break/fix scenarios run in a Debian 13 systemd container (`systemd-nspawn`); terminal output in `helpdesk/03-linux-troubleshooting/evidence/` (OOM kill not reproducible there) |
 | Samba AD DC | provisioned in a Debian 13 container; DNS SRV, Kerberos, OUs/groups/users, lockout policy and helpdesk delegation tested; Windows client join not done |
+| Windows Server domain | `dc01` promoted to `lab.local` on 5 Sep 2026 (Server 2025 eval, libvirt). Inventory on 7 Sep: NTDS and DNS running, OUs and helpdesk/SOC/staff accounts present, ADUC and GPMC on the DC. Windows 11 guest exists. I have not written up a domain join or a helpdesk session on it yet |
 | nftables ruleset | `nft -c -f` OK; traffic-tested with three network namespaces (admin / outside / blocklisted client), counters and kernel log checked |
 | Packet capture | own capture generated in a network namespace and analysed with tshark; public Wireshark `dns.cap` sample analysed with a mini-report |
 | Sysmon / auditd samples | every question answered, UTC timeline and IOC list written; `ausearch`/`aureport` on the synthetic auditd log |
@@ -134,10 +135,10 @@ python3 scripts/check_repo.py
 | Subnetting answers | computed with Python `ipaddress` |
 | Flashcards | 99 cards, parsed with Python `csv` |
 
-Things that need a real lab (Windows VMs, Wazuh server, M365 tenant, the
-Windows side of the AD lab, an isolated VM for malware pcaps, a Splunk
-instance) are documented as procedures, and their **Evidence** sections list
-what is still to capture.
+Still open: the Windows troubleshooting scenarios, joining a Windows client
+to the Samba domain, Wazuh, an M365 tenant, an isolated VM for the malware
+pcaps, and a Splunk box. Those pages say so. The Windows Server domain is
+a separate lab (`helpdesk/06`), and it is only as far as the inventory.
 
 ## CI
 

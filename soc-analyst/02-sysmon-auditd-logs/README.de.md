@@ -2,7 +2,7 @@
 
 [English](README.md) · **Deutsch**
 
-**Status:** Done — alle Befehle aus Teil A/B/C liefen gegen die synthetischen Beispiele, meine Antworten, die UTC-Zeitleiste und die IOC-Liste stehen in [`my-timeline.md`](my-timeline.md) (Englisch); das Szenario mit echter Sysmon-/auditd-Telemetrie nachzustellen ist ein eigener nächster Schritt (braucht eine Windows-VM und einen Kernel, auf dem auditd laufen darf).
+**Status:** Done — alle Befehle aus Teil A/B/C liefen gegen die synthetischen Beispiele, meine Antworten, die UTC-Zeitleiste und die IOC-Liste stehen in [`my-timeline.md`](my-timeline.md) (Englisch). Echtes Sysmon auf dem Windows-Gast kommt später. Den Gast gibt es ([Lab 06](../../helpdesk/06-windows-domain/)). Auf dem DC war Sysmon beim Inventory nicht installiert.
 
 ## Ziel
 

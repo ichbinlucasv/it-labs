@@ -1,6 +1,6 @@
 # Lab 02 — Windows troubleshooting runbook
 
-**Status:** Planned — written runbook; the scenarios have not been reproduced on a Windows VM yet. Not runnable on my current Linux-only lab machine (no Windows VM or hypervisor available there); next step is a Windows 11 evaluation VM.
+**Status:** Planned — written runbook. The scenarios have not been run yet. I do have a Windows 11 guest and a Server 2025 DC now (see [lab 06](../06-windows-domain/)). Next step is to break one thing on `win11-soc` and write down the fix.
 
 ## Goal
 

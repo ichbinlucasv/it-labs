@@ -7,14 +7,20 @@
 > Fassung sind in der Tabelle unten mit „DE“ verlinkt; alle anderen gibt es
 > nur auf Englisch.
 
-Ein strukturierter Lab-Plan, den ich auf meinem Weg in den IT-Support und in
-Security Operations durcharbeite; jedes Lab hat den Status **Done / In
-progress / Planned**. Ich suche in Frankreich eine erste Stelle als
-**Helpdesk- / IT-Support-Techniker** oder **Junior SOC Analyst** (Alternance
-oder POEI willkommen) und bereite mich parallel auf **CompTIA Security+
-(SY0-701)** vor und arbeite Module der **HTB Academy** durch.
+Ich bin Lucas. Ich studiere Cybersicherheit und suche in Frankreich eine
+erste Stelle im Helpdesk oder als Junior-SOC-Analyst (Alternance oder POEI).
+Linux ist das System, auf dem ich täglich arbeite. Windows ist ein Lab auf
+demselben Rechner.
 
-Sprachen: Portugiesisch (Muttersprache), Französisch (C1), Englisch (C1).
+**Done** heisst: die Prüfung in diesem Repo ist gelaufen und die Ausgabe
+liegt bei. Es heisst nicht, dass ich an einem echten Ticket schon schnell
+bin.
+
+Täglich bash, im Windows-Lab PowerShell, dazu kleine Werkzeuge in Python
+und Rust. C steht auf der Lernliste. Ein C-Projekt liegt hier noch nicht.
+
+Portugiesisch ist meine Muttersprache. Französisch und Englisch sind C1.
+Security+ SY0-701 und HTB Academy laufen nebenher.
 
 ### Lab-Status
 
@@ -24,7 +30,7 @@ Sprachen: Portugiesisch (Muttersprache), Französisch (C1), Englisch (C1).
 | **In progress** | Teilweise verifiziert — z. B. Syntax geprüft oder mit synthetischen Daten ausgeführt, aber nicht vollständig in einer realen Umgebung getestet |
 | **Planned** | Schriftliche Anleitung, die noch nicht in einer realen Umgebung ausgeführt wurde |
 
-Aktueller Stand: 10 Done, 3 In progress, 3 Planned (siehe Skills-Matrix unten).
+Aktueller Stand: 10 Done, 4 In progress, 3 Planned (siehe Skills-Matrix unten).
 
 > Alle Hostnamen, Benutzer, Firmen und IP-Adressen sind fiktiv (`example.com`,
 > RFC-5737-Bereiche `192.0.2.0/24`, `198.51.100.0/24`, `203.0.113.0/24` und
@@ -39,7 +45,7 @@ Aktueller Stand: 10 Done, 3 In progress, 3 Planned (siehe Skills-Matrix unten).
 
 | Pfad | Inhalt |
 |------|--------|
-| [`helpdesk/`](helpdesk/) | Ticket-Dokumentation, Runbooks zur Fehleranalyse unter Windows & Linux, Benutzerverwaltung mit Samba AD DC, Grundlagen Microsoft 365 |
+| [`helpdesk/`](helpdesk/) | Tickets, Fehleranalyse unter Linux und Windows, ein Samba-AD-Lab, und eine Windows-Server-Domäne, die auf meinem PC läuft (`lab.local`) |
 | [`networking/`](networking/) | Subnetting-Übungen mit Lösungen, Analyse von Netzwerkmitschnitten (Wireshark/tcpdump), Host-Firewall mit nftables |
 | [`soc-analyst/`](soc-analyst/) | Wazuh-Homelab, Analyse von Sysmon- und auditd-Logs (synthetische Beispiele), Incident-Berichte auf öffentlichen Datensätzen, ATT&CK-Mapping, Sigma-Regeln |
 | [`python/`](python/) | Paket `seclab`: Auswertung von SSH-`auth.log`, IOC-Extraktor (defang/refang), Hash-Prüfer — nur Standardbibliothek, pytest-Suite |
@@ -69,6 +75,7 @@ Mitigations · **D3** Security Architecture · **D4** Security Operations ·
 | [helpdesk/03 Fehleranalyse Linux](helpdesk/03-linux-troubleshooting/) ([DE](helpdesk/03-linux-troubleshooting/README.de.md)) | Done | | ○ | ○ | ● | | systemd, journalctl, Speicherplatz/DNS/Berechtigungen |
 | [helpdesk/04 Samba AD DC](helpdesk/04-samba-ad-lab/) ([DE](helpdesk/04-samba-ad-lab/README.de.md)) | In progress | ● | | ● | ● | | Identitäten, Gruppen, GPO-Konzepte, Least Privilege |
 | [helpdesk/05 M365-Grundlagen](helpdesk/05-m365-basics/) | Planned | ● | ○ | ● | ● | ○ | Entra ID, Lizenzen, MFA, Conditional-Access-Konzepte |
+| [helpdesk/06 Windows-Domäne](helpdesk/06-windows-domain/) | In progress | ● | | ● | ● | | Windows Server AD DS, OUs, Helpdesk-Gruppe, RSAT auf dem DC |
 | [networking/01 Subnetting](networking/01-subnetting/) | Done | | | ● | | | CIDR, VLSM, Adresspläne |
 | [networking/02 Netzwerkmitschnitte](networking/02-packet-capture/) ([DE](networking/02-packet-capture/README.de.md)) | Done | | ● | ○ | ● | | Wireshark-Filter, tcpdump, Protokollanalyse |
 | [networking/03 nftables-Firewall](networking/03-nftables-firewall/) ([DE](networking/03-nftables-firewall/README.de.md)) | Done | ○ | ● | ● | ○ | | Default-Deny, zustandsbehaftete Filterung, Logging |
@@ -112,6 +119,7 @@ python3 scripts/check_repo.py
 | Sigma-Regeln | gültiges YAML; `sigma check` 0 Fehler (sigma-cli 3.1.0); die 8 ursprünglichen Regeln schlagen über das SQLite-Backend auf den synthetischen Beispielen an; die Kerberos-Spraying-Regel schlägt auf einem öffentlichen EVTX-Beispiel an |
 | Fehleranalyse Linux | 7 Break/Fix-Szenarien in einem Debian-13-systemd-Container (`systemd-nspawn`) durchgeführt; Terminalausgaben in `helpdesk/03-linux-troubleshooting/evidence/` (OOM-Kill dort nicht reproduzierbar) |
 | Samba AD DC | in einem Debian-13-Container provisioniert; DNS-SRV, Kerberos, OUs/Gruppen/Benutzer, Sperrrichtlinie und Helpdesk-Delegation getestet; Domänenbeitritt eines Windows-Clients noch offen |
+| Windows-Server-Domäne | `dc01` am 5. Sep 2026 zu `lab.local` promotet (Server 2025 Eval, libvirt). Inventory vom 7. Sep: NTDS und DNS laufen, OUs und Helpdesk/SOC/Staff-Konten sind da, ADUC und GPMC auf dem DC. Der Windows-11-Gast existiert. Ein Domain-Join und eine Helpdesk-Sitzung darauf habe ich noch nicht aufgeschrieben |
 | nftables-Regelwerk | `nft -c -f` OK; Datenverkehr mit drei Network Namespaces getestet (Admin / extern / gesperrter Client), Zähler und Kernel-Log geprüft |
 | Netzwerkmitschnitte | eigener Mitschnitt in einem Network Namespace erzeugt und mit tshark analysiert; öffentliches Wireshark-Beispiel `dns.cap` mit Kurzbericht analysiert |
 | Sysmon-/auditd-Beispiele | alle Fragen beantwortet, UTC-Zeitleiste und IOC-Liste erstellt; `ausearch`/`aureport` auf dem synthetischen auditd-Log |
@@ -120,10 +128,11 @@ python3 scripts/check_repo.py
 | Subnetting-Lösungen | mit Python `ipaddress` berechnet |
 | Karteikarten | 99 Karten, mit Python `csv` eingelesen |
 
-Was eine echte Lab-Umgebung braucht (Windows-VMs, Wazuh-Server,
-M365-Tenant, die Windows-Seite des AD-Labs, eine isolierte VM für
-Malware-Mitschnitte, eine Splunk-Instanz), ist als Anleitung dokumentiert;
-die **Evidence**-Abschnitte nennen, was noch zu erfassen ist.
+Noch offen: die Windows-Fehleranalyse-Szenarien, ein Windows-Client in der
+Samba-Domäne, Wazuh, ein M365-Tenant, eine isolierte VM für die
+Malware-Mitschnitte, und Splunk. Das steht in den jeweiligen Labs. Die
+Windows-Server-Domäne ist ein eigenes Lab (`helpdesk/06`) und reicht bisher
+nur bis zum Inventory.
 
 ## CI
 

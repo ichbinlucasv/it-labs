@@ -10,6 +10,7 @@ Windows and Linux problems, and managing identities.
 | [03-linux-troubleshooting](03-linux-troubleshooting/) | Runbook for common Linux (Debian/Ubuntu) incidents |
 | [04-samba-ad-lab](04-samba-ad-lab/) | Active Directory domain with Samba AD DC: users, groups, OUs, password policy |
 | [05-m365-basics](05-m365-basics/) | Microsoft 365 / Entra ID admin concepts: users, licences, MFA, admin centres |
+| [06-windows-domain](06-windows-domain/) | Windows Server 2025 domain I promoted on this PC (`lab.local`) |
 
 All people, companies and tickets are fictional (company: *Exemple SARL*,
 domain `example.com`).

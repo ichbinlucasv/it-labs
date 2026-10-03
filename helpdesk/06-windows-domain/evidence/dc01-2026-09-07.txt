@@ -1,0 +1,66 @@
+Inventory of dc01, 7 Sep 2026, via the guest agent.
+No passwords in this file.
+
+Computer=DC01
+Domain=lab.local
+PartOfDomain=True
+OS=Microsoft Windows Server 2025 Datacenter Evaluation
+Version=10.0.26100
+Build=26100
+TimeZone=W. Europe Standard Time
+IPv4=192.168.122.10 if=Ethernet
+DNS=Ethernet=127.0.0.1,192.168.122.1
+
+LocalUser=Administrator enabled=True
+LocalUser=lucas enabled=True
+LocalUser=helpdesk enabled=True
+LocalUser=soc.analyst enabled=True
+LocalUser=jdoe enabled=True
+LocalUser=asmith enabled=True
+LocalUser=intern enabled=True
+LocalUser=svc_sql enabled=True
+LocalUser=svc_web enabled=True
+
+Svc=NTDS Running start=Automatic
+Svc=DNS Running start=Automatic
+Svc=ADWS Running start=Automatic
+Svc=Netlogon Running start=Automatic
+Svc=WinDefend Running start=Automatic
+Svc=QEMU-GA Running start=Automatic
+
+ADDomain=lab.local
+ADForest=lab.local
+ADOU=Domain Controllers
+ADOU=Admins
+ADOU=Helpdesk
+ADOU=SOC
+ADOU=Staff
+ADOU=Workstations
+ADOU=Servers
+ADOU=Service Accounts
+ADOU=Disabled
+ADGroup=Helpdesk-T1
+ADGroup=Workstation-Admins
+ADGroup=SOC-Analysts
+ADGroup=Password-Reset
+ADGroup=Server-Admins
+ADComputer=DC01
+
+Feature=AD-Domain-Services
+Feature=DNS
+Feature=GPMC
+Feature=RSAT-AD-Tools
+Feature=RSAT-AD-PowerShell
+Feature=RSAT-DNS-Server
+
+Bin_ADUC=True path=C:\WINDOWS\system32\dsa.msc
+Bin_GPMC=True path=C:\WINDOWS\system32\gpmc.msc
+Bin_Sysmon=False
+Bin_Hayabusa=False
+Bin_Wireshark=False
+
+SETUP_DONE=dc 2026-09-05T19:26:49.9534201+02:00
+State=guest-tools
+State=network
+State=roles
+Done=yes

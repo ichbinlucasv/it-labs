@@ -2,7 +2,7 @@
 
 [English](README.md) · **Deutsch**
 
-**Status:** In progress — die Seite des Samba AD DC (Schritte 1–6 und 8) lief echt in einem Debian-13-Container, die Ausgaben liegen in [`evidence/`](evidence/); Schritt 7 (Windows-11-Client in die Domäne aufnehmen, RSAT/ADUC, GPO) ist auf meinem reinen Linux-Lab-Rechner nicht durchführbar und braucht noch eine Windows-VM.
+**Status:** In progress — die Seite des Samba AD DC (Schritte 1–6 und 8) lief echt in einem Debian-13-Container, die Ausgaben liegen in [`evidence/`](evidence/). Schritt 7 ist offen: ein Windows-11-Client in *diese* Samba-Domäne. Windows-Gäste habe ich inzwischen, aber die hängen an einer anderen Domäne ([Lab 06](../06-windows-domain/), `lab.local` auf Windows Server). An Samba habe ich noch keinen gejoint.
 
 ## Ziel
 
