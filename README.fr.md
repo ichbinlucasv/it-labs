@@ -26,7 +26,8 @@ pour construire : `log-analyzer` et `fim` ici, plus
 Le C est sur la liste d'étude. Il n'y a pas encore de projet C dans ce dépôt.
 
 Le portugais est ma langue maternelle. Le français et l'anglais sont tous
-les deux C1. Security+ SY0-701 et HTB Academy sont en cours.
+les deux C1. L'examen Security+ que je vais étudier est le SY0-801. Les
+notes déjà dans ce dépôt suivent le SY0-701. HTB Academy est en cours.
 
 La machine, les langages et les outils d'IA sont dans
 [Comment je travaille](how-i-work.fr.md). Version courte : CachyOS (Arch)
@@ -67,7 +68,7 @@ Décompte actuel : 10 Done, 4 In progress, 3 Planned (voir la matrice de compét
 | [`soc-analyst/`](soc-analyst/) | Homelab Wazuh, analyse de journaux Sysmon + auditd (exemples synthétiques), modèles de rapports d'incident sur des jeux publics, correspondance ATT&CK, règles Sigma |
 | [`python/`](python/) | Paquet `seclab` : résumé d'`auth.log` SSH, extracteur d'IOC (defang/refang), vérificateur de hash — bibliothèque standard seulement, suite pytest |
 | [`rust/`](rust/) | Workspace Cargo : crates `log-analyzer` et `fim` (contrôle d'intégrité des fichiers) avec tests unitaires |
-| [`security-plus/`](security-plus/) | Notes d'étude SY0-701 par domaine + CSV de fiches |
+| [`security-plus/`](security-plus/) | Notes écrites pour le SY0-701. L'examen que je passerai est le SY0-801. CSV de fiches |
 | [`templates/`](templates/) | Formulaires vides que je copie un jour de travail : helpdesk, SOC, et une langue à la fois |
 | [`scripts/check_repo.py`](scripts/check_repo.py) | Contrôle d'hygiène du dépôt : sections des README de lab, CSV des fiches, YAML Sigma, motifs de secrets |
 | [`.forgejo/workflows-disabled/`](.forgejo/workflows-disabled/) | Workflow CI, **désactivé** tant qu'il n'y a pas de runner (voir [CI](#ci)) |
@@ -78,7 +79,7 @@ françaises : Objectif · Mise en place · Étapes · Preuves · Ce que j'ai app
 
 ---
 
-## Matrice de compétences — labs × domaines Security+ SY0-701
+## Matrice de compétences — labs × domaines Security+
 
 Domaines : **D1** Concepts généraux de sécurité · **D2** Menaces, vulnérabilités
 et atténuations · **D3** Architecture de sécurité · **D4** Opérations de
@@ -169,7 +170,7 @@ Sur GitHub, copier le fichier vers `.github/workflows/` et mettre `runs-on: ubun
 
 ## Apprentissage en cours
 
-- CompTIA Security+ SY0-701 — en cours
+- CompTIA Security+ SY0-801 — c'est l'examen que je vais étudier. Les notes dans [security-plus/](security-plus/) ont été écrites pour le SY0-701. Je n'ai pas passé l'examen.
 - [Hack The Box](https://profile.hackthebox.com/profile/019c3e11-0637-723b-b224-545dcf0bbc46) — profil ouvert. L'Academy (SOC Analyst / fondamentaux) est en cours. Pas de rang sur cette page.
 - [TryHackMe](https://tryhackme.com/p/ichbinlucasv) — compte ouvert, en cours. Pas de rang sur cette page.
 - [Boot.dev](https://www.boot.dev/u/ichbinlucasv) — compte ouvert. Le profil public reste caché avant le niveau 10, donc pas de niveau ici.

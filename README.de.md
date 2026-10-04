@@ -25,7 +25,8 @@ hier, dazu [Frihart](https://codeberg.org/ichbinlucasv/Frihart) und
 C steht auf der Lernliste. Ein C-Projekt liegt hier noch nicht.
 
 Portugiesisch ist meine Muttersprache. Französisch und Englisch sind C1.
-Security+ SY0-701 und HTB Academy laufen nebenher.
+Die Security+-Prüfung, die ich lernen werde, ist SY0-801. Die Notizen
+in diesem Repo folgen noch SY0-701. HTB Academy läuft nebenher.
 
 Rechner, Sprachen und die KI-Werkzeuge stehen in
 [Wie ich arbeite](how-i-work.de.md). Kurz: täglich CachyOS (Arch),
@@ -65,7 +66,7 @@ Aktueller Stand: 10 Done, 4 In progress, 3 Planned (siehe Skills-Matrix unten).
 | [`soc-analyst/`](soc-analyst/) | Wazuh-Homelab, Analyse von Sysmon- und auditd-Logs (synthetische Beispiele), Incident-Berichte auf öffentlichen Datensätzen, ATT&CK-Mapping, Sigma-Regeln |
 | [`python/`](python/) | Paket `seclab`: Auswertung von SSH-`auth.log`, IOC-Extraktor (defang/refang), Hash-Prüfer — nur Standardbibliothek, pytest-Suite |
 | [`rust/`](rust/) | Cargo-Workspace: Crates `log-analyzer` und `fim` (File-Integrity-Monitoring) mit Unit-Tests |
-| [`security-plus/`](security-plus/) | Lernnotizen SY0-701 pro Domäne + Karteikarten (CSV) |
+| [`security-plus/`](security-plus/) | Notizen für SY0-701 geschrieben. Die Prüfung, die ich ablege, ist SY0-801. Karteikarten (CSV) |
 | [`templates/`](templates/) | Leere Formulare für den Arbeitstag: Helpdesk, SOC, und eine Sprache pro Block |
 | [`scripts/check_repo.py`](scripts/check_repo.py) | Hygiene-Prüfung des Repos: Abschnitte der Lab-READMEs, Karteikarten-CSV, Sigma-YAML, Muster für Secrets |
 | [`.forgejo/workflows-disabled/`](.forgejo/workflows-disabled/) | CI-Workflow, **deaktiviert**, bis ein Runner existiert (siehe [CI](#ci)) |
@@ -76,7 +77,7 @@ deutschen Fassungen: Ziel · Aufbau · Schritte · Nachweise · Was ich gelernt 
 
 ---
 
-## Skills-Matrix — Labs × Security+-SY0-701-Domänen
+## Skills-Matrix — Labs × Security+-Domänen
 
 Domänen: **D1** General Security Concepts · **D2** Threats, Vulnerabilities &
 Mitigations · **D3** Security Architecture · **D4** Security Operations ·
@@ -167,7 +168,7 @@ Auf GitHub die Datei nach `.github/workflows/` kopieren und `runs-on: ubuntu-lat
 
 ## Aktuelles Lernen
 
-- CompTIA Security+ SY0-701 — in Vorbereitung
+- CompTIA Security+ SY0-801 — das ist die Prüfung, die ich lernen werde. Die Notizen in [security-plus/](security-plus/) sind für SY0-701 geschrieben. Die Prüfung habe ich nicht abgelegt.
 - [Hack The Box](https://profile.hackthebox.com/profile/019c3e11-0637-723b-b224-545dcf0bbc46) — Profil offen. Academy (SOC Analyst / Grundlagen) ist in Arbeit. Kein Rang auf dieser Seite.
 - [TryHackMe](https://tryhackme.com/p/ichbinlucasv) — Konto offen, in Arbeit. Kein Rang auf dieser Seite.
 - [Boot.dev](https://www.boot.dev/u/ichbinlucasv) — Konto offen. Das öffentliche Profil bleibt bis Level 10 verborgen, deshalb kein Level hier.

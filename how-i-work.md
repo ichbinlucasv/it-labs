@@ -104,7 +104,9 @@ For a helpdesk seat or a junior SOC seat, start here:
 
 ## What I am still learning
 
-Security+ SY0-701 is not passed. HTB Academy is in progress. German is
+The Security+ exam I will study is SY0-801. I have not passed it. The
+notes in this repo were written for SY0-701, and I will update them
+while I study 801. HTB Academy is in progress. German is
 in progress. Portuguese is my first language. French and English are
 both C1. I am looking first in France, for helpdesk or a junior SOC role
 (alternance or POEI). Germany is the other option, and I can work there

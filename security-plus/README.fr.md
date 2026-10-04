@@ -1,26 +1,30 @@
-# Notes et cartes CompTIA Security+ (SY0-701)
+# Notes et cartes CompTIA Security+
 
 [English](README.md) · **Français** · [Deutsch](README.de.md)
 
-**Status:** In progress — les notes et un CSV de 99 cartes (il se lit sans erreur) sont écrits ; je continue de préparer l'examen et je ne l'ai pas encore passé (ce lab n'est « Done » que le jour où je réussis le SY0-701).
+**Status:** In progress — les notes et un CSV de 99 cartes ont été écrits pour le SY0-701. L'examen que je passerai est le SY0-801. Je ne l'ai pas passé. Ce lab n'est Done que le jour où je réussis le SY0-801.
 
 ## Objectif
 
-Préparer le **CompTIA Security+ SY0-701** avec des notes courtes, écrites
-avec mes mots, rangées selon les cinq domaines de l'examen, plus un paquet
-de cartes que je peux importer dans Anki. Chaque note relie la théorie aux
-labs pratiques de ce dépôt.
+L'examen que je vais étudier est le **CompTIA Security+ SY0-801**.
+CompTIA remplace le SY0-701 par cette version. Les notes et les cartes
+déjà dans ce dossier suivent les objectifs du SY0-701, avec mes mots,
+par les cinq domaines, plus un paquet que je peux importer dans Anki.
+Je lirai les objectifs du SY0-801 et je mettrai ces notes à jour en
+étudiant. Je n'ai pas réservé l'examen. Chaque note relie la théorie
+aux labs pratiques de ce dépôt.
 Les cinq notes existent aussi en français et en allemand. Le CSV reste un
 seul paquet en anglais, pour ne pas couper Anki en trois fichiers.
 
 ## Mise en place
 
-- Objectifs officiels de l'examen (à télécharger sur la page SY0-701 de
-  CompTIA) — la référence pour la liste des sujets.
-- Faits d'examen (vérifier le détail à jour chez CompTIA) : jusqu'à 90
-  questions (QCM + performance-based), 90 minutes, note de passage 750 sur
-  une échelle de 100 à 900.
-- Poids des domaines : D1 12 %, D2 22 %, D3 18 %, D4 28 %, D5 20 %.
+- Les objectifs officiels du SY0-801, chez CompTIA, sont la liste que je
+  vais étudier. Les notes ci-dessous ont été écrites sur la liste SY0-701.
+- Faits du SY0-701 que j'avais déjà notés (je vérifierai la page SY0-801
+  avant de réserver) : jusqu'à 90 questions (QCM et performance-based),
+  90 minutes, note de passage 750 sur une échelle de 100 à 900.
+- Poids des domaines SY0-701 utilisés pour ces notes : D1 12 %, D2 22 %,
+  D3 18 %, D4 28 %, D5 20 %.
 
 | Domaine | Notes | Labs liés |
 |---------|-------|-----------|

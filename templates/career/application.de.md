@@ -22,8 +22,9 @@ Das Lab, das ich wirklich betreibe:
 https://github.com/ichbinlucasv/it-labs
 
 Zuerst how-i-work.de.md, dann das Windows-Domänen-Lab, die
-Linux-Fehleranalyse, und ein SOC-Bericht (IR-03). Security+ und
-HTB Academy laufen. Ich behaupte nicht, dass die Prüfung bestanden ist.
+Linux-Fehleranalyse, und ein SOC-Bericht (IR-03). Die Security+-Prüfung,
+die ich lernen werde, ist SY0-801. Bestanden habe ich sie nicht.
+HTB Academy läuft.
 
 E-Mail: ichbinlucas@pm.me
 

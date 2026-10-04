@@ -1,25 +1,29 @@
-# CompTIA Security+ (SY0-701) study notes & flashcards
+# CompTIA Security+ study notes & flashcards
 
 **English** · [Français](README.fr.md) · [Deutsch](README.de.md)
 
-**Status:** In progress — notes and a 99-card flashcards CSV (parses cleanly) are written; exam preparation is ongoing and the exam has not been taken (this lab is only "Done" once I pass SY0-701).
+**Status:** In progress — the notes and a 99-card CSV were written for SY0-701. The exam I will sit is SY0-801. I have not taken it. This lab is Done only when I pass SY0-801.
 
 ## Goal
 
-Prepare for **CompTIA Security+ SY0-701** with concise notes written in my
-own words, organised by the five exam domains, plus a flashcard deck I can
-import into Anki. Each note links theory to the hands-on labs in this repo.
+The exam I will study is **CompTIA Security+ SY0-801**. CompTIA is
+replacing SY0-701 with that version. The notes and flashcards already
+in this folder follow the SY0-701 objectives, in my own words, by the
+five domains, plus a deck I can import into Anki. I will read the
+SY0-801 objectives and update these notes as I study. I have not booked
+the exam. Each note links theory to the hands-on labs in this repo.
 The five notes are also in French and German. The CSV stays one English
 deck so Anki does not split into three files.
 
 ## Setup
 
-- Official exam objectives (download from CompTIA's SY0-701 page) — the
-  source of truth for the topic list.
-- Exam facts (check CompTIA for current details): up to 90 questions
-  (multiple choice + performance-based), 90 minutes, passing score 750 on a
-  100–900 scale.
-- Domain weights: D1 12 %, D2 22 %, D3 18 %, D4 28 %, D5 20 %.
+- Official SY0-801 objectives, from CompTIA, are the list I will study.
+  The notes below were written against the SY0-701 list.
+- SY0-701 facts I already wrote down (I will check the SY0-801 page
+  before I book): up to 90 questions (multiple choice and
+  performance-based), 90 minutes, passing score 750 on a 100–900 scale.
+- SY0-701 domain weights used for these notes: D1 12 %, D2 22 %, D3 18 %,
+  D4 28 %, D5 20 %.
 
 | Domain | Notes | Related labs |
 |--------|-------|--------------|

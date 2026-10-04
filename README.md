@@ -24,7 +24,8 @@ and [HashChat](https://codeberg.org/ichbinlucasv/HashChat) in their own
 repos. C is on the study list. There is no C project in this repo yet.
 
 Portuguese is my first language. French and English are both C1.
-Security+ SY0-701 and HTB Academy are in progress.
+The Security+ exam I will study is SY0-801. The notes already in this
+repo follow SY0-701. HTB Academy is in progress.
 
 The machine, the languages, and the AI tools are in
 [How I work](how-i-work.md). Short version: CachyOS (Arch) every day,
@@ -63,7 +64,7 @@ Current count: 10 Done, 4 In progress, 3 Planned (see the skills matrix below).
 | [`soc-analyst/`](soc-analyst/) | Wazuh home lab, Sysmon + auditd log analysis (synthetic samples), incident write-up templates on public datasets, ATT&CK mapping, Sigma rules |
 | [`python/`](python/) | `seclab` package: SSH auth.log summariser, IOC extractor (defang/refang), hash checker — stdlib only, pytest suite |
 | [`rust/`](rust/) | Cargo workspace: `log-analyzer` and `fim` (file-integrity monitor) crates with unit tests |
-| [`security-plus/`](security-plus/) | SY0-701 study notes per domain + flashcards CSV |
+| [`security-plus/`](security-plus/) | Notes written for SY0-701. The exam I will sit is SY0-801. Flashcards CSV |
 | [`templates/`](templates/) | Blank forms I copy on a work day: helpdesk, SOC, and one language at a time |
 | [`scripts/check_repo.py`](scripts/check_repo.py) | Repo hygiene check: lab README sections, flashcards CSV, Sigma YAML, secret patterns |
 | [`.forgejo/workflows-disabled/`](.forgejo/workflows-disabled/) | CI workflow, **disabled** until a runner exists (see [CI](#ci)) |
@@ -73,7 +74,7 @@ Every lab README starts with a **Status** line and follows the same layout:
 
 ---
 
-## Skills matrix — labs × Security+ SY0-701 domains
+## Skills matrix — labs × Security+ domains
 
 Domains: **D1** General Security Concepts · **D2** Threats, Vulnerabilities &
 Mitigations · **D3** Security Architecture · **D4** Security Operations ·
@@ -164,7 +165,7 @@ On GitHub, copy the file to `.github/workflows/` and set `runs-on: ubuntu-latest
 
 ## Current learning
 
-- CompTIA Security+ SY0-701 — in progress
+- CompTIA Security+ SY0-801 — this is the exam I will study. The notes in [security-plus/](security-plus/) were written for SY0-701. I have not taken the exam.
 - [Hack The Box](https://profile.hackthebox.com/profile/019c3e11-0637-723b-b224-545dcf0bbc46) — profile open. Academy (SOC Analyst / fundamentals) is in progress. No rank on this page.
 - [TryHackMe](https://tryhackme.com/p/ichbinlucasv) — account open, in progress. No rank on this page.
 - [Boot.dev](https://www.boot.dev/u/ichbinlucasv) — account open. The public profile stays hidden until level 10, so no level here.

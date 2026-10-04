@@ -21,8 +21,9 @@ Le lab que je fais vraiment tourner est ici :
 https://github.com/ichbinlucasv/it-labs
 
 Commencez par how-i-work.fr.md, puis le lab de domaine Windows, les
-notes de dépannage Linux, et un rapport SOC (IR-03). Security+ et
-HTB Academy sont en cours. Je ne dis pas que l'examen est obtenu.
+notes de dépannage Linux, et un rapport SOC (IR-03). L'examen
+Security+ que je vais étudier est le SY0-801. Je ne l'ai pas obtenu.
+HTB Academy est en cours.
 
 E-mail : ichbinlucas@pm.me
 

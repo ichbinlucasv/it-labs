@@ -115,7 +115,10 @@ Für eine Helpdesk-Stelle oder eine Junior-SOC-Stelle zuerst hier:
 
 ## Was ich noch lerne
 
-Security+ SY0-701 ist nicht bestanden. HTB Academy läuft. Deutsch ist
+Die Security+-Prüfung, die ich lernen werde, ist SY0-801. Bestanden
+habe ich sie nicht. Die Notizen in diesem Repo sind für SY0-701
+geschrieben, und ich passe sie an, während ich 801 lerne. HTB Academy
+läuft. Deutsch ist
 in Arbeit. Portugiesisch ist meine Muttersprache. Französisch und
 Englisch sind C1. Zuerst schaue ich in Frankreich, Helpdesk oder
 Junior-SOC (Alternance oder POEI). Deutschland ist die andere

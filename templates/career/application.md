@@ -20,8 +20,9 @@ The lab I actually run is here:
 https://github.com/ichbinlucasv/it-labs
 
 Start with how-i-work.md, then the Windows domain lab, the Linux
-troubleshooting notes, and one SOC write-up (IR-03). Security+ and
-HTB Academy are in progress. I am not claiming the exam is passed.
+troubleshooting notes, and one SOC write-up (IR-03). The Security+
+exam I will study is SY0-801. I have not passed it. HTB Academy is
+in progress.
 
 Email: ichbinlucas@pm.me
 

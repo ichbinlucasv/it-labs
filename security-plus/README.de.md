@@ -1,26 +1,31 @@
-# Lernnotizen und Karteikarten CompTIA Security+ (SY0-701)
+# Lernnotizen und Karteikarten CompTIA Security+
 
 [English](README.md) · [Français](README.fr.md) · **Deutsch**
 
-**Status:** In progress — Notizen und ein CSV mit 99 Karten (parst sauber) sind geschrieben; die Prüfungsvorbereitung läuft, und die Prüfung habe ich noch nicht abgelegt (dieses Lab ist erst „Done“, wenn ich SY0-701 bestehe).
+**Status:** In progress — die Notizen und ein CSV mit 99 Karten sind für SY0-701 geschrieben. Die Prüfung, die ich ablege, ist SY0-801. Abgelegt habe ich sie nicht. Dieses Lab ist erst Done, wenn ich SY0-801 bestehe.
 
 ## Ziel
 
-Mich auf **CompTIA Security+ SY0-701** vorbereiten, mit knappen Notizen in
-meinen eigenen Worten, geordnet nach den fünf Prüfungsdomänen, plus ein
-Kartenstapel, den ich in Anki importieren kann. Jede Notiz verbindet die
+Die Prüfung, die ich lernen werde, ist **CompTIA Security+ SY0-801**.
+CompTIA ersetzt SY0-701 durch diese Version. Die Notizen und Karten in
+diesem Ordner folgen den SY0-701-Zielen, in meinen eigenen Worten, nach
+den fünf Domänen, plus ein Stapel, den ich in Anki importieren kann.
+Die SY0-801-Ziele lese ich und diese Notizen passe ich an, während ich
+lerne. Gebucht habe ich die Prüfung nicht. Jede Notiz verbindet die
 Theorie mit den praktischen Labs in diesem Repo.
 Die fünf Notizen gibt es auch auf Französisch und Deutsch. Die CSV bleibt
 ein englisches Deck, damit Anki nicht in drei Dateien zerfällt.
 
 ## Aufbau
 
-- Offizielle Prüfungsziele (Download von der SY0-701-Seite von CompTIA) —
-  die Referenz für die Themenliste.
-- Prüfungsfakten (aktuelle Angaben bei CompTIA prüfen): bis zu 90 Fragen
-  (Multiple Choice + Performance-Based), 90 Minuten, Bestehensgrenze 750
-  auf einer Skala von 100–900.
-- Gewichtung der Domänen: D1 12 %, D2 22 %, D3 18 %, D4 28 %, D5 20 %.
+- Die offiziellen SY0-801-Ziele bei CompTIA sind die Liste, die ich
+  lernen werde. Die Notizen unten sind gegen die SY0-701-Liste geschrieben.
+- SY0-701-Fakten, die ich schon notiert hatte (die SY0-801-Seite prüfe
+  ich vor der Buchung): bis zu 90 Fragen (Multiple Choice und
+  Performance-Based), 90 Minuten, Bestehensgrenze 750 auf einer Skala
+  von 100–900.
+- SY0-701-Gewichte für diese Notizen: D1 12 %, D2 22 %, D3 18 %,
+  D4 28 %, D5 20 %.
 
 | Domäne | Notizen | Verwandte Labs |
 |--------|---------|----------------|

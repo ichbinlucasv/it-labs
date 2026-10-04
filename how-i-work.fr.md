@@ -112,7 +112,9 @@ Pour un poste helpdesk ou un poste SOC junior, commencer ici :
 
 ## Ce que j'apprends encore
 
-Security+ SY0-701 n'est pas obtenu. HTB Academy est en cours. L'allemand
+L'examen Security+ que je vais étudier est le SY0-801. Je ne l'ai pas
+obtenu. Les notes de ce dépôt ont été écrites pour le SY0-701, et je
+les mettrai à jour en étudiant le 801. HTB Academy est en cours. L'allemand
 est en cours. Le portugais est ma langue maternelle. Le français et
 l'anglais sont tous les deux C1. Je cherche d'abord en France, au
 helpdesk ou comme analyste SOC junior (alternance ou POEI). L'Allemagne
