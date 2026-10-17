@@ -2,17 +2,18 @@
 
 [English](README.md) · **Français** · [Deutsch](README.de.md)
 
-**Status:** Done — deux crates avec 11 tests unitaires qui passent ; clippy et rustfmt propres.
+**Status:** Done — trois crates avec des tests unitaires qui passent ; clippy et rustfmt propres.
 
 ## Objectif
 
-Apprendre Rust en construisant deux petits outils défensifs, sûrs et bien
+Apprendre Rust en construisant trois petits outils défensifs, sûrs et bien
 testés :
 
 | Crate | Ce qu'elle fait |
 |-------|-----------------|
 | [`log-analyzer`](crates/log-analyzer/) | Résume les journaux d'accès Apache/Nginx au format *combined* : clients les plus vus, codes de statut, clients avec beaucoup d'erreurs (balayage), et requêtes qui matchent des heuristiques transparentes (traversée de chemin y compris encodée en pourcent, fichiers sensibles, sondes de panneaux d'admin, user-agents de scanners, motifs d'injection). Bibliothèque standard seulement. |
 | [`fim`](crates/fim/) | **Contrôle d'intégrité** minimal : `baseline` enregistre le SHA-256 et la taille de chaque fichier sous un répertoire ; `check` signale les fichiers **ADDED / REMOVED / MODIFIED**. Ne suit pas les liens symboliques. Utilise la crate `sha2`. |
+| [`defang`](crates/defang/) | Les mêmes règles defang/refang que l'outil Python `seclab.ioc`, pour qu'un ticket montre `hxxps://host[.]example` au lieu d'un lien cliquable. Bibliothèque standard seulement. Ça ne va rien chercher sur le réseau. |
 
 (Security+ D4 — contrôle d'intégrité des fichiers, analyse de journaux ;
 D1 — intégrité, hash.)
@@ -89,6 +90,7 @@ sont refusés.
 $ cargo test
 fim:          5 passed (SHA-256 test vectors, add/remove/modify detection, exclusions, TSV round-trip & validation, symlink loop)
 log-analyzer: 6 passed (parsing, malformed lines, percent-decoding, classification, summary/report)
+defang:       3 passed (mêmes vecteurs que seclab.ioc, aller-retour, pas de schéma http vivant)
 $ cargo clippy --all-targets -- -D warnings   -> no warnings
 ```
 

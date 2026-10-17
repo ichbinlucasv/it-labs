@@ -56,7 +56,7 @@ passwords stay in a password manager. They are not in this repository.
 | bash | Every day on CachyOS (Arch), and in the Linux troubleshooting lab. Fedora drill in [templates/linux/](templates/linux/fedora.md) |
 | PowerShell | On the Windows domain lab, and in the language drills |
 | Python | The `seclab` tools in this repo, with pytest |
-| Rust | `log-analyzer` and `fim` here. Two other public repos: [Frihart](https://codeberg.org/ichbinlucasv/Frihart) and [HashChat](https://codeberg.org/ichbinlucasv/HashChat) |
+| Rust | `log-analyzer`, `fim`, and `defang` here. Two other public repos: [Frihart](https://codeberg.org/ichbinlucasv/Frihart) and [HashChat](https://codeberg.org/ichbinlucasv/HashChat) |
 | C | Study, and short compile-and-read drills. No C project in this repo yet |
 | C++ | Same place as C: drills, not a program I ship |
 | C# | A language drill in [templates/](templates/). No C# application here |
@@ -99,10 +99,14 @@ For a helpdesk seat or a junior SOC seat, start here:
 1. [Windows domain](helpdesk/06-windows-domain/) — a real AD DS lab, still **In progress**. On 4 Oct 2026 `win11-soc` was already in `lab.local`, a helpdesk reset is written up, and the empty workstation GPO is the ticket. Still open: an interactive helpdesk sign-in, and an unlock (lockout threshold is 0).
 2. [Linux troubleshooting](helpdesk/03-linux-troubleshooting/) — **Done**, with terminal output in `evidence/`.
 3. [Incident write-ups](soc-analyst/03-incident-writeups/) and [Sigma rules](soc-analyst/05-sigma-rules/) — how I read a log, and how I write a detection.
-4. [Rust](rust/) — `log-analyzer` and `fim`, with tests and clippy clean. Longer Rust code: [Frihart](https://codeberg.org/ichbinlucasv/Frihart) and [HashChat](https://codeberg.org/ichbinlucasv/HashChat). [Python](python/) is the other small toolkit, with pytest.
+4. [Rust](rust/) — `log-analyzer`, `fim`, and `defang`, with tests and clippy clean. Longer Rust code: [Frihart](https://codeberg.org/ichbinlucasv/Frihart) and [HashChat](https://codeberg.org/ichbinlucasv/HashChat). [Python](python/) is the other small toolkit, with pytest.
 5. [Templates](templates/) — the forms I use to practise a work day.
 
 ## What I am still learning
+
+I have not started university. The degree at IU comes after I am working,
+not before. Until then this repo is self-study. I am intermediate, not
+a senior, and an AI assistant drafts with me. I read what I keep.
 
 The Security+ exam I will study is SY0-801. I have not passed it. The
 notes in this repo were written for SY0-701, and I will update them

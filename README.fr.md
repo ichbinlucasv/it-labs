@@ -2,9 +2,13 @@
 
 [English](README.md) · **Français** · [Deutsch](README.de.md)
 
-Je suis Lucas. J'étudie la cybersécurité. Je cherche un premier poste en
-France, au helpdesk ou comme analyste SOC junior (alternance ou POEI).
-Linux est la machine que j'utilise vraiment. Windows est un lab sur le même PC.
+Je suis Lucas. J'étudie la cybersécurité par moi-même. Je cherche un
+premier poste en France, au helpdesk ou comme analyste SOC junior
+(alternance ou POEI). Je n'ai pas encore commencé l'université. Je ne
+suis pas diplômé, et je ne travaille pas déjà dans un SOC. Mon niveau
+est intermédiaire : je fais tourner ma machine Linux, je lis un journal,
+j'écris un petit outil. Je ne suis pas senior. Linux est la machine que
+j'utilise vraiment. Windows est un lab sur le même PC.
 
 Je cherche d'abord en France. L'Allemagne est l'autre option. Je peux y
 travailler en anglais, et j'apprends l'allemand. Une fois au travail, je
@@ -16,11 +20,13 @@ qui compte.
 
 Ce dépôt, c'est la pratique, pas un CV fini. **Done** veut dire que j'ai
 lancé la vérification et gardé la sortie. Ça ne veut pas dire que je suis
-rapide, ni que je sauterais la doc sur un vrai ticket.
+rapide, ni que je sauterais la doc sur un vrai ticket. Quand j'écris, un
+assistant IA rédige souvent avec moi. Je ne garde un changement qu'après
+l'avoir lu et après que les tests passent.
 
 J'utilise bash tous les jours, et PowerShell sur le lab Windows. Python,
 c'est la petite boîte à outils plus bas. Rust est le langage que j'aime
-pour construire : `log-analyzer` et `fim` ici, plus
+pour construire : `log-analyzer`, `fim` et `defang` ici, plus
 [Frihart](https://codeberg.org/ichbinlucasv/Frihart) et
 [HashChat](https://codeberg.org/ichbinlucasv/HashChat) dans leurs dépôts.
 Le C est sur la liste d'étude. Il n'y a pas encore de projet C dans ce dépôt.
@@ -67,7 +73,7 @@ Décompte actuel : 10 Done, 4 In progress, 3 Planned (voir la matrice de compét
 | [`networking/`](networking/) | Exercices de subnetting + corrigé, analyse de captures (Wireshark/tcpdump), pare-feu hôte nftables |
 | [`soc-analyst/`](soc-analyst/) | Homelab Wazuh, analyse de journaux Sysmon + auditd (exemples synthétiques), modèles de rapports d'incident sur des jeux publics, correspondance ATT&CK, règles Sigma |
 | [`python/`](python/) | Paquet `seclab` : résumé d'`auth.log` SSH, extracteur d'IOC (defang/refang), vérificateur de hash — bibliothèque standard seulement, suite pytest |
-| [`rust/`](rust/) | Workspace Cargo : crates `log-analyzer` et `fim` (contrôle d'intégrité des fichiers) avec tests unitaires |
+| [`rust/`](rust/) | Workspace Cargo : crates `log-analyzer`, `fim` (contrôle d'intégrité) et `defang`, avec tests unitaires |
 | [`security-plus/`](security-plus/) | Notes écrites pour le SY0-701. L'examen que je passerai est le SY0-801. CSV de fiches |
 | [`templates/`](templates/) | Formulaires vides que je copie un jour de travail : helpdesk, SOC, et une langue à la fois |
 | [`scripts/check_repo.py`](scripts/check_repo.py) | Contrôle d'hygiène du dépôt : sections des README de lab, CSV des fiches, YAML Sigma, motifs de secrets |
@@ -104,7 +110,7 @@ sécurité · **D5** Gestion du programme de sécurité et supervision.
 | [soc-analyst/04 Correspondance ATT&CK](soc-analyst/04-attack-mapping/) | Done | | ● | | ● | | Couverture de détection guidée par la menace |
 | [soc-analyst/05 Règles Sigma](soc-analyst/05-sigma-rules/) | Done | | ● | | ● | | Ingénierie de détection, pySigma/sigma-cli |
 | [python/ outils seclab](python/) | Done | ○ | ● | | ● | | Regex, parsing, hachage, tests automatisés |
-| [rust/ log-analyzer + fim](rust/) | Done | ○ | ○ | ○ | ● | | Surveillance d'intégrité, programmation système |
+| [rust/ log-analyzer + fim + defang](rust/) | Done | ○ | ○ | ○ | ● | | Surveillance d'intégrité, indicateurs défangés, programmation système |
 | [security-plus/ notes et fiches](security-plus/) | In progress | ● | ● | ● | ● | ● | Préparation de l'examen sur tous les domaines |
 
 ---
@@ -133,8 +139,8 @@ python3 scripts/check_repo.py
 
 | Élément | Comment |
 |---------|---------|
-| Outils Python | `pytest` — 35 tests passent |
-| Crates Rust | `cargo test` (11 tests unitaires) et `cargo clippy --all-targets -- -D warnings` propres, `cargo fmt --check` propre |
+| Outils Python | `pytest` — 38 tests passent |
+| Crates Rust | `cargo test` (14 tests unitaires) et `cargo clippy --all-targets -- -D warnings` propres, `cargo fmt --check` propre |
 | Règles Sigma | YAML valide ; `sigma check` 0 erreur, 0 problème (sigma-cli 3.1.0) ; les 8 règles d'origine se déclenchent sur les exemples synthétiques via le backend SQLite ; la règle de spraying Kerberos se déclenche sur un exemple EVTX public |
 | Dépannage Linux | 7 scénarios cassé/réparé dans un conteneur systemd Debian 13 (`systemd-nspawn`) ; sortie du terminal dans `helpdesk/03-linux-troubleshooting/evidence/` (kill OOM pas reproductible là) |
 | Samba AD DC | provisionné dans un conteneur Debian 13 ; DNS SRV, Kerberos, OU/groupes/utilisateurs, politique de verrouillage et délégation helpdesk testés ; jointure d'un client Windows pas faite |

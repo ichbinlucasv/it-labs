@@ -110,10 +110,15 @@ Für eine Helpdesk-Stelle oder eine Junior-SOC-Stelle zuerst hier:
 1. [Windows-Domäne](helpdesk/06-windows-domain/) — ein echtes AD-DS-Lab, noch **In progress**. Am 4. Okt. 2026 war `win11-soc` schon in `lab.local`, ein Helpdesk-Reset ist aufgeschrieben, und die leere Workstation-GPO ist das Ticket. Noch offen: eine interaktive Helpdesk-Anmeldung, und eine Entsperrung (Sperrschwelle 0).
 2. [Fehleranalyse Linux](helpdesk/03-linux-troubleshooting/) — **Done**, mit Terminalausgabe in `evidence/`.
 3. [Incident-Berichte](soc-analyst/03-incident-writeups/) und [Sigma-Regeln](soc-analyst/05-sigma-rules/) — wie ich ein Log lese, und wie ich eine Erkennung schreibe.
-4. [Rust](rust/) — `log-analyzer` und `fim`, mit Tests und sauberem clippy. Längerer Rust-Code: [Frihart](https://codeberg.org/ichbinlucasv/Frihart) und [HashChat](https://codeberg.org/ichbinlucasv/HashChat). [Python](python/) ist der andere kleine Werkzeugkasten, mit pytest.
+4. [Rust](rust/) — `log-analyzer`, `fim` und `defang`, mit Tests und sauberem clippy. Längerer Rust-Code: [Frihart](https://codeberg.org/ichbinlucasv/Frihart) und [HashChat](https://codeberg.org/ichbinlucasv/HashChat). [Python](python/) ist der andere kleine Werkzeugkasten, mit pytest.
 5. [Vorlagen](templates/) — die Formulare für einen Übungstag.
 
 ## Was ich noch lerne
+
+Ein Studium habe ich noch nicht angefangen. Das Fernstudium an der IU
+kommt, nachdem ich arbeite, nicht davor. Bis dahin ist dieses Repo
+Selbststudium. Ich bin mittel, nicht senior, und ein KI-Assistent
+schreibt mit. Was ich behalte, lese ich.
 
 Die Security+-Prüfung, die ich lernen werde, ist SY0-801. Bestanden
 habe ich sie nicht. Die Notizen in diesem Repo sind für SY0-701

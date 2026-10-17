@@ -2,10 +2,13 @@
 
 [English](README.md) · [Français](README.fr.md) · **Deutsch**
 
-Ich bin Lucas. Ich studiere Cybersicherheit und suche in Frankreich eine
-erste Stelle im Helpdesk oder als Junior-SOC-Analyst (Alternance oder POEI).
-Linux ist das System, auf dem ich täglich arbeite. Windows ist ein Lab auf
-demselben Rechner.
+Ich bin Lucas. Ich lerne Cybersicherheit allein. Ich suche in Frankreich
+eine erste Stelle im Helpdesk oder als Junior-SOC-Analyst (Alternance
+oder POEI). Ein Studium habe ich noch nicht angefangen. Ich bin kein
+Absolvent, und ich arbeite noch nicht in einem SOC. Mein Niveau ist
+mittel: ich betreibe mein Linux selbst, ich lese ein Log, ich schreibe
+ein kleines Werkzeug. Senior bin ich nicht. Linux ist das System, auf
+dem ich täglich arbeite. Windows ist ein Lab auf demselben Rechner.
 
 Zuerst schaue ich in Frankreich. Deutschland ist die andere Möglichkeit.
 Dort kann ich auf Englisch arbeiten, und ich lerne Deutsch. Sobald ich
@@ -16,10 +19,11 @@ ich zuerst. Wenn eine Übersetzung abweicht, gilt die englische Seite.
 
 **Done** heisst: die Prüfung in diesem Repo ist gelaufen und die Ausgabe
 liegt bei. Es heisst nicht, dass ich an einem echten Ticket schon schnell
-bin.
+bin. Beim Schreiben entwirft oft ein KI-Assistent mit. Eine Änderung
+bleibt nur, wenn ich sie gelesen habe und die Tests bestehen.
 
 Täglich bash, im Windows-Lab PowerShell. Python ist der kleine Werkzeugkasten
-unten. Rust ist die Sprache, in der ich gern baue: `log-analyzer` und `fim`
+unten. Rust ist die Sprache, in der ich gern baue: `log-analyzer`, `fim` und `defang`
 hier, dazu [Frihart](https://codeberg.org/ichbinlucasv/Frihart) und
 [HashChat](https://codeberg.org/ichbinlucasv/HashChat) in eigenen Repos.
 C steht auf der Lernliste. Ein C-Projekt liegt hier noch nicht.
@@ -65,7 +69,7 @@ Aktueller Stand: 10 Done, 4 In progress, 3 Planned (siehe Skills-Matrix unten).
 | [`networking/`](networking/) | Subnetting-Übungen mit Lösungen, Analyse von Netzwerkmitschnitten (Wireshark/tcpdump), Host-Firewall mit nftables |
 | [`soc-analyst/`](soc-analyst/) | Wazuh-Homelab, Analyse von Sysmon- und auditd-Logs (synthetische Beispiele), Incident-Berichte auf öffentlichen Datensätzen, ATT&CK-Mapping, Sigma-Regeln |
 | [`python/`](python/) | Paket `seclab`: Auswertung von SSH-`auth.log`, IOC-Extraktor (defang/refang), Hash-Prüfer — nur Standardbibliothek, pytest-Suite |
-| [`rust/`](rust/) | Cargo-Workspace: Crates `log-analyzer` und `fim` (File-Integrity-Monitoring) mit Unit-Tests |
+| [`rust/`](rust/) | Cargo-Workspace: Crates `log-analyzer`, `fim` (File-Integrity-Monitoring) und `defang` mit Unit-Tests |
 | [`security-plus/`](security-plus/) | Notizen für SY0-701 geschrieben. Die Prüfung, die ich ablege, ist SY0-801. Karteikarten (CSV) |
 | [`templates/`](templates/) | Leere Formulare für den Arbeitstag: Helpdesk, SOC, und eine Sprache pro Block |
 | [`scripts/check_repo.py`](scripts/check_repo.py) | Hygiene-Prüfung des Repos: Abschnitte der Lab-READMEs, Karteikarten-CSV, Sigma-YAML, Muster für Secrets |
@@ -102,7 +106,7 @@ Mitigations · **D3** Security Architecture · **D4** Security Operations ·
 | [soc-analyst/04 ATT&CK-Mapping](soc-analyst/04-attack-mapping/) ([DE](soc-analyst/04-attack-mapping/README.de.md)) | Done | | ● | | ● | | Bedrohungsorientierte Abdeckung von Detections |
 | [soc-analyst/05 Sigma-Regeln](soc-analyst/05-sigma-rules/) | Done | | ● | | ● | | Detection Engineering, pySigma/sigma-cli |
 | [python/ seclab-Tools](python/) | Done | ○ | ● | | ● | | Regex, Parsing, Hashing, automatisierte Tests |
-| [rust/ log-analyzer + fim](rust/) | Done | ○ | ○ | ○ | ● | | Integritätsüberwachung, Systemprogrammierung |
+| [rust/ log-analyzer + fim + defang](rust/) | Done | ○ | ○ | ○ | ● | | Integritätsüberwachung, defangte Indikatoren, Systemprogrammierung |
 | [security-plus/ Notizen & Karteikarten](security-plus/) | In progress | ● | ● | ● | ● | ● | Prüfungsvorbereitung über alle Domänen |
 
 ---
@@ -131,8 +135,8 @@ python3 scripts/check_repo.py
 
 | Punkt | Wie |
 |-------|-----|
-| Python-Tools | `pytest` — 35 Tests erfolgreich |
-| Rust-Crates | `cargo test` (11 Unit-Tests), `cargo clippy --all-targets -- -D warnings` ohne Befund, `cargo fmt --check` ohne Befund |
+| Python-Tools | `pytest` — 38 Tests erfolgreich |
+| Rust-Crates | `cargo test` (14 Unit-Tests), `cargo clippy --all-targets -- -D warnings` ohne Befund, `cargo fmt --check` ohne Befund |
 | Sigma-Regeln | gültiges YAML; `sigma check` 0 Fehler (sigma-cli 3.1.0); die 8 ursprünglichen Regeln schlagen über das SQLite-Backend auf den synthetischen Beispielen an; die Kerberos-Spraying-Regel schlägt auf einem öffentlichen EVTX-Beispiel an |
 | Fehleranalyse Linux | 7 Break/Fix-Szenarien in einem Debian-13-systemd-Container (`systemd-nspawn`) durchgeführt; Terminalausgaben in `helpdesk/03-linux-troubleshooting/evidence/` (OOM-Kill dort nicht reproduzierbar) |
 | Samba AD DC | in einem Debian-13-Container provisioniert; DNS-SRV, Kerberos, OUs/Gruppen/Benutzer, Sperrrichtlinie und Helpdesk-Delegation getestet; Domänenbeitritt eines Windows-Clients noch offen |

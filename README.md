@@ -2,8 +2,11 @@
 
 **English** · [Français](README.fr.md) · [Deutsch](README.de.md)
 
-I'm Lucas. I study cybersecurity and I want a first job in France, in
-helpdesk or as a junior SOC analyst (alternance or POEI). Linux is the
+I'm Lucas. I study cybersecurity on my own and I want a first job in
+France, in helpdesk or as a junior SOC analyst (alternance or POEI).
+I have not started university. I am not a graduate, and I do not already
+work in a SOC. I am intermediate: I can run my own Linux machine, read a
+log, and write a small tool. I am not a senior. Linux is the
 machine I actually live on. Windows is a lab on that same PC.
 
 France is where I am looking first. Germany is the other option. I can
@@ -15,11 +18,13 @@ it, the English page wins.
 
 This repo is the practice, not a finished résumé. **Done** means I ran the
 check and kept the output. It does not mean I am fast, or that I would
-skip the docs on a real ticket.
+skip the docs on a real ticket. When I write, an AI assistant often
+drafts with me. I keep a change only after I have read it and the tests
+pass.
 
 I use bash every day and PowerShell on the Windows lab. Python is the
 small toolkit below. Rust is the language I like building in:
-`log-analyzer` and `fim` here, plus [Frihart](https://codeberg.org/ichbinlucasv/Frihart)
+`log-analyzer`, `fim`, and `defang` here, plus [Frihart](https://codeberg.org/ichbinlucasv/Frihart)
 and [HashChat](https://codeberg.org/ichbinlucasv/HashChat) in their own
 repos. C is on the study list. There is no C project in this repo yet.
 
@@ -63,7 +68,7 @@ Current count: 10 Done, 4 In progress, 3 Planned (see the skills matrix below).
 | [`networking/`](networking/) | Subnetting exercises + answer key, packet-capture analysis (Wireshark/tcpdump), nftables host firewall |
 | [`soc-analyst/`](soc-analyst/) | Wazuh home lab, Sysmon + auditd log analysis (synthetic samples), incident write-up templates on public datasets, ATT&CK mapping, Sigma rules |
 | [`python/`](python/) | `seclab` package: SSH auth.log summariser, IOC extractor (defang/refang), hash checker — stdlib only, pytest suite |
-| [`rust/`](rust/) | Cargo workspace: `log-analyzer` and `fim` (file-integrity monitor) crates with unit tests |
+| [`rust/`](rust/) | Cargo workspace: `log-analyzer`, `fim` (file-integrity monitor), and `defang` with unit tests |
 | [`security-plus/`](security-plus/) | Notes written for SY0-701. The exam I will sit is SY0-801. Flashcards CSV |
 | [`templates/`](templates/) | Blank forms I copy on a work day: helpdesk, SOC, and one language at a time |
 | [`scripts/check_repo.py`](scripts/check_repo.py) | Repo hygiene check: lab README sections, flashcards CSV, Sigma YAML, secret patterns |
@@ -99,7 +104,7 @@ Mitigations · **D3** Security Architecture · **D4** Security Operations ·
 | [soc-analyst/04 ATT&CK mapping](soc-analyst/04-attack-mapping/) | Done | | ● | | ● | | Threat-informed detection coverage |
 | [soc-analyst/05 Sigma rules](soc-analyst/05-sigma-rules/) | Done | | ● | | ● | | Detection engineering, pySigma/sigma-cli |
 | [python/ seclab tools](python/) | Done | ○ | ● | | ● | | Regex, parsing, hashing, automated testing |
-| [rust/ log-analyzer + fim](rust/) | Done | ○ | ○ | ○ | ● | | Integrity monitoring, systems programming |
+| [rust/ log-analyzer + fim + defang](rust/) | Done | ○ | ○ | ○ | ● | | Integrity monitoring, defanged indicators, systems programming |
 | [security-plus/ notes & flashcards](security-plus/) | In progress | ● | ● | ● | ● | ● | Exam preparation across all domains |
 
 ---
@@ -128,8 +133,8 @@ python3 scripts/check_repo.py
 
 | Item | How |
 |------|-----|
-| Python tools | `pytest` — 35 tests pass |
-| Rust crates | `cargo test` (11 unit tests) and `cargo clippy --all-targets -- -D warnings` clean, `cargo fmt --check` clean |
+| Python tools | `pytest` — 38 tests pass |
+| Rust crates | `cargo test` (14 unit tests) and `cargo clippy --all-targets -- -D warnings` clean, `cargo fmt --check` clean |
 | Sigma rules | valid YAML; `sigma check` 0 errors/issues (sigma-cli 3.1.0); the 8 original rules fire on the synthetic samples via the SQLite backend; the Kerberos spraying rule fires on a public EVTX sample |
 | Linux troubleshooting | 7 break/fix scenarios run in a Debian 13 systemd container (`systemd-nspawn`); terminal output in `helpdesk/03-linux-troubleshooting/evidence/` (OOM kill not reproducible there) |
 | Samba AD DC | provisioned in a Debian 13 container; DNS SRV, Kerberos, OUs/groups/users, lockout policy and helpdesk delegation tested; Windows client join not done |

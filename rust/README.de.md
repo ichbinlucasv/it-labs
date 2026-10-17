@@ -2,17 +2,18 @@
 
 [English](README.md) · [Français](README.fr.md) · **Deutsch**
 
-**Status:** Done — zwei Crates mit 11 bestandenen Unit-Tests; clippy und rustfmt sauber.
+**Status:** Done — drei Crates mit bestandenen Unit-Tests; clippy und rustfmt sauber.
 
 ## Ziel
 
-Rust lernen, indem ich zwei kleine, sichere, gut getestete defensive
+Rust lernen, indem ich drei kleine, sichere, gut getestete defensive
 Werkzeuge baue:
 
 | Crate | Was sie tut |
 |-------|-------------|
 | [`log-analyzer`](crates/log-analyzer/) | Fasst Apache-/Nginx-Access-Logs im Format *combined* zusammen: häufigste Clients, Statuscodes, Clients mit vielen Fehlern (Scannen) und Anfragen, die auf durchsichtige Heuristiken passen (Path Traversal einschließlich prozentkodiert, sensible Dateien, Admin-Panel-Sonden, Scanner-User-Agents, Injection-Muster). Nur die Standardbibliothek. |
 | [`fim`](crates/fim/) | Minimales **Dateiintegritäts-Monitoring**: `baseline` speichert SHA-256 und Größe jeder Datei unter einem Verzeichnis; `check` meldet Dateien als **ADDED / REMOVED / MODIFIED**. Folgt keinen Symlinks. Nutzt die Crate `sha2`. |
+| [`defang`](crates/defang/) | Dieselben Defang-/Refang-Regeln wie das Python-Werkzeug `seclab.ioc`, damit ein Ticket `hxxps://host[.]example` zeigt statt eines klickbaren Links. Nur die Standardbibliothek. Es schlägt nichts im Netz nach. |
 
 (Security+ D4 — Dateiintegrität, Loganalyse; D1 — Integrität, Hashing.)
 
@@ -87,6 +88,7 @@ oder signieren sie), Dateinamen mit Tab oder Zeilenumbruch werden abgelehnt.
 $ cargo test
 fim:          5 passed (SHA-256 test vectors, add/remove/modify detection, exclusions, TSV round-trip & validation, symlink loop)
 log-analyzer: 6 passed (parsing, malformed lines, percent-decoding, classification, summary/report)
+defang:       3 passed (dieselben Vektoren wie seclab.ioc, Roundtrip, kein lebendes http-Schema)
 $ cargo clippy --all-targets -- -D warnings   -> no warnings
 ```
 

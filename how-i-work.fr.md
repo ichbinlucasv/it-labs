@@ -107,10 +107,15 @@ Pour un poste helpdesk ou un poste SOC junior, commencer ici :
 1. [Domaine Windows](helpdesk/06-windows-domain/) — un vrai lab AD DS, encore **In progress**. Le 4 oct. 2026 `win11-soc` était déjà dans `lab.local`, une réinitialisation helpdesk est écrite, et la GPO poste vide est le ticket. Encore ouvert : une session interactive en helpdesk, et un déverrouillage (le seuil est 0).
 2. [Dépannage Linux](helpdesk/03-linux-troubleshooting/) — **Done**, avec la sortie du terminal dans `evidence/`.
 3. [Rapports d'incident](soc-analyst/03-incident-writeups/) et [règles Sigma](soc-analyst/05-sigma-rules/) — comment je lis un journal, et comment j'écris une détection.
-4. [Rust](rust/) — `log-analyzer` et `fim`, avec des tests et clippy propre. Le Rust plus long : [Frihart](https://codeberg.org/ichbinlucasv/Frihart) et [HashChat](https://codeberg.org/ichbinlucasv/HashChat). [Python](python/) est l'autre petite boîte à outils, avec pytest.
+4. [Rust](rust/) — `log-analyzer`, `fim` et `defang`, avec des tests et clippy propre. Le Rust plus long : [Frihart](https://codeberg.org/ichbinlucasv/Frihart) et [HashChat](https://codeberg.org/ichbinlucasv/HashChat). [Python](python/) est l'autre petite boîte à outils, avec pytest.
 5. [Modèles](templates/) — les fiches que j'utilise pour m'entraîner sur une journée de travail.
 
 ## Ce que j'apprends encore
+
+Je n'ai pas encore commencé l'université. Le diplôme à l'IU vient après
+le travail, pas avant. En attendant, ce dépôt est de l'étude personnelle.
+Je suis intermédiaire, pas senior, et un assistant IA rédige avec moi.
+Je lis ce que je garde.
 
 L'examen Security+ que je vais étudier est le SY0-801. Je ne l'ai pas
 obtenu. Les notes de ce dépôt ont été écrites pour le SY0-701, et je

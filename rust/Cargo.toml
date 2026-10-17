@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["crates/log-analyzer", "crates/fim"]
+members = ["crates/log-analyzer", "crates/fim", "crates/defang"]
 
 [workspace.package]
 version = "0.1.0"

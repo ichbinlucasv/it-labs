@@ -2,16 +2,17 @@
 
 **English** · [Français](README.fr.md) · [Deutsch](README.de.md)
 
-**Status:** Done — two crates with 11 passing unit tests; clippy and rustfmt clean.
+**Status:** Done — three crates with unit tests; clippy and rustfmt clean.
 
 ## Goal
 
-Learn Rust by building two small, safe, well-tested defensive tools:
+Learn Rust by building three small, safe, well-tested defensive tools:
 
 | Crate | What it does |
 |-------|--------------|
 | [`log-analyzer`](crates/log-analyzer/) | Summarises Apache/Nginx *combined* access logs: top clients, status codes, clients with many errors (scanning), and requests matching transparent heuristics (path traversal incl. percent-encoded, sensitive files, admin-panel probes, scanner user agents, injection patterns). Standard library only. |
 | [`fim`](crates/fim/) | Minimal **file-integrity monitor**: `baseline` records SHA-256 + size of every file under a directory; `check` reports **ADDED / REMOVED / MODIFIED** files. Does not follow symlinks. Uses the `sha2` crate. |
+| [`defang`](crates/defang/) | Same defang/refang rules as the Python `seclab.ioc` tool, so a ticket can show `hxxps://host[.]example` instead of a live link. Standard library only. It does not look anything up. |
 
 (Security+ D4 — file integrity monitoring, log analysis; D1 — integrity,
 hashing.)
@@ -74,6 +75,17 @@ exit=1
 Exit codes: `0` clean / baseline written, `1` changes detected, `2` error —
 so it can run from cron or a systemd timer and alert on non-zero.
 
+### defang
+
+```bash
+cargo run -q -p defang -- 'https://evil.example/a'
+cargo run -q -p defang -- --refang 'hxxps://evil[.]example/a'
+```
+
+The rules match `python/src/seclab/ioc.py`. I have not used this on a
+live incident. The proof is the unit test, on the same examples as the
+Python tool.
+
 Limitations (on purpose, it's a learning project): no permission/owner/mtime
 tracking, no signed baseline (an attacker with root could rewrite it — real
 tools store baselines off-host or sign them), file names with tabs/newlines
@@ -85,6 +97,7 @@ are rejected.
 $ cargo test
 fim:          5 passed (SHA-256 test vectors, add/remove/modify detection, exclusions, TSV round-trip & validation, symlink loop)
 log-analyzer: 6 passed (parsing, malformed lines, percent-decoding, classification, summary/report)
+defang:       3 passed (same vectors as seclab.ioc, round-trip, no live http scheme)
 $ cargo clippy --all-targets -- -D warnings   -> no warnings
 ```
 
