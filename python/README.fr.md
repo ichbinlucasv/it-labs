@@ -2,7 +2,7 @@
 
 [English](README.md) · **Français** · [Deutsch](README.de.md)
 
-**Status:** Done — trois outils avec 37 tests pytest qui passent.
+**Status:** Done — trois outils avec 38 tests pytest qui passent.
 
 ## Objectif
 
@@ -74,9 +74,9 @@ Choix de conception / limites :
   génériques courants ou abusés sont acceptés, et les jetons juste après un
   `\` sont sautés, pour que `CORP\c.martin` ou `Content.Word` ne sortent pas
   comme domaines. `--any-tld` relâche ça.
-- `--exclude-private` retire les plages RFC 1918, loopback, lien-local **et**
-  de documentation (`ipaddress` de Python traite les plages RFC 5737 comme
-  non joignables globalement).
+- `--exclude-private` retire les plages RFC 1918, le CGNAT (100.64.0.0/10),
+  le loopback, le lien-local et la documentation. `is_private` n'inclut pas
+  le CGNAT, donc le contrôle utilise `is_global`.
 - La détection de hash se fait seulement par la longueur — toute chaîne hex
   de 32/40/64 caractères correspond.
 
@@ -96,7 +96,7 @@ sortie 1.
 
 ```text
 $ pytest
-37 passed
+38 passed
 ```
 
 Les tests couvrent des cas limites d'analyse (horodatages classiques contre

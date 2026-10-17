@@ -123,8 +123,15 @@ def _unique(items) -> list[str]:
 
 
 def _is_public(ip: ipaddress._BaseAddress) -> bool:
-    return not (ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_multicast
-                or ip.is_reserved or ip.is_unspecified)
+    """True for a global unicast address.
+
+    ``is_private`` does not include CGNAT (100.64.0.0/10). ``is_global`` does.
+    Multicast and reserved ranges stay out even when ``is_global`` is true,
+    which covers the well-known NAT64 prefix.
+    """
+    if ip.is_multicast or ip.is_reserved or ip.is_unspecified or ip.is_loopback or ip.is_link_local:
+        return False
+    return bool(ip.is_global)
 
 
 def _plausible_tld(tld: str, any_tld: bool) -> bool:

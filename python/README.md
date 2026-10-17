@@ -2,7 +2,7 @@
 
 **English** · [Français](README.fr.md) · [Deutsch](README.de.md)
 
-**Status:** Done — three tools with 37 passing pytest tests.
+**Status:** Done — three tools with 38 passing pytest tests.
 
 ## Goal
 
@@ -72,9 +72,9 @@ Design choices / limitations:
   generic TLDs are accepted, and tokens right after a `\` are skipped, so
   `CORP\c.martin` or `Content.Word` are not reported as domains. Use
   `--any-tld` to relax this.
-- `--exclude-private` drops RFC 1918, loopback, link-local **and**
-  documentation ranges (Python's `ipaddress` treats RFC 5737 ranges as not
-  globally reachable).
+- `--exclude-private` drops RFC 1918, CGNAT (100.64.0.0/10), loopback,
+  link-local, and documentation ranges. `is_private` does not include
+  CGNAT, so the check uses `is_global`.
 - Hash detection is by length only — any 32/40/64-char hex string matches.
 
 ### hashcheck
@@ -92,7 +92,7 @@ python -m seclab.hashcheck -k my_iocs.txt ~/Downloads -r --json
 
 ```text
 $ pytest
-37 passed
+38 passed
 ```
 
 Tests cover parsing edge cases (classic vs ISO timestamps, rsyslog "message

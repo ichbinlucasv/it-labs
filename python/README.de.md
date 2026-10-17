@@ -2,7 +2,7 @@
 
 [English](README.md) · [Français](README.fr.md) · **Deutsch**
 
-**Status:** Done — drei Werkzeuge mit 37 bestandenen pytest-Tests.
+**Status:** Done — drei Werkzeuge mit 38 bestandenen pytest-Tests.
 
 ## Ziel
 
@@ -74,9 +74,9 @@ Entwurfsentscheidungen / Grenzen:
   üblicher oder missbrauchter generischer TLDs akzeptiert, und Tokens direkt
   nach einem `\` werden übersprungen, damit `CORP\c.martin` oder
   `Content.Word` nicht als Domänen gemeldet werden. `--any-tld` lockert das.
-- `--exclude-private` lässt RFC 1918, Loopback, verbindungslokal **und**
-  Dokumentationsbereiche weg (Pythons `ipaddress` behandelt RFC-5737-Bereiche
-  als nicht global erreichbar).
+- `--exclude-private` lässt RFC 1918, CGNAT (100.64.0.0/10), Loopback,
+  verbindungslokal und Dokumentationsbereiche weg. `is_private` enthält
+  CGNAT nicht, deshalb prüft das Tool `is_global`.
 - Hash-Erkennung nur über die Länge — jede Hex-Zeichenkette mit 32/40/64
   Zeichen trifft.
 
@@ -95,7 +95,7 @@ python -m seclab.hashcheck -k my_iocs.txt ~/Downloads -r --json
 
 ```text
 $ pytest
-37 passed
+38 passed
 ```
 
 Die Tests decken Randfälle beim Einlesen ab (klassische gegen ISO-Zeitstempel,

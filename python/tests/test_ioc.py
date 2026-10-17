@@ -56,6 +56,15 @@ def test_extract_from_synthetic_report():
     assert r.sha1 == []
 
 
+def test_exclude_private_drops_cgnat():
+    text = "100.64.1.1 1.1.1.1 169.254.169.254"
+    raw = ioc.extract(text)
+    assert raw.ipv4 == ["100.64.1.1", "1.1.1.1", "169.254.169.254"]
+    kept = ioc.extract(text, exclude_private=True)
+    # 100.64.0.0/10 is CGNAT. is_private does not include it; is_global does.
+    assert kept.ipv4 == ["1.1.1.1"]
+
+
 def test_exclude_private():
     r = ioc.extract(REPORT.read_text(), exclude_private=True)
     # 203.0.113.0/24 and 198.51.100.0/24 are documentation ranges; Python flags them
