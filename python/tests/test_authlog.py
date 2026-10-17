@@ -52,6 +52,29 @@ def test_ignores_invalid_ip():
     assert s.failed_total == 0
 
 
+def test_invalid_user_without_failed_password_is_counted():
+    # A scanner that disconnects before a password never writes "Failed password".
+    lines = [
+        "2026-09-14T23:00:00.000000+00:00 web01 sshd-session[3001]: Invalid user scanner from 2001:db8::50 port 22",
+    ]
+    s = authlog.parse_lines(lines)
+    assert s.failed_total == 1
+    assert s.invalid_users["scanner"] == 1
+    assert s.failed_by_ip["2001:db8::50"] == 1
+    assert s.first_seen.startswith("2026-09-14T23:00:00")
+
+
+def test_invalid_user_paired_with_failed_password_counts_once():
+    lines = [
+        "2026-09-14T23:01:00.000000+00:00 web01 sshd[1]: Invalid user admin from 203.0.113.45 port 22",
+        "2026-09-14T23:01:02.000000+00:00 web01 sshd[1]: Failed password for invalid user admin from 203.0.113.45 port 22 ssh2",
+    ]
+    s = authlog.parse_lines(lines)
+    assert s.failed_total == 1
+    assert s.invalid_users["admin"] == 1
+    assert s.failed_by_ip["203.0.113.45"] == 1
+
+
 def test_cli_text_and_json(capsys):
     assert authlog.main([str(SAMPLE), "--threshold", "5"]) == 0
     out = capsys.readouterr().out

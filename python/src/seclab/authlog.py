@@ -81,9 +81,28 @@ def _valid_ip(value: str) -> bool:
         return False
 
 
+def _consume_pending(pending: list[tuple[str, str]], user: str, ip: str, n: int) -> None:
+    """Drop up to ``n`` earlier ``Invalid user`` lines for this user and IP.
+
+    OpenSSH writes ``Invalid user`` and then ``Failed password for invalid
+    user`` for the same attempt. Counting both would double the probe.
+    """
+    left = n
+    i = 0
+    while i < len(pending) and left:
+        if pending[i] == (user, ip):
+            pending.pop(i)
+            left -= 1
+        else:
+            i += 1
+
+
 def parse_lines(lines: Iterable[str]) -> AuthSummary:
     """Parse auth log lines and return an :class:`AuthSummary`."""
     s = AuthSummary()
+    # Held until a matching Failed-password line consumes them. What is left
+    # is a probe that never got as far as a password, and still counts.
+    pending_invalid: list[tuple[str, str]] = []
     for raw in lines:
         line = raw.rstrip("\n")
         if m := FAILED_RE.search(line):
@@ -95,6 +114,7 @@ def parse_lines(lines: Iterable[str]) -> AuthSummary:
             s.failed_by_ip[m["ip"]] += n
             s.failed_by_user[m["user"]] += n
             if m["invalid"]:
+                _consume_pending(pending_invalid, m["user"], m["ip"], n)
                 s.invalid_users[m["user"]] += n
         elif m := ACCEPTED_RE.search(line):
             if not _valid_ip(m["ip"]):
@@ -102,10 +122,14 @@ def parse_lines(lines: Iterable[str]) -> AuthSummary:
             s._touch(m["ts"])
             s.accepted.append({"ts": m["ts"], "user": m["user"], "ip": m["ip"], "method": m["method"]})
         elif m := INVALID_RE.search(line):
-            # "Invalid user" lines precede the "Failed password for invalid user"
-            # line; we count the failure there, so only record the timestamp here.
             if _valid_ip(m["ip"]):
                 s._touch(m["ts"])
+                pending_invalid.append((m["user"], m["ip"]))
+    for user, ip in pending_invalid:
+        s.failed_total += 1
+        s.failed_by_ip[ip] += 1
+        s.failed_by_user[user] += 1
+        s.invalid_users[user] += 1
     return s
 
 

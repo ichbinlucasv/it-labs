@@ -2,7 +2,7 @@
 
 [English](README.md) · [Français](README.fr.md) · **Deutsch**
 
-**Status:** Done — drei Werkzeuge mit 35 bestandenen pytest-Tests.
+**Status:** Done — drei Werkzeuge mit 37 bestandenen pytest-Tests.
 
 ## Ziel
 
@@ -95,7 +95,7 @@ python -m seclab.hashcheck -k my_iocs.txt ~/Downloads -r --json
 
 ```text
 $ pytest
-35 passed
+37 passed
 ```
 
 Die Tests decken Randfälle beim Einlesen ab (klassische gegen ISO-Zeitstempel,
