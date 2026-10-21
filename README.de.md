@@ -73,7 +73,8 @@ Aktueller Stand: 10 Done, 4 In progress, 3 Planned (siehe Skills-Matrix unten).
 | [`security-plus/`](security-plus/) | Notizen für SY0-701 geschrieben. Die Prüfung, die ich ablege, ist SY0-801. Karteikarten (CSV) |
 | [`templates/`](templates/) | Leere Formulare für den Arbeitstag: Helpdesk, SOC, und eine Sprache pro Block |
 | [`scripts/check_repo.py`](scripts/check_repo.py) | Hygiene-Prüfung des Repos: Abschnitte der Lab-READMEs, Karteikarten-CSV, Sigma-YAML, Muster für Secrets |
-| [`.forgejo/workflows-disabled/`](.forgejo/workflows-disabled/) | CI-Workflow, **deaktiviert**, bis ein Runner existiert (siehe [CI](#ci)) |
+| [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | GitHub Actions für den Spiegel (Python, Rust, Sigma, Repo-Prüfung) |
+| [`.forgejo/workflows-disabled/`](.forgejo/workflows-disabled/) | Derselbe Workflow, auf Codeberg **deaktiviert**, bis ein Runner existiert (siehe [CI](#ci)) |
 
 Jede Lab-README beginnt mit einer **Status**-Zeile und folgt demselben
 Aufbau: **Goal · Setup · Steps · Evidence · What I learned** (in den
@@ -168,7 +169,7 @@ würde endlos in der Warteschlange stehen). Er braucht einen
    *Settings → Actions → Runners*) und Actions für das Repo aktivieren.
 2. `git mv .forgejo/workflows-disabled/ci.yml .forgejo/workflows/ci.yml`, dann committen und pushen.
 
-Auf GitHub die Datei nach `.github/workflows/` kopieren und `runs-on: ubuntu-latest` setzen.
+Der GitHub-Spiegel führt dieselben Jobs aus [`.github/workflows/ci.yml`](.github/workflows/ci.yml) auf `ubuntu-latest` aus. Die Datei schaltet Codeberg Actions nicht ein.
 
 ## Aktuelles Lernen
 

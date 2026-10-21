@@ -77,7 +77,8 @@ Décompte actuel : 10 Done, 4 In progress, 3 Planned (voir la matrice de compét
 | [`security-plus/`](security-plus/) | Notes écrites pour le SY0-701. L'examen que je passerai est le SY0-801. CSV de fiches |
 | [`templates/`](templates/) | Formulaires vides que je copie un jour de travail : helpdesk, SOC, et une langue à la fois |
 | [`scripts/check_repo.py`](scripts/check_repo.py) | Contrôle d'hygiène du dépôt : sections des README de lab, CSV des fiches, YAML Sigma, motifs de secrets |
-| [`.forgejo/workflows-disabled/`](.forgejo/workflows-disabled/) | Workflow CI, **désactivé** tant qu'il n'y a pas de runner (voir [CI](#ci)) |
+| [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | GitHub Actions du miroir (Python, Rust, Sigma, contrôle du dépôt) |
+| [`.forgejo/workflows-disabled/`](.forgejo/workflows-disabled/) | Le même workflow, **désactivé** sur Codeberg tant qu'il n'y a pas de runner (voir [CI](#ci)) |
 
 Chaque README de lab commence par une ligne **Status** et suit le même plan :
 **Goal · Setup · Steps · Evidence · What I learned** (dans les versions
@@ -172,7 +173,7 @@ auto-hébergé avec le label `docker`**. Pour l'activer :
    Actions → Runners*) et activer Actions pour le dépôt.
 2. `git mv .forgejo/workflows-disabled/ci.yml .forgejo/workflows/ci.yml`, puis commit et push.
 
-Sur GitHub, copier le fichier vers `.github/workflows/` et mettre `runs-on: ubuntu-latest`.
+Le miroir GitHub lance les mêmes jobs depuis [`.github/workflows/ci.yml`](.github/workflows/ci.yml) sur `ubuntu-latest`. Ce fichier n'active pas les Actions de Codeberg.
 
 ## Apprentissage en cours
 
