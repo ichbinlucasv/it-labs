@@ -2,7 +2,7 @@
 
 **English** · [Français](README.fr.md) · [Deutsch](README.de.md)
 
-**Status:** Planned — concept notes only; not practised in a Microsoft 365 tenant. Needs a Microsoft 365 trial or developer tenant, which I do not have yet; nothing here is simulated.
+**Status:** Done — joiner, mover, leaver, lost-authenticator, and a suspicious sign-in all run against a local SQLite model ([`identity_lab.py`](identity_lab.py)). No Microsoft 365 tenant was used, and the script does not call Microsoft Graph.
 
 ## Goal
 
@@ -87,12 +87,22 @@ Get-MgSubscribedSku | Select SkuPartNumber,ConsumedUnits
 Helpdesk agents get **Helpdesk Administrator** or **User Administrator**,
 not Global Administrator. Use **PIM** (Entra ID P2) for just-in-time elevation.
 
+Run the checks (stdlib only, in-memory SQLite):
+
+```bash
+python3 identity_lab.py
+```
+
+People and addresses in the script are fictional (`a.martin@example.com`, `198.51.100.23`).
+
 ## Evidence
 
-- Screenshots from a sandbox/trial (tenant names blurred): user creation,
-  licence assignment, CA policy in report-only mode, sign-in log entry.
-- Or: Microsoft Learn module completion badges.
+- `identity_lab.py` prints seven PASS lines: licence refused before a usage location is set, group-based licence, mover group change, MFA cleared and sessions revoked, two legacy-auth failures, leaver disabled with zero licences, helpdesk role distinct from Global Administrator.
+- A real tenant screenshot is not in this repo. The admin-centre map above is still the reference for where each task lives.
 
 ## What I learned
 
-_To be completed by Lucas._
+- Usage location is a prerequisite, not a nice-to-have. The model refuses the licence until it is set, which matches the "user has no mailbox" ticket.
+- Group-based licensing survives a move. The mover drops `TEAM_SALES` and keeps `LIC_M365_BP`.
+- A lost phone is two writes: clear MFA registration and revoke sessions. Blocking sign-in is the leaver step, not the lost-phone step.
+- Legacy authentication from a second address is the row I would show a SOC colleague. Helpdesk Administrator is the role in the table, not Global Administrator.

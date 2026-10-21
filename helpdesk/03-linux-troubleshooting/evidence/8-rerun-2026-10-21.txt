@@ -1,0 +1,41 @@
+### 0. First look (this host, not the old lab container)
+ 07:53:26 up 17 min,  0 user,  load average: 0.00, 0.03, 0.01
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vdc        254G  7.5G  246G   3% /
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi        10Gi       3.3Gi       9.2Mi       1.8Gi       4.9Gi
+
+### 1. nginx -t reports the line after a missing semicolon
+-- broken --
+2026/10/21 07:53:26 [emerg] 8848#8848: invalid parameter "listen" in /tmp/linux-lab.j9hU0F/broken.conf:5
+nginx: configuration file /tmp/linux-lab.j9hU0F/broken.conf test failed
+-- fixed --
+nginx: the configuration file /tmp/linux-lab.j9hU0F/fixed.conf syntax is ok
+nginx: configuration file /tmp/linux-lab.j9hU0F/fixed.conf test is successful
+
+### 2. Deleting an open file does not free a full filesystem
+write stopped: No space left on device
+close stopped: No space left on device
+df before delete:
+tmpfs           8.0M  8.0M     0 100% /tmp/linux-lab.j9hU0F/disk
+df after rm, fd still open:
+tmpfs           8.0M  8.0M     0 100% /tmp/linux-lab.j9hU0F/disk
+deleted-but-open:
+COMMAND    PID   USER   FD   TYPE DEVICE SIZE/OFF NLINK NODE NAME
+bash      8839   root    9u   REG   0,42  8388608     0    2 /tmp/linux-lab.j9hU0F/disk/app.log (deleted)
+df after the holder closed the fd:
+tmpfs           8.0M     0  8.0M   0% /tmp/linux-lab.j9hU0F/disk
+
+### 3. Permission denied, then a mode that lets another user read
+-- mode 600, user nobody --
+cat: /tmp/linux-lab.j9hU0F/report.txt: Permission denied
+PASS  nobody was denied
+-- mode 644, user nobody --
+lab-only
+
+### 4. Package query (no install)
+Package: nginx
+Status: install ok installed
+Version: 1.24.0-2ubuntu7.18
+
+result: OK

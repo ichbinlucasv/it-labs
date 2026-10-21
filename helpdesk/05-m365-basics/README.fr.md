@@ -2,7 +2,7 @@
 
 [English](README.md) · **Français** · [Deutsch](README.de.md)
 
-**Status:** Planned — notes de concept seulement ; pas pratiqué dans un tenant Microsoft 365. Il me faut un essai Microsoft 365 ou un tenant développeur, que je n'ai pas encore ; rien ici n'est simulé.
+**Status:** Done — contrôles locaux SQLite sur la [page anglaise](README.md) (`identity_lab.py`). Pas de tenant Microsoft 365.
 
 ## Objectif
 

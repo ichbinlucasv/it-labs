@@ -2,7 +2,7 @@
 
 **English** · [Français](README.fr.md) · [Deutsch](README.de.md)
 
-**Status:** Planned — written runbook. The scenarios have not been run yet. I do have a Windows 11 guest and a Server 2025 DC now (see [lab 06](../06-windows-domain/)). Next step is to break one thing on `win11-soc` and write down the fix.
+**Status:** Done — failed-logon triage and a DNS break/fix both run from this repo. `sfc`, DISM, BitLocker, and the print spooler were not executed: there is no Windows guest in this environment.
 
 ## Goal
 
@@ -103,14 +103,33 @@ Start-Service wuauserv,bits
 - `manage-bde -status C:` after boot; investigate why (BIOS update, TPM
   change) and record it in the ticket.
 
+### Runnable checks (no Windows required)
+
+Scenario 4, on a synthetic Security export (fictional accounts, documentation addresses):
+
+```bash
+python3 triage.py --check
+```
+
+Scenario 1, reduced to the DNS decision in the runbook. A resolver on
+`127.0.0.1` is down, then it answers `example.com` and NXDOMAIN for anything else:
+
+```bash
+bash dns-break.sh
+```
+
+`sfc /scannow`, DISM, BitLocker recovery, and `Restart-Service Spooler` still
+need a Windows machine. The commands stay in the steps above as the runbook.
+
 ## Evidence
 
-- Screenshots of `ipconfig /all` before/after for scenario 1 (break it by
-  setting a wrong static DNS in the VM).
-- Event Viewer filtered view showing 4625/4740 events after deliberately
-  failing logons on a test account.
-- Output of `sfc /scannow` completion.
+- [`samples/security-events.synthetic.jsonl`](samples/security-events.synthetic.jsonl) — five 4625s, one 4740, one 4771, one 4624, one later mistype.
+- `python3 triage.py` prints the lockout of `a.martin` from `203.0.113.45` and separates it from `j.doe`'s successful lab logon.
+- `dns-break.sh` shows `dig` failing, then `example.com` → `203.0.113.10`, then NXDOMAIN.
 
 ## What I learned
 
-_To be completed by Lucas._
+- Five bad passwords and a 4740 are the ticket. A later 4624 for a different user on the lab LAN is not part of that lockout.
+- 4771 status `0x18` is a wrong Kerberos password on the DC, which is a different queue from a local 4625.
+- Unlocking without finding the source that keeps retrying just locks the account again. The runbook says that; the sample is there so the sentence has events under it.
+- When the path to the resolver is the thing that fails, fixing DNS is the test. The lab resolver answers only `example.com`, so a second name (NXDOMAIN) proves the service is up.

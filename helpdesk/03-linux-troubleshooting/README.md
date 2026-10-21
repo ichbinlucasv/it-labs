@@ -235,6 +235,9 @@ Lesson: one broken package blocks all installs, so fix that first.
   /etc/nginx/sites-enabled/default:23` and `bind() to 0.0.0.0:80 failed (98:
   Address already in use)`.
 - Not captured: OOM kill (see scenario 6).
+- [`rerun-safe.sh`](rerun-safe.sh) repeats the nginx semicolon, the full tmpfs
+  with a deleted-but-open file, and the mode 600 denial on this host.
+  It does not replace the container transcripts above.
 
 ## What I learned
 

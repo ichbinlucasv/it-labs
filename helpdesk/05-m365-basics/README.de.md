@@ -2,7 +2,7 @@
 
 [English](README.md) · [Français](README.fr.md) · **Deutsch**
 
-**Status:** Planned — nur Konzeptnotizen; nicht in einem Microsoft-365-Mandanten geübt. Ich brauche einen Microsoft-365-Test oder einen Entwicklermandanten, den ich noch nicht habe; hier ist nichts simuliert.
+**Status:** Done — lokale SQLite-Prüfungen auf der [englischen Seite](README.md) (`identity_lab.py`). Kein Microsoft-365-Mandant.
 
 ## Ziel
 

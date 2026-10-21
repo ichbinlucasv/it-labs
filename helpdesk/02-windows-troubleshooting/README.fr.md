@@ -2,7 +2,7 @@
 
 [English](README.md) · **Français** · [Deutsch](README.de.md)
 
-**Status:** Planned — runbook écrit. Je n'ai pas encore joué les scénarios. J'ai maintenant un invité Windows 11 et un DC Server 2025 (voir [lab 06](../06-windows-domain/)). Prochaine étape : casser une chose sur `win11-soc` et noter le correctif.
+**Status:** Done — le détail de l'exécution est sur la [page anglaise](README.md) (`triage.py`, `dns-break.sh`). Pas de session Windows dans cet environnement.
 
 ## Objectif
 

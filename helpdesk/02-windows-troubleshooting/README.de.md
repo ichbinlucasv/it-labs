@@ -2,7 +2,7 @@
 
 [English](README.md) · [Français](README.fr.md) · **Deutsch**
 
-**Status:** Planned — Runbook geschrieben. Die Szenarien habe ich noch nicht ausgeführt. Ich habe jetzt einen Windows-11-Gast und einen Server-2025-DC (siehe [Lab 06](../06-windows-domain/)). Nächster Schritt: auf `win11-soc` eine Sache kaputt machen und den Fix aufschreiben.
+**Status:** Done — die Ausführung steht auf der [englischen Seite](README.md) (`triage.py`, `dns-break.sh`). Keine Windows-Sitzung in dieser Umgebung.
 
 ## Ziel
 
