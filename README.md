@@ -72,7 +72,8 @@ Current count: 10 Done, 4 In progress, 3 Planned (see the skills matrix below).
 | [`security-plus/`](security-plus/) | Notes written for SY0-701. The exam I will sit is SY0-801. Flashcards CSV |
 | [`templates/`](templates/) | Blank forms I copy on a work day: helpdesk, SOC, and one language at a time |
 | [`scripts/check_repo.py`](scripts/check_repo.py) | Repo hygiene check: lab README sections, flashcards CSV, Sigma YAML, secret patterns |
-| [`.forgejo/workflows-disabled/`](.forgejo/workflows-disabled/) | CI workflow, **disabled** until a runner exists (see [CI](#ci)) |
+| [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | GitHub Actions for the mirror (Python, Rust, Sigma, repo check) |
+| [`.forgejo/workflows-disabled/`](.forgejo/workflows-disabled/) | Same workflow, **disabled** on Codeberg until a runner exists (see [CI](#ci)) |
 
 Every lab README starts with a **Status** line and follows the same layout:
 **Goal · Setup · Steps · Evidence · What I learned**.
@@ -166,7 +167,7 @@ sit queued forever). It needs a **self-hosted Forgejo runner labelled
    Actions → Runners*) and enable Actions for the repo.
 2. `git mv .forgejo/workflows-disabled/ci.yml .forgejo/workflows/ci.yml`, then commit and push.
 
-On GitHub, copy the file to `.github/workflows/` and set `runs-on: ubuntu-latest`.
+The GitHub mirror runs the same jobs from [`.github/workflows/ci.yml`](.github/workflows/ci.yml) on `ubuntu-latest`. That file does not enable Codeberg Actions.
 
 ## Current learning
 

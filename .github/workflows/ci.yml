@@ -1,0 +1,49 @@
+# GitHub mirror of the Forgejo workflow. Codeberg stays disabled until a
+# self-hosted runner labelled "docker" exists; see README.md.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.12-slim
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install and test seclab
+        working-directory: python
+        run: |
+          pip install --no-cache-dir -e '.[test]'
+          pytest
+
+  rust:
+    runs-on: ubuntu-latest
+    container:
+      image: rust:1
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test, lint and format-check the workspace
+        working-directory: rust
+        run: |
+          rustup component add clippy rustfmt
+          cargo test --all
+          cargo clippy --all-targets -- -D warnings
+          cargo fmt --all -- --check
+
+  content:
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.12-slim
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Sigma rules, YAML and flashcards CSV
+        run: |
+          pip install --no-cache-dir sigma-cli pyyaml
+          sigma check soc-analyst/05-sigma-rules/rules/
+          sigma plugin install sqlite
+          python soc-analyst/05-sigma-rules/validate_rules.py
+          python scripts/check_repo.py
