@@ -47,7 +47,7 @@ Ein Lab ist **Done**, wenn ich die Prüfung selbst laufen lasse.
 | **In progress** | Teilweise verifiziert — z. B. Syntax geprüft oder mit synthetischen Daten ausgeführt, aber nicht vollständig in einer realen Umgebung getestet |
 | **Planned** | Schriftliche Anleitung, die noch nicht in einer realen Umgebung ausgeführt wurde |
 
-Aktueller Stand: 10 Done, 4 In progress, 3 Planned (siehe Skills-Matrix unten).
+Aktueller Stand: 14 Done, 3 In progress, 0 Planned (siehe Skills-Matrix unten). Die englische Seite gilt.
 
 > Firmennamen, Benutzernamen und Adressen in den Übungen sind Beispiele
 > (`example.com`, RFC 5737 `192.0.2.0/24`, `198.51.100.0/24`, `203.0.113.0/24`).
@@ -92,17 +92,17 @@ Mitigations · **D3** Security Architecture · **D4** Security Operations ·
 | Lab | Status | D1 | D2 | D3 | D4 | D5 | Praktische Fähigkeiten |
 |-----|--------|:--:|:--:|:--:|:--:|:--:|------------------------|
 | [helpdesk/01 Tickets schreiben](helpdesk/01-ticket-writing/) ([DE](helpdesk/01-ticket-writing/README.de.md)) | Done | ○ | | | ● | ○ | ITSM, klare Kommunikation, Eskalation |
-| [helpdesk/02 Fehleranalyse Windows](helpdesk/02-windows-troubleshooting/) | Planned | | ○ | ○ | ● | | Ereignisanzeige, PowerShell, Netzwerk, SFC/DISM |
+| [helpdesk/02 Fehleranalyse Windows](helpdesk/02-windows-troubleshooting/) | Done | | ○ | ○ | ● | | Ereignisanzeige, PowerShell, Netzwerk, SFC/DISM |
 | [helpdesk/03 Fehleranalyse Linux](helpdesk/03-linux-troubleshooting/) ([DE](helpdesk/03-linux-troubleshooting/README.de.md)) | Done | | ○ | ○ | ● | | systemd, journalctl, Speicherplatz/DNS/Berechtigungen |
 | [helpdesk/04 Samba AD DC](helpdesk/04-samba-ad-lab/) ([DE](helpdesk/04-samba-ad-lab/README.de.md)) | In progress | ● | | ● | ● | | Identitäten, Gruppen, GPO-Konzepte, Least Privilege |
-| [helpdesk/05 M365-Grundlagen](helpdesk/05-m365-basics/) | Planned | ● | ○ | ● | ● | ○ | Entra ID, Lizenzen, MFA, Conditional-Access-Konzepte |
+| [helpdesk/05 M365-Grundlagen](helpdesk/05-m365-basics/) | Done | ● | ○ | ● | ● | ○ | Entra ID, Lizenzen, MFA, Conditional-Access-Konzepte |
 | [helpdesk/06 Windows-Domäne](helpdesk/06-windows-domain/) | In progress | ● | | ● | ● | | AD DS, Client in der Domäne, Helpdesk-Reset, GPO-Prüfung |
 | [networking/01 Subnetting](networking/01-subnetting/) | Done | | | ● | | | CIDR, VLSM, Adresspläne |
 | [networking/02 Netzwerkmitschnitte](networking/02-packet-capture/) ([DE](networking/02-packet-capture/README.de.md)) | Done | | ● | ○ | ● | | Wireshark-Filter, tcpdump, Protokollanalyse |
 | [networking/03 nftables-Firewall](networking/03-nftables-firewall/) ([DE](networking/03-nftables-firewall/README.de.md)) | Done | ○ | ● | ● | ○ | | Default-Deny, zustandsbehaftete Filterung, Logging |
-| [soc-analyst/01 Wazuh-Homelab](soc-analyst/01-wazuh-homelab/) | Planned | | ○ | ○ | ● | | SIEM/XDR-Aufbau, Agents, Alarm-Triage |
+| [soc-analyst/01 Wazuh-Homelab](soc-analyst/01-wazuh-homelab/) | Done | | ○ | ○ | ● | | SIEM/XDR-Aufbau, Agents, Alarm-Triage |
 | [soc-analyst/02 Sysmon + auditd](soc-analyst/02-sysmon-auditd-logs/) ([DE](soc-analyst/02-sysmon-auditd-logs/README.de.md)) | Done | | ● | | ● | | Endpoint-Telemetrie, Log-Korrelation |
-| [soc-analyst/03 Incident-Berichte](soc-analyst/03-incident-writeups/) ([DE](soc-analyst/03-incident-writeups/README.de.md)) | In progress | | ● | | ● | ○ | IR-Lebenszyklus, Berichtswesen, Umgang mit Beweismitteln |
+| [soc-analyst/03 Incident-Berichte](soc-analyst/03-incident-writeups/) ([DE](soc-analyst/03-incident-writeups/README.de.md)) | Done | | ● | | ● | ○ | IR-Lebenszyklus, Berichtswesen, Umgang mit Beweismitteln |
 | [soc-analyst/04 ATT&CK-Mapping](soc-analyst/04-attack-mapping/) ([DE](soc-analyst/04-attack-mapping/README.de.md)) | Done | | ● | | ● | | Bedrohungsorientierte Abdeckung von Detections |
 | [soc-analyst/05 Sigma-Regeln](soc-analyst/05-sigma-rules/) | Done | | ● | | ● | | Detection Engineering, pySigma/sigma-cli |
 | [python/ seclab-Tools](python/) | Done | ○ | ● | | ● | | Regex, Parsing, Hashing, automatisierte Tests |

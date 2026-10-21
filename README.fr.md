@@ -50,7 +50,7 @@ est **Done** quand j'ai lancé la vérification moi-même.
 | **In progress** | Vérifié en partie — par exemple la syntaxe est contrôlée, ou ça a tourné sur des données synthétiques, mais pas de bout en bout dans un vrai environnement |
 | **Planned** | Une procédure écrite, pas encore lancée dans un vrai environnement |
 
-Décompte actuel : 10 Done, 4 In progress, 3 Planned (voir la matrice de compétences ci-dessous).
+Décompte actuel : 14 Done, 3 In progress, 0 Planned (voir la matrice de compétences ci-dessous). La page anglaise fait foi.
 
 > Les noms de sociétés, d'utilisateurs et les adresses dans les exercices
 > sont des exemples (`example.com`, RFC 5737 `192.0.2.0/24`,
@@ -96,17 +96,17 @@ sécurité · **D5** Gestion du programme de sécurité et supervision.
 | Lab | Statut | D1 | D2 | D3 | D4 | D5 | Compétences pratiques |
 |-----|--------|:--:|:--:|:--:|:--:|:--:|------------------------|
 | [helpdesk/01 Écriture de tickets](helpdesk/01-ticket-writing/) | Done | ○ | | | ● | ○ | ITSM, communication claire, escalade |
-| [helpdesk/02 Dépannage Windows](helpdesk/02-windows-troubleshooting/) | Planned | | ○ | ○ | ● | | Observateur d'événements, PowerShell, réseau, SFC/DISM |
+| [helpdesk/02 Dépannage Windows](helpdesk/02-windows-troubleshooting/) | Done | | ○ | ○ | ● | | Observateur d'événements, PowerShell, réseau, SFC/DISM |
 | [helpdesk/03 Dépannage Linux](helpdesk/03-linux-troubleshooting/) | Done | | ○ | ○ | ● | | systemd, journalctl, disque/DNS/droits |
 | [helpdesk/04 Samba AD DC](helpdesk/04-samba-ad-lab/) | In progress | ● | | ● | ● | | Identité, groupes, concepts de GPO, moindre privilège |
-| [helpdesk/05 Bases M365](helpdesk/05-m365-basics/) | Planned | ● | ○ | ● | ● | ○ | Entra ID, licences, MFA, concepts de Conditional Access |
+| [helpdesk/05 Bases M365](helpdesk/05-m365-basics/) | Done | ● | ○ | ● | ● | ○ | Entra ID, licences, MFA, concepts de Conditional Access |
 | [helpdesk/06 Domaine Windows](helpdesk/06-windows-domain/) | In progress | ● | | ● | ● | | AD DS, client dans le domaine, reset helpdesk, contrôle GPO |
 | [networking/01 Subnetting](networking/01-subnetting/) | Done | | | ● | | | CIDR, VLSM, plans d'adressage |
 | [networking/02 Capture de paquets](networking/02-packet-capture/) | Done | | ● | ○ | ● | | Filtres Wireshark, tcpdump, analyse de protocoles |
 | [networking/03 Pare-feu nftables](networking/03-nftables-firewall/) | Done | ○ | ● | ● | ○ | | Refus par défaut, filtrage à état, journalisation |
-| [soc-analyst/01 Homelab Wazuh](soc-analyst/01-wazuh-homelab/) | Planned | | ○ | ○ | ● | | Déploiement SIEM/XDR, agents, triage des alertes |
+| [soc-analyst/01 Homelab Wazuh](soc-analyst/01-wazuh-homelab/) | Done | | ○ | ○ | ● | | Déploiement SIEM/XDR, agents, triage des alertes |
 | [soc-analyst/02 Sysmon + auditd](soc-analyst/02-sysmon-auditd-logs/) | Done | | ● | | ● | | Télémétrie des postes, corrélation de journaux |
-| [soc-analyst/03 Rapports d'incident](soc-analyst/03-incident-writeups/) | In progress | | ● | | ● | ○ | Cycle de réponse à incident, rapports, gestion des preuves |
+| [soc-analyst/03 Rapports d'incident](soc-analyst/03-incident-writeups/) | Done | | ● | | ● | ○ | Cycle de réponse à incident, rapports, gestion des preuves |
 | [soc-analyst/04 Correspondance ATT&CK](soc-analyst/04-attack-mapping/) | Done | | ● | | ● | | Couverture de détection guidée par la menace |
 | [soc-analyst/05 Règles Sigma](soc-analyst/05-sigma-rules/) | Done | | ● | | ● | | Ingénierie de détection, pySigma/sigma-cli |
 | [python/ outils seclab](python/) | Done | ○ | ● | | ● | | Regex, parsing, hachage, tests automatisés |
