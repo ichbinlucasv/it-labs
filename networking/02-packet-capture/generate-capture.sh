@@ -28,5 +28,6 @@ for path in / /admin /robots.txt /index.html; do
     ip netns exec "$NS" curl -s -o /dev/null -A "lab-client/1.0" "http://127.0.0.1:8080${path}" || true
 done
 sleep 1
-kill "$CAP_PID"; wait "$CAP_PID" 2>/dev/null || true
+kill "$CAP_PID" 2>/dev/null || true
+wait "$CAP_PID" 2>/dev/null || true
 echo "Capture written to $OUT"
