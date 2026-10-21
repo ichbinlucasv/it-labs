@@ -109,4 +109,7 @@ $ cargo clippy --all-targets -- -D warnings   -> no warnings
 
 ## What I learned
 
-_To be completed by Lucas._
+- A combined log line is a small state machine: method, path, status, bytes, user agent. Percent-decoding has to happen before the path is classified, or `%2e%2e` walks past the rule.
+- FIM is a baseline plus a diff. Symlinks are skipped on purpose so a link to `/` cannot make the walk leave the tree. Exit code 1 means "changes", which is what cron needs.
+- The same defang rules in Rust and in Python are the point of the third crate. A ticket should not depend on which language opened the indicator.
+- `unsafe` is forbidden in the workspace lints. The tools stay small enough that the standard library and `sha2` are the whole dependency story.

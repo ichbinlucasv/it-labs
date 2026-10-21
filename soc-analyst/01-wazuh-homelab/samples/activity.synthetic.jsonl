@@ -1,0 +1,11 @@
+{"ts":"2026-10-21T10:00:01Z","host":"web01","kind":"sshd","user":"deploy","src":"203.0.113.45","result":"failure"}
+{"ts":"2026-10-21T10:00:04Z","host":"web01","kind":"sshd","user":"root","src":"203.0.113.45","result":"failure"}
+{"ts":"2026-10-21T10:00:07Z","host":"web01","kind":"sshd","user":"admin","src":"203.0.113.45","result":"failure"}
+{"ts":"2026-10-21T10:00:11Z","host":"web01","kind":"sshd","user":"ubuntu","src":"203.0.113.45","result":"failure"}
+{"ts":"2026-10-21T10:00:15Z","host":"web01","kind":"sshd","user":"deploy","src":"203.0.113.45","result":"failure"}
+{"ts":"2026-10-21T10:01:02Z","host":"web01","kind":"sudo","user":"alice","src":"10.20.30.40","result":"failure"}
+{"ts":"2026-10-21T10:02:00Z","host":"web01","kind":"useradd","user":"root","src":"10.20.30.40","result":"success","target":"temp.contractor"}
+{"ts":"2026-10-21T10:03:00Z","host":"web01","kind":"fim","user":"root","path":"/etc/hosts","old_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","new_sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","result":"modified"}
+{"ts":"2026-10-21T10:04:00Z","host":"ws01","kind":"process","user":"a.martin","image":"powershell.exe","command":"powershell.exe -NoP -W Hidden -enc ZQBjAGgAbwAgAHQAZQBzAHQA","parent":"WINWORD.EXE","result":"success"}
+{"ts":"2026-10-21T10:05:00Z","host":"ws01","kind":"registry","user":"a.martin","path":"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\SyncHelper","value":"%APPDATA%\\SyncHelper\\synchelper.exe","result":"set"}
+{"ts":"2026-10-21T10:06:00Z","host":"web01","kind":"sshd","user":"alice","src":"10.20.30.5","result":"success"}

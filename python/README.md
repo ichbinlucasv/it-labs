@@ -107,4 +107,7 @@ filtering, hash chunking (> 1 MiB), known-bad list parsing, and CLI exit codes.
 
 ## What I learned
 
-_To be completed by Lucas._
+- SSH noise is mostly unique users from a few addresses. The useful alert is a success from an address that also failed, and even that can be someone mistyping once before a key login.
+- Defanging is a string transform, not a lookup. Refanging has to round-trip or a ticket copies the wrong indicator.
+- CGNAT (`100.64.0.0/10`) is not `ipaddress` `is_private`. Excluding "private" with `is_global` is the check that matches the lab's definition.
+- Hashing in chunks matters past a megabyte. Exit code 1 on a known-bad match is what lets the tool sit in a script without anyone reading stdout.

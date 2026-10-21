@@ -53,6 +53,17 @@ python3 -c "import csv;r=list(csv.DictReader(open('flashcards.csv',newline='',en
 - Practice-exam scores over time (table in `progress.md`).
 - Exam result / certificate once passed.
 
+Check the deck without an interactive session:
+
+```bash
+python3 quiz.py --check --sample
+```
+
+That prints the count per domain and the first card of each domain. It does
+not pretend to be a scored practice exam.
+
 ## What I learned
 
-_To be completed by Lucas._
+- The deck has 99 cards: domain 1 has 20, domain 2 has 25, domain 3 has 17, domain 4 has 22, domain 5 has 15. Domain 4 is the largest set of notes I can tie to a lab (logs, tickets, detections).
+- Writing the card in my own words is the review. The CSV check only proves the file is well formed.
+- These notes follow SY0-701 weights. The exam I would book is SY0-801, so this page stays in progress until that objective list has been read against the notes. Passing the exam is a separate fact and it has not happened.

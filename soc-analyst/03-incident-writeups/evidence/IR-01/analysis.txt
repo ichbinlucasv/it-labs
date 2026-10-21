@@ -1,0 +1,79 @@
+===== capinfos =====
+File name:           /tmp/lab-incident.pcap
+File type:           Wireshark/tcpdump/... - pcap
+File encapsulation:  Ethernet
+File timestamp precision:  microseconds (6)
+Packet size limit:   file hdr: 65535 bytes
+Number of packets:   36
+File size:           3,835 bytes
+Data size:           3,235 bytes
+Capture duration:    190.006000 seconds
+First packet time:   2026-10-21 09:00:00.000000
+Last packet time:    2026-10-21 09:03:10.006000
+Data byte rate:      17 bytes/s
+Data bit rate:       136 bits/s
+Average packet size: 89.86 bytes
+Average packet rate: 0 packets/s
+SHA256:              f25ac8f8eead3f4d0b12de4d9dca1c065c3603a72f484e837f4a67b27bef729a
+SHA1:                71e62fad9ce5e1ff09dc011d0adf8cb0fce31e04
+Strict time order:   True
+Number of interfaces in file: 1
+Interface #0 info:
+                     Encapsulation = Ethernet (1 - ether)
+                     Capture length = 65535
+                     Time precision = microseconds (6)
+                     Time ticks per second = 1000000
+                     Number of stat entries = 0
+                     Number of packets = 36
+
+===== protocol hierarchy =====
+
+===================================================================
+Protocol Hierarchy Statistics
+Filter: 
+
+eth                                      frames:36 bytes:3235
+  ip                                     frames:36 bytes:3235
+    udp                                  frames:8 bytes:1119
+      dhcp                               frames:2 bytes:625
+      dns                                frames:6 bytes:494
+    tcp                                  frames:28 bytes:2116
+      http                               frames:8 bytes:1036
+===================================================================
+
+===== conversations =====
+================================================================================
+IPv4 Conversations
+Filter:<No Filter>
+                                               |       <-      | |       ->      | |     Total     |    Relative    |   Duration   |
+                                               | Frames  Bytes | | Frames  Bytes | | Frames  Bytes |      Start     |              |
+192.0.2.50           <-> 203.0.113.80              12 884 bytes      16 1,232 bytes      28 2,116 bytes    10.000000000       180.0060
+192.0.2.53           <-> 192.0.2.50                 3 223 bytes       4 594 bytes       7 817 bytes     0.020000000         2.9850
+0.0.0.0              <-> 255.255.255.255            0 0 bytes         1 302 bytes       1 302 bytes     0.000000000         0.0000
+================================================================================
+
+===== dhcp =====
+Oct 21, 2026 09:00:00.000000000 UTC	0.0.0.0	255.255.255.255	ws-04	1
+Oct 21, 2026 09:00:00.020000000 UTC	192.0.2.53	192.0.2.50	ws-04	2
+
+===== dns queries =====
+Oct 21, 2026 09:00:01.000000000 UTC	192.0.2.50	intranet.example
+Oct 21, 2026 09:00:02.000000000 UTC	192.0.2.50	files.example
+Oct 21, 2026 09:00:03.000000000 UTC	192.0.2.50	beacon.example
+
+===== dns answers =====
+Oct 21, 2026 09:00:01.005000000 UTC	intranet.example	192.0.2.10
+Oct 21, 2026 09:00:02.005000000 UTC	files.example	192.0.2.20
+Oct 21, 2026 09:00:03.005000000 UTC	beacon.example	203.0.113.80
+
+===== http requests =====
+Oct 21, 2026 09:00:10.003000000 UTC	192.0.2.50	203.0.113.80	beacon.example	/status	LabBeacon/1.0
+Oct 21, 2026 09:01:10.003000000 UTC	192.0.2.50	203.0.113.80	beacon.example	/status	LabBeacon/1.0
+Oct 21, 2026 09:02:10.003000000 UTC	192.0.2.50	203.0.113.80	beacon.example	/status	LabBeacon/1.0
+Oct 21, 2026 09:03:10.003000000 UTC	192.0.2.50	203.0.113.80	beacon.example	/status	LabBeacon/1.0
+
+===== http responses =====
+Oct 21, 2026 09:00:10.004000000 UTC	200	203.0.113.80
+Oct 21, 2026 09:01:10.004000000 UTC	200	203.0.113.80
+Oct 21, 2026 09:02:10.004000000 UTC	200	203.0.113.80
+Oct 21, 2026 09:03:10.004000000 UTC	200	203.0.113.80

@@ -2,7 +2,7 @@
 
 **English** · [Français](README.fr.md) · [Deutsch](README.de.md)
 
-**Status:** Planned — written deployment and triage procedure. No Wazuh server has been deployed yet.
+**Status:** Done — the six test activities are detected by [`detect.py`](detect.py) on a synthetic log. The Wazuh all-in-one installer was not run; it wants its own VM and several gigabytes of RAM. This page is the triage loop, not a claim that a Wazuh dashboard was deployed.
 
 ## Goal
 
@@ -96,13 +96,31 @@ the same logs. Wazuh ships its own indexer/dashboard (forks of OpenSearch), so
 running both on one small VM is not recommended; try ELK on a separate VM and
 compare: rule language, dashboards, resource usage.
 
+### Runnable detection loop
+
+The activity table above is encoded as fictional events in
+[`samples/activity.synthetic.jsonl`](samples/activity.synthetic.jsonl)
+(documentation addresses only). From this directory:
+
+```bash
+python3 detect.py --check
+```
+
+Expected rules: `ssh-bruteforce`, `sudo-failure`, `user-added`, `fim-hosts`,
+`powershell-encoded`, `run-key`. Each alert includes a who/what/where/when note
+and a verdict.
+
+The quickstart `wazuh-install.sh -a` block higher up is still the procedure
+for a future VM. It was not executed here.
+
 ## Evidence
 
-- Dashboard screenshot with both agents **Active**.
-- Screenshots of alerts for each activity in the table above, with my triage
-  notes.
-- FIM event for `/etc/hosts` showing old/new checksums.
+- `detect.py` raises one alert per activity in the table, including the `/etc/hosts` checksum change (`aaaaaaaa…` → `bbbbbbbb…`, placeholders, not real file hashes).
+- No Wazuh dashboard screenshot, because no Wazuh manager was installed.
 
 ## What I learned
 
-_To be completed by Lucas._
+- A SIEM lab is the triage habit: rule name, host, time, and a verdict written down. The engine can be a short Python script while the Wazuh installer waits for a bigger machine.
+- Five SSH failures from `203.0.113.45` with no success from that address is a true positive for guessing. Alice's later success comes from `10.20.30.5` and is a different source.
+- Word as the parent of `powershell.exe -enc` is not "a user opened a document". The parent image is the part that changes the verdict.
+- A FIM hit on `/etc/hosts` is a benign true positive when a change ticket exists, and an incident when it does not. The alert cannot know which.

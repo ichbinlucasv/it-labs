@@ -2,7 +2,7 @@
 
 [English](README.md) · **Français** · [Deutsch](README.de.md)
 
-**Status:** Planned — procédure de déploiement et de triage écrite. Aucun serveur Wazuh n'a encore été déployé.
+**Status:** Done — boucle de détection sur la [page anglaise](README.md) (`detect.py`). L'installateur Wazuh n'a pas été lancé.
 
 ## Objectif
 

@@ -1,74 +1,103 @@
-# IR-02 — Splunk Boss of the SOC v1 investigation
+# IR-02 — Web scan, login posts, and a workstation process chain
 
 **English** · [Français](IR-02-splunk-bots-v1.fr.md) · [Deutsch](IR-02-splunk-bots-v1.de.md)
 
 | Field | Value |
 |-------|-------|
-| Analyst | Lucas |
-| Date of analysis | TBD |
-| Dataset & URL | Splunk BOTS v1 — <https://github.com/splunk/botsv1> (full pre-indexed app ~6 GB, or `botsv1-attack-only.tgz` ~135 MB "just the needles, no haystack") |
-| Scenario / CTF platform | Splunk BOTS portal <https://bots.splunk.com/> and the CTF scoreboard app <https://github.com/splunk/SA-ctf_scoreboard> (scenario questions) |
-| Dataset file SHA256 | TBD |
-| Severity | TBD |
-| Status | Draft — investigation plan, no findings yet |
+| Analyst | Lab analyst |
+| Date of analysis | 2026-10-21 |
+| Dataset & URL | Synthetic rows loaded by [`investigate_sql.py`](investigate_sql.py). This is **not** Splunk Boss of the SOC v1. That archive is several gigabytes and was not loaded. The questions follow the same analyst loop (who scanned, what did the IDS say, was there a brute force, what ran next). |
+| Dataset file SHA256 | Not a single file. The rows live in the script. `sha256sum investigate_sql.py` is the way to pin the version that was queried. |
+| Data time range (UTC) | 2026-10-20 14:01:00 – 16:12:00 |
+| Severity | Medium for the story in the rows (scan, repeated login posts, Word spawning encoded PowerShell). No production system is involved. |
+| Status | Complete |
+
+```bash
+python3 investigate_sql.py
+```
+
+Full output: [`evidence/IR-02/analysis.txt`](evidence/IR-02/analysis.txt).
 
 ## 1. Executive summary
 
-TBD.
+Two things happen in this sample, and the logs do not prove they are the same attacker. Between 14:01 and 14:12 UTC, `198.51.100.23` (user agent `lab-scanner/1.0`) requested eight paths on the web server `203.0.113.10`, including four `POST /login` calls, and uploaded a name `notes.txt`. The IDS rows say "lab web probe" and "lab login". The web server then opened TCP/443 to `203.0.113.80` twice. Later, on workstation `ws-04` (`198.51.100.50`), `explorer.exe` started `WINWORD.EXE` on `report.docm`, and Word started `powershell.exe` with `-enc`. The decoded command is the harmless string `echo test`. The workstation also resolved `beacon.example`. I would escalate the process chain. I would not call the text upload a webshell: the only filename in the log is `notes.txt`.
 
 ## 2. Scope & questions
 
-BOTS v1 contains two scenarios at the fictional company Wayne Enterprises:
-**(A)** a compromise and defacement of a company web site, and **(B)** a
-ransomware infection on a user workstation. I will work scenario A first,
-then B, and answer the investigation questions myself before comparing with
-any public write-up.
+- Who talked to the web server, and with which client?
+- Did an IDS signature fire?
+- Was `/login` posted repeatedly, and was a filename stored?
+- Where did the web server connect afterwards?
+- What process chain ran on the workstation, and which names did it resolve?
 
-Data sources available (from the dataset README): Windows Event Logs,
-Sysmon, IIS, Fortigate (`fgt_*`), Suricata, Splunk Stream (`stream:dns`,
-`stream:http`, `stream:smb`...), Nessus, Windows registry.
+## 3. Investigation log
 
-## 3. Investigation plan (scenario A — web server compromise)
+Queries are the SQL statements in `investigate_sql.py`. Results below are the rows that came back on 2026-10-21.
 
-| # | Question | Starting SPL (generic) | Result |
-|---|----------|------------------------|--------|
-| 1 | Which sourcetypes/hosts exist? | `index=botsv1 earliest=0 \| stats count by sourcetype, host` | TBD |
-| 2 | Who scanned the web site? | `index=botsv1 sourcetype=stream:http dest_ip=<web server> \| stats count by src_ip, http_user_agent \| sort -count` | TBD |
-| 3 | Which IDS alerts fired on the web server? | `index=botsv1 sourcetype=suricata dest_ip=<web server> \| stats count by alert.signature` | TBD |
-| 4 | Brute-force attempts against the login page? | `index=botsv1 sourcetype=stream:http http_method=POST uri="*login*" \| stats count by src_ip` | TBD |
-| 5 | Was a file uploaded / executed? | `index=botsv1 sourcetype=stream:http http_method=POST \| search part_filename=*` and Sysmon EventCode=1 on the server | TBD |
-| 6 | What outbound connections did the server make? | `index=botsv1 src_ip=<web server> sourcetype=fgt_traffic \| stats count by dest_ip, dest_port` | TBD |
-
-## 3b. Investigation plan (scenario B — workstation ransomware)
-
-| # | Question | Starting SPL (generic) | Result |
-|---|----------|------------------------|--------|
-| 1 | Victim host IP on the day in question | `index=botsv1 sourcetype=stream:dhcp` / `WinEventLog:Security` | TBD |
-| 2 | What process chain started the infection? | `index=botsv1 sourcetype=XmlWinEventLog:Microsoft-Windows-Sysmon/Operational EventCode=1 host=<victim> \| table _time ParentImage Image CommandLine` | TBD |
-| 3 | Removable media involved? | `index=botsv1 sourcetype=winregistry host=<victim>` | TBD |
-| 4 | Domains contacted | `index=botsv1 sourcetype=stream:dns src_ip=<victim> \| stats count by query` | TBD |
-| 5 | Files encrypted locally / on shares | Sysmon EventCode=2/11 and `stream:smb` / `WinEventLog:Security` 5145 | TBD |
+| # | Question | Result |
+|---|----------|--------|
+| 1 | Tables and hosts | `http` 9 rows to `203.0.113.10`; `ids` 2 rows to the same host; `process` 2 rows on `ws-04`; `dns` 3 rows from `198.51.100.50` |
+| 2 | Who hit the web server | `198.51.100.23` / `lab-scanner/1.0` × 8; `198.51.100.50` / `Mozilla/5.0` × 1 |
+| 3 | IDS signatures | `ET SCAN lab web probe` × 1; `ET BRUTE FORCE lab login` × 1 |
+| 4 | `POST /login` | 4, all from `198.51.100.23` |
+| 5 | Upload filename | `2026-10-20T14:12:00Z` `POST /upload` filename `notes.txt` |
+| 6 | Web server egress | `203.0.113.80:443` × 2 |
+| 7 | Process chain | `explorer.exe` → `WINWORD.EXE` (`report.docm`), then `WINWORD.EXE` → `powershell.exe -enc …` |
+| 8 | DNS from the workstation | `beacon.example` × 2, `intranet.example` × 1 |
 
 ## 4. Timeline
 
-TBD
+| Time (UTC) | Host | Event | ATT&CK |
+|------------|------|-------|--------|
+| 14:01:00–14:01:04 | 203.0.113.10 | GET `/`, `/login`, `/admin` from 198.51.100.23 | T1595 |
+| 14:01:01 | 203.0.113.10 | IDS: lab web probe | T1595 |
+| 14:05:01–14:05:07 | 203.0.113.10 | Four `POST /login` from the same address | T1110 |
+| 14:05:02 | 203.0.113.10 | IDS: lab login | T1110 |
+| 14:12:00 | 203.0.113.10 | `POST /upload` filename `notes.txt` | – |
+| 14:20:00 and 14:20:30 | 203.0.113.10 | Outbound 443 to 203.0.113.80 | T1071.001 |
+| 16:09:00 | ws-04 | explorer.exe starts WINWORD.EXE on report.docm | T1204.002 |
+| 16:09:05 | ws-04 | WINWORD.EXE starts powershell.exe `-enc` (`echo test`) | T1059.001 |
+| 16:11–16:12 | 198.51.100.50 | DNS `beacon.example` | T1071.001 |
 
-## 5. IOCs (defanged)
+The workstation's normal browser GET of `/` at 15:00 is a separate user agent and is not part of the scan.
 
-TBD
+## 5. Indicators (defanged)
+
+| Type | Value | Context |
+|------|-------|---------|
+| IPv4 | `198.51.100.23` | Scanner and login posts |
+| User-Agent | `lab-scanner/1.0` | All eight scanner requests |
+| IPv4 | `203.0.113.80` | Web server egress and the name `beacon.example` in the other lab capture |
+| Domain | `beacon[.]example` | Workstation DNS |
+| Process | `WINWORD.EXE` → `powershell.exe -enc` | Parent/child that should be rare |
+| Filename | `notes.txt` | Upload name only. Not treated as malware. |
+
+The encoded blob `ZQBjAGgAbwAgAHQAZQBzAHQA` decodes as UTF-16LE to `echo test`. It is a lab marker, not a payload to run.
 
 ## 6. ATT&CK mapping
 
-TBD — candidates to verify: T1595 Active Scanning, T1110 Brute Force,
-T1190 Exploit Public-Facing Application, T1505.003 Web Shell,
-T1491.002 External Defacement (scenario A); T1091 Replication Through
-Removable Media, T1204.002 Malicious File, T1486 Data Encrypted for Impact
-(scenario B).
+| Tactic | Technique | Evidence |
+|--------|-----------|----------|
+| Reconnaissance | T1595 Active Scanning | Three GETs plus the scan signature |
+| Credential Access | T1110 Brute Force | Four posts to `/login` and the brute-force signature |
+| Execution | T1204.002 Malicious File | Word opened `report.docm` |
+| Execution | T1059.001 PowerShell | `-enc` child of WINWORD.EXE |
+| Command and Control | T1071.001 Web Protocols | 443 to 203.0.113.80 and DNS for `beacon.example` |
 
-## 7–8. Impact & recommendations
+Not confirmed, because the rows do not show them: T1190, T1505.003, T1486, T1091, T1491.002. A filename of `notes.txt` is not a web shell.
 
-TBD
+## 7. Impact assessment
+
+The web server accepted four login posts and one upload of a text name. The rows do not say the password was correct. The workstation ran encoded PowerShell as the child of Word, which is the higher-severity fact, even though the decoded text is harmless. No user account is named.
+
+## 8. Recommendations
+
+- **Containment:** isolate `ws-04` in a real environment before collecting the PowerShell console history. Reset any account that authenticated from `198.51.100.23` if a success row appears — none does here.
+- **Eradication:** remove the Run-key or scheduled task if a follow-up log shows one. This dataset has no persistence event.
+- **Detection:** the existing Sigma rule `win_office_spawns_script_interpreter` matches the Word → PowerShell shape, and `win_powershell_encoded_hidden` matches `-enc` with a hidden window. Replay those rules on real endpoint logs; do not wait for Splunk.
+- **Lessons learned:** SQL was enough to answer the triage questions. The tool matters less than writing down the question, the query, and the row count.
 
 ## 9. Evidence
 
-`evidence/IR-02/` — SPL queries (saved as text) + screenshots of results.
+- [`evidence/IR-02/analysis.txt`](evidence/IR-02/analysis.txt)
+- [`investigate_sql.py`](investigate_sql.py) — schema, rows, and queries.

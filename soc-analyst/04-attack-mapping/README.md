@@ -67,8 +67,8 @@ D4 — threat hunting.)
 
 | Write-up | Candidate techniques |
 |----------|---------------------|
-| IR-01 malware-traffic pcap | T1189, T1566, T1204, T1105, T1071.001 |
-| IR-02 BOTS v1 | T1595, T1110, T1190, T1505.003, T1491.002, T1091, T1204.002, T1486 |
+| IR-01 synthetic pcap (not the malware-traffic exercise) | **T1071.001 confirmed** (HTTP every 60 s). T1189, T1566, T1204, T1105 not in that file. |
+| IR-02 synthetic SQL set (not BOTS v1) | **T1595, T1110, T1204.002, T1059.001, T1071.001 confirmed** by the queries. T1190, T1505.003, T1486, T1091, T1491.002 not in the rows. |
 | IR-03 EVTX password spray | **T1110.003 confirmed** in the [completed write-up](../03-incident-writeups/IR-03-evtx-password-spray.md); T1078.002 possible next step, not in the data; detected by [`win_kerberos_password_spray_correlation`](../05-sigma-rules/rules/win_kerberos_password_spray_correlation.yml) |
 
 ### Coverage summary

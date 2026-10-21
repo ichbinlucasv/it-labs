@@ -1,0 +1,48 @@
+Synthetic multi-source log investigation
+
+## sources
+Which tables and hosts are in the set?
+src | host | n
+dns | 198.51.100.50 | 3
+http | 203.0.113.10 | 9
+ids | 203.0.113.10 | 2
+process | ws-04 | 2
+
+## web-scan
+Who requested the most paths on the web server?
+src_ip | user_agent | n
+198.51.100.23 | lab-scanner/1.0 | 8
+198.51.100.50 | Mozilla/5.0 | 1
+
+## ids-alerts
+Which IDS signatures fired toward the web server?
+signature | n
+ET SCAN lab web probe | 1
+ET BRUTE FORCE lab login | 1
+
+## login-posts
+How many POSTs hit /login, and from where?
+src_ip | n
+198.51.100.23 | 4
+
+## upload
+Was a file name recorded on a POST?
+ts | src_ip | uri | filename
+2026-10-20T14:12:00Z | 198.51.100.23 | /upload | notes.txt
+
+## egress
+Where did the web server connect outbound?
+dest_ip | dest_port | n
+203.0.113.80 | 443 | 2
+
+## process-chain
+Which process chain ran on the workstation?
+ts | parent_image | image | command_line
+2026-10-20T16:09:00Z | explorer.exe | WINWORD.EXE | WINWORD.EXE /n report.docm
+2026-10-20T16:09:05Z | WINWORD.EXE | powershell.exe | powershell.exe -NoP -W Hidden -enc ZQBjAGgAbwAgAHQAZQBzAHQA
+
+## dns-names
+Which names did the workstation look up?
+query | n
+beacon.example | 2
+intranet.example | 1

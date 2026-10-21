@@ -2,7 +2,7 @@
 
 [English](README.md) · **Français** · [Deutsch](README.de.md)
 
-**Status:** In progress — [IR-03](IR-03-evtx-password-spray.md) (password spraying Kerberos, exemple EVTX public) est analysé et terminé ; IR-01 (pcap malware-traffic, il faut une VM d'analyse isolée) et IR-02 (Splunk BOTS v1, il faut une instance Splunk) sont encore des plans d'enquête.
+**Status:** Done — voir la [page anglaise](README.md). IR-01 est une capture synthétique, IR-02 est du SQL, IR-03 reste l'EVTX public.
 
 ## Objectif
 

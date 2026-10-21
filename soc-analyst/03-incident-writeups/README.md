@@ -4,7 +4,7 @@
 
 **English** · [Deutsch](README.de.md)
 
-**Status:** In progress — [IR-03](IR-03-evtx-password-spray.md) (Kerberos password spraying, public EVTX sample) is analysed and complete; IR-01 (malware-traffic pcap, needs an isolated analysis VM) and IR-02 (Splunk BOTS v1, needs a Splunk instance) are still investigation plans.
+**Status:** Done — [IR-03](IR-03-evtx-password-spray.md) is the public EVTX write-up; [IR-01](IR-01-malware-traffic-pcap.md) is a synthetic pcap analysed with tshark; [IR-02](IR-02-splunk-bots-v1.md) is the same questions answered in SQL. The malware-traffic-analysis.net zip and the Splunk BOTS archive were not opened.
 
 ## Goal
 
@@ -30,15 +30,12 @@ JSON exports of simulated ATT&CK techniques, easy to load into Wazuh/ELK/Splunk.
 - Record the SHA256 of every file analysed (chain of custody habit).
 - Each write-up follows [`TEMPLATE.md`](TEMPLATE.md).
 
-> **Honesty note:** IR-01 and IR-02 are still *investigation plans and
-> report skeletons*: their findings stay `TBD` until I have analysed the data.
-> IR-03 contains my own analysis of the public sample. No answers from other
-> people's write-ups are copied here.
->
-> Why IR-01/IR-02 are not done yet: the malware-traffic pcaps contain real
-> malicious traffic and my rule is to open them only in a dedicated, isolated
-> analysis VM, which my current lab machine is not; BOTS v1 needs a Splunk
-> instance with the ~6 GB dataset loaded.
+> **Honesty note:** IR-03 is an analysis of the public EVTX sample.
+> IR-01 and IR-02 were plans for a malware-traffic pcap and for Splunk BOTS.
+> Those two downloads were not opened. The pages now record a synthetic pcap
+> rebuilt by `generate_lab_pcap.py` and a small SQL log set in
+> `investigate_sql.py`. Command output is in `evidence/`. No answers from
+> other people's write-ups are copied here.
 
 ## Steps
 
@@ -54,7 +51,9 @@ JSON exports of simulated ATT&CK techniques, easy to load into Wazuh/ELK/Splunk.
 
 - [IR-03](IR-03-evtx-password-spray.md) with [`evidence/IR-03/analysis.txt`](evidence/IR-03/analysis.txt)
   (SHA256 of the EVTX, event table, Sigma replay).
-- IR-01, IR-02: not started (see honesty note).
+- [IR-01](IR-01-malware-traffic-pcap.md) with [`evidence/IR-01/analysis.txt`](evidence/IR-01/analysis.txt)
+  (tshark on the generated pcap; SHA256 in [`evidence/IR-01/sha256.txt`](evidence/IR-01/sha256.txt)).
+- [IR-02](IR-02-splunk-bots-v1.md) with [`evidence/IR-02/analysis.txt`](evidence/IR-02/analysis.txt).
 
 ## What I learned
 
@@ -68,3 +67,7 @@ JSON exports of simulated ATT&CK techniques, easy to load into Wazuh/ELK/Splunk.
   `::ffff:172.16.66.1`.
 - Not every suspicious event belongs to the attacker (the 1102 log clear);
   saying "noted, not attributed" is better than over-claiming.
+- A 60-second HTTP interval is the finding in the synthetic pcap. Four
+  `POST /login` rows are a brute-force question, and `notes.txt` is not a web shell.
+- The encoded PowerShell blob in the SQL set decodes to `echo test`. The parent
+  process (Word) is what makes it worth escalating, not the decoded text.

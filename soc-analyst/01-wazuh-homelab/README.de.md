@@ -2,7 +2,7 @@
 
 [English](README.md) · [Français](README.fr.md) · **Deutsch**
 
-**Status:** Planned — Deployment und Triage aufgeschrieben. Noch kein Wazuh-Server aufgesetzt.
+**Status:** Done — Erkennungsschleife auf der [englischen Seite](README.md) (`detect.py`). Der Wazuh-Installer wurde nicht ausgeführt.
 
 ## Ziel
 
