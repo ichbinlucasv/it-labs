@@ -321,7 +321,7 @@ python soc-analyst/05-sigma-rules/validate_rules.py
 ## Python tools
 
 `seclab` is standard-library only: an `auth.log` summary, an IOC defang/refang
-extractor, and a chunked hash checker. 38 pytest tests pass.
+extractor, and a chunked hash checker. 39 pytest tests pass.
 
 ```bash
 cd python && . .venv/bin/activate

@@ -16,6 +16,7 @@ REPORT = Path(__file__).resolve().parents[1] / "samples" / "threat-report.synthe
         ("user[@]example[.]com", "user@example.com"),
         ("bad(.)example(dot)net", "bad.example.net"),
         ("fxp://files{.}example[.]org", "ftp://files.example.org"),
+        ("analyst{at}lab{dot}example", "analyst@lab.example"),
         ("https[://]a[.]example", "https://a.example"),
     ],
 )

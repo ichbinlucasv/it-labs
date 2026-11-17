@@ -135,7 +135,7 @@ python3 scripts/check_repo.py
 
 | Punkt | Wie |
 |-------|-----|
-| Python-Tools | `pytest` — 38 Tests erfolgreich |
+| Python-Tools | `pytest` — 39 Tests erfolgreich |
 | Rust-Crates | `cargo test` (14 Unit-Tests), `cargo clippy --all-targets -- -D warnings` ohne Befund, `cargo fmt --check` ohne Befund |
 | Sigma-Regeln | gültiges YAML; `sigma check` 0 Fehler (sigma-cli 3.1.0); die 8 ursprünglichen Regeln schlagen über das SQLite-Backend auf den synthetischen Beispielen an; die Kerberos-Spraying-Regel schlägt auf einem öffentlichen EVTX-Beispiel an |
 | Fehleranalyse Linux | 7 Break/Fix-Szenarien in einem Debian-13-systemd-Container (`systemd-nspawn`) durchgeführt; Terminalausgaben in `helpdesk/03-linux-troubleshooting/evidence/` (OOM-Kill dort nicht reproduzierbar) |

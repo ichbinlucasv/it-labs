@@ -2,7 +2,7 @@
 
 [English](README.md) · **Français** · [Deutsch](README.de.md)
 
-**Status:** Done — trois outils avec 38 tests pytest qui passent.
+**Status:** Done — trois outils avec 39 tests pytest qui passent.
 
 ## Objectif
 
@@ -96,7 +96,7 @@ sortie 1.
 
 ```text
 $ pytest
-38 passed
+39 passed
 ```
 
 Les tests couvrent des cas limites d'analyse (horodatages classiques contre

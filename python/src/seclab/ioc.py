@@ -25,8 +25,8 @@ _REFANG_RULES: list[tuple[re.Pattern, str]] = [
     (re.compile(r"\bfxp\b", re.I), "ftp"),
     (re.compile(r"\[://\]"), "://"),
     (re.compile(r"\[:\]"), ":"),
-    (re.compile(r"\[\.\]|\(\.\)|\{\.\}|\[dot\]|\(dot\)", re.I), "."),
-    (re.compile(r"\[@\]|\(@\)|\[at\]|\(at\)", re.I), "@"),
+    (re.compile(r"\[\.\]|\(\.\)|\{\.\}|\[dot\]|\(dot\)|\{dot\}", re.I), "."),
+    (re.compile(r"\[@\]|\(@\)|\[at\]|\(at\)|\{at\}", re.I), "@"),
 ]
 
 

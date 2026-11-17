@@ -2,7 +2,7 @@
 
 **English** · [Français](README.fr.md) · [Deutsch](README.de.md)
 
-**Status:** Done — three tools with 38 passing pytest tests.
+**Status:** Done — three tools with 39 passing pytest tests.
 
 ## Goal
 
@@ -92,7 +92,7 @@ python -m seclab.hashcheck -k my_iocs.txt ~/Downloads -r --json
 
 ```text
 $ pytest
-38 passed
+39 passed
 ```
 
 Tests cover parsing edge cases (classic vs ISO timestamps, rsyslog "message
